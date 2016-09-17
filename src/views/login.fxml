@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<Pane id="pane" prefHeight="270.0" prefWidth="274.0" styleClass="pane" stylesheets="@../../../../Documents/temp/scenebuilder/autosales/css/login_css.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView id="logo" fx:id="mainLogo" blendMode="COLOR_BURN" fitHeight="78.0" fitWidth="229.0" layoutX="15.0" layoutY="6.0" opacity="0.74" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../Documents/temp/scenebuilder/autosales/img/auto_sales_logo.png" />
+         </image>
+      </ImageView>
+      <Button id="login_button" fx:id="loginButton" layoutX="94.0" layoutY="209.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="90.0" styleClass="login_button" stylesheets="@../../../../Documents/temp/scenebuilder/autosales/css/login_css.css" text="Login" textFill="WHITE">
+         <font>
+            <Font name="Helvetica" size="14.0" />
+         </font>
+      </Button>
+      <TextField id="username_field" fx:id="usernameField" layoutX="33.0" layoutY="112.0" prefHeight="26.0" prefWidth="204.0" promptText="Username" stylesheets="@../../../../Documents/temp/scenebuilder/autosales/css/login_css.css">
+         <font>
+            <Font name="Helvetica" size="13.0" />
+         </font>
+      </TextField>
+      <CheckBox id="customer_box" fx:id="customerCheckBox" layoutX="33.0" layoutY="71.0" mnemonicParsing="false" stylesheets="@../../../../Documents/temp/scenebuilder/autosales/css/login_css.css" text="Customer">
+         <font>
+            <Font name="Helvetica Bold" size="13.0" />
+         </font>
+      </CheckBox>
+      <CheckBox id="employee_box" fx:id="employeeCheckBox" layoutX="138.0" layoutY="71.0" mnemonicParsing="false" stylesheets="@../../../../Documents/temp/scenebuilder/autosales/css/login_css.css" text="Employee">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </CheckBox>
+      <PasswordField id="password_field" fx:id="passwordField" layoutX="33.0" layoutY="162.0" prefHeight="26.0" prefWidth="205.0" promptText="Password" stylesheets="@../../../../Documents/temp/scenebuilder/autosales/css/login_css.css">
+         <font>
+            <Font name="Helvetica" size="13.0" />
+         </font>
+      </PasswordField>
+   </children>
+</Pane>
