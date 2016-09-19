@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="698.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="View">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Grid" />
+                  <MenuItem mnemonicParsing="false" text="Regular" />
+              </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Customize" />
+            <Menu mnemonicParsing="false" text="Shopping Cart" />
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="45.0" prefWidth="498.0" />
+            <Label alignment="TOP_CENTER" prefHeight="24.0" prefWidth="284.0" text="Most Viewed" />
+            <ImageView fitHeight="258.0" fitWidth="286.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../Desktop/temp/temp_pictures/2017_cadillac_ats-coupe_coupe_premium-performance_fq_oem_2_717.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </center>
+   <left>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label alignment="TOP_CENTER" prefHeight="17.0" prefWidth="103.0" text="Filter" />
+                  <Separator prefWidth="200.0" />
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="117.0" prefWidth="100.0">
+                           <children>
+                              <Label alignment="TOP_CENTER" prefHeight="17.0" prefWidth="107.0" text="Type">
+                                 <VBox.margin>
+                                    <Insets bottom="3.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <CheckBox mnemonicParsing="false" text="SUV">
+                                 <VBox.margin>
+                                    <Insets bottom="2.0" />
+                                 </VBox.margin>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" text="Sedan">
+                                 <VBox.margin>
+                                    <Insets bottom="2.0" />
+                                 </VBox.margin>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" text="Coupe">
+                                 <VBox.margin>
+                                    <Insets bottom="2.0" />
+                                 </VBox.margin>
+                              </CheckBox>
+                              <CheckBox mnemonicParsing="false" text="Hybrid">
+                                 <VBox.margin>
+                                    <Insets bottom="4.0" />
+                                 </VBox.margin>
+                              </CheckBox>
+                              <Separator prefWidth="200.0" />
+                           </children>
+                           <HBox.margin>
+                              <Insets left="7.0" top="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <VBox prefHeight="66.0" prefWidth="100.0">
+                     <children>
+                        <Label alignment="TOP_CENTER" prefHeight="17.0" prefWidth="115.0" text="Make">
+                           <VBox.margin>
+                              <Insets bottom="3.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ChoiceBox prefHeight="23.0" prefWidth="100.0">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="4.0" />
+                           </VBox.margin>
+                        </ChoiceBox>
+                        <Separator prefWidth="200.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="7.0" top="10.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox prefHeight="78.0" prefWidth="100.0">
+                     <children>
+                        <Label alignment="TOP_CENTER" prefHeight="17.0" prefWidth="127.0" text="Year">
+                           <VBox.margin>
+                              <Insets bottom="3.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ChoiceBox prefHeight="17.0" prefWidth="100.0">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="4.0" />
+                           </VBox.margin>
+                        </ChoiceBox>
+                        <Separator prefWidth="200.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="7.0" top="10.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox prefHeight="77.0" prefWidth="100.0">
+                     <children>
+                        <Label alignment="TOP_CENTER" prefHeight="17.0" prefWidth="112.0" text="Base Price">
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin>
+                        </Label>
+                        <ChoiceBox prefHeight="26.0" prefWidth="100.0">
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="4.0" />
+                           </VBox.margin>
+                        </ChoiceBox>
+                        <Separator prefWidth="200.0" />
+                     </children>
+                     <VBox.margin>
+                        <Insets left="7.0" top="10.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <VBox prefHeight="99.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Transmission">
+                           <VBox.margin>
+                              <Insets bottom="3.0" />
+                           </VBox.margin>
+                        </Label>
+                        <CheckBox mnemonicParsing="false" text="Automatic">
+                           <VBox.margin>
+                              <Insets bottom="2.0" />
+                           </VBox.margin>
+                        </CheckBox>
+                        <CheckBox mnemonicParsing="false" text="Manual">
+                           <VBox.margin>
+                              <Insets bottom="2.0" />
+                           </VBox.margin>
+                        </CheckBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="7.0" top="10.0" />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+               <HBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </HBox.margin>
+            </VBox>
+            <AnchorPane prefHeight="454.0" prefWidth="98.0" />
+         </children>
+      </HBox>
+   </left>
+</BorderPane>
