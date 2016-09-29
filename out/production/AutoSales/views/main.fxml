@@ -1,225 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
-<?import javafx.scene.control.*?>
 <?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <VBox>
+<VBox prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <MenuBar style="-fx-background-color: #242829;" stylesheets="@../css/main.css" VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="View" />
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
          <children>
-            <MenuBar style="-fx-background-color: #242829" stylesheets="@../css/main.css" BorderPane.alignment="CENTER">
-              <menus>
-                <Menu mnemonicParsing="false" text="File">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="About" />
-                  </items>
-                </Menu>
-                  <Menu mnemonicParsing="false" text="View">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Grid" />
-                        <MenuItem mnemonicParsing="false" text="Regular" />
-                    </items>
-                  </Menu>
-              </menus>
-            </MenuBar>
-            <ToolBar prefHeight="46.0" prefWidth="698.0" style="-fx-background-color: #49595E">
-               <items>
-                  <ImageView blendMode="COLOR_DODGE" fitHeight="40.0" fitWidth="113.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../imgs/auto_sales_logo.png" />
-                     </image>
-                  </ImageView>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #41484A">
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imgs/icons/car.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #41484A">
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imgs/icons/steering-wheel.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #41484A">
-                     <graphic>
-                        <ImageView fitHeight="34.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imgs/icons/tools.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #41484A">
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imgs/icons/safety-seat.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-color: #41484A">
-                     <graphic>
-                        <ImageView fitHeight="30.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../imgs/icons/shopping-cart.png" />
-                           </image>
-                        </ImageView>
-                     </graphic></Button>
-               </items>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </ToolBar>
-         </children>
-      </VBox>
-   </top>
-   <center>
-      <ScrollPane prefViewportHeight="527.0" prefViewportWidth="674.0" style="-fx-background-color: #49595E">
-         <content>
-            <VBox prefHeight="408.0" prefWidth="573.0" style="-fx-background-color: grey" BorderPane.alignment="CENTER" />
-         </content>
-      </ScrollPane>
-   </center>
-   <left>
-      <ScrollPane minWidth="-Infinity" prefHeight="408.0" prefViewportHeight="454.0" prefViewportWidth="101.0" prefWidth="126.0" style="-fx-background-color: #49595E”>
-         <content>
-            <HBox prefHeight="454.0" prefWidth="101.0" style="-fx-background-color: #29424A" BorderPane.alignment="CENTER">
+            <VBox layoutX="247.0" layoutY="38.0" prefHeight="371.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <HBox prefHeight="486.0" prefWidth="176.0" style="-fx-background-color: #49595E">
-                     <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #49595E">
+                  <ToolBar prefHeight="43.0" prefWidth="614.0" style="-fx-background-color: #49595E;">
+                    <items>
+                        <ImageView blendMode="COLOR_DODGE" fitHeight="90.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imgs/auto_sales_logo.png" />
+                           </image>
+                        </ImageView>
+                        <Separator opacity="0.0" orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0">
+                           <padding>
+                              <Insets right="14.0" />
+                           </padding>
+                        </Separator>
+                      <Button mnemonicParsing="false" style="-fx-background-color: #41484A;">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../imgs/icons/car.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" style="-fx-background-color: #41484A;">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../imgs/icons/steering-wheel.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" style="-fx-background-color: #41484A;">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../imgs/icons/tools.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" style="-fx-background-color: #41484A;">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../imgs/icons/safety-seat.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button mnemonicParsing="false" style="-fx-background-color: #3c4656;">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../imgs/icons/shopping-cart.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Label prefHeight="21.0" prefWidth="117.0" text="Search" textFill="#c6c6c6">
+                           <padding>
+                              <Insets left="40.0" right="10.0" />
+                           </padding>
+                           <font>
+                              <Font name="Helvetica Bold" size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField prefHeight="27.0" prefWidth="167.0" />
+                        <HBox alignment="CENTER">
                            <children>
-                              <Label alignment="TOP_CENTER" prefHeight="4.0" prefWidth="100.0" text="Filter" textFill="WHITE">
-                                 <VBox.margin>
-                                    <Insets top="5.0" />
-                                 </VBox.margin>
-                              </Label>
-                              <VBox prefHeight="99.0" prefWidth="100.0">
-                                 <children>
-                                    <Label text="Transmission" textFill="WHITE">
-                                       <VBox.margin>
-                                          <Insets bottom="3.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <CheckBox mnemonicParsing="false" text="Automatic" textFill="WHITE">s
-                                       <VBox.margin>
-                                          <Insets bottom="2.0" />
-                                       </VBox.margin>
-                                    </CheckBox>
-                                    <CheckBox mnemonicParsing="false" text="Manual" textFill="#f5f5f5">
-                                       <VBox.margin>
-                                          <Insets bottom="2.0" />
-                                       </VBox.margin>
-                                    </CheckBox>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets left="7.0" top="10.0" />
-                                 </VBox.margin>
-                              </VBox>
-                              <Separator prefWidth="200.0" />
-                              <HBox prefHeight="100.0" prefWidth="200.0">
-                                 <children>
-                                    <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="52.0" prefWidth="92.0">
-                                       <children>
-                                          <Label alignment="TOP_CENTER" prefHeight="17.0" prefWidth="107.0" text="Type" textFill="WHITE">
-                                             <VBox.margin>
-                                                <Insets bottom="3.0" />
-                                             </VBox.margin>
-                                          </Label>
-                                          <ChoiceBox prefWidth="150.0" />
-                                          <Separator prefWidth="200.0">
-                                             <VBox.margin>
-                                                <Insets top="7.0" />
-                                             </VBox.margin>
-                                          </Separator>
-                                       </children>
-                                       <HBox.margin>
-                                          <Insets left="7.0" top="10.0" />
-                                       </HBox.margin>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <VBox prefHeight="66.0" prefWidth="100.0">
-                                 <children>
-                                    <Label alignment="TOP_CENTER" prefHeight="27.0" prefWidth="97.0" text="Make" textFill="WHITE">
-                                       <VBox.margin>
-                                          <Insets bottom="3.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <ChoiceBox prefWidth="150.0" />
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets left="7.0" top="10.0" />
-                                 </VBox.margin>
-                              </VBox>
-                              <Separator prefWidth="200.0">
-                                 <VBox.margin>
-                                    <Insets top="7.0" />
-                                 </VBox.margin>
-                              </Separator>
-                              <VBox prefHeight="78.0" prefWidth="100.0">
-                                 <children>
-                                    <Label alignment="TOP_CENTER" prefHeight="17.0" prefWidth="127.0" text="Year" textFill="WHITE">
-                                       <VBox.margin>
-                                          <Insets bottom="3.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <ChoiceBox prefHeight="17.0" prefWidth="100.0">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" top="4.0" />
-                                       </VBox.margin>
-                                    </ChoiceBox>
-                                    <Separator prefWidth="200.0" />
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets bottom="5.0" left="7.0" top="10.0" />
-                                 </VBox.margin>
-                              </VBox>
-                              <VBox prefHeight="77.0" prefWidth="100.0">
-                                 <children>
-                                    <Label alignment="TOP_CENTER" prefHeight="17.0" prefWidth="112.0" text="Base Price" textFill="WHITE">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" />
-                                       </VBox.margin>
-                                    </Label>
-                                    <ChoiceBox prefHeight="26.0" prefWidth="100.0">
-                                       <VBox.margin>
-                                          <Insets bottom="5.0" top="4.0" />
-                                       </VBox.margin>
-                                    </ChoiceBox>
-                                    <Separator prefWidth="200.0" />
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets left="7.0" top="10.0" />
-                                 </VBox.margin>
-                              </VBox>
+                              <Hyperlink prefHeight="31.0" prefWidth="70.0" text="Login" textFill="#c6c6c6">
+                                 <font>
+                                    <Font name="Helvetica Bold" size="18.0" />
+                                 </font>
+                                 <padding>
+                                    <Insets left="10.0" />
+                                 </padding>
+                              </Hyperlink>
+                              <Hyperlink text="Register" textFill="#c6c6c6">
+                                 <font>
+                                    <Font name="Helvetica Bold" size="18.0" />
+                                 </font>
+                              </Hyperlink>
                            </children>
-                           <HBox.margin>
-                              <Insets bottom="75.0" />
-                           </HBox.margin>
-                        </VBox>
-                     </children>
-                  </HBox>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                    </items>
+                  </ToolBar>
                </children>
-            </HBox>
-         </content>
-      </ScrollPane>
-   </left>
-</BorderPane>
+            </VBox>
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>
