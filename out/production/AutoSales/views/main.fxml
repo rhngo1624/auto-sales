@@ -29,7 +29,7 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0">
          <children>
-            <VBox layoutX="247.0" layoutY="38.0" prefHeight="371.0" prefWidth="640.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox layoutX="247.0" layoutY="38.0" prefHeight="543.0" prefWidth="1000.0" AnchorPane.bottomAnchor="-172.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <ToolBar prefHeight="43.0" prefWidth="614.0" style="-fx-background-color: #49595E;">
                     <items>
@@ -123,5 +123,23 @@
             </VBox>
          </children>
     </AnchorPane>
+      <VBox>
+         <children>
+            <AnchorPane prefHeight="934.0" prefWidth="1000.0" style="-fx-background-color: #49595E;" />
+            <AnchorPane prefHeight="62.0" prefWidth="1000.0">
+               <children>
+                  <HBox layoutY="-31.0" prefHeight="31.0" prefWidth="1000.0" style="-fx-background-color: #474a4f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-31.0">
+                     <children>
+                        <Label alignment="CENTER" prefHeight="38.0" prefWidth="990.0" text="AutoSales Incorporated © 2016" textAlignment="CENTER" textFill="#c6c6c6">
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
   </children>
 </VBox>
