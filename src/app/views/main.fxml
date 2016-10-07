@@ -9,9 +9,9 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.MainController">
   <children>
-    <MenuBar style="-fx-background-color: #242829;" stylesheets="@../css/main.css" VBox.vgrow="NEVER">
+    <MenuBar style="-fx-background-color: #242829;" stylesheets="@css/main.css" VBox.vgrow="NEVER">
       <menus>
         <Menu mnemonicParsing="false" text="File">
           <items>
@@ -35,7 +35,7 @@
                     <items>
                         <ImageView blendMode="COLOR_DODGE" fitHeight="90.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../imgs/auto_sales_logo.png" />
+                              <Image url="@imgs/auto_sales_logo.png" />
                            </image>
                         </ImageView>
                         <Separator opacity="0.0" orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0">
@@ -47,7 +47,7 @@
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../imgs/icons/car.png" />
+                                    <Image url="@imgs/icons/car.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -56,7 +56,7 @@
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../imgs/icons/steering-wheel.png" />
+                                    <Image url="@imgs/icons/steering-wheel.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -65,7 +65,7 @@
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../imgs/icons/tools.png" />
+                                    <Image url="@imgs/icons/tools.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -74,7 +74,7 @@
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../imgs/icons/safety-seat.png" />
+                                    <Image url="@imgs/icons/safety-seat.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -83,7 +83,7 @@
                            <graphic>
                               <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../imgs/icons/shopping-cart.png" />
+                                    <Image url="@imgs/icons/shopping-cart.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -125,7 +125,22 @@
     </AnchorPane>
       <VBox>
          <children>
-            <AnchorPane prefHeight="934.0" prefWidth="1000.0" style="-fx-background-color: #49595E;" />
+            <AnchorPane prefHeight="934.0" prefWidth="1000.0" style="-fx-background-color: #49595E;">
+               <children>
+                  <GridPane prefHeight="668.0" prefWidth="1000.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                  </GridPane>
+               </children></AnchorPane>
             <AnchorPane prefHeight="62.0" prefWidth="1000.0">
                <children>
                   <HBox layoutY="-31.0" prefHeight="31.0" prefWidth="1000.0" style="-fx-background-color: #474a4f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-31.0">
