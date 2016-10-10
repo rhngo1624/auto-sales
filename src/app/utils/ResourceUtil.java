@@ -52,6 +52,12 @@ public class ResourceUtil {
 
     }
 
+    public static URL getCheckoutResource(){
+
+        return System.class.getResource(RESOURCE_PATH + "checkout.fxml");
+
+    }
+
 
 
 }
