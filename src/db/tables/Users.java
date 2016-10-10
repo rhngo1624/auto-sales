@@ -1,9 +1,11 @@
-package db;
+package db.tables;
 
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
+
+import app.utils.ConnectionUtil;
 
 
 /**
@@ -11,9 +13,9 @@ import java.sql.PreparedStatement;
  *
  * @author RayDeveloper
  */
-public class LoginManager {
+public class Users {
     
-    private static final Connection CONN = ConnectionUtil.getInstance().getConnection(); 
+    private static final Connection CONN = ConnectionUtil.getInstance().getConnection();
     
     public static boolean login(String user, String pass) throws SQLException{
 

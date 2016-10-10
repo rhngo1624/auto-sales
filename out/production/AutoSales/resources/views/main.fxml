@@ -9,9 +9,9 @@
 <?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<VBox prefHeight="800.0" prefWidth="1000.0" stylesheets="@css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.MainController">
+<VBox prefHeight="800.0" prefWidth="1000.0" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.MainController">
     <children>
-        <MenuBar style="-fx-background-color: #242829;" stylesheets="@css/main.css" VBox.vgrow="NEVER">
+        <MenuBar style="-fx-background-color: #242829;" stylesheets="@../css/main.css" VBox.vgrow="NEVER">
             <menus>
                 <Menu mnemonicParsing="false" text="File">
                     <items>
@@ -35,7 +35,7 @@
                             <items>
                                 <ImageView fx:id="mainLogo" blendMode="COLOR_DODGE" fitHeight="90.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@imgs/auto_sales_logo.png" />
+                                        <Image url="@../imgs/auto_sales_logo.png" />
                                     </image>
                                 </ImageView>
                                 <Separator opacity="0.0" orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0">
@@ -47,7 +47,7 @@
                                     <graphic>
                                         <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@imgs/icons/car.png" />
+                                                <Image url="@../imgs/icons/car.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -56,7 +56,7 @@
                                     <graphic>
                                         <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@imgs/icons/steering-wheel.png" />
+                                                <Image url="@../imgs/icons/steering-wheel.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -65,7 +65,7 @@
                                     <graphic>
                                         <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@imgs/icons/tools.png" />
+                                                <Image url="@../imgs/icons/tools.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -74,7 +74,7 @@
                                     <graphic>
                                         <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@imgs/icons/safety-seat.png" />
+                                                <Image url="@../imgs/icons/safety-seat.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
@@ -83,7 +83,7 @@
                                     <graphic>
                                         <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
-                                                <Image url="@imgs/icons/shopping-cart.png" />
+                                                <Image url="@../imgs/icons/shopping-cart.png" />
                                             </image>
                                         </ImageView>
                                     </graphic>
