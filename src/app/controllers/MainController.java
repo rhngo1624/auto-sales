@@ -12,13 +12,17 @@ public class MainController {
     @FXML
     private Button loginButton;
 
-
     @FXML
     public void initialize(URL Location, ResourceBundle rb){
 
     }
 
-    public void login(Event event){
+    public void customize(){
+
+
+    }
+
+    public void login(){
 
         LoginController lc = new LoginController();
         lc.initialize();
