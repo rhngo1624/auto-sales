@@ -11,7 +11,9 @@ public class CheckoutController {
     private final String TITLE = "Check Out";
 
     void initialize(){
+
         ModalUtil.setupAndShow(UI_PATH, TITLE);
+
     }
 
 }

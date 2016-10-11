@@ -2,10 +2,10 @@ package db.models;
 
 import java.util.List;
 
-public class Transaction implements SQLModel {
+public class User implements SQLModel {
 
     private int ID;
-    private List<StoreItem> items;
+    private List<Transaction> transactionIDList;
 
     public void setID(int id){
         ID = id;

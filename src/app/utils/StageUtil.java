@@ -1,8 +1,6 @@
 package app.utils;
 
-import javax.lang.model.type.NullType;
 import javax.management.InvalidAttributeValueException;
-
 import javafx.stage.Stage;
 
 public class StageUtil {

@@ -4,11 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-
 /**
  * Opens and closes connection to database.
- *
- * @author RayDeveloper
  */
 public class ConnectionUtil {
 

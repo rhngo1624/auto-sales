@@ -1,7 +1,9 @@
 package db.models;
 
-/**
- * Created by RayDeveloper on 10/10/16.
- */
+
 public interface SQLModel {
+
+    void setID(int id);
+    int getID();
+
 }

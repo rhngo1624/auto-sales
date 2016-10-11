@@ -11,7 +11,9 @@ public class LoginController {
     private final String TITLE = "AutoSales Login";
 
     void initialize(){
+
         ModalUtil.setupAndShow(UI_PATH, TITLE);
+
     }
 
 }

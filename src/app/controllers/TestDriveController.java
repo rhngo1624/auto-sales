@@ -11,7 +11,9 @@ public class TestDriveController {
     private final String TITLE = "Test Drive";
 
     void initialize(){
+
         ModalUtil.setupAndShow(UI_PATH, TITLE);
+
     }
 
 }

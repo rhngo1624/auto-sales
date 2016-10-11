@@ -8,11 +8,6 @@ import java.sql.PreparedStatement;
 import app.utils.ConnectionUtil;
 
 
-/**
- * Logs users into application.
- *
- * @author RayDeveloper
- */
 public class Users {
     
     private static final Connection CONN = ConnectionUtil.getInstance().getConnection();

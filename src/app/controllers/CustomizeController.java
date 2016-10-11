@@ -11,7 +11,9 @@ public class CustomizeController {
     private final String TITLE = "Customize";
 
     void initialize(){
+
         ModalUtil.setupAndShow(UI_PATH, TITLE);
+
     }
 
 }
