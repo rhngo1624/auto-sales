@@ -1,4 +1,4 @@
-package app.controllers;
+package app.utils;
 
 import java.io.IOException;
 import java.net.URL;
@@ -9,9 +9,10 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public abstract class ModalController {
 
-    public void setupAndShow(URL uiPath, String title){
+public class ModalUtil {
+
+    public static void setupAndShow(URL uiPath, String title){
 
         Stage loginStage;
         Pane layout;
@@ -36,6 +37,5 @@ public abstract class ModalController {
         loginStage.show();
 
     }
-
 
 }
