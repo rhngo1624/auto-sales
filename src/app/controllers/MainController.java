@@ -17,15 +17,17 @@ public class MainController {
 
     }
 
-    public void customize(){
-
-
-    }
-
     public void login(){
 
         LoginController lc = new LoginController();
         lc.initialize();
+
+    }
+
+    public void register(){
+
+        RegisterController rc = new RegisterController();
+        rc.initialize();
 
     }
 

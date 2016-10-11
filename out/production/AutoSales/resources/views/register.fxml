@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="382.0" prefWidth="256.0" styleClass="main_pane" stylesheets="@../css/register.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox prefHeight="63.0" prefWidth="502.0">
+         <children>
+            <HBox alignment="TOP_CENTER" prefHeight="78.0" prefWidth="502.0">
+               <children>
+                  <ImageView fitHeight="66.0" fitWidth="271.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imgs/auto_sales_logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="1.0" prefWidth="502.0">
+         <children>
+            <Label text="Username:" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="5.0" right="9.0" />
+               </HBox.margin>
+            </Label>
+            <TextField minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox prefHeight="1.0" prefWidth="502.0">
+         <children>
+            <Label text="Password:" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="5.0" right="12.0" />
+               </HBox.margin>
+            </Label>
+            <PasswordField prefHeight="20.0" prefWidth="166.0" styleClass="form_field" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox prefHeight="1.0" prefWidth="502.0">
+         <children>
+            <Label text="Confirm Password:" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="5.0" right="12.0" />
+               </HBox.margin>
+            </Label>
+            <PasswordField prefHeight="20.0" prefWidth="115.0" styleClass="form_field" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox prefHeight="1.0" prefWidth="502.0">
+         <children>
+            <Label text="First Name:" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+            </Label>
+            <TextField minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox prefHeight="5.0" prefWidth="502.0">
+         <children>
+            <Label text="Last Name:" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+            </Label>
+            <TextField minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox prefHeight="3.0" prefWidth="502.0">
+         <children>
+            <Label text="Address:" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="5.0" right="20.0" />
+               </HBox.margin>
+            </Label>
+            <TextField minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox prefHeight="3.0" prefWidth="502.0">
+         <children>
+            <Label text="City:" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="5.0" right="46.0" />
+               </HBox.margin>
+            </Label>
+            <TextField minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox prefHeight="4.0" prefWidth="502.0">
+         <children>
+            <Label text="State:" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="5.0" right="38.0" />
+               </HBox.margin>
+            </Label>
+            <TextField minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox prefHeight="0.0" prefWidth="502.0">
+         <children>
+            <Label text="Zip Code:" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="5.0" right="15.0" />
+               </HBox.margin>
+            </Label>
+            <TextField minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox prefHeight="3.0" prefWidth="502.0">
+         <children>
+            <Label text="Phone:" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="5.0" right="32.0" />
+               </HBox.margin>
+            </Label>
+            <TextField minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
+         </children>
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox prefHeight="5.0" prefWidth="502.0">
+         <children>
+            <Label text="Admin Code:" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </HBox.margin>
+            </Label>
+            <TextField minHeight="17.0" prefHeight="20.0" prefWidth="157.0" styleClass="form_field" />
+         </children>
+      </HBox>
+      <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="242.0" styleClass="register_button" text="Submit">
+         <VBox.margin>
+            <Insets left="5.0" top="10.0" />
+         </VBox.margin>
+      </Button>
+   </children>
+</VBox>

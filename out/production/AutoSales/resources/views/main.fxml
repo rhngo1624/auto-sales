@@ -110,7 +110,7 @@
                                                 <Font name="Helvetica" size="14.0" />
                                             </font>
                                         </Button>
-                                        <Button fx:id="registerButton" mnemonicParsing="false" styleClass="toolbar_button" text="Register" textFill="WHITE">
+                                        <Button fx:id="registerButton" mnemonicParsing="false" styleClass="toolbar_button" text="Register" textFill="WHITE" onAction="#register">
                                             <font>
                                                 <Font name="Helvetica" size="14.0" />
                                             </font>
