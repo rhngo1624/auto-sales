@@ -7,7 +7,18 @@ import javafx.stage.Stage;
 
 public class StageUtil {
 
-    private static Stage mainStage;
+    private static Stage mainStage = null;
+    private static StageUtil instance = null;
+
+    private StageUtil(){}
+
+    public static synchronized StageUtil getInstance(){
+        if(instance == null){
+            instance = new StageUtil();
+        }
+
+        return instance;
+    }
 
     public Stage getMainStage() throws NullPointerException {
         if(mainStage == null){
