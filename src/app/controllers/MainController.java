@@ -30,5 +30,12 @@ public class MainController {
 
     }
 
+    public void checkout(){
+
+        CheckoutController cc = new CheckoutController();
+        cc.initialize();
+
+    }
+
 
 }

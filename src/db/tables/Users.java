@@ -12,7 +12,7 @@ public class Users {
     
     private static final Connection CONN = ConnectionUtil.getInstance().getConnection();
     
-    public static boolean login(String user, String pass) throws SQLException{
+    public static boolean validate(String user, String pass) throws SQLException{
 
         //get all users that match user/password combo
         String query = "SELECT * FROM Users WHERE USERNAME = ? AND PASSWORD = ?";

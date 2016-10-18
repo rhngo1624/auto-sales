@@ -7,7 +7,7 @@ import app.utils.ResourceUtil;
 
 public class CheckoutController {
 
-    private final URL UI_PATH = ResourceUtil.getCustomizeResource();
+    private final URL UI_PATH = ResourceUtil.getCheckoutResource();
     private final String TITLE = "Check Out";
 
     void initialize(){

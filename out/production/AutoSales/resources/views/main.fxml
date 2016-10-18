@@ -79,7 +79,7 @@
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button fx:id="cartButton" mnemonicParsing="false" styleClass="toolbar_button">
+                                <Button fx:id="cartButton" mnemonicParsing="false" styleClass="toolbar_button" onAction="#checkout">
                                     <graphic>
                                         <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
