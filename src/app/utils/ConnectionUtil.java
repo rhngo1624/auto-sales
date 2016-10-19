@@ -17,7 +17,7 @@ public class ConnectionUtil {
     /**
      * Connection Path for database.
      */
-    private final String CONN_STRING = "jdbc:hsqldb:data/<database name>";
+    private final String CONN_STRING = "jdbc:sqlite:data/AutoSalesDB";
 
     private Connection conn = null;
 
@@ -54,7 +54,7 @@ public class ConnectionUtil {
 
         try {
 
-            conn = DriverManager.getConnection(CONN_STRING, USERNAME, PASSWORD);
+            conn = DriverManager.getConnection(CONN_STRING);
             return true;
 
         } catch (SQLException e) {
