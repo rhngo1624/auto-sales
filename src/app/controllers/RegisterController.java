@@ -1,17 +1,19 @@
 package app.controllers;
 
-import java.net.URL;
 
-import app.utils.ModalUtil;
-import app.utils.Resource;
+import javafx.fxml.FXML;
 
+/**
+ *  Controller Class for Register Page
+ */
 public class RegisterController {
 
-    private final URL UI_PATH = Resource.REGISTER;
-    private final String TITLE = "Register";
-
+    /**
+     *  Called after FXML file is loaded.
+     */
+    @FXML
     void initialize(){
-        ModalUtil.setupAndShow(UI_PATH, TITLE);
+
     }
 
 }

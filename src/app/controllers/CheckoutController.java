@@ -1,18 +1,19 @@
 package app.controllers;
 
-import java.net.URL;
+import javafx.fxml.FXML;
 
-import app.utils.ModalUtil;
-import app.utils.Resource;
-
+/**
+ *  Controller Class for Check Out Page
+ */
 public class CheckoutController {
 
-    private final URL UI_PATH = Resource.CHECKOUT;
-    private final String TITLE = "Check Out";
 
+    /**
+     *  Called after FXML file is loaded.
+     */
+    @FXML
     void initialize(){
 
-        ModalUtil.setupAndShow(UI_PATH, TITLE);
 
     }
 

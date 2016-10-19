@@ -1,21 +1,18 @@
 package app.controllers;
 
-import java.net.URL;
+import javafx.fxml.FXML;
 
-import app.utils.ModalUtil;
-import app.utils.Resource;
-
+/**
+ *  Controller Class for Test Drive Page
+ */
 public class TestDriveController {
 
-    private final URL UI_PATH = Resource.TEST_DRIVE;
-    private final String TITLE = "Test Drive";
-
+    /**
+     *  Called after FXML file is loaded.
+     */
+    @FXML
     void initialize(){
 
-        ModalUtil.setupAndShow(UI_PATH, TITLE);
-
     }
-
-
 
 }

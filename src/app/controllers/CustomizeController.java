@@ -1,18 +1,18 @@
 package app.controllers;
 
-import java.net.URL;
 
-import app.utils.ModalUtil;
-import app.utils.Resource;
+import javafx.fxml.FXML;
 
+/**
+ *  Controller Class for Customize Page
+ */
 public class CustomizeController {
 
-    private final URL UI_PATH = Resource.CUSTOMIZE;
-    private final String TITLE = "Customize";
-
+    /**
+     *  Called after FXML file is loaded.
+     */
+    @FXML
     void initialize(){
-
-        ModalUtil.setupAndShow(UI_PATH, TITLE);
 
     }
 
