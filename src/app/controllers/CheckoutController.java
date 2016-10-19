@@ -3,11 +3,11 @@ package app.controllers;
 import java.net.URL;
 
 import app.utils.ModalUtil;
-import app.utils.ResourceUtil;
+import app.utils.Resource;
 
 public class CheckoutController {
 
-    private final URL UI_PATH = ResourceUtil.getCheckoutResource();
+    private final URL UI_PATH = Resource.CHECKOUT;
     private final String TITLE = "Check Out";
 
     void initialize(){

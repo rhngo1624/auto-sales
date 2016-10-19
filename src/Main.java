@@ -1,4 +1,4 @@
-import app.utils.ResourceUtil;
+import app.utils.Resource;
 import app.utils.StageUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -20,7 +20,7 @@ public class Main extends Application {
         StageUtil su = StageUtil.getInstance();
         su.setMainStage(window);
 
-        Parent root = new FXMLLoader(ResourceUtil.getMainResource()).load();
+        Parent root = new FXMLLoader(Resource.MAIN).load();
 
         setup(root);
 
