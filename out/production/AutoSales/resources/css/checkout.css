@@ -1,9 +1,5 @@
 .title_label{
-
-	-fx-font: Helvetica;
-	-fx-font-family: System;
-	-fx-font-size: 14px;
-	-fx-font-style: bold;
+    
 	-fx-background-color: #2b2e33;
 	-fx-text-alignment: CENTER;
 	-fx-text-fill: white;
@@ -12,10 +8,6 @@
 
 .table_label{
 
-	-fx-font: Helvetica;
-	-fx-font-family: System;
-	-fx-font-size: 14px;
-	-fx-font-style: bold;
 	-fx-background-color: #00173d;
 	-fx-text-alignment: CENTER;
 	-fx-text-fill: white;
