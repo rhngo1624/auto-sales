@@ -11,13 +11,10 @@ public class ConnectionUtil {
 
     private static ConnectionUtil instance = null;
 
-    private final String USERNAME = "SA";
-    private final String PASSWORD = "";
-
     /**
      * Connection Path for database.
      */
-    private final String CONN_STRING = "jdbc:sqlite:data/AutoSalesDB";
+    private final String CONN_STRING = "jdbc:sqlite:identifier.sqlite/AutoSalesDB";
 
     private Connection conn = null;
 
