@@ -14,6 +14,7 @@ public class Car implements SQLModel, StoreItem {
     private String engineType;
     private int rating;
     private String[] reviews;
+    private String imageLocation;
     private double price;
 
     public void setID(int id) {
@@ -102,6 +103,18 @@ public class Car implements SQLModel, StoreItem {
 
     public void setReviews(String[] reviews) {
         this.reviews = reviews;
+    }
+
+    public String getImageLocation(){
+
+        return imageLocation;
+
+    }
+
+    public void setImageLocation(String imageLocation){
+
+        this.imageLocation = imageLocation;
+
     }
 
     public void setPrice(double price) {
