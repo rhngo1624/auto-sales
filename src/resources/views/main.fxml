@@ -123,7 +123,7 @@
                 </VBox>
             </children>
         </AnchorPane>
-        <VBox>
+        <VBox style="-fx-background-color: #49595E;">
             <children>
                 <AnchorPane fx:id="mainPane" prefHeight="934.0" prefWidth="1000.0" style="-fx-background-color: #49595E;">
                <children>

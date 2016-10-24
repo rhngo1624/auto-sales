@@ -20,7 +20,6 @@ public class CarPane extends VBox {
     private final String name;
 
     public CarPane(Car car){
-        System.out.println("Making Pane");
         this.car = car;
         name = car.getMake() + " " + car.getModel() + " " + car.getYear();
         setAlignment(Pos.CENTER);
@@ -39,8 +38,8 @@ public class CarPane extends VBox {
         ImageView image = new ImageView(new Image(car.getImageLocation()));
         image.setOnMouseClicked(new ViewClickListener());
 
-        image.setFitHeight(175);
-        image.setFitWidth(250);
+        image.setFitHeight(150);
+        image.setFitWidth(230);
 
         getChildren().add(name);
         getChildren().add(image);
