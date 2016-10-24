@@ -21,7 +21,6 @@ public class Main extends Application {
         su.setMainStage(window);
 
         Parent root = new FXMLLoader(Resource.MAIN).load();
-
         setup(root);
 
     }

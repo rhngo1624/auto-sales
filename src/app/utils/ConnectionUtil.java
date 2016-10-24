@@ -14,7 +14,7 @@ public class ConnectionUtil {
     /**
      * Connection Path for database.
      */
-    private final String CONN_STRING = "jdbc:sqlite:identifier.sqlite/AutoSalesDB";
+    private final String CONN_STRING = "jdbc:sqlite:src/db/AutoSalesDB.sqlite";
 
     private Connection conn = null;
 
