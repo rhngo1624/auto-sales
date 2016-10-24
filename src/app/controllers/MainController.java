@@ -41,7 +41,7 @@ public class MainController implements Initializable {
 
     @FXML
     public void initialize(URL location, ResourceBundle rb){
-        System.out.println("INIT __> MAIN");
+       ModalUtil.setupAndShow();
     }
 
     /**
@@ -88,7 +88,7 @@ public class MainController implements Initializable {
 
             CarPane carView = new CarPane(((Car)model));
 
-            mainGrid.getChildren().add(carView);
+            mainGrid.add(carView, 0, 0);
 
         }
 

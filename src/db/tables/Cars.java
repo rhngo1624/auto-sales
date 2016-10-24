@@ -43,7 +43,7 @@ public class Cars implements SQLTable {
                 car.setDoorAmount(rs.getInt("DoorAmount"));
                 car.setEngineType(rs.getString("EngineType"));
                 car.setRating(rs.getInt("Rating"));
-                car.setReviews(getReviews());
+                car.setReviews(getReviews(car.getID()));
                 car.setPrice(rs.getDouble("Price"));
                 car.setImageLocation(rs.getString("ImageLocation"));
 
@@ -69,7 +69,7 @@ public class Cars implements SQLTable {
 
         try(
                 PreparedStatement stmt = CONN.prepareStatement(query,
-                        ResultSet.TYPE_SCROLL_INSENSITIVE,
+                        ResultSet.TYPE_FORWARD_ONLY,
                         ResultSet.CONCUR_READ_ONLY)){
 
             stmt.setInt(1, id);
@@ -90,7 +90,7 @@ public class Cars implements SQLTable {
                 ((Car)car).setDoorAmount(rs.getInt("DoorAmount"));
                 ((Car)car).setEngineType(rs.getString("EngineType"));
                 ((Car)car).setRating(rs.getInt("Rating"));
-                ((Car)car).setReviews(getReviews());
+                ((Car)car).setReviews(getReviews(car.getID()));
                 ((Car)car).setPrice(rs.getDouble("Price"));
                 ((Car)car).setImageLocation(rs.getString("ImageLocation"));
 
@@ -249,19 +249,19 @@ public class Cars implements SQLTable {
 
     }
 
-    private String[] getReviews(){
+    private String[] getReviews(int id){
 
         Reviews reviewsTable = new Reviews();
         String[] reviewContents = new String[20];
         int count = 0;
         try{
 
-            for(SQLModel review : reviewsTable.getAllRows()){
+            for(Review review : reviewsTable.getModels(id)){
                 if(count >= 20){
                     break;
                 }
 
-                reviewContents[count] = ((Review)review).getContents();
+                reviewContents[count] = review.getContents();
                 count++;
 
             }
