@@ -1,12 +1,16 @@
-package app.utils;
+package app.ui;
 
+import app.utils.ModalUtil;
+import app.utils.Resource;
 import db.models.Car;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
 public class CarPane extends VBox {
@@ -18,6 +22,7 @@ public class CarPane extends VBox {
         System.out.println("Making Pane");
         this.car = car;
         name = car.getMake() + " " + car.getModel() + " " + car.getYear();
+        setAlignment(Pos.CENTER);
         setupPane();
     }
 
@@ -26,20 +31,19 @@ public class CarPane extends VBox {
         Label name = new Label(this.name);
         Label price = new Label("$" + car.getPrice());
         ImageView image = new ImageView(new Image(car.getImageLocation()));
-        Button viewButton = new Button("View");
-        viewButton.setOnAction(new ViewButtonListener());
+        image.setOnMouseClicked(new ViewClickListener());
+        image.setFitHeight(150);
+        image.setFitWidth(175);
 
         getChildren().add(name);
         getChildren().add(image);
         getChildren().add(price);
-        getChildren().add(viewButton);
 
     }
 
-    private class ViewButtonListener implements EventHandler<ActionEvent> {
+    private class ViewClickListener implements EventHandler<MouseEvent> {
 
-        public void handle(ActionEvent event){
-
+        public void handle(MouseEvent event){
             ModalUtil.setupAndShow(Resource.CARVIEW, name);
 
         }

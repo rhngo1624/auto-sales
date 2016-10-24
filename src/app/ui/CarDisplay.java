@@ -1,4 +1,4 @@
-package app.utils;
+package app.ui;
 
 import java.sql.SQLException;
 
@@ -8,7 +8,6 @@ import db.tables.Cars;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.layout.TilePane;
-import javafx.scene.layout.VBox;
 
 public class CarDisplay {
 
@@ -21,6 +20,8 @@ public class CarDisplay {
     public CarDisplay(){
         tilePane.setHgap(GAP);
         tilePane.setVgap(GAP);
+        tilePane.setPrefTileHeight(100);
+        tilePane.setPrefTileWidth(60);
         createElements();
     }
 

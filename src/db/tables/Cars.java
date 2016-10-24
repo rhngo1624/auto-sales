@@ -45,7 +45,9 @@ public class Cars implements SQLTable {
                 car.setRating(rs.getInt("Rating"));
                 car.setReviews(getReviews(car.getID()));
                 car.setPrice(rs.getDouble("Price"));
+                System.out.println(rs.getString("ImageLocation"));
                 car.setImageLocation(rs.getString("ImageLocation"));
+
 
                 data.add(car);
             }
