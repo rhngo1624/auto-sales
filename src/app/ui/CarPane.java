@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 
@@ -50,7 +51,16 @@ public class CarPane extends VBox {
     private class ViewClickListener implements EventHandler<MouseEvent> {
 
         public void handle(MouseEvent event){
-            ModalUtil.setupAndShow(Resource.CARVIEW, name);
+
+            if(event.getButton() == MouseButton.SECONDARY){
+
+                // TODO: Display tooltip on mouse dragged over to say "Right click to add to cart"
+
+            }else{
+
+                ModalUtil.setupAndShow(Resource.CARVIEW, name);
+
+            }
 
         }
 
