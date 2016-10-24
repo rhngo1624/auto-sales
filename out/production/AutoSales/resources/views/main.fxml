@@ -127,8 +127,13 @@
             <children>
                 <AnchorPane fx:id="mainPane" prefHeight="934.0" prefWidth="1000.0" style="-fx-background-color: #49595E;">
                <children>
-                  <FlowPane fx:id="mainBorderPane" prefHeight="663.0" prefWidth="1000.0" />
-               </children></AnchorPane>
+                  <ScrollPane prefViewportHeight="663.0" prefViewportWidth="1000.0" style="-fx-background-color: #49595E;">
+                     <content>
+                        <FlowPane fx:id="mainBorderPane" prefHeight="663.0" prefWidth="1000.0" style="-fx-background-color: #49595E;" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
                 <AnchorPane prefHeight="62.0" prefWidth="1000.0">
                     <children>
                         <HBox layoutY="-31.0" prefHeight="31.0" prefWidth="1000.0" style="-fx-background-color: #474a4f;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-31.0">

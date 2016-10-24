@@ -21,8 +21,8 @@ public class CarDisplay {
     public CarDisplay(){
         tilePane.setHgap(GAP);
         tilePane.setVgap(GAP);
-        tilePane.setPrefTileHeight(200);
-        tilePane.setPrefTileWidth(200);
+        tilePane.setPrefTileHeight(175);
+        tilePane.setPrefTileWidth(250);
         createElements();
     }
 
