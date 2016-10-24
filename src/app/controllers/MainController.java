@@ -3,6 +3,7 @@ package app.controllers;
 import java.util.ResourceBundle;
 import java.net.URL;
 
+import app.ui.AccessoryDisplay;
 import app.ui.CarDisplay;
 import app.utils.ModalUtil;
 import app.utils.Resource;
@@ -55,6 +56,15 @@ public class MainController implements Initializable {
     public void checkout(){
 
         ModalUtil.setupAndShow(Resource.CHECKOUT, CHECKOUT_TITLE);
+    }
+
+    public void displayAccessories(){
+
+        mainBorderPane.getChildren().clear();
+
+        AccessoryDisplay display = new AccessoryDisplay();
+        mainBorderPane.getChildren().add(display.getDisplay());
+
     }
 
 
