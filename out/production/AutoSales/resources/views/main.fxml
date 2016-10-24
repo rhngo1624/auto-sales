@@ -70,7 +70,7 @@
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button fx:id="accessoriesButton" mnemonicParsing="false" onAction="#displayAccessories" styleClass="toolbar_button">
+                                <Button fx:id="displayButton" mnemonicParsing="false" onAction="#switchDisplay" styleClass="toolbar_button">
                                     <graphic>
                                         <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                             <image>

@@ -7,8 +7,14 @@ import app.ui.AccessoryDisplay;
 import app.ui.CarDisplay;
 import app.utils.ModalUtil;
 import app.utils.Resource;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 
 /**
@@ -22,14 +28,17 @@ public class MainController implements Initializable {
     private final String MAINTENANCE_TITLE = "Maintenance"; // TODO: add fxml file and method
     private final String REGISTER_TITLE = "Register";
     private final String TESTDRIVE_TITLE = "Test Drive"; // TODO: add fxml file and method
+    private boolean isCarDisplay = true;
 
     @FXML
     private FlowPane mainBorderPane;
 
     @FXML
+    private Button displayButton;
+
+    @FXML
     public void initialize(URL location, ResourceBundle rb){
-        CarDisplay display = new CarDisplay();
-        mainBorderPane.getChildren().add(display.getDisplay());
+
     }
 
     /**
@@ -58,14 +67,48 @@ public class MainController implements Initializable {
         ModalUtil.setupAndShow(Resource.CHECKOUT, CHECKOUT_TITLE);
     }
 
-    public void displayAccessories(){
+    private void displayAccessories(){
 
         mainBorderPane.getChildren().clear();
 
         AccessoryDisplay display = new AccessoryDisplay();
         mainBorderPane.getChildren().add(display.getDisplay());
 
+        isCarDisplay = false;
+
     }
+
+    private void displayCars(){
+
+        mainBorderPane.getChildren().clear();
+
+        CarDisplay display = new CarDisplay();
+        mainBorderPane.getChildren().add(display.getDisplay());
+
+        isCarDisplay = true;
+
+    }
+
+    public void switchDisplay(){
+
+        ImageView icon = new ImageView();
+        icon.setFitHeight(35);
+        icon.setFitWidth(40);
+
+        if(isCarDisplay){
+            Image carsImage = new Image("resources/imgs/icons/car_display_icon.png");
+            icon.setImage(carsImage);
+            displayAccessories();
+            displayButton.setGraphic(icon);
+        }else{
+            Image seatImage = new Image("resources/imgs/icons/safety-seat.png");
+            icon.setImage(seatImage);
+            displayCars();
+            displayButton.setGraphic(icon);
+        }
+
+    }
+
 
 
 }
