@@ -32,8 +32,8 @@ public class CarPane extends VBox {
         Label price = new Label("$" + car.getPrice());
         ImageView image = new ImageView(new Image(car.getImageLocation()));
         image.setOnMouseClicked(new ViewClickListener());
-        image.setFitHeight(150);
-        image.setFitWidth(175);
+        image.setFitHeight(200);
+        image.setFitWidth(200);
 
         getChildren().add(name);
         getChildren().add(image);

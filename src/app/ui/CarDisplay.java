@@ -8,10 +8,11 @@ import db.tables.Cars;
 import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.layout.TilePane;
+import javafx.scene.shape.Rectangle;
 
 public class CarDisplay {
 
-    private static final double ELEMENT_SIZE = 100;
+    private static final double ELEMENT_SIZE = 200;
     private static final double GAP = ELEMENT_SIZE / 10;
 
     private TilePane tilePane = new TilePane();
@@ -20,8 +21,8 @@ public class CarDisplay {
     public CarDisplay(){
         tilePane.setHgap(GAP);
         tilePane.setVgap(GAP);
-        tilePane.setPrefTileHeight(100);
-        tilePane.setPrefTileWidth(60);
+        tilePane.setPrefTileHeight(200);
+        tilePane.setPrefTileWidth(200);
         createElements();
     }
 

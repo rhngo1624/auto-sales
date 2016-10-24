@@ -40,18 +40,4 @@ public class ModalUtil {
 
     }
 
-    public static void setupAndShow(){
-
-        CarDisplay cd = new CarDisplay();
-
-        BorderPane mainPanel = new BorderPane();
-        mainPanel.setCenter(cd.getDisplay());
-
-        Scene scene = new Scene(mainPanel, 500, 500);
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.show();
-
-    }
-
 }
