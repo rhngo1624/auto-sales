@@ -3,7 +3,7 @@ package db.models;
 
 import java.text.NumberFormat;
 
-public class Car implements SQLModel, StoreItem {
+public class Car extends StoreItem implements SQLModel {
 
     private int ID;
     private int reviewID;
@@ -19,6 +19,13 @@ public class Car implements SQLModel, StoreItem {
     private String[] reviews;
     private String imageLocation;
     private double price;
+
+    public Car(String make, String model, int year){
+        setMake(make);
+        setModel(model);
+        setYear(year);
+        setName(this.make + " " + this.model + " " + this.year);
+    }
 
     public void setID(int id) {
         ID = id;
@@ -116,33 +123,5 @@ public class Car implements SQLModel, StoreItem {
         this.reviews = reviews;
     }
 
-    public String getImageLocation(){
-
-        return imageLocation;
-
-    }
-
-    public void setImageLocation(String imageLocation){
-
-        this.imageLocation = imageLocation;
-
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public double getPrice() {
-
-        return price;
-
-    }
-
-    public String getDollarAmount(){
-
-        NumberFormat formatter = NumberFormat.getCurrencyInstance();
-        return formatter.format(price);
-
-    }
 
 }

@@ -31,12 +31,13 @@ public class Cars implements SQLTable {
 
             while(rs.next()) {
 
-                car = new Car();
+                String make = rs.getString("Make");
+                String model = rs.getString("Model");
+                int year = rs.getInt("Year");
+
+                car = new Car(make, model, year);
 
                 car.setID(rs.getInt("ID"));
-                car.setMake(rs.getString("Make"));
-                car.setModel(rs.getString("Model"));
-                car.setYear(rs.getInt("Year"));
                 car.setFuelEconomy(rs.getString("FuelEconomy"));
                 car.setTransmission(rs.getString("Transmission"));
                 car.setTotalSeating(rs.getInt("TotalSeating"));
@@ -79,12 +80,13 @@ public class Cars implements SQLTable {
 
             if(rs.next()){
 
-                SQLModel car = new Car();
+                String make = rs.getString("Make");
+                String model = rs.getString("Model");
+                int year = rs.getInt("Year");
+
+                SQLModel car = new Car(make, model, year);
 
                 car.setID(rs.getInt("ID"));
-                ((Car)car).setMake(rs.getString("Make"));
-                ((Car)car).setModel(rs.getString("Model"));
-                ((Car)car).setYear(rs.getInt("Year"));
                 ((Car)car).setFuelEconomy(rs.getString("FuelEconomy"));
                 ((Car)car).setTransmission(rs.getString("Transmission"));
                 ((Car)car).setTotalSeating(rs.getInt("TotalSeating"));

@@ -12,6 +12,6 @@ public interface Resource {
     URL MAINTENANCE = System.class.getResource(RESOURCE_PATH + "maintenance.fxml");
     URL REGISTER = System.class.getResource(RESOURCE_PATH + "register.fxml");
     URL CHECKOUT = System.class.getResource(RESOURCE_PATH + "checkout.fxml");
-    URL CARVIEW = System.class.getResource(RESOURCE_PATH + "car_view.fxml");
+    URL ITEMVIEW = System.class.getResource(RESOURCE_PATH + "item_view.fxml");
 
 }
