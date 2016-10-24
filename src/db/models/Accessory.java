@@ -19,4 +19,5 @@ public class Accessory extends StoreItem implements SQLModel {
         return ID;
     }
 
+
 }

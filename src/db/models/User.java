@@ -7,11 +7,29 @@ public class User implements SQLModel {
 
     private int ID;
     private String username;
+    private String password;
     private List<Transaction> transactions;
-    private List<HashMap<StoreItem, Integer>> cart;
+    private List<StoreItem> cart;
+
+    public void addCartItem(StoreItem item){
+
+    }
+
+    public void delCartItem(StoreItem item){
+
+
+    }
 
     public void setUsername(String username){
         this.username = username;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    public String getPassword(){
+        return password;
     }
 
     public String getUsername(){
@@ -25,5 +43,6 @@ public class User implements SQLModel {
     public int getID(){
         return ID;
     }
+
 
 }

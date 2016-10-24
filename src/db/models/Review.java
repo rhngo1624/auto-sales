@@ -28,4 +28,5 @@ public class Review implements SQLModel {
     public int getRating(){
         return rating;
     }
+
 }

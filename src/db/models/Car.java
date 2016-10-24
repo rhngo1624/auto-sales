@@ -123,5 +123,4 @@ public class Car extends StoreItem implements SQLModel {
         this.reviews = reviews;
     }
 
-
 }
