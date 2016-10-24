@@ -3,9 +3,8 @@ package db.models;
 
 import java.text.NumberFormat;
 
-public class Car extends StoreItem implements SQLModel {
+public class Car extends StoreItem{
 
-    private int ID;
     private int reviewID;
     private String make;
     private String model;
@@ -25,14 +24,6 @@ public class Car extends StoreItem implements SQLModel {
         setModel(model);
         setYear(year);
         setName(this.make + " " + this.model + " " + this.year);
-    }
-
-    public void setID(int id) {
-        ID = id;
-    }
-
-    public int getID() {
-        return ID;
     }
 
     public int getReviewID() {

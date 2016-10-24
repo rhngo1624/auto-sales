@@ -3,6 +3,9 @@ package db.models;
 import java.util.HashMap;
 import java.util.List;
 
+import db.tables.SQLTable;
+import javafx.collections.ObservableList;
+
 public class User implements SQLModel {
 
     private int ID;
@@ -11,12 +14,37 @@ public class User implements SQLModel {
     private List<Transaction> transactions;
     private List<StoreItem> cart;
 
-    public void addCartItem(StoreItem item){
+    public boolean addCartItem(StoreItem item){
+
+        SQLTable table = item.getTable();
+
+        try{
+
+            table.insertModel(item);
+            cart.add(item);
+            return true;
+
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
 
     }
 
-    public void delCartItem(StoreItem item){
+    public boolean delCartItem(StoreItem item){
 
+        SQLTable table = item.getTable();
+
+        try{
+
+            table.deleteModel(item.getID());
+            cart.remove(item);
+            return true;
+
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+            return false;
+        }
 
     }
 

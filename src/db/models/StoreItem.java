@@ -6,11 +6,20 @@ import db.tables.Accessories;
 import db.tables.Cars;
 import db.tables.SQLTable;
 
-public abstract class StoreItem {
+public abstract class StoreItem implements SQLModel {
 
+    private int ID;
     private String name;
     private double price;
     private String imageLocation;
+
+    public int getID(){
+        return ID;
+    }
+
+    public void setID(int id){
+        ID = id;
+    }
 
     public void setName(String name){
         this.name = name;
