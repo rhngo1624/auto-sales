@@ -88,15 +88,15 @@
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Label prefHeight="21.0" prefWidth="117.0" text="Search" textFill="#c6c6c6">
-                                    <padding>
-                                        <Insets left="25.0" right="10.0" />
-                                    </padding>
+                                <Label alignment="TOP_RIGHT" prefHeight="21.0" prefWidth="95.0" text="Search:" textFill="#c6c6c6">
                                     <font>
                                         <Font name="Helvetica Bold" size="18.0" />
                                     </font>
                                 </Label>
-                                <TextField fx:id="searchField" prefHeight="27.0" prefWidth="167.0" />
+                                <TextField fx:id="searchField" prefHeight="27.0" prefWidth="167.0">
+                           <padding>
+                              <Insets right="10.0" />
+                           </padding></TextField>
                                 <HBox alignment="CENTER">
                                     <padding>
                                         <Insets left="5.0" />
@@ -104,7 +104,7 @@
                                     <children>
                                         <Button fx:id="loginButton" mnemonicParsing="false" onAction="#login" styleClass="toolbar_button" text="Login" textFill="WHITE">
                                             <HBox.margin>
-                                                <Insets right="10.0" />
+                                                <Insets left="25.0" right="10.0" />
                                             </HBox.margin>
                                             <font>
                                                 <Font name="Helvetica" size="14.0" />

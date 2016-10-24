@@ -32,7 +32,7 @@ public class CarPane extends VBox {
         Label name = new Label(this.name);
         name.setStyle("-fx-text-fill: white;");
 
-        Label price = new Label("$" + car.getPrice());
+        Label price = new Label(car.getDollarAmount());
         price.setStyle("-fx-text-fill: white");
 
         ImageView image = new ImageView(new Image(car.getImageLocation()));

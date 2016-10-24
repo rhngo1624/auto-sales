@@ -1,6 +1,8 @@
 package db.models;
 
 
+import java.text.NumberFormat;
+
 public class Car implements SQLModel, StoreItem {
 
     private int ID;
@@ -131,7 +133,16 @@ public class Car implements SQLModel, StoreItem {
     }
 
     public double getPrice() {
+
         return price;
+
+    }
+
+    public String getDollarAmount(){
+
+        NumberFormat formatter = NumberFormat.getCurrencyInstance();
+        return formatter.format(price);
+
     }
 
 }
