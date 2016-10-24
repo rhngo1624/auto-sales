@@ -4,6 +4,7 @@ package db.models;
 public class Car implements SQLModel, StoreItem {
 
     private int ID;
+    private int reviewID;
     private String make;
     private String model;
     private int year;
@@ -23,6 +24,14 @@ public class Car implements SQLModel, StoreItem {
 
     public int getID() {
         return ID;
+    }
+
+    public int getReviewID() {
+        return reviewID;
+    }
+
+    public void setReviewID(int reviewID) {
+        this.reviewID = reviewID;
     }
 
     public String getMake() {

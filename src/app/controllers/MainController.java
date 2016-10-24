@@ -1,11 +1,22 @@
 package app.controllers;
 
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.net.URL;
 
 import app.utils.ModalUtil;
 import app.utils.Resource;
+import db.models.SQLModel;
+import db.tables.Cars;
+import db.models.Car;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 /**
  *  Controller Class for Main Page
@@ -59,6 +70,21 @@ public class MainController {
     public void checkout(){
 
         ModalUtil.setupAndShow(Resource.CHECKOUT, CHECKOUT_TITLE);
+    }
+
+    private VBox makeCarGrid(Car car){
+
+        VBox grid = new VBox();
+        Label name = new Label(car.getMake() + " " + car.getModel() + " " + car.getYear());
+        Label price = new Label("$" + car.getPrice());
+        ImageView carImage = new ImageView(new Image(car.getImageLocation()));
+        Button viewButton = new Button("View");
+
+        grid.getChildren().add(name);
+        grid.getChildren().add(carImage);
+        grid.getChildren().add(price);
+        grid.getChildren().add(viewButton);
+
     }
 
 

@@ -138,17 +138,104 @@ public class Cars implements SQLTable {
             stmt.setString(4, ((Car)model).getFuelEconomy());
             stmt.setString(5, ((Car)model).getTransmission());
             stmt.setInt(6, ((Car)model).getTotalSeating());
+            stmt.setInt(7, ((Car)model).getDoorAmount());
+            stmt.setString(8, ((Car)model).getEngineType());
+            stmt.setInt(9, ((Car)model).getRating());
+            stmt.setInt(10, ((Car)model).getReviewID());
+            stmt.setDouble(11, ((Car)model).getPrice());
+            stmt.setString(12, ((Car)model).getImageLocation());
 
+            int affectedRows = stmt.executeUpdate();
+
+            if(affectedRows == 1){
+
+                keys = stmt.getGeneratedKeys();
+                keys.next();
+
+                int newKey = keys.getInt(1);
+
+                model.setID(newKey);
+
+            }else{
+
+                System.err.println("No rows affected.");
+                return false;
+
+            }
+
+        }catch (SQLException e){
+
+            System.err.println(e.getMessage());
+            return false;
+
+        } finally {
+
+            if(keys != null){
+                keys.close();
+            }
 
         }
+
+        return true;
 
     }
     public boolean updateModel(SQLModel model) throws Exception{
 
+        String query = "UPDATE Cars SET " +
+                "Make = ?, Model = ?, Year = ?, FuelEconomy = ?, Transmission = ?, " +
+                "TotalSeating = ?, DoorAmount = ?, EngineType = ?, Rating = ?, ReviewID = ?, " +
+                "Price = ?, ImageLocation = ? WHERE ID = ?";
+
+        try(PreparedStatement stmt = CONN.prepareStatement(query)){
+
+            stmt.setString(1, ((Car)model).getMake());
+            stmt.setString(2, ((Car)model).getModel());
+            stmt.setInt(3, ((Car)model).getYear());
+            stmt.setString(4, ((Car)model).getFuelEconomy());
+            stmt.setString(5, ((Car)model).getTransmission());
+            stmt.setInt(6, ((Car)model).getTotalSeating());
+            stmt.setInt(7, ((Car)model).getDoorAmount());
+            stmt.setString(8, ((Car)model).getEngineType());
+            stmt.setInt(9, ((Car)model).getRating());
+            stmt.setInt(10, ((Car)model).getReviewID());
+            stmt.setDouble(11, ((Car)model).getPrice());
+            stmt.setString(12, ((Car)model).getImageLocation());
+
+            int affectedRows = stmt.executeUpdate();
+
+            if(affectedRows == 1){
+                return true;
+            }else{
+                return false;
+            }
+
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+            return false;
+        }
 
     }
     public boolean deleteModel(int id) throws Exception{
 
+        String query = "DELETE FROM Cars WHERE ID = ?";
+
+        ResultSet keys = null;
+
+        try(PreparedStatement stmt = CONN.prepareStatement(query)){
+
+            stmt.setInt(1, id);
+            stmt.execute();
+
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+            return false;
+        } finally {
+            if(keys != null){
+                keys.close();
+            }
+        }
+
+        return true;
 
     }
     public boolean modelExists(int id){
