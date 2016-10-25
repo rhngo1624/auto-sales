@@ -1,5 +1,6 @@
 package app.controllers;
 
+import java.io.IOException;
 import java.util.ResourceBundle;
 import java.net.URL;
 
@@ -7,10 +8,13 @@ import app.ui.AccessoryDisplay;
 import app.ui.CarDisplay;
 import app.utils.ModalUtil;
 import app.utils.Resource;
+import app.utils.Session;
+import app.utils.StageUtil;
 import db.models.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -30,7 +34,7 @@ public class MainController implements Initializable {
     private final String REGISTER_TITLE = "Register";
     private final String TESTDRIVE_TITLE = "Test Drive"; // TODO: add fxml file and method
     private boolean isCarDisplay = true;
-    private static boolean sessionActive = false;
+    private Session session = Session.getInstance();
 
     @FXML
     private Button loginButton;
@@ -48,14 +52,24 @@ public class MainController implements Initializable {
     public void initialize(URL location, ResourceBundle rb){
         displayCars();
 
-        if(MainController.sessionActive){
+        if(session.isActive()){
 
             loginButton.setText("Log Out");
             loginButton.setOnAction((e) -> {
 
+                session.end();
+                try{
 
+                    ModalUtil.showMessage("Logged Out!");
+                    StageUtil.getInstance().getMainStage().
+                            getScene().setRoot(FXMLLoader.load(Resource.MAIN));
+                }catch(IOException ex){
+                    System.out.println(ex.getMessage());
+                    System.exit(-1);
+                }
 
             });
+
             registerButton.setVisible(false);
 
         }

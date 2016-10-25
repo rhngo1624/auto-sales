@@ -40,4 +40,8 @@ public class Session {
         this.user = null;
     }
 
+    public boolean isActive(){
+        return user != null;
+    }
+
 }

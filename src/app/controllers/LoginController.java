@@ -1,5 +1,6 @@
 package app.controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -7,9 +8,11 @@ import java.util.ResourceBundle;
 import app.utils.ModalUtil;
 import app.utils.Resource;
 import app.utils.Session;
+import app.utils.StageUtil;
 import db.models.User;
 import db.tables.Users;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
@@ -25,6 +28,8 @@ public class LoginController implements Initializable {
 
     @FXML
     TextField passwordField;
+
+    private Session session = Session.getInstance();
 
     /**
      *  Called after FXML file is loaded.
@@ -47,9 +52,16 @@ public class LoginController implements Initializable {
 
             if(user != null){
 
-                Session.setUser(user);
+                session.setUser(user);
                 ModalUtil.showMessage("Logged In! Welcome " + user.getUsername() + "!");
-                usernameField.getScene().getWindow().hide();
+                try{
+                    StageUtil.getInstance().getMainStage().
+                            getScene().setRoot(FXMLLoader.load(Resource.MAIN));
+                    usernameField.getScene().getWindow().hide();
+                }catch(IOException ex){
+                    System.out.println(ex.getMessage());
+                    System.exit(-1);
+                }
 
             }else{
 
