@@ -21,37 +21,15 @@ public class User implements SQLModel {
 
     }
 
-    public boolean addCartItem(StoreItem item){
+    public void addCartItem(StoreItem item){
 
-        SQLTable table = item.getTable();
-
-        try{
-
-            table.insertModel(item);
-            cart.add(item);
-            return true;
-
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-            return false;
-        }
+        cart.add(item);
 
     }
 
-    public boolean delCartItem(StoreItem item){
+    public void delCartItem(StoreItem item){
 
-        SQLTable table = item.getTable();
-
-        try{
-
-            table.deleteModel(item.getID());
-            cart.remove(item);
-            return true;
-
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-            return false;
-        }
+        cart.remove(item);
 
     }
 

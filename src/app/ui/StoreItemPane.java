@@ -2,7 +2,9 @@ package app.ui;
 
 import app.utils.ModalUtil;
 import app.utils.Resource;
+import app.utils.Session;
 import db.models.StoreItem;
+import db.models.User;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -56,11 +58,20 @@ public class StoreItemPane extends VBox {
 
     private class ViewClickListener implements EventHandler<MouseEvent> {
 
+        private Session session = Session.getInstance();
+
         public void handle(MouseEvent event){
 
             if(event.getButton() == MouseButton.SECONDARY){
 
-                // TODO: Display tooltip on mouse dragged over to say "Right click to add to cart"
+                if(session.isActive()){
+
+                    User user = session.getUser();
+                    user.addCartItem(item);
+                    ModalUtil.showMessage(
+                            item.getName() + " was added to " + user.getUsername() + "'s cart!");
+
+                }
 
             }else{
 
