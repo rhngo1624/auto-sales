@@ -39,14 +39,13 @@ public class StoreItemPane extends VBox {
         price.setStyle("-fx-text-fill: white");
 
         ImageView image = new ImageView(new Image(item.getImageLocation()));
-        image.setOnMouseClicked(new StoreItemPane.ViewClickListener());
-
         image.setFitHeight(150);
         image.setFitWidth(230);
 
         Label imageLabel = new Label();
         imageLabel.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
         imageLabel.setGraphic(image);
+        imageLabel.setOnMouseClicked(new StoreItemPane.ViewClickListener());
 
         imageLabel.setTooltip(new Tooltip("Right-Click to Store in Cart"));
 
@@ -62,14 +61,16 @@ public class StoreItemPane extends VBox {
 
         public void handle(MouseEvent event){
 
+            System.out.println(event.getEventType());
+            System.out.println("Active Session = " + session.isActive());
+
             if(event.getButton() == MouseButton.SECONDARY){
 
                 if(session.isActive()){
 
                     User user = session.getUser();
                     user.addCartItem(item);
-                    ModalUtil.showMessage(
-                            item.getName() + " was added to " + user.getUsername() + "'s cart!");
+                    ModalUtil.showMessage(item.getName() + " was added to " + user.getUsername() + "'s cart!");
 
                 }
 

@@ -1,9 +1,11 @@
 package db.models;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 import db.tables.SQLTable;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class User implements SQLModel {
@@ -12,11 +14,11 @@ public class User implements SQLModel {
     private String username;
     private String password;
     private boolean isAdmin = false;
-    private List<Transaction> transactions;
-    private List<StoreItem> cart;
+    private ArrayList<Transaction> transactions;
+    private ArrayList<StoreItem> cart;
 
     public User(String username){
-
+        cart = new ArrayList<>();
         setUsername(username);
 
     }
@@ -31,6 +33,12 @@ public class User implements SQLModel {
 
         cart.remove(item);
 
+    }
+
+    public ObservableList<StoreItem> dumpCart(){
+        ObservableList<StoreItem> items = FXCollections.observableArrayList();
+        items.addAll(cart);
+        return items;
     }
 
     public void setUsername(String username){

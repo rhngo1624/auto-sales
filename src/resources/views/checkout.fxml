@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="600.0" styleClass="main_pane" stylesheets="@../css/checkout.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="600.0" styleClass="main_pane" stylesheets="@../css/checkout.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.CheckoutController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
@@ -31,7 +31,7 @@
       </HBox>
       <HBox prefHeight="156.0" prefWidth="600.0">
          <children>
-            <ListView prefHeight="122.0" prefWidth="600.0" style="-fx-background-color: #1b222d;" />
+            <ListView fx:id="itemView" prefHeight="122.0" prefWidth="600.0" style="-fx-background-color: #1b222d;" />
          </children>
       </HBox>
       <Label alignment="TOP_CENTER" opacity="0.79" prefHeight="16.0" prefWidth="631.0" styleClass="title_label" text="Payment Information" textAlignment="CENTER" textFill="WHITE">
