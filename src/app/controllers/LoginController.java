@@ -6,6 +6,8 @@ import java.util.ResourceBundle;
 
 import app.utils.ModalUtil;
 import app.utils.Resource;
+import app.utils.Session;
+import db.models.User;
 import db.tables.Users;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -37,15 +39,21 @@ public class LoginController implements Initializable {
     public void validate(){
 
         Users table = new Users();
-        boolean loggedIn;
+        User user;
 
         try{
 
-            loggedIn = table.validate(usernameField.getText(), passwordField.getText());
+            user = table.validate(usernameField.getText(), passwordField.getText());
 
-            if(loggedIn){
+            if(user != null){
 
+                Session.setUser(user);
+                ModalUtil.showMessage("Logged In! Welcome " + user.getUsername() + "!");
+                usernameField.getScene().getWindow().hide();
 
+            }else{
+
+                ModalUtil.showWarning("Could not find user.");
 
             }
 

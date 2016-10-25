@@ -16,11 +16,12 @@ import javafx.collections.ObservableList;
 
 public class Users implements SQLTable{
     
-    public boolean validate(String user, String pass) throws SQLException{
+    public User validate(String user, String pass) throws SQLException{
 
         //get all users that match user/password combo
         String query = "SELECT * FROM Users WHERE USERNAME = ? AND PASSWORD = ?";
-        ResultSet rs = null; 
+        ResultSet rs = null;
+        int id;
 
         //try with resources
         try (
@@ -33,15 +34,14 @@ public class Users implements SQLTable{
             
             rs = stmt.executeQuery(); 
 
-            //if not found return false
             if(!rs.isBeforeFirst()){
                 
-                return false;
+                return null;
                 
             }else{
                 
-                return true;
-            
+                id = rs.getInt("ID");
+                return (User)this.getModel(id);
             }
 
         }

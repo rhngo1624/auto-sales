@@ -6,6 +6,7 @@ import java.net.URL;
 import app.ui.CarDisplay;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
@@ -40,4 +41,20 @@ public class ModalUtil {
 
     }
 
+    public static void showWarning(String message){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Warning");
+        alert.setHeaderText("Something has gone wrong.");
+        alert.setContentText(message);
+
+        alert.showAndWait();
+    }
+
+    public static void showMessage(String message){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setContentText(message);
+
+        alert.showAndWait();
+    }
 }

@@ -23,7 +23,6 @@ import javafx.scene.layout.FlowPane;
  */
 public class MainController implements Initializable {
 
-    private static User user;
     private final String CHECKOUT_TITLE = "Check Out";
     private final String CUSTOMIZE_TITLE = "Customize"; // TODO: add fxml file and method
     private final String LOGIN_TITLE = "AutoSales Login";
@@ -31,6 +30,13 @@ public class MainController implements Initializable {
     private final String REGISTER_TITLE = "Register";
     private final String TESTDRIVE_TITLE = "Test Drive"; // TODO: add fxml file and method
     private boolean isCarDisplay = true;
+    private static boolean sessionActive = false;
+
+    @FXML
+    private Button loginButton;
+
+    @FXML
+    private Button registerButton;
 
     @FXML
     private FlowPane mainBorderPane;
@@ -41,6 +47,19 @@ public class MainController implements Initializable {
     @FXML
     public void initialize(URL location, ResourceBundle rb){
         displayCars();
+
+        if(MainController.sessionActive){
+
+            loginButton.setText("Log Out");
+            loginButton.setOnAction((e) -> {
+
+
+
+            });
+            registerButton.setVisible(false);
+
+        }
+
     }
 
     /**

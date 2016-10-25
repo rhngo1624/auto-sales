@@ -5,9 +5,22 @@ import db.models.User;
 
 public class Session {
 
-    private static User user;
+    private static Session instance = null;
+    private User user;
 
-    public static User getUser(){
+    private Session(){
+
+    }
+
+    public static Session getInstance(){
+        if(instance == null){
+            instance = new Session();
+        }
+
+        return instance;
+    }
+
+    public User getUser(){
 
         if(user != null){
             return user;
@@ -17,8 +30,14 @@ public class Session {
 
     }
 
-    public static void setUser(User user){
-        Session.user = user;
+    public void setUser(User user){
+        if(user != null){
+            this.user = user;
+        }
+    }
+
+    public void end(){
+        this.user = null;
     }
 
 }
