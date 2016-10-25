@@ -13,7 +13,7 @@
             <Image url="@../imgs/auto_sales_logo.png" />
          </image>
       </ImageView>
-      <Button id="login_button" fx:id="loginButton" layoutX="94.0" layoutY="209.0" mnemonicParsing="false" opacity="0.56" prefHeight="27.0" prefWidth="90.0" styleClass="login_button" stylesheets="@../css/login.css" text="Login" textFill="WHITE">
+      <Button id="login_button" fx:id="loginButton" onAction="#validate" layoutX="94.0" layoutY="209.0" mnemonicParsing="false" opacity="0.56" prefHeight="27.0" prefWidth="90.0" styleClass="login_button" stylesheets="@../css/login.css" text="Login" textFill="WHITE">
          <font>
             <Font name="Helvetica" size="14.0" />
          </font>
@@ -23,16 +23,6 @@
             <Font name="Helvetica" size="13.0" />
          </font>
       </TextField>
-      <CheckBox id="customer_box" fx:id="customerCheckBox" layoutX="33.0" layoutY="71.0" mnemonicParsing="false" stylesheets="@../css/login.css" text="Customer" textFill="WHITE">
-         <font>
-            <Font name="Helvetica Bold" size="13.0" />
-         </font>
-      </CheckBox>
-      <CheckBox id="employee_box" fx:id="employeeCheckBox" layoutX="138.0" layoutY="71.0" mnemonicParsing="false" stylesheets="@../css/login.css" text="Employee" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </CheckBox>
       <PasswordField id="password_field" fx:id="passwordField" layoutX="33.0" layoutY="162.0" prefHeight="26.0" prefWidth="205.0" promptText="Password" stylesheets="@../css/login.css">
          <font>
             <Font name="Helvetica" size="13.0" />

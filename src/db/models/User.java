@@ -11,8 +11,15 @@ public class User implements SQLModel {
     private int ID;
     private String username;
     private String password;
+    private boolean isAdmin = false;
     private List<Transaction> transactions;
     private List<StoreItem> cart;
+
+    public User(String username){
+
+        setUsername(username);
+
+    }
 
     public boolean addCartItem(StoreItem item){
 
@@ -70,6 +77,14 @@ public class User implements SQLModel {
 
     public int getID(){
         return ID;
+    }
+
+    public void setAdminPriveleges(boolean isAdmin){
+        this.isAdmin = isAdmin;
+    }
+
+    public boolean isAdmin(){
+        return isAdmin;
     }
 
 

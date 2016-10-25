@@ -16,9 +16,7 @@ import javafx.collections.ObservableList;
 
 public class Users implements SQLTable{
     
-    private static final Connection CONN = ConnectionUtil.getInstance().getConnection();
-    
-    public static boolean validate(String user, String pass) throws SQLException{
+    public boolean validate(String user, String pass) throws SQLException{
 
         //get all users that match user/password combo
         String query = "SELECT * FROM Users WHERE USERNAME = ? AND PASSWORD = ?";
@@ -27,7 +25,7 @@ public class Users implements SQLTable{
         //try with resources
         try (
                 PreparedStatement stmt = CONN.prepareStatement(query,
-                        ResultSet.TYPE_SCROLL_INSENSITIVE,
+                        ResultSet.TYPE_FORWARD_ONLY,
                         ResultSet.CONCUR_READ_ONLY);) {
             
             stmt.setString(1, user);
@@ -57,7 +55,7 @@ public class Users implements SQLTable{
      */
     public ObservableList<SQLModel> getAllRows() throws SQLException{
 
-        String query = "SELECT * FROM Accessories";
+        String query = "SELECT * FROM Users";
         ObservableList<SQLModel> data = FXCollections.observableArrayList();
         User user;
 
@@ -68,15 +66,14 @@ public class Users implements SQLTable{
 
             while(rs.next()) {
 
-                String name = rs.getString("Name");
-                double price = rs.getDouble("Price");
-                String imageLocation = rs.getString("ImageLocation");
+                String username = rs.getString("Username");
+                boolean isAdmin = rs.getBoolean("Admin");
 
-                accessory = new Accessory(name, price, imageLocation);
+                user = new User(username);
+                user.setAdminPriveleges(isAdmin);
+                user.setID(rs.getInt("ID"));
 
-                accessory.setID(rs.getInt("ID"));
-
-                data.add(accessory);
+                data.add(user);
 
             }
 
@@ -87,14 +84,14 @@ public class Users implements SQLTable{
     }
 
     /**
-     * Retuns single Accessory object from database.
-     * @param id ID of Accessory to get
+     * Retuns single User object from database.
+     * @param id ID of User to get
      * @return SQLModel
      * @throws SQLException
      */
     public SQLModel getModel(int id) throws SQLException{
 
-        String query = "SELECT * FROM Accessories WHERE ID = ?";
+        String query = "SELECT * FROM Users WHERE ID = ?";
         ResultSet rs;
 
         try(
@@ -108,15 +105,15 @@ public class Users implements SQLTable{
 
             if(rs.next()){
 
-                String name = rs.getString("Name");
-                double price = rs.getDouble("Price");
-                String imageLocation = rs.getString("ImageLocation");
+                String username = rs.getString("Username");
+                boolean isAdmin = rs.getBoolean("Admin");
 
-                Accessory accessory = new Accessory(name, price, imageLocation);
+                User user = new User(username);
 
-                accessory.setID(rs.getInt("ID"));
+                user.setID(rs.getInt("ID"));
+                user.setAdminPriveleges(isAdmin);
 
-                return accessory;
+                return user;
 
             }else{
 
@@ -134,15 +131,15 @@ public class Users implements SQLTable{
     }
 
     /**
-     * Insert Accessory Object into database.
+     * Insert User Object into database.
      *
-     * @param model Accessory object to insert.
+     * @param model User object to insert.
      * @return true if successful, false otherwise.
      * @throws Exception
      */
     public boolean insertModel(SQLModel model) throws Exception{
 
-        String query = "INSERT into Accessories (Name, Price, ImageLocation) " +
+        String query = "INSERT into Users (Username, Password, Admin) " +
                 "VALUES (?, ?, ?)";
 
         ResultSet keys = null;
@@ -153,9 +150,9 @@ public class Users implements SQLTable{
 
         ){
 
-            stmt.setString(1, ((Accessory)model).getName());
-            stmt.setDouble(2, ((Accessory)model).getPrice());
-            stmt.setString(3, ((Accessory)model).getImageLocation());
+            stmt.setString(1, ((User)model).getUsername());
+            stmt.setString(2, ((User)model).getPassword());
+            stmt.setBoolean(3, ((User)model).isAdmin());
 
             int affectedRows = stmt.executeUpdate();
 
@@ -193,14 +190,13 @@ public class Users implements SQLTable{
     }
     public boolean updateModel(SQLModel model) throws Exception{
 
-        String query = "UPDATE Cars SET Name = ?, Price = ?, ImageLocation = ? WHERE ID = ?";
+        String query = "UPDATE Users SET Username = ?, Password = ?, Admin = ? WHERE ID = ?";
 
         try(PreparedStatement stmt = CONN.prepareStatement(query)){
 
-            stmt.setString(1, ((Accessory)model).getName());
-            stmt.setDouble(2, ((Accessory)model).getPrice());
-            stmt.setString(3, ((Accessory)model).getImageLocation());
-            stmt.setInt(4, model.getID());
+            stmt.setString(1, ((User)model).getUsername());
+            stmt.setString(2,((User)model).getPassword());
+            stmt.setBoolean(3, ((User)model).isAdmin());
 
             int affectedRows = stmt.executeUpdate();
 
@@ -218,7 +214,7 @@ public class Users implements SQLTable{
     }
     public boolean deleteModel(int id) throws Exception{
 
-        String query = "DELETE FROM Accessories WHERE ID = ?";
+       String query = "DELETE FROM Users WHERE ID = ?";
 
         ResultSet keys = null;
 

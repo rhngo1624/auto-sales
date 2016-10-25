@@ -7,6 +7,7 @@ import app.ui.AccessoryDisplay;
 import app.ui.CarDisplay;
 import app.utils.ModalUtil;
 import app.utils.Resource;
+import db.models.User;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,6 +23,7 @@ import javafx.scene.layout.FlowPane;
  */
 public class MainController implements Initializable {
 
+    private static User user;
     private final String CHECKOUT_TITLE = "Check Out";
     private final String CUSTOMIZE_TITLE = "Customize"; // TODO: add fxml file and method
     private final String LOGIN_TITLE = "AutoSales Login";
@@ -38,7 +40,7 @@ public class MainController implements Initializable {
 
     @FXML
     public void initialize(URL location, ResourceBundle rb){
-
+        displayCars();
     }
 
     /**
@@ -108,6 +110,22 @@ public class MainController implements Initializable {
         }
 
     }
+
+    public static User getUser(){
+
+        if(user != null){
+            return user;
+        }else{
+            return null;
+        }
+
+    }
+
+    public static User setUser(User user){
+        MainController.user = user;
+    }
+
+
 
 
 
