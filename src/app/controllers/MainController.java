@@ -111,22 +111,4 @@ public class MainController implements Initializable {
 
     }
 
-    public static User getUser(){
-
-        if(user != null){
-            return user;
-        }else{
-            return null;
-        }
-
-    }
-
-    public static User setUser(User user){
-        MainController.user = user;
-    }
-
-
-
-
-
 }
