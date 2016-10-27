@@ -11,7 +11,7 @@ import javafx.collections.ObservableList;
 
 public class AccessoryDisplay extends Display {
 
-    protected void createElements(){
+    public void createElements(){
 
         tilePane.getChildren().clear();
 

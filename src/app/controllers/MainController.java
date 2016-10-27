@@ -1,11 +1,13 @@
 package app.controllers;
 
+import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ResourceBundle;
 import java.net.URL;
 
 import app.ui.AccessoryDisplay;
 import app.ui.CarDisplay;
+import app.ui.SearchDisplay;
 import app.utils.ModalUtil;
 import app.utils.Resource;
 import app.utils.Session;
@@ -17,8 +19,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 
@@ -49,8 +53,17 @@ public class MainController implements Initializable {
     private Button displayButton;
 
     @FXML
+    private TextField searchField;
+
+    @FXML
     public void initialize(URL location, ResourceBundle rb){
+
         displayCars();
+        searchField.textProperty().addListener((ob, ov, nv) -> {
+
+            search();
+
+        });
 
         if(session.isActive()){
 
@@ -73,6 +86,9 @@ public class MainController implements Initializable {
             registerButton.setVisible(false);
 
         }
+
+
+
 
     }
 
@@ -107,6 +123,7 @@ public class MainController implements Initializable {
         mainBorderPane.getChildren().clear();
 
         AccessoryDisplay display = new AccessoryDisplay();
+        display.createElements();
         mainBorderPane.getChildren().add(display.getDisplay());
 
         isCarDisplay = false;
@@ -118,6 +135,7 @@ public class MainController implements Initializable {
         mainBorderPane.getChildren().clear();
 
         CarDisplay display = new CarDisplay();
+        display.createElements();
         mainBorderPane.getChildren().add(display.getDisplay());
 
         isCarDisplay = true;
@@ -143,5 +161,29 @@ public class MainController implements Initializable {
         }
 
     }
+
+    private void search(){
+
+        if(!searchField.getText().isEmpty()){
+
+            mainBorderPane.getChildren().clear();
+
+            SearchDisplay display = new SearchDisplay();
+            display.setSearch(searchField.getText());
+            display.createElements();
+            mainBorderPane.getChildren().add(display.getDisplay());
+
+        }else{
+
+            if(isCarDisplay){
+                displayCars();
+            }else{
+                displayAccessories();
+            }
+
+        }
+
+    }
+
 
 }

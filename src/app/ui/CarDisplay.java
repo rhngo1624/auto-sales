@@ -15,7 +15,7 @@ import javafx.scene.shape.Rectangle;
 
 public class CarDisplay extends Display {
 
-    protected void createElements(){
+    public void createElements(){
 
         tilePane.getChildren().clear();
 
