@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import app.ui.CartItem;
 import app.utils.ModalUtil;
 import app.utils.Resource;
 import app.utils.Session;
@@ -31,7 +32,7 @@ public class CheckoutController implements Initializable {
     private VBox mainPane;
 
     @FXML
-    private ListView<String> itemView;
+    private ListView<CartItem> itemView;
     /**
      *  Called after FXML file is loaded.
      */
@@ -63,16 +64,16 @@ public class CheckoutController implements Initializable {
 
     }
 
-    private void loadItems(){
+    public void loadItems(){
 
         ObservableList<StoreItem> items = user.dumpCart();
-        ObservableList<String> itemNames = FXCollections.observableArrayList();
+        ObservableList<CartItem> cartItems = FXCollections.observableArrayList();
 
         for(StoreItem item : items){
-            itemNames.add(item.getName());
+            cartItems.add(new CartItem(item, this));
         }
 
-        itemView.setItems(itemNames);
+        itemView.setItems(cartItems);
 
     }
 

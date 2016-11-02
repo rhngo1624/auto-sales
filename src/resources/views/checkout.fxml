@@ -26,7 +26,7 @@
       </HBox>
       <HBox prefHeight="15.0" prefWidth="600.0">
          <children>
-            <Label alignment="TOP_CENTER" opacity="0.76" prefHeight="17.0" prefWidth="635.0" styleClass="table_label" text="Remove            Product Name           Type     Quantity    Unit Price                Total" />
+            <Label alignment="TOP_CENTER" opacity="0.76" prefHeight="17.0" prefWidth="635.0" styleClass="table_label" text="Cart Items " />
          </children>
       </HBox>
       <HBox prefHeight="156.0" prefWidth="600.0">

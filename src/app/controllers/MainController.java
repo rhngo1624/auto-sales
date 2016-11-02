@@ -13,6 +13,7 @@ import app.utils.Resource;
 import app.utils.Session;
 import app.utils.StageUtil;
 import db.models.User;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -86,9 +87,6 @@ public class MainController implements Initializable {
             registerButton.setVisible(false);
 
         }
-
-
-
 
     }
 
