@@ -38,7 +38,6 @@ public class CheckoutController implements Initializable {
      */
     @FXML
     public void initialize(URL location, ResourceBundle rb){
-        System.out.println("Cart LOADED");
 
         user = Session.getInstance().getUser();
 

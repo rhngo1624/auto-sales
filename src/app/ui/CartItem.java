@@ -49,13 +49,11 @@ public class CartItem extends HBox {
         price.setStyle("-fx-text-fill: white");
 
         Region spacing = new Region();
-        spacing.setPrefSize(200, 50);
+        spacing.setPrefSize(325, 0);
 
         getChildren().addAll(deleteButton, name, spacing,  price);
 
         setSpacing(10);
-
-        // <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
 
     }
 
