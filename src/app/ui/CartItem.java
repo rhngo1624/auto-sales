@@ -2,6 +2,7 @@ package app.ui;
 
 
 import app.controllers.CheckoutController;
+import app.utils.Analytics;
 import app.utils.Session;
 import db.models.StoreItem;
 import db.models.User;
@@ -24,7 +25,7 @@ public class CartItem extends HBox {
     public CartItem(StoreItem item, CheckoutController control){
         this.item = item;
         this.control = control;
-        if(item.getClass().getName().equals("Car")){
+        if(item.getClass().getSimpleName().equals("Car")){
             type = 0;
         }else{
             type = 1;
@@ -34,6 +35,9 @@ public class CartItem extends HBox {
 
     private void setup(){
 
+        int maxNameLen = Analytics.getLongestNameLength();
+        int regionLength = 200 + ((maxNameLen-1) - item.getName().length());
+
         Button deleteButton = new Button("X");
         deleteButton.setPadding(Insets.EMPTY);
         deleteButton.setOnAction(new ButtonListener());
@@ -42,16 +46,18 @@ public class CartItem extends HBox {
                 "-fx-text-fill: white; -fx-font-size: 8pt");
 
         Label name = new Label(item.getName());
-        name.setAlignment(Pos.CENTER);
         name.setStyle("-fx-text-fill: white");
 
         Label price = new Label(item.getDollarAmount());
         price.setStyle("-fx-text-fill: white");
 
-        Region spacing = new Region();
-        spacing.setPrefSize(325, 0);
+        Label type = new Label(getType());
+        type.setStyle("-fx-text-fill: white");
 
-        getChildren().addAll(deleteButton, name, spacing,  price);
+        Region spacing = new Region();
+        spacing.setPrefSize(regionLength, 0);
+
+        getChildren().addAll(deleteButton, name, spacing, type, price);
 
         setSpacing(10);
 

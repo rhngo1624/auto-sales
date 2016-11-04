@@ -3,23 +3,28 @@ package app.utils;
 
 import java.sql.SQLException;
 
+import db.models.Accessory;
 import db.models.Car;
 import db.models.SQLModel;
+import db.tables.Accessories;
 import db.tables.Cars;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Analytics {
 
-    public static int getLongestCarNameLength(){
+    public static int getLongestNameLength(){
 
         ObservableList<SQLModel> cars = FXCollections.observableArrayList();
-        Cars table = new Cars();
+        ObservableList<SQLModel> accessories = FXCollections.observableArrayList();
+        Cars carsTable = new Cars();
+        Accessories accessoriesTable = new Accessories();
         int length = 0;
 
         try{
 
-            cars = table.getAllRows();
+            cars = carsTable.getAllRows();
+            accessories = accessoriesTable.getAllRows();
 
         }catch(SQLException e){
 
@@ -35,6 +40,15 @@ public class Analytics {
                 length = nameLen;
             }
 
+        }
+
+        for(SQLModel acc : accessories){
+
+            int nameLen = ((Accessory)acc).getName().length();
+
+            if( nameLen > length){
+                length = nameLen;
+            }
         }
 
         return length;
