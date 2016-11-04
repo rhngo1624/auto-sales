@@ -10,7 +10,7 @@
    <children>
       <ImageView id="logo" fx:id="mainLogo" blendMode="LIGHTEN" fitHeight="78.0" fitWidth="229.0" layoutX="23.0" layoutY="7.0" opacity="0.74" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../imgs/auto_sales_logo.png" />
+            <Image url="@../imgs/logos/auto_sales_logo.png" />
          </image>
       </ImageView>
       <Button id="login_button" fx:id="loginButton" onAction="#validate" layoutX="94.0" layoutY="209.0" mnemonicParsing="false" opacity="0.56" prefHeight="27.0" prefWidth="90.0" styleClass="login_button" stylesheets="@../css/login.css" text="Login" textFill="WHITE">

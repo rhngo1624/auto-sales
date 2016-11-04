@@ -35,7 +35,7 @@
                             <items>
                                 <ImageView fx:id="mainLogo" blendMode="COLOR_DODGE" fitHeight="90.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
-                                        <Image url="@../imgs/auto_sales_logo.png" />
+                                        <Image url="@../imgs/logos/auto_sales_logo.png" />
                                     </image>
                                 </ImageView>
                                 <Separator opacity="0.0" orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0">

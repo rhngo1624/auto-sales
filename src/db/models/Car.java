@@ -1,8 +1,6 @@
 package db.models;
 
 
-import java.text.NumberFormat;
-
 public class Car extends StoreItem{
 
     private int reviewID;
@@ -16,8 +14,6 @@ public class Car extends StoreItem{
     private String engineType;
     private int rating;
     private String[] reviews;
-    private String imageLocation;
-    private double price;
 
     public Car(String make, String model, int year){
         setMake(make);
