@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import app.utils.ModalUtil;
+import db.models.SQLModel;
 import db.models.User;
 import db.tables.Users;
 import javafx.fxml.FXML;
@@ -65,7 +66,13 @@ public class RegisterController implements Initializable {
             newUser.setZipcode(zipCodeField.getText());
             newUser.setPhone(phoneField.getText());
 
-            table.insertModel((newUser);
+            try{
+                table.insertModel(newUser);
+            }catch(Exception e){
+                System.out.println(e.getMessage());
+                ModalUtil.showWarning("Registration has encountered an issue.");
+            }
+
 
         }else{
 
@@ -91,7 +98,7 @@ public class RegisterController implements Initializable {
                 && cityfield && statefield && zipfield && phonefield
                 && adminfield;
 
-        boolean passwordMatch = passwordField.getText().equals(confirmPasswordField.getText();
+        boolean passwordMatch = passwordField.getText().equals(confirmPasswordField.getText());
 
 
         return !empty && passwordMatch && !table.usernameExists(usernameField.getText());

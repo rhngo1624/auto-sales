@@ -33,10 +33,5 @@ public abstract class Display {
     }
 
     protected abstract void createElements();
-    protected void createElements(String keyword){
-
-
-
-    }
 
 }

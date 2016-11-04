@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import db.models.SQLModel;
 import javafx.collections.ObservableList;
 
-// convert to generics
+
 
 public interface SQLTable {
 
