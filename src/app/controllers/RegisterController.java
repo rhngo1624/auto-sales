@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import app.utils.ModalUtil;
+import db.models.User;
+import db.tables.Users;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
@@ -37,6 +40,7 @@ public class RegisterController implements Initializable {
     private TextField phoneField;
     @FXML
     private TextField adminCodeField;
+    private Users table = new Users();
 
     /**
      *  Called after FXML file is loaded.
@@ -48,6 +52,26 @@ public class RegisterController implements Initializable {
 
     public void sendRequest(){
 
+        if(validate()){
+
+            User newUser = new User(usernameField.getText());
+            newUser.setAdminPriveleges(table.getAdminCode().equals(adminCodeField.getText()));
+            newUser.setPassword(passwordField.getText());
+            newUser.setFirstname(firstNameField.getText());
+            newUser.setLastname(lastNameField.getText());
+            newUser.setAddress(addressField.getText());
+            newUser.setCity(cityField.getText());
+            newUser.setState(stateField.getText());
+            newUser.setZipcode(zipCodeField.getText());
+            newUser.setPhone(phoneField.getText());
+
+            table.insertModel((newUser);
+
+        }else{
+
+            ModalUtil.showWarning("Not all fields are filled.");
+
+        }
 
     }
 
@@ -67,7 +91,10 @@ public class RegisterController implements Initializable {
                 && cityfield && statefield && zipfield && phonefield
                 && adminfield;
 
-        return !(empty || !(passwordField.getText().equals(confirmPasswordField.getText())));
+        boolean passwordMatch = passwordField.getText().equals(confirmPasswordField.getText();
+
+
+        return !empty && passwordMatch && !table.usernameExists(usernameField.getText());
 
     }
 

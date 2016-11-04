@@ -15,6 +15,8 @@ import javafx.collections.ObservableList;
 
 
 public class Users implements SQLTable{
+
+    private static final String adminCode = "autoadmin11";
     
     public User validate(String user, String pass) throws SQLException{
 
@@ -243,6 +245,33 @@ public class Users implements SQLTable{
         } catch(Exception e){
             return false;
         }
+
+    }
+
+    public String getAdminCode(){
+        return adminCode;
+    }
+
+    public boolean usernameExists(String username){
+
+        ObservableList<SQLModel> users = FXCollections.observableArrayList();
+
+        try{
+            users = getAllRows();
+        }catch(SQLException e){
+            System.exit(-1);
+        }
+
+        for(SQLModel user : users){
+
+            if(((User)user).getUsername().equals(username)){
+                return true;
+            }
+
+        }
+
+
+        return false;
 
     }
 
