@@ -7,6 +7,7 @@ import java.sql.Statement;
 import db.models.Car;
 import db.models.Review;
 import db.models.SQLModel;
+import db.models.StoreItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
