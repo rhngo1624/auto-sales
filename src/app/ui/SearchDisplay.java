@@ -46,7 +46,7 @@ public class SearchDisplay extends Display {
 
             for(SQLModel car : cars){
 
-                if(((Car)car).getName().toLowerCase().contains(search.toLowerCase())){
+                if(((Car)car).getName().toLowerCase().startsWith(search.toLowerCase())){
                     panes.add(new StoreItemPane((StoreItem)car));
                 }
 
@@ -54,7 +54,7 @@ public class SearchDisplay extends Display {
 
             for(SQLModel accessory : accessories){
 
-                if(((Accessory)accessory).getName().toLowerCase().contains(search.toLowerCase())){
+                if(((Accessory)accessory).getName().toLowerCase().startsWith(search.toLowerCase())){
                     panes.add(new StoreItemPane((StoreItem)accessory));
                 }
 
