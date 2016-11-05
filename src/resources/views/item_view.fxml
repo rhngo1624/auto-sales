@@ -14,7 +14,7 @@
                <children>
                   <ImageView fx:id="logoView" fitHeight="116.0" fitWidth="301.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../imgs/logos/dodge_logo.png" />
+                        <Image fx:id="logoImage" url="@../imgs/logos/dodge_logo.png" />
                      </image>
                   </ImageView>
                </children>
@@ -23,7 +23,7 @@
                <children>
                   <ImageView fx:id="carView" fitHeight="225.0" fitWidth="303.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../imgs/cars/dodge_charger_2017.jpg" />
+                        <Image fx:id="carImage" url="@../imgs/cars/dodge_charger_2017.jpg" />
                      </image>
                      <HBox.margin>
                         <Insets left="30.0" top="30.0" />

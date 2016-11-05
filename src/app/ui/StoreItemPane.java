@@ -55,6 +55,10 @@ public class StoreItemPane extends VBox {
 
     }
 
+    public StoreItem getItem(){
+        return item;
+    }
+
     private class ViewClickListener implements EventHandler<MouseEvent> {
 
         private Session session = Session.getInstance();
@@ -75,6 +79,7 @@ public class StoreItemPane extends VBox {
                 }
 
             }else{
+
 
                 ModalUtil.setupAndShow(Resource.ITEMVIEW, item.getName());
 

@@ -75,7 +75,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="transmission" text="FE" textFill="#92ffa3" />
+                  <Label fx:id="transmission" text=" FE" textFill="#92ffa3" />
                </children>
             </HBox>
             <HBox prefHeight="18.0" prefWidth="269.0" spacing="10.0">
@@ -85,7 +85,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="totalSeating" text="FE" textFill="#92ffa3" />
+                  <Label fx:id="totalSeating" text=" FE" textFill="#92ffa3" />
                </children>
             </HBox>
             <HBox prefHeight="18.0" prefWidth="269.0" spacing="10.0">
@@ -95,7 +95,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="doorAmount" text="FE" textFill="#92ffa3" />
+                  <Label fx:id="doorAmount" text=" FE" textFill="#92ffa3" />
                </children>
             </HBox>
             <HBox prefHeight="18.0" prefWidth="269.0" spacing="10.0">
@@ -105,7 +105,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="engine" text="FE" textFill="#92ffa3" />
+                  <Label fx:id="engine" prefHeight="17.0" prefWidth="103.0" text="            FE" textFill="#92ffa3" />
                </children>
             </HBox>
             <HBox prefHeight="18.0" prefWidth="269.0" spacing="10.0">
@@ -115,7 +115,7 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Label>
-                  <Label fx:id="rating" text="FE" textFill="#92ffa3" />
+                  <Label fx:id="rating" prefHeight="17.0" prefWidth="102.0" text="             FE" textFill="#92ffa3" />
                </children>
             </HBox>
             <Button mnemonicParsing="false" onAction="#viewReviews" styleClass="toolbar_button" text="View Reviews" textFill="#d8ffde">
