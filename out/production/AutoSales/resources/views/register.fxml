@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="382.0" prefWidth="256.0" styleClass="main_pane" stylesheets="@../css/register.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="382.0" prefWidth="256.0" styleClass="main_pane" stylesheets="@../css/register.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.RegisterController">
    <children>
       <HBox prefHeight="63.0" prefWidth="502.0">
          <children>
@@ -15,7 +15,7 @@
                <children>
                   <ImageView fitHeight="66.0" fitWidth="271.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../imgs/auto_sales_logo.png" />
+                        <Image url="@../imgs/logos/auto_sales_logo.png" />
                      </image>
                   </ImageView>
                </children>
@@ -29,7 +29,7 @@
                   <Insets left="5.0" right="9.0" />
                </HBox.margin>
             </Label>
-            <TextField minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
+            <TextField fx:id="usernameField" minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
          </children>
          <VBox.margin>
             <Insets bottom="5.0" />
@@ -42,7 +42,7 @@
                   <Insets left="5.0" right="12.0" />
                </HBox.margin>
             </Label>
-            <PasswordField prefHeight="20.0" prefWidth="166.0" styleClass="form_field" />
+            <PasswordField fx:id="passwordField" prefHeight="20.0" prefWidth="166.0" styleClass="form_field" />
          </children>
          <VBox.margin>
             <Insets bottom="5.0" />
@@ -55,7 +55,7 @@
                   <Insets left="5.0" right="12.0" />
                </HBox.margin>
             </Label>
-            <PasswordField prefHeight="20.0" prefWidth="115.0" styleClass="form_field" />
+            <PasswordField fx:id="confirmPasswordField" prefHeight="20.0" prefWidth="115.0" styleClass="form_field" />
          </children>
          <VBox.margin>
             <Insets bottom="5.0" />
@@ -68,7 +68,7 @@
                   <Insets left="5.0" right="5.0" />
                </HBox.margin>
             </Label>
-            <TextField minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
+            <TextField fx:id="firstNameField" minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
          </children>
          <VBox.margin>
             <Insets bottom="5.0" />
@@ -81,7 +81,7 @@
                   <Insets left="5.0" right="5.0" />
                </HBox.margin>
             </Label>
-            <TextField minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
+            <TextField fx:id="lastNameField" minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
          </children>
          <VBox.margin>
             <Insets bottom="5.0" />
@@ -94,7 +94,7 @@
                   <Insets left="5.0" right="20.0" />
                </HBox.margin>
             </Label>
-            <TextField minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
+            <TextField fx:id="addressField" minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
          </children>
          <VBox.margin>
             <Insets bottom="5.0" />
@@ -107,7 +107,7 @@
                   <Insets left="5.0" right="46.0" />
                </HBox.margin>
             </Label>
-            <TextField minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
+            <TextField fx:id="cityField" minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
          </children>
          <VBox.margin>
             <Insets bottom="5.0" />
@@ -120,7 +120,7 @@
                   <Insets left="5.0" right="38.0" />
                </HBox.margin>
             </Label>
-            <TextField minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
+            <TextField fx:id="stateField" minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
          </children>
          <VBox.margin>
             <Insets bottom="5.0" />
@@ -133,7 +133,7 @@
                   <Insets left="5.0" right="15.0" />
                </HBox.margin>
             </Label>
-            <TextField minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
+            <TextField fx:id="zipCodeField" minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
          </children>
          <VBox.margin>
             <Insets bottom="5.0" />
@@ -146,7 +146,7 @@
                   <Insets left="5.0" right="32.0" />
                </HBox.margin>
             </Label>
-            <TextField minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
+            <TextField fx:id="phoneField" minHeight="17.0" prefHeight="17.0" prefWidth="167.0" styleClass="form_field" />
          </children>
          <VBox.margin>
             <Insets bottom="5.0" />
@@ -159,10 +159,10 @@
                   <Insets left="5.0" right="5.0" />
                </HBox.margin>
             </Label>
-            <TextField minHeight="17.0" prefHeight="20.0" prefWidth="157.0" styleClass="form_field" />
+            <TextField fx:id="adminCodeField" minHeight="17.0" prefHeight="20.0" prefWidth="157.0" styleClass="form_field" />
          </children>
       </HBox>
-      <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="242.0" styleClass="register_button" text="Submit">
+      <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="242.0" styleClass="register_button" text="Submit" onAction="#sendRequest">
          <VBox.margin>
             <Insets left="5.0" top="10.0" />
          </VBox.margin>

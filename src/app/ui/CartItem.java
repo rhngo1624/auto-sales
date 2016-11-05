@@ -35,7 +35,7 @@ public class CartItem extends HBox {
 
     private void setup(){
 
-        int maxNameLen = Analytics.getLongestNameLength();
+        int maxNameLen = 22;
         int regionLength = 200 + ((maxNameLen-1) - item.getName().length());
 
         Button deleteButton = new Button("X");

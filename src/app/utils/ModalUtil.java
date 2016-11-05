@@ -22,6 +22,7 @@ public class ModalUtil {
 
         try{
 
+            System.out.println(uiPath);
             layout = FXMLLoader.load(uiPath);
 
         }catch(IOException e){

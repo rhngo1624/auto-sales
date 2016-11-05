@@ -1,5 +1,14 @@
 package db.tables;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import db.models.SQLModel;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 /**
  * Transactions Class
  *
@@ -24,15 +33,15 @@ public class Transactions implements SQLTable {
 	 * @return ObservableList<Transactions>
 	 * @throws SQLException
 	 */
-	public static OberservableList<SQLModel> getAllRows() throws SQLException {
+	public ObservableList<SQLModel> getAllRows() throws SQLException {
 
 		String query = "SELECT * FROM Transactions";
-		ObservableList<Transactions> data = FXCollections.observableArrayList();
+		ObservableList<SQLModel> data = FXCollections.observableArrayList();
 		Transactions transactions;
 
 		// Try with resources: closes resources after using them.
 		try (Statement stmt = CONN.createStatement();
-			ResultSet rs = stmt.executeQuery(query);) {
+			 ResultSet rs = stmt.executeQuery(query);) {
 
 			while (rs.next()) {
 				// Create a new instance of Transactions.
@@ -40,7 +49,7 @@ public class Transactions implements SQLTable {
 				// Set Transactions fields.
 
 				// Add transactions to ObservableList.
-				data.add(transactions);
+				data.add((SQLModel)transactions);
 			}
 
 		}
@@ -55,9 +64,9 @@ public class Transactions implements SQLTable {
 	 * @return SQLModel
 	 * @throws SQLException
 	 */
-	public static SQLModel getModel(// ) throws SQLException {
+	public SQLModel getModel(int id) throws SQLException {
 
-		String query = "SELECT * FROM Transactions // ";
+		String query = "SELECT * FROM Transactions";
 
 		ResultSet rs = null;
 
@@ -80,12 +89,12 @@ public class Transactions implements SQLTable {
 				// Sets transactions fields.
 
 				// Returns transactions.
-				return transactions;
+				return (SQLModel)transactions;
 			} else {
 				return null;
 			}
 		} catch (SQLException ex) {
-			System.err.println(ex);
+			System.err.println(ex.getMessage());
 			return null;
 		} finally {
 			// Closes ResultSet.
@@ -98,13 +107,13 @@ public class Transactions implements SQLTable {
 	/**
 	 * Inserts Transactions object into database.
 	 *
-	 * @param transactions Transactions to insert.
+	 * @param model Transactions to insert.
 	 * @return true if successful, false otherwise.
 	 * @throws Exception
 	 */
-	public static boolean insertModel(SQLModel model) throws Exception {
+	public boolean insertModel(SQLModel model) throws Exception {
 
-		String query = "INSERT into Transactions // ;
+		String query = "INSERT into Transactions (ID) VALUES (?)";
 		ResultSet keys = null;
 		// Try with resources: closes resources after using them.
 		try (PreparedStatement stmt = CONN.prepareStatement(query,
@@ -126,7 +135,7 @@ public class Transactions implements SQLTable {
 				return false;
 			}
 		} catch (SQLException ex) {
-			System.err.println(ex);
+			System.err.println(ex.getMessage());
 			return false;
 		} finally {
 			// Closes ResultSet.
@@ -144,8 +153,8 @@ public class Transactions implements SQLTable {
 	 * @return true if successful, false otherwise.
 	 * @throws Exception
 	 */
-    	public static boolean updateModel(SQLModel model) throws Exception {
-		String query = "UPDATE Transactions // ;
+    	public boolean updateModel(SQLModel model) throws Exception {
+		String query = "UPDATE Transactions SET ID = ?";
 
 		try ( PreparedStatement stmt = CONN.prepareStatement(query);) {
 			// Sets values for query.
@@ -170,18 +179,18 @@ public class Transactions implements SQLTable {
 	 * @return true if successful, false otherwise.
 	 * @throws Exception
 	 */
-    	public static boolean deleteModel(// ) throws Exception {
+    	public boolean deleteModel(int id) throws Exception {
 
-		String query = "DELETE FROM Transactions // ";
+		String query = "DELETE FROM Transactions WHERE ID = ?";
 
 		ResultSet keys = null;
 
 		// Try with resources: closes resources after using them.
 		try (PreparedStatement stmt = CONN.prepareStatement(query);) {
-			// 
+			stmt.setInt(1, id);
 			stmt.execute();
 		} catch (SQLException ex) {
-			System.err.println(ex);
+			System.err.println(ex.getMessage());
 			return false;
 		} finally {
 			// Closes ResultSet
@@ -199,10 +208,10 @@ public class Transactions implements SQLTable {
 	 *
 	 * @return true if transactions found, false otherwise.
 	 */
-    	boolean modelExists(// ) {
+    	public boolean modelExists(int id) {
 
 		try {
-			// 
+			getModel(id);
 			return true;
 		} catch (Exception ex) {
 			return false;
