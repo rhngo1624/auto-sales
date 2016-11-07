@@ -14,11 +14,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
 
 public class ItemViewController implements Initializable {
-    @FXML
-    private BorderPane logoPane;
     @FXML
     private Image logoImage;
     @FXML
@@ -56,11 +53,9 @@ public class ItemViewController implements Initializable {
     public ItemViewController(){
 
         StoreItemPane pane = SelectedItemPane.get();
-        System.out.println("INIT~");
 
         if(pane.getItem() != null){
             item = pane.getItem();
-            System.out.println("ITEM: " + item);
         }else{
             System.exit(-1);
         }
@@ -71,8 +66,6 @@ public class ItemViewController implements Initializable {
 
         String name = item.getName();
         String basePath = "resources/imgs/logos/";
-
-        System.out.println("ITEM NAME: " + item.getName());
 
         if(name.contains("Ford")){
             logoImage = new Image(basePath + "ford_logo.png");
@@ -96,10 +89,8 @@ public class ItemViewController implements Initializable {
     private void getImage(){
 
         if(item.getImageLocation() != null){
-            System.out.println("IMG LOC: " + item.getImageLocation());
             carImage = new Image(item.getImageLocation());
             carView.setImage(carImage);
-
         }
 
     }
