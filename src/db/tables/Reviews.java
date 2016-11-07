@@ -10,6 +10,8 @@ import db.models.Review;
 import db.models.SQLModel;
 import javafx.collections.ObservableList;
 
+// TODO: adjust to fixed components in Reviews Table
+
 public class Reviews implements SQLTable {
 
     public ObservableList<SQLModel> getAllRows() throws SQLException{
