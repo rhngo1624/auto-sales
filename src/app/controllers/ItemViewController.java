@@ -8,16 +8,22 @@ import app.ui.SelectedItemPane;
 import app.ui.StoreItemPane;
 import app.utils.ModalUtil;
 import app.utils.Session;
+import db.models.Accessory;
 import db.models.Car;
 import db.models.StoreItem;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.VBox;
 
 public class ItemViewController implements Initializable {
+
+    @FXML
+    private VBox propertiesPane;
     @FXML
     private Image logoImage;
     @FXML
@@ -29,13 +35,23 @@ public class ItemViewController implements Initializable {
     @FXML
     private Label nameLabel;
     @FXML
+    private Label fuelEconomyLabel;
+    @FXML
     private Label fuelEconomy;
+    @FXML
+    private Label transmissionLabel;
     @FXML
     private Label transmission;
     @FXML
+    private Label totalSeatingLabel;
+    @FXML
     private Label totalSeating;
     @FXML
+    private Label doorAmountLabel;
+    @FXML
     private Label doorAmount;
+    @FXML
+    private Label engineLabel;
     @FXML
     private Label engine;
     @FXML
@@ -112,21 +128,36 @@ public class ItemViewController implements Initializable {
         if(item.getImageLocation() != null){
             itemImage = new Image(item.getImageLocation());
             itemView.setImage(itemImage);
+
         }
 
     }
 
     private void getProperties(){
 
-        Car car = (Car)item;
+        if(item.getClass().getSimpleName().equals("Accessory")){
 
-        nameLabel.setText(car.getName());
-        fuelEconomy.setText(car.getFuelEconomy());
-        transmission.setText(car.getTransmission());
-        totalSeating.setText(String.valueOf(car.getTotalSeating()));
-        doorAmount.setText(String.valueOf(car.getDoorAmount()));
-        engine.setText(car.getEngineType());
-        rating.setText("N/A");
+            Accessory acc = (Accessory)item;
+
+            nameLabel.setText(acc.getName());
+            fuelEconomyLabel.setText("Description: ");
+            fuelEconomy.setText("Insert Item description here");
+            propertiesPane.getChildren().remove(1, 5);
+            rating.setText("N/A");
+
+        }else{
+
+            Car car = (Car)item;
+
+            nameLabel.setText(car.getName());
+            fuelEconomy.setText(car.getFuelEconomy());
+            transmission.setText(car.getTransmission());
+            totalSeating.setText(String.valueOf(car.getTotalSeating()));
+            doorAmount.setText(String.valueOf(car.getDoorAmount()));
+            engine.setText(car.getEngineType());
+            rating.setText("N/A");
+
+        }
 
     }
 

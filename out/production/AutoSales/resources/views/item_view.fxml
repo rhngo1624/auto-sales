@@ -22,27 +22,18 @@
                   </ImageView>
                </center>
             </BorderPane>
-            <Pane>
-               <children>
-                  <ImageView fx:id="carView" fitHeight="225.0" fitWidth="303.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <center>
+                  <ImageView fx:id="itemView" fitHeight="225.0" fitWidth="303.0" opacity="0.65" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                      <image>
-                        <Image fx:id="carImage" url="@../imgs/cars/dodge_charger_2017.jpg" />
+                        <Image fx:id="itemImage" url="@../imgs/cars/dodge_charger_2017.jpg" />
                      </image>
-                     <HBox.margin>
-                        <Insets left="30.0" top="30.0" />
-                     </HBox.margin>
-                     <VBox.margin>
-                        <Insets top="40.0" />
-                     </VBox.margin>
                      <viewport>
                         <Rectangle2D />
                      </viewport>
                   </ImageView>
-               </children>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </Pane>
+               </center>
+            </BorderPane>
             <Label fx:id="nameLabel" alignment="TOP_CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="282.0" text="Car Name" textFill="WHITE">
                <VBox.margin>
                   <Insets top="10.0" />
@@ -53,14 +44,14 @@
             <Insets left="30.0" top="30.0" />
          </HBox.margin>
       </VBox>
-      <VBox prefHeight="400.0" prefWidth="300.0">
+      <VBox fx:id="propertiesPane" prefHeight="400.0" prefWidth="300.0">
          <HBox.margin>
             <Insets />
          </HBox.margin>
          <children>
             <HBox prefHeight="18.0" prefWidth="269.0" spacing="10.0">
                <children>
-                  <Label text="Fuel Economy:" textFill="WHITE">
+                  <Label fx:id="fuelEconomyLabel" text="Fuel Economy:" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -73,7 +64,7 @@
             </HBox>
             <HBox prefHeight="18.0" prefWidth="269.0" spacing="10.0">
                <children>
-                  <Label text="Transmission:" textFill="WHITE">
+                  <Label fx:id="transmissionLabel" text="Transmission:" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -83,7 +74,7 @@
             </HBox>
             <HBox prefHeight="18.0" prefWidth="269.0" spacing="10.0">
                <children>
-                  <Label text="Total Seating:" textFill="WHITE">
+                  <Label fx:id="totalSeatingLabel" text="Total Seating:" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -93,7 +84,7 @@
             </HBox>
             <HBox prefHeight="18.0" prefWidth="269.0" spacing="10.0">
                <children>
-                  <Label text="Door Amount:" textFill="WHITE">
+                  <Label fx:id="doorAmountLabel" text="Door Amount:" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
@@ -103,7 +94,7 @@
             </HBox>
             <HBox prefHeight="18.0" prefWidth="269.0" spacing="10.0">
                <children>
-                  <Label text="Engine:" textFill="WHITE">
+                  <Label fx:id="engineLabel" text="Engine:" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
