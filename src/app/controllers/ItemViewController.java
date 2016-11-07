@@ -141,7 +141,7 @@ public class ItemViewController implements Initializable {
 
             nameLabel.setText(acc.getName());
             fuelEconomyLabel.setText("Description: ");
-            fuelEconomy.setText("Insert Item description here");
+            fuelEconomy.setText(acc.getDescription());
             propertiesPane.getChildren().remove(1, 5);
             rating.setText("N/A");
 

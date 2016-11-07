@@ -19,32 +19,19 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane prefHeight="581.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane prefHeight="395.0" prefWidth="653.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <content>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="650.0">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="650.0">
          <center>
-            <VBox prefHeight="630.0" prefWidth="632.0" BorderPane.alignment="CENTER">
+            <VBox prefHeight="394.0" prefWidth="650.0" BorderPane.alignment="CENTER">
                <children>
                   <HBox>
                      <VBox.margin>
                         <Insets left="8.0" />
                      </VBox.margin>
                      <children>
-                        <Label text="Car:" />
-                        <Label>
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                  </HBox>
-                  <HBox>
-                     <VBox.margin>
-                        <Insets left="8.0" top="8.0" />
-                     </VBox.margin>
-                     <children>
-                        <Label text="Name:" />
-                        <Label>
+                        <Label fx:id="typeLabel" text="Car:" />
+                        <Label fx:id="itemName" prefHeight="17.0" prefWidth="218.0">
                            <HBox.margin>
                               <Insets left="8.0" />
                            </HBox.margin>
@@ -57,65 +44,21 @@
                      </VBox.margin>
                      <children>
                         <Label text="Date:" />
-                        <Label>
+                        <Label fx:id="date" prefHeight="17.0" prefWidth="91.0">
                            <HBox.margin>
                               <Insets left="8.0" />
                            </HBox.margin>
                         </Label>
                      </children>
                   </HBox>
-                  <GridPane>
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <Label text="Awful" GridPane.columnIndex="1" />
-                        <Label text="Poor" GridPane.columnIndex="2" />
-                        <Label text="Okay" GridPane.columnIndex="3" />
-                        <Label text="Good" GridPane.columnIndex="4" />
-                        <Label text="Excellent" GridPane.columnIndex="5" />
-                        <Label text="Handling" GridPane.rowIndex="1" />
-                        <Label text="Looks" GridPane.rowIndex="2" />
-                        <Label text="Comfort" GridPane.rowIndex="3" />
-                        <RadioButton mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <RadioButton mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                        <RadioButton mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                        <RadioButton mnemonicParsing="false" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                        <RadioButton mnemonicParsing="false" GridPane.columnIndex="5" GridPane.rowIndex="1" />
-                        <RadioButton mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <RadioButton mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                        <RadioButton mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-                        <RadioButton mnemonicParsing="false" GridPane.columnIndex="4" GridPane.rowIndex="2" />
-                        <RadioButton mnemonicParsing="false" GridPane.columnIndex="5" GridPane.rowIndex="2" />
-                        <RadioButton mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <RadioButton mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                        <RadioButton mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-                        <RadioButton mnemonicParsing="false" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-                        <RadioButton mnemonicParsing="false" GridPane.columnIndex="5" GridPane.rowIndex="3" />
-                     </children>
-                     <VBox.margin>
-                        <Insets left="8.0" />
-                     </VBox.margin>
-                  </GridPane>
                   <HBox>
                      <children>
-                        <Label text="Title of Review">
+                        <Label text="Title of Review:">
                            <HBox.margin>
                               <Insets left="8.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField>
+                        <TextField fx:id="reviewTitleField">
                            <HBox.margin>
                               <Insets left="8.0" />
                            </HBox.margin>
@@ -130,25 +73,8 @@
                         <Insets left="8.0" />
                      </VBox.margin>
                   </Label>
-                  <TextArea prefHeight="200.0" prefWidth="200.0" />
-                  <Label text="Would you recommend this car to others?">
-                     <VBox.margin>
-                        <Insets left="8.0" top="8.0" />
-                     </VBox.margin>
-                  </Label>
+                  <TextArea fx:id="reviewTextArea" prefHeight="200.0" prefWidth="200.0" />
                   <HBox>
-                     <children>
-                        <RadioButton mnemonicParsing="false" text="Yes">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </RadioButton>
-                        <RadioButton mnemonicParsing="false" text="No">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </RadioButton>
-                     </children>
                      <VBox.margin>
                         <Insets top="4.0" />
                      </VBox.margin>
@@ -160,14 +86,14 @@
                   </HBox>
                   <HBox>
                      <children>
-                        <CheckBox mnemonicParsing="false" text="Display your first name on the review">
+                        <CheckBox fx:id="firstNameShowBox" mnemonicParsing="false" text="Display your first name on the review">
                            <HBox.margin>
                               <Insets left="8.0" top="12.0" />
                            </HBox.margin>
                         </CheckBox>
                      </children>
                   </HBox>
-                  <Button alignment="CENTER" mnemonicParsing="false" text="Submit Review">
+                  <Button fx:id="submitButton" alignment="CENTER" mnemonicParsing="false" text="Submit Review">
                      <VBox.margin>
                         <Insets left="8.0" top="16.0" />
                      </VBox.margin>
