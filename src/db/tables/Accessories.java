@@ -39,6 +39,7 @@ public class Accessories implements SQLTable {
                 accessory = new Accessory(name, price, imageLocation);
 
                 accessory.setID(rs.getInt("ID"));
+                accessory.setDescription(rs.getString("Description"));
 
                 data.add(accessory);
 
@@ -79,6 +80,7 @@ public class Accessories implements SQLTable {
                 Accessory accessory = new Accessory(name, price, imageLocation);
 
                 accessory.setID(rs.getInt("ID"));
+                accessory.setDescription(rs.getString("Description"));
 
                 return accessory;
 
@@ -106,8 +108,8 @@ public class Accessories implements SQLTable {
      */
     public boolean insertModel(SQLModel model) throws Exception{
 
-        String query = "INSERT into Accessories (Name, Price, ImageLocation) " +
-                "VALUES (?, ?, ?)";
+        String query = "INSERT into Accessories (Name, Price, ImageLocation, Description) " +
+                "VALUES (?, ?, ?, ?)";
 
         ResultSet keys = null;
 
@@ -120,6 +122,7 @@ public class Accessories implements SQLTable {
             stmt.setString(1, ((Accessory)model).getName());
             stmt.setDouble(2, ((Accessory)model).getPrice());
             stmt.setString(3, ((Accessory)model).getImageLocation());
+            stmt.setString(4, ((Accessory)model).getDescription());
 
             int affectedRows = stmt.executeUpdate();
 
@@ -157,14 +160,16 @@ public class Accessories implements SQLTable {
     }
     public boolean updateModel(SQLModel model) throws Exception{
 
-        String query = "UPDATE Cars SET Name = ?, Price = ?, ImageLocation = ? WHERE ID = ?";
+        String query = "UPDATE Accessories SET Name = ?, Price = ?, ImageLocation = ?, " +
+                "Description = ? WHERE ID = ?";
 
         try(PreparedStatement stmt = CONN.prepareStatement(query)){
 
             stmt.setString(1, ((Accessory)model).getName());
             stmt.setDouble(2, ((Accessory)model).getPrice());
             stmt.setString(3, ((Accessory)model).getImageLocation());
-            stmt.setInt(4, model.getID());
+            stmt.setString(4, ((Accessory)model).getDescription());
+            stmt.setInt(5, model.getID());
 
             int affectedRows = stmt.executeUpdate();
 
