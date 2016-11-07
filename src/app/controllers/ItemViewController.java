@@ -6,6 +6,8 @@ import java.util.ResourceBundle;
 
 import app.ui.SelectedItemPane;
 import app.ui.StoreItemPane;
+import app.utils.ModalUtil;
+import app.utils.Session;
 import db.models.Car;
 import db.models.StoreItem;
 import javafx.fxml.FXML;
@@ -47,6 +49,25 @@ public class ItemViewController implements Initializable {
         getLogo();
         getImage();
         getProperties();
+
+        carView.setOnMouseEntered((e) ->{
+            carView.setOpacity(1.0);
+        });
+
+        carView.setOnMouseExited((e) -> {
+            carView.setOpacity(0.8);
+        });
+
+        if(Session.getInstance().isActive()){
+
+            carView.setOnMouseClicked((e) -> {
+
+                Session.getInstance().getUser().addCartItem(item);
+                ModalUtil.showMessage(item.getName() + " was added!");
+
+            });
+
+        }
 
     }
 
