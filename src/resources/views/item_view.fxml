@@ -24,9 +24,9 @@
             </BorderPane>
             <Pane>
                <children>
-                  <ImageView fx:id="carView" fitHeight="225.0" fitWidth="303.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="itemView" fitHeight="225.0" fitWidth="303.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image fx:id="carImage" url="@../imgs/cars/dodge_charger_2017.jpg" />
+                        <Image fx:id="itemImage" url="@../imgs/cars/dodge_charger_2017.jpg" />
                      </image>
                      <HBox.margin>
                         <Insets left="30.0" top="30.0" />

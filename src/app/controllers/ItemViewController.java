@@ -21,9 +21,9 @@ public class ItemViewController implements Initializable {
     @FXML
     private Image logoImage;
     @FXML
-    private Image carImage;
+    private Image itemImage;
     @FXML
-    private ImageView carView;
+    private ImageView itemView;
     @FXML
     private ImageView logoView;
     @FXML
@@ -50,17 +50,17 @@ public class ItemViewController implements Initializable {
         getImage();
         getProperties();
 
-        carView.setOnMouseEntered((e) ->{
-            carView.setOpacity(1.0);
+        itemView.setOnMouseEntered((e) ->{
+            itemView.setOpacity(1.0);
         });
 
-        carView.setOnMouseExited((e) -> {
-            carView.setOpacity(0.8);
+        itemView.setOnMouseExited((e) -> {
+            itemView.setOpacity(0.8);
         });
 
         if(Session.getInstance().isActive()){
 
-            carView.setOnMouseClicked((e) -> {
+            itemView.setOnMouseClicked((e) -> {
 
                 Session.getInstance().getUser().addCartItem(item);
                 ModalUtil.showMessage(item.getName() + " was added!");
@@ -110,8 +110,8 @@ public class ItemViewController implements Initializable {
     private void getImage(){
 
         if(item.getImageLocation() != null){
-            carImage = new Image(item.getImageLocation());
-            carView.setImage(carImage);
+            itemImage = new Image(item.getImageLocation());
+            itemView.setImage(itemImage);
         }
 
     }
