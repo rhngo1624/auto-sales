@@ -10,20 +10,23 @@
    <children>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="301.0">
          <children>
-            <Pane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="90.0" prefWidth="301.0">
-               <children>
-                  <ImageView fx:id="logoView" fitHeight="116.0" fitWidth="301.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">
+            <BorderPane prefHeight="88.0" prefWidth="264.0">
+               <center>
+                  <ImageView fx:id="logoView" fitHeight="116.0" fitWidth="301.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
                      <image>
-                        <Image url="@../imgs/logos/dodge_logo.png" />
+                        <Image fx:id="logoImage" url="@../imgs/logos/dodge_logo.png" />
                      </image>
+                     <BorderPane.margin>
+                        <Insets bottom="10.0" />
+                     </BorderPane.margin>
                   </ImageView>
-               </children>
-            </Pane>
+               </center>
+            </BorderPane>
             <Pane>
                <children>
                   <ImageView fx:id="carView" fitHeight="225.0" fitWidth="303.0" opacity="0.65" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../imgs/cars/dodge_charger_2017.jpg" />
+                        <Image fx:id="carImage" url="@../imgs/cars/dodge_charger_2017.jpg" />
                      </image>
                      <HBox.margin>
                         <Insets left="30.0" top="30.0" />

@@ -20,9 +20,11 @@ import javafx.scene.layout.VBox;
 public class StoreItemPane extends VBox {
 
     private final StoreItem item;
+    private final StoreItemPane paneRef;
 
     public StoreItemPane(StoreItem item){
 
+        this.paneRef = this;
         this.item = item;
         setAlignment(Pos.CENTER);
         setPadding(new Insets(10, 10, 10, 10));
@@ -56,7 +58,11 @@ public class StoreItemPane extends VBox {
     }
 
     public StoreItem getItem(){
-        return item;
+        if(item != null){
+            return item;
+        }else{
+            return null;
+        }
     }
 
     private class ViewClickListener implements EventHandler<MouseEvent> {
@@ -80,7 +86,7 @@ public class StoreItemPane extends VBox {
 
             }else{
 
-
+                SelectedItemPane.set(paneRef);
                 ModalUtil.setupAndShow(Resource.ITEMVIEW, item.getName());
 
             }
