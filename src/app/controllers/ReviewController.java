@@ -32,7 +32,6 @@ public class ReviewController implements Initializable {
     @FXML
     public void initialize(URL location, ResourceBundle rb){
 
-
     }
 
 

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #49595E;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #4C4E4F;" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="44.0" fitWidth="164.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../imgs/logos/auto_sales_logo.png" />
+               </image>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </ImageView>
+            <Label alignment="BASELINE_CENTER" prefHeight="41.0" prefWidth="433.0" text="Admin Panel" textFill="#b2b2b2">
+               <font>
+                  <Font name="Arial Black" size="24.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+   <bottom>
+      <HBox prefHeight="31.0" prefWidth="600.0" style="-fx-background-color: #4C4E4F;" BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="37.0" prefWidth="91.0" text="Administrator: " textFill="WHITE">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </HBox.margin>
+            </Label>
+            <Label prefHeight="31.0" prefWidth="143.0" text="adminName" textFill="#84ffc4" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
