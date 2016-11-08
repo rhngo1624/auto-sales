@@ -21,6 +21,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -42,6 +43,9 @@ public class MainController implements Initializable {
     private Session session = Session.getInstance();
 
     @FXML
+    private Button adminButton;
+
+    @FXML
     private Button loginButton;
 
     @FXML
@@ -60,6 +64,7 @@ public class MainController implements Initializable {
     public void initialize(URL location, ResourceBundle rb){
 
         displayCars();
+        adminButton.setVisible(false);
         searchField.textProperty().addListener((ob, ov, nv) -> {
 
             search();
@@ -84,9 +89,21 @@ public class MainController implements Initializable {
 
             });
 
+            if(session.getUser().isAdmin()){
+                adminButton.setVisible(true);
+            }
+
             registerButton.setVisible(false);
 
         }
+
+
+
+    }
+
+    public void administration(){
+
+        ModalUtil.setupAndShow(Resource.ADMIN, "Administration");
 
     }
 

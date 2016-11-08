@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import db.models.Appointment;
-import db.mobels.SQLModel;
+import db.models.SQLModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -20,7 +20,7 @@ public class Appointments implements SQLTable {
   public ObservableList<SQLModel> getAllRows() throws SQLException {
     
     String query = "SELECT * FROM Appointments";
-    ObservableList<SQLTable> data = FXCollection.observableArrayList();
+    ObservableList<SQLModel> data = FXCollections.observableArrayList();
     Appointment appointment;
     
     try (

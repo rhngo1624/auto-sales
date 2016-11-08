@@ -31,18 +31,27 @@
             <children>
                 <VBox layoutX="247.0" layoutY="38.0" prefHeight="543.0" prefWidth="1000.0" AnchorPane.bottomAnchor="-172.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
-                        <ToolBar prefHeight="43.0" prefWidth="614.0" style="-fx-background-color: #49595E;">
+                        <ToolBar fx:id="toolbar" prefHeight="43.0" prefWidth="614.0" style="-fx-background-color: #49595E;">
                             <items>
                                 <ImageView fx:id="mainLogo" blendMode="COLOR_DODGE" fitHeight="90.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true">
                                     <image>
                                         <Image url="@../imgs/logos/auto_sales_logo.png" />
                                     </image>
                                 </ImageView>
-                                <Separator opacity="0.0" orientation="VERTICAL" prefHeight="0.0" prefWidth="0.0">
+                                <Separator opacity="0.0" orientation="VERTICAL" prefHeight="61.0" prefWidth="4.0">
                                     <padding>
-                                        <Insets right="14.0" />
+                                        <Insets right="8.0" />
                                     </padding>
                                 </Separator>
+                        <Button fx:id="adminButton" mnemonicParsing="false" onAction="#administration" styleClass="toolbar_button">
+                           <graphic>
+                              <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../imgs/icons/boss.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
                                 <Button fx:id="customizeButton" mnemonicParsing="false" styleClass="toolbar_button">
                                     <graphic>
                                         <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
@@ -88,14 +97,14 @@
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Label alignment="TOP_RIGHT" prefHeight="21.0" prefWidth="95.0" text="Search:" textFill="#c6c6c6">
+                                <Label alignment="TOP_RIGHT" prefHeight="21.0" prefWidth="74.0" text="Search:" textFill="#c6c6c6">
                                     <font>
                                         <Font name="Helvetica Bold" size="18.0" />
                                     </font>
                                 </Label>
                                 <TextField fx:id="searchField" prefHeight="27.0" prefWidth="167.0">
                            <padding>
-                              <Insets right="10.0" />
+                              <Insets right="2.0" />
                            </padding></TextField>
                                 <HBox alignment="CENTER">
                                     <padding>
@@ -104,7 +113,7 @@
                                     <children>
                                         <Button fx:id="loginButton" mnemonicParsing="false" onAction="#login" styleClass="toolbar_button" text="Login" textFill="WHITE">
                                             <HBox.margin>
-                                                <Insets left="25.0" right="10.0" />
+                                                <Insets left="5.0" right="5.0" />
                                             </HBox.margin>
                                             <font>
                                                 <Font name="Helvetica" size="14.0" />
