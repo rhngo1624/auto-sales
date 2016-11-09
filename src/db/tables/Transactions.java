@@ -5,8 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import app.core.SQLModel;
+import db.models.Transaction;
 import app.core.SQLTable;
+import db.models.Transaction;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -20,7 +21,7 @@ import javafx.collections.ObservableList;
 // Import statements
 
 
-public class Transactions implements SQLTable {
+public class Transactions implements SQLTable<Transaction> {
 
 	/*variables
 	String saleDate;
@@ -34,11 +35,11 @@ public class Transactions implements SQLTable {
 	 * @return ObservableList<Transactions>
 	 * @throws SQLException
 	 */
-	public ObservableList<SQLModel> getAllRows() throws SQLException {
+	public ObservableList<Transaction> getAllRows() throws SQLException {
 
 		String query = "SELECT * FROM Transactions";
-		ObservableList<SQLModel> data = FXCollections.observableArrayList();
-		Transactions transactions;
+		ObservableList<Transaction> data = FXCollections.observableArrayList();
+		Transaction transaction;
 
 		// Try with resources: closes resources after using them.
 		try (Statement stmt = CONN.createStatement();
@@ -46,11 +47,11 @@ public class Transactions implements SQLTable {
 
 			while (rs.next()) {
 				// Create a new instance of Transactions.
-				transactions = new Transactions();
+				transaction = new Transaction();
 				// Set Transactions fields.
 
 				// Add transactions to ObservableList.
-				data.add((SQLModel)transactions);
+				data.add(transaction);
 			}
 
 		}
@@ -62,10 +63,10 @@ public class Transactions implements SQLTable {
 	/**
 	 * Returns a single Transactions object from database.
 	 *
-	 * @return SQLModel
+	 * @return Transaction
 	 * @throws SQLException
 	 */
-	public SQLModel getModel(int id) throws SQLException {
+	public Transaction getModel(int id) throws SQLException {
 
 		String query = "SELECT * FROM Transactions";
 
@@ -86,11 +87,11 @@ public class Transactions implements SQLTable {
 
 			if (rs.next()) {
 				// Creates transactions instance.
-				Transactions transactions = new Transactions();
+				Transaction transaction = new Transaction();
 				// Sets transactions fields.
 
 				// Returns transactions.
-				return (SQLModel)transactions;
+				return transaction;
 			} else {
 				return null;
 			}
@@ -112,9 +113,9 @@ public class Transactions implements SQLTable {
 	 * @return true if successful, false otherwise.
 	 * @throws Exception
 	 */
-	public boolean insertModel(SQLModel model) throws Exception {
+	public boolean insertModel(Transaction model) throws Exception {
 
-		String query = "INSERT into Transactions (ID) VALUES (?)";
+		String query = "INSERT into Transactions VALUES (?,?,?) WHERE ID = ?";
 		ResultSet keys = null;
 		// Try with resources: closes resources after using them.
 		try (PreparedStatement stmt = CONN.prepareStatement(query,
@@ -150,11 +151,11 @@ public class Transactions implements SQLTable {
 	/**
 	 * Updates Transactions object in database.
 	 *
-	 * @param transactions Transactions to update.
+	 * @param model Transactions to update.
 	 * @return true if successful, false otherwise.
 	 * @throws Exception
 	 */
-    	public boolean updateModel(SQLModel model) throws Exception {
+    	public boolean updateModel(Transaction model) throws Exception {
 		String query = "UPDATE Transactions SET ID = ?";
 
 		try ( PreparedStatement stmt = CONN.prepareStatement(query);) {
