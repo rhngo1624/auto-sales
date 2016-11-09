@@ -7,17 +7,16 @@ import java.util.ArrayList;
 
 import app.core.SQLTable;
 import db.models.Review;
-import app.core.SQLModel;
 import javafx.collections.ObservableList;
 
 // TODO: adjust to fixed components in Reviews Table
 
-public class Reviews implements SQLTable {
+public class Reviews implements SQLTable<Review> {
 
-    public ObservableList<SQLModel> getAllRows() throws SQLException{
+    public ObservableList<Review> getAllRows() throws SQLException{
         return null;
     }
-    public SQLModel getModel(int id) throws SQLException{
+    public Review getModel(int id) throws SQLException{
         return null;
     }
     public ArrayList<Review> getModels(int id) throws SQLException{
@@ -36,12 +35,12 @@ public class Reviews implements SQLTable {
 
             if(rs.next()){
 
-                SQLModel review = new Review();
+                Review review = new Review();
 
                 review.setID(id);
-                ((Review)review).setContents(rs.getString("Content"));
-                ((Review)review).setRating(rs.getInt("Rating"));
-                reviews.add((Review)review);
+                review.setContents(rs.getString("Content"));
+                review.setRating(rs.getInt("Rating"));
+                reviews.add(review);
 
             }
 
@@ -54,10 +53,10 @@ public class Reviews implements SQLTable {
 
         return reviews;
     }
-    public boolean insertModel(SQLModel model) throws Exception{
+    public boolean insertModel(Review model) throws Exception{
         return true;
     }
-    public boolean updateModel(SQLModel model) throws Exception{
+    public boolean updateModel(Review model) throws Exception{
         return true;
     }
     public boolean deleteModel(int id) throws Exception{
