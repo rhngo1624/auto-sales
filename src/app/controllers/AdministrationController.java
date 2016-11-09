@@ -4,6 +4,7 @@ package app.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import app.ui.tableview.AccessoriesTableView;
 import app.ui.tableview.CarsTableView;
 import app.ui.tableview.UsersTableView;
 import app.utils.Session;
@@ -63,7 +64,7 @@ public class AdministrationController implements Initializable {
     }
 
     public void showAccessories(){
-
+        borderPane.setCenter(new AccessoriesTableView());
     }
 
     public void showFinancialApps(){

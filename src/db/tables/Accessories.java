@@ -1,7 +1,5 @@
 package db.tables;
 
-
-// TODO: refactor SQLTable to be an abstract class and implement D.R.Y principle
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -13,17 +11,17 @@ import app.core.SQLModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Accessories implements SQLTable {
+public class Accessories implements SQLTable<Accessory> {
 
     /**
      * Returns Accessory Objects
      * @return ObservableList<SQLModel>
      * @throws SQLException
      */
-    public ObservableList<SQLModel> getAllRows() throws SQLException{
+    public ObservableList<Accessory> getAllRows() throws SQLException{
 
         String query = "SELECT * FROM Accessories";
-        ObservableList<SQLModel> data = FXCollections.observableArrayList();
+        ObservableList<Accessory> data = FXCollections.observableArrayList();
         Accessory accessory;
 
         try(
@@ -58,7 +56,7 @@ public class Accessories implements SQLTable {
      * @return SQLModel
      * @throws SQLException
      */
-    public SQLModel getModel(int id) throws SQLException{
+    public Accessory getModel(int id) throws SQLException{
 
         String query = "SELECT * FROM Accessories WHERE ID = ?";
         ResultSet rs;
@@ -107,7 +105,7 @@ public class Accessories implements SQLTable {
      * @return true if successful, false otherwise.
      * @throws Exception
      */
-    public boolean insertModel(SQLModel model) throws Exception{
+    public boolean insertModel(Accessory model) throws Exception{
 
         String query = "INSERT into Accessories (Name, Price, ImageLocation, Description) " +
                 "VALUES (?, ?, ?, ?)";
@@ -120,10 +118,10 @@ public class Accessories implements SQLTable {
 
         ){
 
-            stmt.setString(1, ((Accessory)model).getName());
-            stmt.setDouble(2, ((Accessory)model).getPrice());
-            stmt.setString(3, ((Accessory)model).getImageLocation());
-            stmt.setString(4, ((Accessory)model).getDescription());
+            stmt.setString(1, model.getName());
+            stmt.setDouble(2, model.getPrice());
+            stmt.setString(3, model.getImageLocation());
+            stmt.setString(4, model.getDescription());
 
             int affectedRows = stmt.executeUpdate();
 
@@ -159,17 +157,17 @@ public class Accessories implements SQLTable {
         return true;
 
     }
-    public boolean updateModel(SQLModel model) throws Exception{
+    public boolean updateModel(Accessory model) throws Exception{
 
         String query = "UPDATE Accessories SET Name = ?, Price = ?, ImageLocation = ?, " +
                 "Description = ? WHERE ID = ?";
 
         try(PreparedStatement stmt = CONN.prepareStatement(query)){
 
-            stmt.setString(1, ((Accessory)model).getName());
-            stmt.setDouble(2, ((Accessory)model).getPrice());
-            stmt.setString(3, ((Accessory)model).getImageLocation());
-            stmt.setString(4, ((Accessory)model).getDescription());
+            stmt.setString(1, model.getName());
+            stmt.setDouble(2, model.getPrice());
+            stmt.setString(3, model.getImageLocation());
+            stmt.setString(4, model.getDescription());
             stmt.setInt(5, model.getID());
 
             int affectedRows = stmt.executeUpdate();

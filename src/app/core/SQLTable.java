@@ -8,14 +8,14 @@ import javafx.collections.ObservableList;
 
 
 
-public interface SQLTable {
+public interface SQLTable <T> {
 
     Connection CONN = ConnectionUtil.getInstance().getConnection();
 
-    ObservableList<SQLModel> getAllRows() throws SQLException;
+    ObservableList<T> getAllRows() throws SQLException;
     SQLModel getModel(int id) throws SQLException;
-    boolean insertModel(SQLModel model) throws Exception;
-    boolean updateModel(SQLModel model) throws Exception;
+    boolean insertModel(T model) throws Exception;
+    boolean updateModel(T model) throws Exception;
     boolean deleteModel(int id) throws Exception;
     boolean modelExists(int id);
 
