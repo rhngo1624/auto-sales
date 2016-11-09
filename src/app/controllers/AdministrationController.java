@@ -4,6 +4,7 @@ package app.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import app.ui.tableview.CarsTableView;
 import app.ui.tableview.UsersTableView;
 import app.utils.Session;
 import javafx.fxml.FXML;
@@ -58,7 +59,7 @@ public class AdministrationController implements Initializable {
     }
 
     public void showCars(){
-
+        borderPane.setCenter(new CarsTableView());
     }
 
     public void showAccessories(){
