@@ -8,22 +8,21 @@ import java.sql.Statement;
 import app.core.SQLTable;
 import db.models.Car;
 import db.models.Review;
-import app.core.SQLModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Cars implements SQLTable {
+public class Cars implements SQLTable<Car> {
 
 
     /**
      * Returns Car Objects
-     * @return ObservableList<SQLModel>
+     * @return ObservableList<Car>
      * @throws SQLException
      */
-    public ObservableList<SQLModel> getAllRows() throws SQLException{
+    public ObservableList<Car> getAllRows() throws SQLException{
 
         String query = "SELECT * FROM Cars";
-        ObservableList<SQLModel> data = FXCollections.observableArrayList();
+        ObservableList<Car> data = FXCollections.observableArrayList();
         Car car;
 
         try(
@@ -63,10 +62,10 @@ public class Cars implements SQLTable {
     /**
      * Retuns single Car object from database.
      * @param id ID of Car to get
-     * @return SQLModel
+     * @return Car
      * @throws SQLException
      */
-    public SQLModel getModel(int id) throws SQLException{
+    public Car getModel(int id) throws SQLException{
 
         String query = "SELECT * FROM Cars WHERE ID = ?";
         ResultSet rs;
@@ -86,7 +85,7 @@ public class Cars implements SQLTable {
                 String model = rs.getString("Model");
                 int year = rs.getInt("Year");
 
-                SQLModel car = new Car(make, model, year);
+                Car car = new Car(make, model, year);
 
                 car.setID(rs.getInt("ID"));
                 ((Car)car).setFuelEconomy(rs.getString("FuelEconomy"));
@@ -123,7 +122,7 @@ public class Cars implements SQLTable {
      * @return true if successful, false otherwise.
      * @throws Exception
      */
-    public boolean insertModel(SQLModel model) throws Exception{
+    public boolean insertModel(Car model) throws Exception{
 
         String query = "INSERT into Cars (Make, Model, Year, FuelEconomy, Transmission, " +
                 "TotalSeating, DoorAmount, EngineType, Rating, ReviewID, Price, ImageLocation) " +
@@ -137,18 +136,18 @@ public class Cars implements SQLTable {
 
                 ){
 
-            stmt.setString(1, ((Car)model).getMake());
-            stmt.setString(2, ((Car)model).getModel());
-            stmt.setInt(3, ((Car)model).getYear());
-            stmt.setString(4, ((Car)model).getFuelEconomy());
-            stmt.setString(5, ((Car)model).getTransmission());
-            stmt.setInt(6, ((Car)model).getTotalSeating());
-            stmt.setInt(7, ((Car)model).getDoorAmount());
-            stmt.setString(8, ((Car)model).getEngineType());
-            stmt.setInt(9, ((Car)model).getRating());
-            stmt.setInt(10, ((Car)model).getReviewID());
-            stmt.setDouble(11, ((Car)model).getPrice());
-            stmt.setString(12, ((Car)model).getImageLocation());
+            stmt.setString(1, model.getMake());
+            stmt.setString(2, model.getModel());
+            stmt.setInt(3, model.getYear());
+            stmt.setString(4, model.getFuelEconomy());
+            stmt.setString(5, model.getTransmission());
+            stmt.setInt(6, model.getTotalSeating());
+            stmt.setInt(7, model.getDoorAmount());
+            stmt.setString(8, model.getEngineType());
+            stmt.setInt(9, model.getRating());
+            stmt.setInt(10, model.getReviewID());
+            stmt.setDouble(11, model.getPrice());
+            stmt.setString(12, model.getImageLocation());
 
             int affectedRows = stmt.executeUpdate();
 
@@ -184,7 +183,7 @@ public class Cars implements SQLTable {
         return true;
 
     }
-    public boolean updateModel(SQLModel model) throws Exception{
+    public boolean updateModel(Car model) throws Exception{
 
         String query = "UPDATE Cars SET " +
                 "Make = ?, Model = ?, Year = ?, FuelEconomy = ?, Transmission = ?, " +
@@ -193,18 +192,18 @@ public class Cars implements SQLTable {
 
         try(PreparedStatement stmt = CONN.prepareStatement(query)){
 
-            stmt.setString(1, ((Car)model).getMake());
-            stmt.setString(2, ((Car)model).getModel());
-            stmt.setInt(3, ((Car)model).getYear());
-            stmt.setString(4, ((Car)model).getFuelEconomy());
-            stmt.setString(5, ((Car)model).getTransmission());
-            stmt.setInt(6, ((Car)model).getTotalSeating());
-            stmt.setInt(7, ((Car)model).getDoorAmount());
-            stmt.setString(8, ((Car)model).getEngineType());
-            stmt.setInt(9, ((Car)model).getRating());
-            stmt.setInt(10, ((Car)model).getReviewID());
-            stmt.setDouble(11, ((Car)model).getPrice());
-            stmt.setString(12, ((Car)model).getImageLocation());
+            stmt.setString(1, model.getMake());
+            stmt.setString(2, model.getModel());
+            stmt.setInt(3, model.getYear());
+            stmt.setString(4, model.getFuelEconomy());
+            stmt.setString(5, model.getTransmission());
+            stmt.setInt(6, model.getTotalSeating());
+            stmt.setInt(7, model.getDoorAmount());
+            stmt.setString(8, model.getEngineType());
+            stmt.setInt(9, model.getRating());
+            stmt.setInt(10, model.getReviewID());
+            stmt.setDouble(11, model.getPrice());
+            stmt.setString(12, model.getImageLocation());
 
             int affectedRows = stmt.executeUpdate();
 
