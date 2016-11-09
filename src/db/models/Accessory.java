@@ -1,6 +1,8 @@
 package db.models;
 
 
+import app.core.StoreItem;
+
 public class Accessory extends StoreItem {
 
     private String description;

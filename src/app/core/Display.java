@@ -1,9 +1,6 @@
-package app.ui;
+package app.core;
 
 
-import java.util.List;
-
-import db.tables.SQLTable;
 import javafx.scene.Group;
 import javafx.scene.layout.TilePane;
 

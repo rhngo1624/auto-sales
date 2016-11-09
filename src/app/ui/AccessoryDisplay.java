@@ -2,11 +2,11 @@ package app.ui;
 
 import java.sql.SQLException;
 
-import db.models.SQLModel;
-import db.models.StoreItem;
+import app.core.Display;
+import app.core.SQLModel;
+import app.core.StoreItem;
 import db.tables.Accessories;
-import db.tables.Cars;
-import db.tables.SQLTable;
+import app.core.SQLTable;
 import javafx.collections.ObservableList;
 
 public class AccessoryDisplay extends Display {

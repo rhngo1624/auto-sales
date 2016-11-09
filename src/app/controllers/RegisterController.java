@@ -2,12 +2,9 @@ package app.controllers;
 
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import app.utils.ModalUtil;
-import db.models.SQLModel;
 import db.models.User;
 import db.tables.Users;
 import javafx.fxml.FXML;

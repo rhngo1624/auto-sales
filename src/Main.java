@@ -1,4 +1,4 @@
-import app.utils.Resource;
+import app.core.Resource;
 import app.utils.StageUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

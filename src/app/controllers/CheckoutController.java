@@ -2,15 +2,14 @@ package app.controllers;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import app.ui.CartItem;
 import app.utils.ModalUtil;
-import app.utils.Resource;
+import app.core.Resource;
 import app.utils.Session;
 import app.utils.StageUtil;
-import db.models.StoreItem;
+import app.core.StoreItem;
 import db.models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

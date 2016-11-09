@@ -2,16 +2,12 @@ package app.ui;
 
 import java.sql.SQLException;
 
-import db.models.Car;
-import db.models.SQLModel;
-import db.models.StoreItem;
+import app.core.Display;
+import app.core.SQLModel;
+import app.core.StoreItem;
 import db.tables.Cars;
-import db.tables.SQLTable;
+import app.core.SQLTable;
 import javafx.collections.ObservableList;
-import javafx.geometry.Insets;
-import javafx.scene.Group;
-import javafx.scene.layout.TilePane;
-import javafx.scene.shape.Rectangle;
 
 public class CarDisplay extends Display {
 

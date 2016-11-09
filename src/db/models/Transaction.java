@@ -2,6 +2,9 @@ package db.models;
 
 import java.util.List;
 
+import app.core.SQLModel;
+import app.core.StoreItem;
+
 public class Transaction implements SQLModel {
 
     private int ID;

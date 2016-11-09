@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import app.utils.ModalUtil;
-import app.utils.Resource;
+import app.core.Resource;
 import app.utils.Session;
 import app.utils.StageUtil;
 import db.models.User;
@@ -14,9 +14,7 @@ import db.tables.Users;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
 
 /**
  *  Controller Class for Login Page

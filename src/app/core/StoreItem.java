@@ -1,10 +1,11 @@
-package db.models;
+package app.core;
 
 import java.text.NumberFormat;
 
+import app.core.SQLModel;
 import db.tables.Accessories;
 import db.tables.Cars;
-import db.tables.SQLTable;
+import app.core.SQLTable;
 
 public abstract class StoreItem implements SQLModel {
 

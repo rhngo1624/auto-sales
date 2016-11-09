@@ -5,9 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import db.models.Car;
+import app.core.SQLTable;
 import db.models.Review;
-import db.models.SQLModel;
+import app.core.SQLModel;
 import javafx.collections.ObservableList;
 
 // TODO: adjust to fixed components in Reviews Table

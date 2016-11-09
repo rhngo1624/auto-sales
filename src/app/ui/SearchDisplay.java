@@ -2,10 +2,12 @@ package app.ui;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import app.core.Display;
 import db.models.Accessory;
 import db.models.Car;
-import db.models.SQLModel;
-import db.models.StoreItem;
+import app.core.SQLModel;
+import app.core.StoreItem;
 import db.tables.Accessories;
 import db.tables.Cars;
 import javafx.collections.FXCollections;

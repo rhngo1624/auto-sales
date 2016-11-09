@@ -1,9 +1,9 @@
-package db.tables;
+package app.core;
 
 import app.utils.ConnectionUtil;
 import java.sql.Connection;
 import java.sql.SQLException;
-import db.models.SQLModel;
+import app.core.SQLModel;
 import javafx.collections.ObservableList;
 
 

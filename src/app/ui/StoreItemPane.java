@@ -1,9 +1,9 @@
 package app.ui;
 
 import app.utils.ModalUtil;
-import app.utils.Resource;
+import app.core.Resource;
 import app.utils.Session;
-import db.models.StoreItem;
+import app.core.StoreItem;
 import db.models.User;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;

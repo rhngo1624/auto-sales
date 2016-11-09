@@ -4,10 +4,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import app.core.SQLTable;
 import db.models.Car;
 import db.models.Review;
-import db.models.SQLModel;
-import db.models.StoreItem;
+import app.core.SQLModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

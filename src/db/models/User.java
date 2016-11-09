@@ -1,10 +1,9 @@
 package db.models;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
-import db.tables.SQLTable;
+import app.core.SQLModel;
+import app.core.StoreItem;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

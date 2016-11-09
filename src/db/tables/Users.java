@@ -1,20 +1,18 @@
 package db.tables;
 
 import java.sql.SQLException;
-import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 
-import app.utils.ConnectionUtil;
-import db.models.Accessory;
-import db.models.SQLModel;
+import app.core.SQLModel;
+import app.core.SQLTable;
 import db.models.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 
-public class Users implements SQLTable{
+public class Users implements SQLTable {
 
     private static final String adminCode = "autoadmin11";
     

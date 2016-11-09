@@ -7,8 +7,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import app.core.SQLTable;
 import db.models.Accessory;
-import db.models.SQLModel;
+import app.core.SQLModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

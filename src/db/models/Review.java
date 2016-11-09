@@ -1,5 +1,7 @@
 package db.models;
 
+import app.core.SQLModel;
+
 public class Review implements SQLModel {
 
     private int ID;

@@ -1,6 +1,5 @@
 package app.controllers;
 
-import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ResourceBundle;
 import java.net.URL;
@@ -9,13 +8,9 @@ import app.ui.AccessoryDisplay;
 import app.ui.CarDisplay;
 import app.ui.SearchDisplay;
 import app.utils.ModalUtil;
-import app.utils.Resource;
+import app.core.Resource;
 import app.utils.Session;
 import app.utils.StageUtil;
-import db.models.User;
-import javafx.concurrent.Task;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,8 +19,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 
 /**
@@ -61,10 +54,14 @@ public class MainController implements Initializable {
     private TextField searchField;
 
     @FXML
+    private ToolBar toolbar;
+
+    @FXML
     public void initialize(URL location, ResourceBundle rb){
 
         displayCars();
-        adminButton.setVisible(false);
+        toolbar.getItems().remove(2);
+
         searchField.textProperty().addListener((ob, ov, nv) -> {
 
             search();
@@ -90,7 +87,7 @@ public class MainController implements Initializable {
             });
 
             if(session.getUser().isAdmin()){
-                adminButton.setVisible(true);
+                toolbar.getItems().add(2, adminButton);
             }
 
             registerButton.setVisible(false);

@@ -1,7 +1,9 @@
 package db.models;
 
 
-public class Car extends StoreItem{
+import app.core.StoreItem;
+
+public class Car extends StoreItem {
 
     private int reviewID;
     private String make;

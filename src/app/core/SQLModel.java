@@ -1,4 +1,4 @@
-package db.models;
+package app.core;
 
 
 public interface SQLModel {

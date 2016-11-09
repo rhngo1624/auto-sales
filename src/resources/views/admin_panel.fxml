@@ -7,7 +7,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="707.0" style="-fx-background-color: #49595E;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="707.0" style="-fx-background-color: #49595E;" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.AdministrationController">
    <top>
       <HBox prefHeight="42.0" prefWidth="600.0" style="-fx-background-color: #4C4E4F;" BorderPane.alignment="CENTER">
          <children>
@@ -38,27 +38,27 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </Label>
-            <Label prefHeight="31.0" prefWidth="143.0" text="adminName" textFill="#84ffc4" />
+            <Label fx:id="adminNameLabel" prefHeight="31.0" prefWidth="143.0" text="adminName" textFill="#84ffc4" />
          </children>
       </HBox>
    </bottom>
    <right>
       <VBox alignment="TOP_CENTER" prefHeight="315.0" prefWidth="176.0" spacing="10.0" style="-fx-background-color: #49595A;" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="152.0" text="Users">
+            <Button fx:id="usersButton" onAction="#showUsers" mnemonicParsing="false" prefHeight="27.0" prefWidth="152.0" text="Users">
                <VBox.margin>
                   <Insets top="10.0" />
                </VBox.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="152.0" text="Cars" />
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="155.0" text="Accessories" />
-            <Button mnemonicParsing="false" text="Financial Applications" />
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="152.0" text="Transactions" />
+            <Button fx:id="carsButton" onAction="#showCars" mnemonicParsing="false" prefHeight="27.0" prefWidth="152.0" text="Cars" />
+            <Button fx:id="accessoriesButton" onAction="#showAccessories" mnemonicParsing="false" prefHeight="27.0" prefWidth="155.0" text="Accessories" />
+            <Button fx:id="financialAppButton" onAction="#showFinancialApps" mnemonicParsing="false" text="Financial Applications" />
+            <Button fx:id="transactionsButton" onAction="#showTransactions" mnemonicParsing="false" prefHeight="27.0" prefWidth="152.0" text="Transactions" />
          </children>
       </VBox>
    </right>
    <left>
-      <VBox alignment="TOP_CENTER" prefHeight="368.0" prefWidth="105.0" spacing="10.0" style="-fx-background-color: #49595A;" BorderPane.alignment="TOP_CENTER">
+      <VBox alignment="TOP_CENTER" prefHeight="368.0" prefWidth="74.0" spacing="10.0" style="-fx-background-color: #49595A;" BorderPane.alignment="TOP_CENTER">
          <children>
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="109.0" text="Toolbar" textFill="WHITE">
                <font>
@@ -68,7 +68,7 @@
                   <Insets top="5.0" />
                </VBox.margin>
             </Label>
-            <Button mnemonicParsing="false" prefHeight="6.0" prefWidth="43.0">
+            <Button fx:id="addButton" mnemonicParsing="false" prefHeight="6.0" prefWidth="43.0" styleClass="toolbar_button">
                <VBox.margin>
                   <Insets left="5.0" right="5.0" />
                </VBox.margin>
@@ -80,7 +80,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="6.0" prefWidth="43.0">
+            <Button fx:id="deleteButton" mnemonicParsing="false" prefHeight="6.0" prefWidth="43.0" styleClass="toolbar_button">
                <VBox.margin>
                   <Insets left="5.0" right="5.0" />
                </VBox.margin>
@@ -92,7 +92,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="6.0" prefWidth="43.0">
+            <Button fx:id="editButton" mnemonicParsing="false" prefHeight="6.0" prefWidth="43.0" styleClass="toolbar_button">
                <VBox.margin>
                   <Insets left="5.0" right="5.0" />
                </VBox.margin>
@@ -111,6 +111,6 @@
       </VBox>
    </left>
    <center>
-      <ListView prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #49595E;" BorderPane.alignment="CENTER" />
+      <ScrollPane fx:id="scrollPane" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #49595E;" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

@@ -1,15 +1,7 @@
 package app.utils;
 
 
-import java.sql.SQLException;
-
-import db.models.Accessory;
-import db.models.Car;
-import db.models.SQLModel;
-import db.models.StoreItem;
-import db.tables.Accessories;
-import db.tables.Cars;
-import javafx.collections.FXCollections;
+import app.core.StoreItem;
 import javafx.collections.ObservableList;
 
 public class Analytics {
