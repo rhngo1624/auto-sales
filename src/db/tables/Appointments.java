@@ -7,7 +7,6 @@ import java.sql.Statement;
 
 import app.core.SQLTable;
 import db.models.Appointment;
-import app.core.SQLModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -17,12 +16,12 @@ import javafx.collections.ObservableList;
  * @author RN 11 / 6 / 2016
  *
  */
-public class Appointments implements SQLTable {
+public class Appointments implements SQLTable<Appointment> {
 
-  public ObservableList<SQLModel> getAllRows() throws SQLException {
+  public ObservableList<Appointment> getAllRows() throws SQLException {
     
     String query = "SELECT * FROM Appointments";
-    ObservableList<SQLModel> data = FXCollections.observableArrayList();
+    ObservableList<Appointment> data = FXCollections.observableArrayList();
     Appointment appointment;
     
     try (
@@ -54,7 +53,7 @@ public class Appointments implements SQLTable {
     
   }
   
-  public SQLModel getModel(int id) throws SQLException {
+  public Appointment getModel(int id) throws SQLException {
     
     String query = "SELECT * FROM Appointments WHERE ID = ?";
     ResultSet rs;
@@ -78,7 +77,7 @@ public class Appointments implements SQLTable {
         int carID = rs.getInt("CarID");
         int userID = rs.getInt("UserID");
         
-        SQLModel appointment = new Appointment(appointmentID, appointmentType,
+        Appointment appointment = new Appointment(appointmentID, appointmentType,
                                                carID, userID);
         
         appointment.setID(rs.getInt("ID"));
@@ -101,7 +100,7 @@ public class Appointments implements SQLTable {
     
   }
   
-  public boolean insertModel(SQLModel model) throws Exception {
+  public boolean insertModel(Appointment model) throws Exception {
     
     String query = "INSERT into Appointments (AppointmentID, " +
         "AppointmentType, Date, Time, CarID, UserID) " +
@@ -114,12 +113,12 @@ public class Appointments implements SQLTable {
                                                Statement.RETURN_GENERATED_KEYS)
     ) {
       
-      stmt.setInt(1, ((Appointment)model).getAppointmentID());
-      stmt.setInt(2, ((Appointment)model).getAppointmentType());
-      // stmt.set//(3, ((Appointment)model).getDate());
-      // stmt.set//(4, ((Appointment)model).getTime());
-      stmt.setInt(5, ((Appointment)model).getCarID());
-      stmt.setInt(6, ((Appointment)model).getUserID());
+      stmt.setInt(1, model.getAppointmentID());
+      stmt.setInt(2, model.getAppointmentType());
+      // stmt.set//(3, model.getDate());
+      // stmt.set//(4, model.getTime());
+      stmt.setInt(5, model.getCarID());
+      stmt.setInt(6, model.getUserID());
       
       int affectedRows = stmt.executeUpdate();
       
@@ -156,7 +155,7 @@ public class Appointments implements SQLTable {
     
   }
   
-  public boolean updateModel(SQLModel model) throws Exception {
+  public boolean updateModel(Appointment model) throws Exception {
     
     String query = "UPDATE Appointments SET " +
         "AppointmentID = ?, AppointmentType = ?, Date = ?, Time = ?, " + 
@@ -164,12 +163,12 @@ public class Appointments implements SQLTable {
     
     try (PreparedStatement stmt = CONN.prepareStatement(query)) {
         
-        stmt.setInt(1, ((Appointment)model).getAppointmentID());
-        stmt.setInt(2, ((Appointment)model).getAppointmentType());
-        // stmt.set//(3, ((Appointment)model).getDate());
-        // stmt.set//(4, ((Appointment)model).getTime());
-        stmt.setInt(5, ((Appointment)model).getCarID());
-        stmt.setInt(6, ((Appointment)model).getUserID());
+        stmt.setInt(1, model.getAppointmentID());
+        stmt.setInt(2, model.getAppointmentType());
+        // stmt.set//(3, model.getDate());
+        // stmt.set//(4, model.getTime());
+        stmt.setInt(5, model.getCarID());
+        stmt.setInt(6, model.getUserID());
         
         int affectedRows = stmt.executeUpdate();
         
