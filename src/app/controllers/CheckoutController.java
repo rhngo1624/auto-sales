@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import app.ui.CartItem;
+import app.ui.items.CartItem;
 import app.utils.ModalUtil;
 import app.core.Resource;
 import app.utils.Session;

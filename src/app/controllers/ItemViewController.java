@@ -4,8 +4,8 @@ package app.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import app.ui.SelectedItemPane;
-import app.ui.StoreItemPane;
+import app.ui.items.SelectedItemPane;
+import app.ui.items.StoreItemPane;
 import app.utils.ModalUtil;
 import app.utils.Session;
 import db.models.Accessory;

@@ -4,9 +4,9 @@ import java.io.IOException;
 import java.util.ResourceBundle;
 import java.net.URL;
 
-import app.ui.AccessoryDisplay;
-import app.ui.CarDisplay;
-import app.ui.SearchDisplay;
+import app.ui.display.AccessoryDisplay;
+import app.ui.display.CarDisplay;
+import app.ui.display.SearchDisplay;
 import app.utils.ModalUtil;
 import app.core.Resource;
 import app.utils.Session;

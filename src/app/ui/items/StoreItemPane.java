@@ -1,4 +1,4 @@
-package app.ui;
+package app.ui.items;
 
 import app.utils.ModalUtil;
 import app.core.Resource;

@@ -1,4 +1,4 @@
-package app.ui;
+package app.ui.items;
 
 
 import app.controllers.CheckoutController;

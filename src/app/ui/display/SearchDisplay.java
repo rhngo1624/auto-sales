@@ -1,9 +1,10 @@
-package app.ui;
+package app.ui.display;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 import app.core.Display;
+import app.ui.items.StoreItemPane;
 import db.models.Accessory;
 import db.models.Car;
 import app.core.SQLModel;

@@ -1,4 +1,4 @@
-package app.ui;
+package app.ui.tableview;
 
 
 import com.sun.istack.internal.Nullable;

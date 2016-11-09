@@ -1,10 +1,11 @@
-package app.ui;
+package app.ui.display;
 
 import java.sql.SQLException;
 
 import app.core.Display;
 import app.core.SQLModel;
 import app.core.StoreItem;
+import app.ui.items.StoreItemPane;
 import db.tables.Cars;
 import app.core.SQLTable;
 import javafx.collections.ObservableList;
