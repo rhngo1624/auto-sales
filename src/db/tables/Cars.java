@@ -118,13 +118,13 @@ public class Cars extends SQLTable<Car> {
 
         String query = "UPDATE Cars SET " +
                 "Make = ?, Model = ?, Year = ?, FuelEconomy = ?, Transmission = ?, " +
-                "TotalSeating = ?, DoorAmount = ?, EngineType = ?, Rating = ?, ReviewID = ?, " +
+                "TotalSeating = ?, DoorAmount = ?, EngineType = ?, Rating = ?, " +
                 "Price = ?, ImageLocation = ? WHERE ID = ?";
 
         try(PreparedStatement stmt = CONN.prepareStatement(query)){
 
             setProperties(stmt, model);
-            stmt.setInt(13, model.getID());
+            stmt.setInt(12, model.getID());
 
             int affectedRows = stmt.executeUpdate();
 
@@ -174,9 +174,8 @@ public class Cars extends SQLTable<Car> {
             stmt.setInt(7, model.getDoorAmount());
             stmt.setString(8, model.getEngineType());
             stmt.setInt(9, model.getRating());
-            stmt.setInt(10, model.getReviewID());
-            stmt.setDouble(11, model.getPrice());
-            stmt.setString(12, model.getImageLocation());
+            stmt.setDouble(10, model.getPrice());
+            stmt.setString(11, model.getImageLocation());
 
         }catch(SQLException e){
             System.err.println(e.getMessage());

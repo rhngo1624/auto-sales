@@ -5,7 +5,6 @@ import app.core.StoreItem;
 
 public class Car extends StoreItem {
 
-    private int reviewID;
     private String make;
     private String model;
     private int year;
@@ -22,14 +21,6 @@ public class Car extends StoreItem {
         setModel(model);
         setYear(year);
         setName(this.make + " " + this.model + " " + this.year);
-    }
-
-    public int getReviewID() {
-        return reviewID;
-    }
-
-    public void setReviewID(int reviewID) {
-        this.reviewID = reviewID;
     }
 
     public String getMake() {
