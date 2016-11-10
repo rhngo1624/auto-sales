@@ -137,31 +137,6 @@ public class Cars extends SQLTable<Car> {
 
     }
 
-    private String[] getReviews(int id){
-
-        Reviews reviewsTable = new Reviews();
-        String[] reviewContents = new String[20];
-        int count = 0;
-        try{
-
-            for(Review review : reviewsTable.getModels(id)){
-                if(count >= 20){
-                    break;
-                }
-
-                reviewContents[count] = review.getContents();
-                count++;
-
-            }
-        }catch(SQLException e){
-            e.getMessage();
-            return null;
-        }
-
-        return reviewContents;
-
-    }
-
     private void setProperties(PreparedStatement stmt, Car model){
         try{
 

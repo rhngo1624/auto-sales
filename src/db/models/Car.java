@@ -1,9 +1,10 @@
 package db.models;
 
 
+import app.core.SQLModel;
 import app.core.StoreItem;
 
-public class Car extends StoreItem {
+public class Car extends StoreItem implements SQLModel {
 
     private String make;
     private String model;
@@ -85,14 +86,6 @@ public class Car extends StoreItem {
 
     public void setEngineType(String engineType) {
         this.engineType = engineType;
-    }
-
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
     }
 
     public String[] getReviews() {

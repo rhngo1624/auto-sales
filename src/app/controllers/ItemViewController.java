@@ -4,6 +4,7 @@ package app.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import app.core.Resource;
 import app.ui.items.SelectedItemPane;
 import app.ui.items.StoreItemPane;
 import app.utils.ModalUtil;
@@ -162,11 +163,12 @@ public class ItemViewController implements Initializable {
 
 
     public void  viewReviews(){
-
+        ModalUtil.setupAndShow(Resource.REVIEWS, "Reviews");
     }
 
     public void writeReview(){
 
+        ModalUtil.setupAndShow(Resource.WRITE_REVIEW, "Write Review");
 
     }
 

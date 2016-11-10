@@ -1,9 +1,10 @@
 package db.models;
 
 
+import app.core.SQLModel;
 import app.core.StoreItem;
 
-public class Accessory extends StoreItem {
+public class Accessory extends StoreItem implements SQLModel {
 
     private String description;
 

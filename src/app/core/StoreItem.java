@@ -1,15 +1,20 @@
 package app.core;
 
+import java.sql.SQLException;
 import java.text.NumberFormat;
+import java.util.ArrayList;
 
 import app.core.SQLModel;
+import db.models.Review;
 import db.tables.Accessories;
 import db.tables.Cars;
 import app.core.SQLTable;
+import db.tables.Reviews;
 
 public abstract class StoreItem implements SQLModel {
 
     private int ID;
+    private int rating;
     private String name;
     private double price;
     private String imageLocation;
@@ -72,5 +77,14 @@ public abstract class StoreItem implements SQLModel {
         }
 
     }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
 
 }

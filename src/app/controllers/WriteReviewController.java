@@ -12,7 +12,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 
-public class ReviewController implements Initializable {
+public class WriteReviewController implements Initializable {
 
     @FXML
     private Label typeLabel;

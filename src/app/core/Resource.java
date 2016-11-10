@@ -14,4 +14,6 @@ public interface Resource {
     URL CHECKOUT = System.class.getResource(RESOURCE_PATH + "checkout.fxml");
     URL ITEMVIEW = System.class.getResource(RESOURCE_PATH + "item_view.fxml");
     URL ADMIN = System.class.getResource(RESOURCE_PATH + "admin_panel.fxml");
+    URL REVIEWS = System.class.getResource(RESOURCE_PATH + "reviews.fxml");
+    URL WRITE_REVIEW = System.class.getResource(RESOURCE_PATH + "write_review.fxml");
 }

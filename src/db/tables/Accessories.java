@@ -91,8 +91,8 @@ public class Accessories extends SQLTable<Accessory> {
      */
     public boolean insert(Accessory model) {
 
-        String query = "INSERT into Accessories (Name, Price, ImageLocation, Description) " +
-                "VALUES (?, ?, ?, ?)";
+        String query = "INSERT into Accessories (Name, Price, ImageLocation, Description, Rating) " +
+                "VALUES (?, ?, ?, ?, ?)";
 
         try(
                 PreparedStatement stmt = CONN.prepareStatement(query)
@@ -117,12 +117,12 @@ public class Accessories extends SQLTable<Accessory> {
     public boolean update(Accessory model){
 
         String query = "UPDATE Accessories SET Name = ?, Price = ?, ImageLocation = ?, " +
-                "Description = ? WHERE ID = ?";
+                "Description = ?, Rating = ? WHERE ID = ?";
 
         try(PreparedStatement stmt = CONN.prepareStatement(query)){
 
             setProperties(stmt, model);
-            stmt.setInt(5, model.getID());
+            stmt.setInt(6, model.getID());
 
             int affectedRows = stmt.executeUpdate();
 
@@ -142,6 +142,7 @@ public class Accessories extends SQLTable<Accessory> {
             stmt.setDouble(2, model.getPrice());
             stmt.setString(3, model.getImageLocation());
             stmt.setString(4, model.getDescription());
+            stmt.setInt(5, model.getRating());
         }catch(SQLException e){
             System.err.println(e.getMessage());
         }
@@ -159,6 +160,7 @@ public class Accessories extends SQLTable<Accessory> {
 
             accessory.setID(rs.getInt("ID"));
             accessory.setDescription(rs.getString("Description"));
+            accessory.setRating(rs.getInt("Rating"));
             return accessory;
         }catch(SQLException e){
             System.err.println(e.getMessage());

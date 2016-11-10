@@ -20,7 +20,7 @@ public class Reviews extends SQLTable<Review> {
     public Review get(int id){
         return null;
     }
-    public ArrayList<Review> getModels(int id) throws SQLException{
+    public ArrayList<Review> getModels(int id) {
         ArrayList<Review> reviews = new ArrayList<>();
         String query = "SELECT * FROM Reviews WHERE ID = ?";
         ResultSet rs;
@@ -41,6 +41,7 @@ public class Reviews extends SQLTable<Review> {
                 review.setID(id);
                 review.setContents(rs.getString("Content"));
                 review.setRating(rs.getInt("Rating"));
+                review.setShowName(rs.getBoolean("ShowName"));
                 reviews.add(review);
 
             }
@@ -60,5 +61,6 @@ public class Reviews extends SQLTable<Review> {
     public boolean update(Review model){
         return true;
     }
+
 
 }
