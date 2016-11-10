@@ -17,7 +17,7 @@ public class Car extends StoreItem implements SQLModel {
     private int doorAmount;
     private String engineType;
     private int rating;
-    private ArrayList<String> reviews;
+    private ArrayList<Review> reviews;
 
     public Car(String make, String model, int year){
         setMake(make);
@@ -90,11 +90,11 @@ public class Car extends StoreItem implements SQLModel {
         this.engineType = engineType;
     }
 
-    public ArrayList<String> getReviews() {
+    public ArrayList<Review> getReviews() {
         return reviews;
     }
 
-    public void setReviews(ArrayList<String> reviews) {
+    public void setReviews(ArrayList<Review> reviews) {
         this.reviews = reviews;
     }
 

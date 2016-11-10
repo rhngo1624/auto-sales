@@ -174,7 +174,7 @@ public class Cars extends SQLTable<Car> {
             car.setDoorAmount(rs.getInt("DoorAmount"));
             car.setEngineType(rs.getString("EngineType"));
             car.setRating(rs.getInt("Rating"));
-            car.setReviews(getReviews(car.getID()));
+            car.setReviews(new Reviews().getModels(car.getID()));
             car.setPrice(rs.getDouble("Price"));
             car.setImageLocation(rs.getString("ImageLocation"));
 
