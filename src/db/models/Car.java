@@ -1,6 +1,8 @@
 package db.models;
 
 
+import java.util.ArrayList;
+
 import app.core.SQLModel;
 import app.core.StoreItem;
 
@@ -15,7 +17,7 @@ public class Car extends StoreItem implements SQLModel {
     private int doorAmount;
     private String engineType;
     private int rating;
-    private String[] reviews;
+    private ArrayList<String> reviews;
 
     public Car(String make, String model, int year){
         setMake(make);
@@ -88,11 +90,11 @@ public class Car extends StoreItem implements SQLModel {
         this.engineType = engineType;
     }
 
-    public String[] getReviews() {
+    public ArrayList<String> getReviews() {
         return reviews;
     }
 
-    public void setReviews(String[] reviews) {
+    public void setReviews(ArrayList<String> reviews) {
         this.reviews = reviews;
     }
 
