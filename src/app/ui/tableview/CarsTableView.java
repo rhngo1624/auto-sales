@@ -17,7 +17,7 @@ public class CarsTableView extends TableView<Car> {
     public CarsTableView(){
 
         setupColumns();
-        setItems(getCars());
+        setItems(new Cars().getAllRows());
 
     }
 
@@ -43,25 +43,5 @@ public class CarsTableView extends TableView<Car> {
         getColumns().add(2, Model);
         getColumns().add(3, Year);
     }
-
-    private ObservableList<Car> getCars(){
-        ObservableList<Car> Cars = FXCollections.observableArrayList();
-
-        try{
-
-            for(SQLModel c : new Cars().getAllRows()){
-                Car Car = (Car) c;
-                Cars.add(Car);
-            }
-
-        }catch(SQLException e){
-            System.out.println(e.getMessage());
-            return null;
-        }
-
-        return Cars;
-
-    }
-
 
 }

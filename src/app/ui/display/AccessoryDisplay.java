@@ -16,17 +16,7 @@ public class AccessoryDisplay extends Display {
 
         tilePane.getChildren().clear();
 
-        SQLTable table = new Accessories();
-        ObservableList<SQLModel> rows = null;
-
-        try{
-            rows = table.getAllRows();
-        }catch(SQLException e){
-            System.out.println(e.getMessage());
-            System.exit(-1);
-        }
-
-        for(SQLModel model : rows){
+        for(SQLModel model : new Accessories().getAllRows()){
 
             StoreItemPane pane = new StoreItemPane((StoreItem)model);
             tilePane.getChildren().add(pane);

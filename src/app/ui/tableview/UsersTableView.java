@@ -19,7 +19,7 @@ public class UsersTableView extends TableView<User> {
     public UsersTableView(){
 
         setupColumns();
-        setItems(getUsers());
+        setItems(new Users().getAllRows());
 
     }
 
@@ -39,25 +39,6 @@ public class UsersTableView extends TableView<User> {
         getColumns().add(0, ID);
         getColumns().add(1, username);
         getColumns().add(2, admin);
-    }
-
-    private ObservableList<User> getUsers(){
-        ObservableList<User> users = FXCollections.observableArrayList();
-
-        try{
-
-            for(SQLModel u : new Users().getAllRows()){
-                User user = (User) u;
-                users.add(user);
-            }
-
-        }catch(SQLException e){
-            System.out.println(e.getMessage());
-            return null;
-        }
-
-        return users;
-
     }
 
 

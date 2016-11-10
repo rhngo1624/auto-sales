@@ -17,7 +17,7 @@ public class AccessoriesTableView extends TableView<Accessory> {
     public AccessoriesTableView(){
 
         setupColumns();
-        setItems(getAccessories());
+        setItems(new Accessories().getAllRows());
 
     }
 
@@ -35,21 +35,6 @@ public class AccessoriesTableView extends TableView<Accessory> {
 
         getColumns().add(0, ID);
         getColumns().add(1, Name);
-    }
-
-    private ObservableList<Accessory> getAccessories(){
-
-        ObservableList<Accessory> accessories = FXCollections.observableArrayList();
-
-
-        for(SQLModel c : new Accessories().getAllRows()){
-            Accessory Accessory = (Accessory) c;
-            accessories.add(Accessory);
-        }
-
-
-        return accessories;
-
     }
 
 }
