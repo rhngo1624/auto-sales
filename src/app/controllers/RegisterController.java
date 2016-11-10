@@ -63,13 +63,7 @@ public class RegisterController implements Initializable {
             newUser.setZipcode(zipCodeField.getText());
             newUser.setPhone(phoneField.getText());
 
-            try{
-                table.insertModel(newUser);
-            }catch(Exception e){
-                System.out.println(e.getMessage());
-                ModalUtil.showWarning("Registration has encountered an issue.");
-            }
-
+            table.insert(newUser);
 
         }else{
 
