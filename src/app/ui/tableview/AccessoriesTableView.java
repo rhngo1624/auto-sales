@@ -38,19 +38,15 @@ public class AccessoriesTableView extends TableView<Accessory> {
     }
 
     private ObservableList<Accessory> getAccessories(){
+
         ObservableList<Accessory> accessories = FXCollections.observableArrayList();
 
-        try{
 
-            for(SQLModel c : new Accessories().getAllRows()){
-                Accessory Accessory = (Accessory) c;
-                accessories.add(Accessory);
-            }
-
-        }catch(SQLException e){
-            System.out.println(e.getMessage());
-            return null;
+        for(SQLModel c : new Accessories().getAllRows()){
+            Accessory Accessory = (Accessory) c;
+            accessories.add(Accessory);
         }
+
 
         return accessories;
 

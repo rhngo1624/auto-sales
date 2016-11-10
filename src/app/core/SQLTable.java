@@ -5,6 +5,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+
 import app.core.SQLModel;
 import javafx.collections.ObservableList;
 
@@ -38,31 +40,6 @@ public abstract class SQLTable <T> {
 
     }
 
-    protected static void assignNextID(ResultSet genKeys, SQLModel model){
 
-        if(genKeys != null){
-
-            try{
-
-                genKeys.next();
-                int newKey = genKeys.getInt(1);
-                model.setID(newKey);
-
-            }catch(SQLException e){
-                System.err.println(e.getMessage());
-
-            }
-        }
-    }
-
-    protected static void closeKeys(ResultSet keys){
-        try{
-            if(keys != null){
-                keys.close();
-            }
-        }catch(SQLException e){
-            System.err.println(e.getMessage());
-        }
-    }
 
 }

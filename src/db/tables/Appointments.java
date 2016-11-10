@@ -22,7 +22,6 @@ public class Appointments extends SQLTable<Appointment> {
     
     String query = "SELECT * FROM Appointments";
     ObservableList<Appointment> data = FXCollections.observableArrayList();
-    Appointment appointment;
     
     try (
         Statement stmt = CONN.createStatement();
@@ -30,21 +29,9 @@ public class Appointments extends SQLTable<Appointment> {
     ) {
       
       while (rs.next()) {
-        
-        int appointmentID = rs.getInt("AppointmentID");
-        int appointmentType = rs.getInt("AppointmentType");
-        // // date = rs.get//("Date");
-        // // time = rs.get//("Time");
-        int carID = rs.getInt("CarID");
-        int userID = rs.getInt("UserID");
-        
-        appointment = new Appointment(appointmentID, appointmentType,
-                                      carID, userID);
-        
-        appointment.setID(rs.getInt("ID"));
-        // appointment.setNotes(rs.getString("Notes")); (?)
-        
-        data.add(appointment);
+
+          data.add(makeAppointment(rs));
+
       }
       
     }catch(SQLException e){
@@ -72,20 +59,7 @@ public class Appointments extends SQLTable<Appointment> {
       
       if (rs.next()) {
         
-        int appointmentID = rs.getInt("AppointmentID");
-        int appointmentType = rs.getInt("AppointmentType");
-        // // date = rs.get//("Date");
-        // // time = rs.get//("Time");
-        int carID = rs.getInt("CarID");
-        int userID = rs.getInt("UserID");
-        
-        Appointment appointment = new Appointment(appointmentID, appointmentType,
-                                               carID, userID);
-        
-        appointment.setID(rs.getInt("ID"));
-        // ((Appointment)appointment).setNotes(rs.getString("Notes")); (?)
-        
-        return appointment;
+          return makeAppointment(rs);
         
       } else {
         
@@ -107,47 +81,25 @@ public class Appointments extends SQLTable<Appointment> {
     String query = "INSERT into Appointments (AppointmentID, " +
         "AppointmentType, Date, Time, CarID, UserID) " +
         "VALUES (?, ?, ?, ?, ?, ?)";
-    
-    ResultSet keys = null;
+
     
     try (
       PreparedStatement stmt = CONN.prepareStatement(query,
                                                Statement.RETURN_GENERATED_KEYS)
     ) {
       
-      stmt.setInt(1, model.getAppointmentID());
-      stmt.setInt(2, model.getAppointmentType());
-      // stmt.set//(3, model.getDate());
-      // stmt.set//(4, model.getTime());
-      stmt.setInt(5, model.getCarID());
-      stmt.setInt(6, model.getUserID());
+      setProperties(stmt, model);
       
       int affectedRows = stmt.executeUpdate();
       
-      if (affectedRows == 1) {
-        
-        keys = stmt.getGeneratedKeys();
-        SQLTable.assignNextID(keys, model);
-        
-      } else {
-        
-        System.err.println("No rows affected.");
-        return false;
-        
-      }
+      return affectedRows == 1;
       
     } catch (SQLException ex) {
       
       System.err.println(ex.getMessage());
       return false;
       
-    } finally {
-      
-      SQLTable.closeKeys(keys);
-      
     }
-    
-    return true;
     
   }
   
@@ -159,12 +111,8 @@ public class Appointments extends SQLTable<Appointment> {
     
     try (PreparedStatement stmt = CONN.prepareStatement(query)) {
         
-        stmt.setInt(1, model.getAppointmentID());
-        stmt.setInt(2, model.getAppointmentType());
-        // stmt.set//(3, model.getDate());
-        // stmt.set//(4, model.getTime());
-        stmt.setInt(5, model.getCarID());
-        stmt.setInt(6, model.getUserID());
+        setProperties(stmt, model);
+        stmt.setInt(7, model.getID());
         
         int affectedRows = stmt.executeUpdate();
         
@@ -177,6 +125,42 @@ public class Appointments extends SQLTable<Appointment> {
         
       }
     
+  }
+
+  private void setProperties(PreparedStatement stmt, Appointment model){
+
+      try{
+          stmt.setInt(1, model.getAppointmentID());
+          stmt.setInt(2, model.getAppointmentType());
+          // stmt.set//(3, model.getDate());
+          // stmt.set//(4, model.getTime());
+          stmt.setInt(5, model.getCarID());
+          stmt.setInt(6, model.getUserID());
+      }catch(SQLException e){
+          System.err.println(e.getMessage());
+      }
+
+  }
+
+  private Appointment makeAppointment(ResultSet rs){
+      try{
+          int appointmentID = rs.getInt("AppointmentID");
+          int appointmentType = rs.getInt("AppointmentType");
+          // // date = rs.get//("Date");
+          // // time = rs.get//("Time");
+          int carID = rs.getInt("CarID");
+          int userID = rs.getInt("UserID");
+
+          Appointment appointment = new Appointment(appointmentID, appointmentType,
+                  carID, userID);
+
+          appointment.setID(rs.getInt("ID"));
+          // ((Appointment)appointment).setNotes(rs.getString("Notes")); (?)
+          return appointment;
+      }catch(SQLException e){
+          System.err.println(e.getMessage());
+          return null;
+      }
   }
   
 }

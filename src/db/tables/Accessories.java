@@ -16,31 +16,21 @@ public class Accessories extends SQLTable<Accessory> {
     /**
      * Returns Accessory Objects
      * @return ObservableList<SQLModel>
-     * @throws SQLException
+     *
      */
     public ObservableList<Accessory> getAllRows(){
 
         String query = "SELECT * FROM Accessories";
         ObservableList<Accessory> data = FXCollections.observableArrayList();
-        Accessory accessory;
 
         try(
                 Statement stmt = CONN.createStatement();
-                ResultSet rs = stmt.executeQuery(query);
+                ResultSet rs = stmt.executeQuery(query)
         ){
 
             while(rs.next()) {
 
-                String name = rs.getString("Name");
-                double price = rs.getDouble("Price");
-                String imageLocation = rs.getString("ImageLocation");
-
-                accessory = new Accessory(name, price, imageLocation);
-
-                accessory.setID(rs.getInt("ID"));
-                accessory.setDescription(rs.getString("Description"));
-
-                data.add(accessory);
+                data.add(makeAccessory(rs));
 
             }
 
@@ -54,10 +44,10 @@ public class Accessories extends SQLTable<Accessory> {
     }
 
     /**
-     * Retuns single Accessory object from database.
+     * Returns single Accessory object from database.
      * @param id ID of Accessory to get
      * @return SQLModel
-     * @throws SQLException
+     *
      */
     public Accessory get(int id){
 
@@ -75,16 +65,7 @@ public class Accessories extends SQLTable<Accessory> {
 
             if(rs.next()){
 
-                String name = rs.getString("Name");
-                double price = rs.getDouble("Price");
-                String imageLocation = rs.getString("ImageLocation");
-
-                Accessory accessory = new Accessory(name, price, imageLocation);
-
-                accessory.setID(rs.getInt("ID"));
-                accessory.setDescription(rs.getString("Description"));
-
-                return accessory;
+                return makeAccessory(rs);
 
             }else{
 
@@ -106,52 +87,31 @@ public class Accessories extends SQLTable<Accessory> {
      *
      * @param model Accessory object to insert.
      * @return true if successful, false otherwise.
-     * @throws Exception
+     *
      */
     public boolean insert(Accessory model) {
 
         String query = "INSERT into Accessories (Name, Price, ImageLocation, Description) " +
                 "VALUES (?, ?, ?, ?)";
 
-        ResultSet keys = null;
-
         try(
-                PreparedStatement stmt = CONN.prepareStatement(query,
-                        Statement.RETURN_GENERATED_KEYS)
+                PreparedStatement stmt = CONN.prepareStatement(query)
 
         ){
 
-            stmt.setString(1, model.getName());
-            stmt.setDouble(2, model.getPrice());
-            stmt.setString(3, model.getImageLocation());
-            stmt.setString(4, model.getDescription());
+            setProperties(stmt, model);
 
             int affectedRows = stmt.executeUpdate();
 
-            if(affectedRows == 1){
-
-                keys = stmt.getGeneratedKeys();
-                assignNextID(keys, model);
-
-            }else{
-
-                System.err.println("No rows affected.");
-                return false;
-
-            }
+            return affectedRows == 1;
 
         }catch (SQLException e){
 
             System.err.println(e.getMessage());
             return false;
 
-        } finally {
-
-            SQLTable.closeKeys(keys);
-
         }
 
-        return true;
 
     }
     public boolean update(Accessory model){
@@ -161,10 +121,7 @@ public class Accessories extends SQLTable<Accessory> {
 
         try(PreparedStatement stmt = CONN.prepareStatement(query)){
 
-            stmt.setString(1, model.getName());
-            stmt.setDouble(2, model.getPrice());
-            stmt.setString(3, model.getImageLocation());
-            stmt.setString(4, model.getDescription());
+            setProperties(stmt, model);
             stmt.setInt(5, model.getID());
 
             int affectedRows = stmt.executeUpdate();
@@ -174,6 +131,38 @@ public class Accessories extends SQLTable<Accessory> {
         }catch(SQLException e){
             System.err.println(e.getMessage());
             return false;
+        }
+
+    }
+
+    private void setProperties(PreparedStatement stmt, Accessory model){
+
+        try{
+            stmt.setString(1, model.getName());
+            stmt.setDouble(2, model.getPrice());
+            stmt.setString(3, model.getImageLocation());
+            stmt.setString(4, model.getDescription());
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+        }
+
+    }
+
+    private Accessory makeAccessory(ResultSet rs){
+
+        try{
+            String name = rs.getString("Name");
+            double price = rs.getDouble("Price");
+            String imageLocation = rs.getString("ImageLocation");
+
+            Accessory accessory = new Accessory(name, price, imageLocation);
+
+            accessory.setID(rs.getInt("ID"));
+            accessory.setDescription(rs.getString("Description"));
+            return accessory;
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+            return null;
         }
 
     }

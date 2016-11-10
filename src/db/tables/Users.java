@@ -11,7 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 
-public class Users implements SQLTable<User> {
+public class Users extends SQLTable<User> {
 
     private static final String adminCode = "autoadmin11";
     
@@ -19,14 +19,14 @@ public class Users implements SQLTable<User> {
 
         //get all users that match user/password combo
         String query = "SELECT * FROM Users WHERE USERNAME = ? AND PASSWORD = ?";
-        ResultSet rs = null;
+        ResultSet rs;
         int id;
 
         //try with resources
         try (
                 PreparedStatement stmt = CONN.prepareStatement(query,
                         ResultSet.TYPE_FORWARD_ONLY,
-                        ResultSet.CONCUR_READ_ONLY);) {
+                        ResultSet.CONCUR_READ_ONLY)) {
             
             stmt.setString(1, user);
             stmt.setString(2, pass); 
@@ -40,7 +40,7 @@ public class Users implements SQLTable<User> {
             }else{
                 
                 id = rs.getInt("ID");
-                return this.getModel(id);
+                return get(id);
             }
 
         }
@@ -50,13 +50,12 @@ public class Users implements SQLTable<User> {
     /**
      * Returns User Objects
      * @return ObservableList<User>
-     * @throws SQLException
+     *
      */
-    public ObservableList<User> getAllRows() throws SQLException{
+    public ObservableList<User> getAllRows(){
 
         String query = "SELECT * FROM Users";
         ObservableList<User> data = FXCollections.observableArrayList();
-        User user;
 
         try(
                 Statement stmt = CONN.createStatement();
@@ -65,17 +64,12 @@ public class Users implements SQLTable<User> {
 
             while(rs.next()) {
 
-                String username = rs.getString("Username");
-                boolean isAdmin = rs.getBoolean("Admin");
-
-                user = new User(username);
-                user.setAdminPriveleges(isAdmin);
-                user.setID(rs.getInt("ID"));
-
-                data.add(user);
+                data.add(makeUser(rs));
 
             }
 
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
         }
 
         return data;
@@ -86,9 +80,9 @@ public class Users implements SQLTable<User> {
      * Retuns single User object from database.
      * @param id ID of User to get
      * @return User
-     * @throws SQLException
+     *
      */
-    public User getModel(int id) throws SQLException{
+    public User get(int id){
 
         String query = "SELECT * FROM Users WHERE ID = ?";
         ResultSet rs;
@@ -104,15 +98,7 @@ public class Users implements SQLTable<User> {
 
             if(rs.next()){
 
-                String username = rs.getString("Username");
-                boolean isAdmin = rs.getBoolean("Admin");
-
-                User user = new User(username);
-
-                user.setID(rs.getInt("ID"));
-                user.setAdminPriveleges(isAdmin);
-
-                return user;
+                return makeUser(rs);
 
             }else{
 
@@ -134,14 +120,13 @@ public class Users implements SQLTable<User> {
      *
      * @param model User object to insert.
      * @return true if successful, false otherwise.
-     * @throws Exception
+     *
      */
-    public boolean insertModel(User model) throws Exception{
+    public boolean insert(User model){
 
         String query = "INSERT into Users (Username, Password, Admin) " +
                 "VALUES (?, ?, ?)";
 
-        ResultSet keys = null;
 
         try(
                 PreparedStatement stmt = CONN.prepareStatement(query,
@@ -149,97 +134,34 @@ public class Users implements SQLTable<User> {
 
         ){
 
-            stmt.setString(1, model.getUsername());
-            stmt.setString(2, model.getPassword());
-            stmt.setBoolean(3, model.isAdmin());
 
+            setProperties(stmt, model);
             int affectedRows = stmt.executeUpdate();
 
-            if(affectedRows == 1){
-
-                keys = stmt.getGeneratedKeys();
-                keys.next();
-
-                int newKey = keys.getInt(1);
-
-                model.setID(newKey);
-
-            }else{
-
-                System.err.println("No rows affected.");
-                return false;
-
-            }
+            return affectedRows == 1;
 
         }catch (SQLException e){
 
             System.err.println(e.getMessage());
             return false;
 
-        } finally {
-
-            if(keys != null){
-                keys.close();
-            }
-
         }
 
-        return true;
-
     }
-    public boolean updateModel(User model) throws Exception{
+    public boolean update(User model){
 
         String query = "UPDATE Users SET Username = ?, Password = ?, Admin = ? WHERE ID = ?";
 
         try(PreparedStatement stmt = CONN.prepareStatement(query)){
 
-            stmt.setString(1, model.getUsername());
-            stmt.setString(2,model.getPassword());
-            stmt.setBoolean(3, model.isAdmin());
+            setProperties(stmt, model);
 
             int affectedRows = stmt.executeUpdate();
 
-            if(affectedRows == 1){
-                return true;
-            }else{
-                return false;
-            }
+            return affectedRows == 1;
 
         }catch(SQLException e){
             System.err.println(e.getMessage());
-            return false;
-        }
-
-    }
-    public boolean deleteModel(int id) throws Exception{
-
-       String query = "DELETE FROM Users WHERE ID = ?";
-
-        ResultSet keys = null;
-
-        try(PreparedStatement stmt = CONN.prepareStatement(query)){
-
-            stmt.setInt(1, id);
-            stmt.execute();
-
-        }catch(SQLException e){
-            System.err.println(e.getMessage());
-            return false;
-        } finally {
-            if(keys != null){
-                keys.close();
-            }
-        }
-
-        return true;
-
-    }
-    public boolean modelExists(int id){
-
-        try{
-            getModel(id);
-            return true;
-        } catch(Exception e){
             return false;
         }
 
@@ -251,13 +173,7 @@ public class Users implements SQLTable<User> {
 
     public boolean usernameExists(String username){
 
-        ObservableList<User> users = FXCollections.observableArrayList();
-
-        try{
-            users = getAllRows();
-        }catch(SQLException e){
-            System.exit(-1);
-        }
+        ObservableList<User> users = getAllRows();
 
         for(User user : users){
 
@@ -270,6 +186,32 @@ public class Users implements SQLTable<User> {
 
         return false;
 
+    }
+
+    private void setProperties(PreparedStatement stmt, User model){
+        try{
+            stmt.setString(1, model.getUsername());
+            stmt.setString(2, model.getPassword());
+            stmt.setBoolean(3, model.isAdmin());
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+        }
+    }
+
+    private User makeUser(ResultSet rs){
+        try{
+            String username = rs.getString("Username");
+            boolean isAdmin = rs.getBoolean("Admin");
+
+            User user = new User(username);
+
+            user.setID(rs.getInt("ID"));
+            user.setAdminPriveleges(isAdmin);
+            return user;
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+            return null;
+        }
     }
 
 

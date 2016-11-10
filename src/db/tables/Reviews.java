@@ -10,13 +10,14 @@ import db.models.Review;
 import javafx.collections.ObservableList;
 
 // TODO: adjust to fixed components in Reviews Table
+// TODO: refactor getModels
 
-public class Reviews implements SQLTable<Review> {
+public class Reviews extends SQLTable<Review> {
 
-    public ObservableList<Review> getAllRows() throws SQLException{
+    public ObservableList<Review> getAllRows(){
         return null;
     }
-    public Review getModel(int id) throws SQLException{
+    public Review get(int id){
         return null;
     }
     public ArrayList<Review> getModels(int id) throws SQLException{
@@ -53,16 +54,11 @@ public class Reviews implements SQLTable<Review> {
 
         return reviews;
     }
-    public boolean insertModel(Review model) throws Exception{
+    public boolean insert(Review model){
         return true;
     }
-    public boolean updateModel(Review model) throws Exception{
+    public boolean update(Review model){
         return true;
     }
-    public boolean deleteModel(int id) throws Exception{
-        return true;
-    }
-    public boolean modelExists(int id){
-        return true;
-    }
+
 }

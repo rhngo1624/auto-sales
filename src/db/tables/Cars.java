@@ -11,19 +11,17 @@ import db.models.Review;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Cars implements SQLTable<Car> {
-
+public class Cars extends SQLTable<Car> {
 
     /**
      * Returns Car Objects
      * @return ObservableList<Car>
      * @throws SQLException
      */
-    public ObservableList<Car> getAllRows() throws SQLException{
+    public ObservableList<Car> getAllRows(){
 
         String query = "SELECT * FROM Cars";
         ObservableList<Car> data = FXCollections.observableArrayList();
-        Car car;
 
         try(
                 Statement stmt = CONN.createStatement();
@@ -32,27 +30,11 @@ public class Cars implements SQLTable<Car> {
 
             while(rs.next()) {
 
-                String make = rs.getString("Make");
-                String model = rs.getString("Model");
-                int year = rs.getInt("Year");
-
-                car = new Car(make, model, year);
-
-                car.setID(rs.getInt("ID"));
-                car.setFuelEconomy(rs.getString("FuelEconomy"));
-                car.setTransmission(rs.getString("Transmission"));
-                car.setTotalSeating(rs.getInt("TotalSeating"));
-                car.setDoorAmount(rs.getInt("DoorAmount"));
-                car.setEngineType(rs.getString("EngineType"));
-                car.setRating(rs.getInt("Rating"));
-                car.setReviews(getReviews(car.getID()));
-                car.setPrice(rs.getDouble("Price"));
-                car.setImageLocation(rs.getString("ImageLocation"));
-
-
-                data.add(car);
+                data.add(makeCar(rs));
             }
 
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
         }
 
         return data;
@@ -65,7 +47,7 @@ public class Cars implements SQLTable<Car> {
      * @return Car
      * @throws SQLException
      */
-    public Car getModel(int id) throws SQLException{
+    public Car get(int id){
 
         String query = "SELECT * FROM Cars WHERE ID = ?";
         ResultSet rs;
@@ -81,24 +63,7 @@ public class Cars implements SQLTable<Car> {
 
             if(rs.next()){
 
-                String make = rs.getString("Make");
-                String model = rs.getString("Model");
-                int year = rs.getInt("Year");
-
-                Car car = new Car(make, model, year);
-
-                car.setID(rs.getInt("ID"));
-                ((Car)car).setFuelEconomy(rs.getString("FuelEconomy"));
-                ((Car)car).setTransmission(rs.getString("Transmission"));
-                ((Car)car).setTotalSeating(rs.getInt("TotalSeating"));
-                ((Car)car).setDoorAmount(rs.getInt("DoorAmount"));
-                ((Car)car).setEngineType(rs.getString("EngineType"));
-                ((Car)car).setRating(rs.getInt("Rating"));
-                ((Car)car).setReviews(getReviews(car.getID()));
-                ((Car)car).setPrice(rs.getDouble("Price"));
-                ((Car)car).setImageLocation(rs.getString("ImageLocation"));
-
-                return car;
+                return makeCar(rs);
 
             }else{
 
@@ -122,13 +87,12 @@ public class Cars implements SQLTable<Car> {
      * @return true if successful, false otherwise.
      * @throws Exception
      */
-    public boolean insertModel(Car model) throws Exception{
+    public boolean insert(Car model){
 
         String query = "INSERT into Cars (Make, Model, Year, FuelEconomy, Transmission, " +
                 "TotalSeating, DoorAmount, EngineType, Rating, ReviewID, Price, ImageLocation) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        ResultSet keys = null;
 
         try(
                 PreparedStatement stmt = CONN.prepareStatement(query,
@@ -136,54 +100,21 @@ public class Cars implements SQLTable<Car> {
 
                 ){
 
-            stmt.setString(1, model.getMake());
-            stmt.setString(2, model.getModel());
-            stmt.setInt(3, model.getYear());
-            stmt.setString(4, model.getFuelEconomy());
-            stmt.setString(5, model.getTransmission());
-            stmt.setInt(6, model.getTotalSeating());
-            stmt.setInt(7, model.getDoorAmount());
-            stmt.setString(8, model.getEngineType());
-            stmt.setInt(9, model.getRating());
-            stmt.setInt(10, model.getReviewID());
-            stmt.setDouble(11, model.getPrice());
-            stmt.setString(12, model.getImageLocation());
+            setProperties(stmt, model);
 
             int affectedRows = stmt.executeUpdate();
 
-            if(affectedRows == 1){
-
-                keys = stmt.getGeneratedKeys();
-                keys.next();
-
-                int newKey = keys.getInt(1);
-
-                model.setID(newKey);
-
-            }else{
-
-                System.err.println("No rows affected.");
-                return false;
-
-            }
+            return affectedRows == 1;
 
         }catch (SQLException e){
 
             System.err.println(e.getMessage());
             return false;
 
-        } finally {
-
-            if(keys != null){
-                keys.close();
-            }
-
         }
 
-        return true;
-
     }
-    public boolean updateModel(Car model) throws Exception{
+    public boolean update(Car model){
 
         String query = "UPDATE Cars SET " +
                 "Make = ?, Model = ?, Year = ?, FuelEconomy = ?, Transmission = ?, " +
@@ -192,62 +123,15 @@ public class Cars implements SQLTable<Car> {
 
         try(PreparedStatement stmt = CONN.prepareStatement(query)){
 
-            stmt.setString(1, model.getMake());
-            stmt.setString(2, model.getModel());
-            stmt.setInt(3, model.getYear());
-            stmt.setString(4, model.getFuelEconomy());
-            stmt.setString(5, model.getTransmission());
-            stmt.setInt(6, model.getTotalSeating());
-            stmt.setInt(7, model.getDoorAmount());
-            stmt.setString(8, model.getEngineType());
-            stmt.setInt(9, model.getRating());
-            stmt.setInt(10, model.getReviewID());
-            stmt.setDouble(11, model.getPrice());
-            stmt.setString(12, model.getImageLocation());
+            setProperties(stmt, model);
+            stmt.setInt(13, model.getID());
 
             int affectedRows = stmt.executeUpdate();
 
-            if(affectedRows == 1){
-                return true;
-            }else{
-                return false;
-            }
+            return affectedRows == 1;
 
         }catch(SQLException e){
             System.err.println(e.getMessage());
-            return false;
-        }
-
-    }
-    public boolean deleteModel(int id) throws Exception{
-
-        String query = "DELETE FROM Cars WHERE ID = ?";
-
-        ResultSet keys = null;
-
-        try(PreparedStatement stmt = CONN.prepareStatement(query)){
-
-            stmt.setInt(1, id);
-            stmt.execute();
-
-        }catch(SQLException e){
-            System.err.println(e.getMessage());
-            return false;
-        } finally {
-            if(keys != null){
-                keys.close();
-            }
-        }
-
-        return true;
-
-    }
-    public boolean modelExists(int id){
-
-        try{
-            getModel(id);
-            return true;
-        } catch(Exception e){
             return false;
         }
 
@@ -275,6 +159,57 @@ public class Cars implements SQLTable<Car> {
         }
 
         return reviewContents;
+
+    }
+
+    private void setProperties(PreparedStatement stmt, Car model){
+        try{
+
+            stmt.setString(1, model.getMake());
+            stmt.setString(2, model.getModel());
+            stmt.setInt(3, model.getYear());
+            stmt.setString(4, model.getFuelEconomy());
+            stmt.setString(5, model.getTransmission());
+            stmt.setInt(6, model.getTotalSeating());
+            stmt.setInt(7, model.getDoorAmount());
+            stmt.setString(8, model.getEngineType());
+            stmt.setInt(9, model.getRating());
+            stmt.setInt(10, model.getReviewID());
+            stmt.setDouble(11, model.getPrice());
+            stmt.setString(12, model.getImageLocation());
+
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+        }
+    }
+
+    private Car makeCar(ResultSet rs){
+
+        try{
+
+            String make = rs.getString("Make");
+            String model = rs.getString("Model");
+            int year = rs.getInt("Year");
+
+            Car car = new Car(make, model, year);
+
+            car.setID(rs.getInt("ID"));
+            car.setFuelEconomy(rs.getString("FuelEconomy"));
+            car.setTransmission(rs.getString("Transmission"));
+            car.setTotalSeating(rs.getInt("TotalSeating"));
+            car.setDoorAmount(rs.getInt("DoorAmount"));
+            car.setEngineType(rs.getString("EngineType"));
+            car.setRating(rs.getInt("Rating"));
+            car.setReviews(getReviews(car.getID()));
+            car.setPrice(rs.getDouble("Price"));
+            car.setImageLocation(rs.getString("ImageLocation"));
+
+            return car;
+
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+            return null;
+        }
 
     }
 
