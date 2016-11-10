@@ -11,14 +11,14 @@ import app.core.SQLModel;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class Accessories implements SQLTable<Accessory> {
+public class Accessories extends SQLTable<Accessory> {
 
     /**
      * Returns Accessory Objects
      * @return ObservableList<SQLModel>
      * @throws SQLException
      */
-    public ObservableList<Accessory> getAllRows() throws SQLException{
+    public ObservableList<Accessory> getAllRows(){
 
         String query = "SELECT * FROM Accessories";
         ObservableList<Accessory> data = FXCollections.observableArrayList();
@@ -44,6 +44,9 @@ public class Accessories implements SQLTable<Accessory> {
 
             }
 
+        }catch(SQLException e){
+
+            System.err.println(e.getMessage());
         }
 
         return data;
@@ -56,7 +59,7 @@ public class Accessories implements SQLTable<Accessory> {
      * @return SQLModel
      * @throws SQLException
      */
-    public Accessory getModel(int id) throws SQLException{
+    public Accessory get(int id){
 
         String query = "SELECT * FROM Accessories WHERE ID = ?";
         ResultSet rs;
@@ -105,7 +108,7 @@ public class Accessories implements SQLTable<Accessory> {
      * @return true if successful, false otherwise.
      * @throws Exception
      */
-    public boolean insertModel(Accessory model) throws Exception{
+    public boolean insert(Accessory model) {
 
         String query = "INSERT into Accessories (Name, Price, ImageLocation, Description) " +
                 "VALUES (?, ?, ?, ?)";
@@ -128,11 +131,7 @@ public class Accessories implements SQLTable<Accessory> {
             if(affectedRows == 1){
 
                 keys = stmt.getGeneratedKeys();
-                keys.next();
-
-                int newKey = keys.getInt(1);
-
-                model.setID(newKey);
+                assignNextID(keys, model);
 
             }else{
 
@@ -148,16 +147,14 @@ public class Accessories implements SQLTable<Accessory> {
 
         } finally {
 
-            if(keys != null){
-                keys.close();
-            }
+            SQLTable.closeKeys(keys);
 
         }
 
         return true;
 
     }
-    public boolean updateModel(Accessory model) throws Exception{
+    public boolean update(Accessory model){
 
         String query = "UPDATE Accessories SET Name = ?, Price = ?, ImageLocation = ?, " +
                 "Description = ? WHERE ID = ?";
@@ -172,47 +169,10 @@ public class Accessories implements SQLTable<Accessory> {
 
             int affectedRows = stmt.executeUpdate();
 
-            if(affectedRows == 1){
-                return true;
-            }else{
-                return false;
-            }
+            return affectedRows == 1;
 
         }catch(SQLException e){
             System.err.println(e.getMessage());
-            return false;
-        }
-
-    }
-    public boolean deleteModel(int id) throws Exception{
-
-        String query = "DELETE FROM Accessories WHERE ID = ?";
-
-        ResultSet keys = null;
-
-        try(PreparedStatement stmt = CONN.prepareStatement(query)){
-
-            stmt.setInt(1, id);
-            stmt.execute();
-
-        }catch(SQLException e){
-            System.err.println(e.getMessage());
-            return false;
-        } finally {
-            if(keys != null){
-                keys.close();
-            }
-        }
-
-        return true;
-
-    }
-    public boolean modelExists(int id){
-
-        try{
-            getModel(id);
-            return true;
-        } catch(Exception e){
             return false;
         }
 

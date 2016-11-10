@@ -16,9 +16,9 @@ import javafx.collections.ObservableList;
  * @author RN 11 / 6 / 2016
  *
  */
-public class Appointments implements SQLTable<Appointment> {
+public class Appointments extends SQLTable<Appointment> {
 
-  public ObservableList<Appointment> getAllRows() throws SQLException {
+  public ObservableList<Appointment> getAllRows() {
     
     String query = "SELECT * FROM Appointments";
     ObservableList<Appointment> data = FXCollections.observableArrayList();
@@ -47,13 +47,15 @@ public class Appointments implements SQLTable<Appointment> {
         data.add(appointment);
       }
       
+    }catch(SQLException e){
+      System.err.println(e.getMessage());
     }
     
     return data;
     
   }
   
-  public Appointment getModel(int id) throws SQLException {
+  public Appointment get(int id) {
     
     String query = "SELECT * FROM Appointments WHERE ID = ?";
     ResultSet rs;
@@ -100,7 +102,7 @@ public class Appointments implements SQLTable<Appointment> {
     
   }
   
-  public boolean insertModel(Appointment model) throws Exception {
+  public boolean insert(Appointment model) {
     
     String query = "INSERT into Appointments (AppointmentID, " +
         "AppointmentType, Date, Time, CarID, UserID) " +
@@ -125,11 +127,7 @@ public class Appointments implements SQLTable<Appointment> {
       if (affectedRows == 1) {
         
         keys = stmt.getGeneratedKeys();
-        keys.next();
-        
-        int newKey = keys.getInt(1);
-        
-        model.setID(newKey);
+        SQLTable.assignNextID(keys, model);
         
       } else {
         
@@ -145,9 +143,7 @@ public class Appointments implements SQLTable<Appointment> {
       
     } finally {
       
-      if (keys != null) {
-        keys.close();
-      }
+      SQLTable.closeKeys(keys);
       
     }
     
@@ -155,7 +151,7 @@ public class Appointments implements SQLTable<Appointment> {
     
   }
   
-  public boolean updateModel(Appointment model) throws Exception {
+  public boolean update(Appointment model){
     
     String query = "UPDATE Appointments SET " +
         "AppointmentID = ?, AppointmentType = ?, Date = ?, Time = ?, " + 
@@ -172,11 +168,7 @@ public class Appointments implements SQLTable<Appointment> {
         
         int affectedRows = stmt.executeUpdate();
         
-        if (affectedRows == 1) {
-          return true;
-        } else {
-          return false;
-        }
+        return affectedRows == 1;
         
       } catch (SQLException ex) {
         
@@ -184,41 +176,6 @@ public class Appointments implements SQLTable<Appointment> {
         return false;
         
       }
-    
-  }
-  
-  public boolean deleteModel(int id) throws Exception {
-    
-    String query = "DELETE FROM Appointments WHERE ID = ?";
-    
-    ResultSet keys = null;
-    
-    try (PreparedStatement stmt = CONN.prepareStatement(query)) {
-      
-      stmt.setInt(1, id);
-      stmt.execute();
-      
-    } catch (SQLException ex) {
-      System.err.println(ex.getMessage());
-      return false;
-    } finally {
-      if (keys != null) {
-        keys.close();
-      }
-    }
-    
-    return true;
-    
-  }
-  
-  public boolean modelExists(int id) {
-    
-    try {
-      getModel(id);
-      return true;
-    } catch (Exception ex) {
-      return false;
-    }
     
   }
   

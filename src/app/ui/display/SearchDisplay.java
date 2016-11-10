@@ -34,8 +34,8 @@ public class SearchDisplay extends Display {
             Accessories accessoriesTable = new Accessories();
             Cars carsTable = new Cars();
 
-            ObservableList<SQLModel> cars = FXCollections.observableArrayList();
-            ObservableList<SQLModel> accessories = FXCollections.observableArrayList();
+            ObservableList<Car> cars = FXCollections.observableArrayList();
+            ObservableList<Accessory> accessories = FXCollections.observableArrayList();
 
             try{
 
@@ -47,18 +47,18 @@ public class SearchDisplay extends Display {
                 System.exit(-1);
             }
 
-            for(SQLModel car : cars){
+            for(Car car : cars){
 
-                if(((Car)car).getName().toLowerCase().startsWith(search.toLowerCase())){
-                    panes.add(new StoreItemPane((StoreItem)car));
+                if(car.getName().toLowerCase().startsWith(search.toLowerCase())){
+                    panes.add(new StoreItemPane(car));
                 }
 
             }
 
-            for(SQLModel accessory : accessories){
+            for(Accessory accessory : accessories){
 
-                if(((Accessory)accessory).getName().toLowerCase().startsWith(search.toLowerCase())){
-                    panes.add(new StoreItemPane((StoreItem)accessory));
+                if(accessory.getName().toLowerCase().startsWith(search.toLowerCase())){
+                    panes.add(new StoreItemPane(accessory));
                 }
 
             }
