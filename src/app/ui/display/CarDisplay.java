@@ -16,17 +16,7 @@ public class CarDisplay extends Display {
 
         tilePane.getChildren().clear();
 
-        SQLTable table = new Cars();
-        ObservableList<SQLModel> rows = null;
-
-        try{
-            rows = table.getAllRows();
-        }catch(SQLException e){
-            System.out.println(e.getMessage());
-            System.exit(-1);
-        }
-
-        for(SQLModel model : rows){
+        for(SQLModel model : new Cars().getAllRows()){
 
             StoreItemPane pane = new StoreItemPane((StoreItem)model);
             tilePane.getChildren().add(pane);
