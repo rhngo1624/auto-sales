@@ -21,6 +21,7 @@ public class Reviews extends SQLTable<Review> {
         return null;
     }
     public ArrayList<Review> getModels(int id) {
+
         ArrayList<Review> reviews = new ArrayList<>();
         String query = "SELECT * FROM Reviews WHERE ID = ?";
         ResultSet rs;
@@ -42,6 +43,7 @@ public class Reviews extends SQLTable<Review> {
                 review.setContents(rs.getString("Content"));
                 review.setRating(rs.getInt("Rating"));
                 review.setShowName(rs.getBoolean("ShowName"));
+
                 reviews.add(review);
 
             }

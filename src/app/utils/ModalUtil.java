@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.Region;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -16,7 +17,7 @@ public class ModalUtil {
     public static void setupAndShow(URL uiPath, String title){
 
         Stage stage;
-        Pane layout;
+        Region layout;
 
         try{
 
