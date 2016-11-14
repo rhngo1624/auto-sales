@@ -4,6 +4,7 @@ package app.controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import app.core.Resource;
 import app.core.StoreItem;
 import app.ui.items.SelectedItemPane;
 import app.ui.items.StoreItemPane;
@@ -31,24 +32,26 @@ public class ReviewsController implements Initializable {
 
     private StoreItem item;
 
+    public ReviewsController(StoreItem item){
+        this.item = item;
+        ModalUtil.setupAndShow(Resource.REVIEWS, item.getName());
+    }
+
     @FXML
     public void initialize(URL location, ResourceBundle rb){
-        StoreItemPane selected = SelectedItemPane.get();
-        if(selected != null){
-            item = selected.getItem();
-            System.out.println("selected != null => " + item);
-        }else{
-            System.exit(-1);
-        }
+
         Reviews table = new Reviews();
+
         if(table.getModels(item.getID()).isEmpty()){
             ModalUtil.showMessage("No reviews");
             mainPane.getScene().getWindow().hide();
+
         }else{
 
             for(Review r : new Reviews().getModels(item.getID())){
                 makeView(r);
             }
+
         }
 
     }
