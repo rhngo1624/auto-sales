@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
@@ -19,96 +20,127 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.WriteReviewController">
    <children>
-      <ScrollPane prefHeight="395.0" prefWidth="653.0">
-         <content>
-            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="650.0">
-               <center>
-                  <VBox prefHeight="394.0" prefWidth="650.0" BorderPane.alignment="CENTER">
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="642.0">
+         <center>
+            <VBox prefHeight="382.0" prefWidth="639.0" BorderPane.alignment="CENTER">
+               <children>
+                  <HBox>
+                     <VBox.margin>
+                        <Insets left="8.0" />
+                     </VBox.margin>
                      <children>
-                        <HBox>
-                           <VBox.margin>
+                        <Label fx:id="typeLabel" text="Car:" />
+                        <Label fx:id="itemName" prefHeight="17.0" prefWidth="218.0">
+                           <HBox.margin>
                               <Insets left="8.0" />
-                           </VBox.margin>
-                           <children>
-                              <Label fx:id="typeLabel" text="Car:" />
-                              <Label fx:id="itemName" prefHeight="17.0" prefWidth="218.0">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <VBox.margin>
-                              <Insets left="8.0" top="8.0" />
-                           </VBox.margin>
-                           <children>
-                              <Label text="Date:" />
-                              <Label fx:id="date" prefHeight="17.0" prefWidth="91.0">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <Label text="Title of Review:">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <TextField fx:id="reviewTitleField">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                           <VBox.margin>
-                              <Insets top="8.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <Label text="Your Review">
-                           <VBox.margin>
-                              <Insets left="8.0" />
-                           </VBox.margin>
+                           </HBox.margin>
                         </Label>
-                        <TextArea fx:id="reviewTextArea" prefHeight="200.0" prefWidth="200.0" />
-                        <HBox>
-                           <VBox.margin>
-                              <Insets top="4.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <HBox>
-                           <VBox.margin>
-                              <Insets top="4.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <CheckBox fx:id="firstNameShowBox" mnemonicParsing="false" text="Display your first name on the review">
-                                 <HBox.margin>
-                                    <Insets left="8.0" top="12.0" />
-                                 </HBox.margin>
-                              </CheckBox>
-                           </children>
-                        </HBox>
-                        <Button fx:id="submitButton" alignment="CENTER" mnemonicParsing="false" text="Submit Review">
-                           <VBox.margin>
-                              <Insets left="8.0" top="16.0" />
-                           </VBox.margin>
-                        </Button>
                      </children>
-                     <BorderPane.margin>
-                        <Insets top="8.0" />
-                     </BorderPane.margin>
-                  </VBox>
-               </center>
-            </BorderPane>
-         </content>
-      </ScrollPane>
+                  </HBox>
+                  <HBox>
+                     <VBox.margin>
+                        <Insets left="8.0" top="8.0" />
+                     </VBox.margin>
+                     <children>
+                        <Label text="Date:" />
+                        <Label fx:id="date" prefHeight="17.0" prefWidth="91.0">
+                           <HBox.margin>
+                              <Insets left="8.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <Label text="Title of Review:">
+                           <HBox.margin>
+                              <Insets left="8.0" />
+                           </HBox.margin>
+                        </Label>
+                        <TextField fx:id="reviewTitleField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="167.0">
+                           <HBox.margin>
+                              <Insets left="8.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="11.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="12.0" top="8.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox prefHeight="100.0" prefWidth="200.0" spacing="5.0">
+                     <children>
+                        <Label prefHeight="17.0" prefWidth="52.0" text="Rating:">
+                           <HBox.margin>
+                              <Insets left="8.0" right="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <RadioButton fx:id="rating1" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="8.0" prefWidth="55.0" text="1">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="rating2" contentDisplay="TOP" graphicTextGap="2.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="8.0" prefWidth="55.0" text="2">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="rating3" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="8.0" prefWidth="55.0" text="3">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="rating4" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="8.0" prefWidth="55.0" text="4">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                        <RadioButton fx:id="rating5" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="8.0" prefWidth="55.0" text="5">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin>
+                        </RadioButton>
+                     </children>
+                  </HBox>
+                  <TextArea fx:id="reviewTextArea" prefHeight="200.0" prefWidth="200.0">
+                     <VBox.margin>
+                        <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+                     </VBox.margin>
+                  </TextArea>
+                  <HBox>
+                     <VBox.margin>
+                        <Insets top="4.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox>
+                     <VBox.margin>
+                        <Insets top="4.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox>
+                     <children>
+                        <CheckBox fx:id="firstNameShowBox" mnemonicParsing="false" text="Display your first name on the review">
+                           <HBox.margin>
+                              <Insets left="8.0" top="12.0" />
+                           </HBox.margin>
+                        </CheckBox>
+                     </children>
+                  </HBox>
+                  <Button fx:id="submitButton" alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="115.0" text="Submit Review">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="8.0" top="16.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+               <BorderPane.margin>
+                  <Insets top="8.0" />
+               </BorderPane.margin>
+            </VBox>
+         </center>
+      </BorderPane>
    </children>
 </VBox>

@@ -32,9 +32,11 @@ public class ReviewsController implements Initializable {
 
     private StoreItem item;
 
-    public ReviewsController(StoreItem item){
-        this.item = item;
-        ModalUtil.setupAndShow(Resource.REVIEWS, item.getName());
+    public ReviewsController(){
+        if(SelectedItemPane.get() != null){
+            this.item = SelectedItemPane.get().getItem();
+        }
+
     }
 
     @FXML

@@ -163,12 +163,12 @@ public class ItemViewController implements Initializable {
 
 
     public void  viewReviews(){
-        ReviewsController rc = new ReviewsController(item);
+        ModalUtil.setupAndShow(Resource.REVIEWS, "Reviews");
     }
 
     public void writeReview(){
         if(Session.getInstance().isActive()){
-            WriteReviewController wrc = new WriteReviewController(item);
+            ModalUtil.setupAndShow(Resource.WRITE_REVIEW, "Write Review");
         }else{
             ModalUtil.showMessage("Only logged in users can write reviews");
         }
