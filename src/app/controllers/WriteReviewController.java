@@ -10,6 +10,9 @@ import app.core.Resource;
 import app.core.StoreItem;
 import app.ui.items.SelectedItemPane;
 import app.utils.ModalUtil;
+import app.utils.Session;
+import db.models.Review;
+import db.tables.Reviews;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
@@ -56,6 +59,7 @@ public class WriteReviewController implements Initializable {
     public void initialize(URL location, ResourceBundle rb){
         itemName.setText(item.getName());
         date.setText(getFormattedDate());
+        setupRadioButtons();
 
     }
 
@@ -75,17 +79,47 @@ public class WriteReviewController implements Initializable {
 
     private void setupRadioButtons(){
         rating1.setToggleGroup(ratingGroup);
+        rating1.setUserData(1);
         rating2.setToggleGroup(ratingGroup);
+        rating2.setUserData(2);
         rating3.setToggleGroup(ratingGroup);
+        rating3.setUserData(3);
         rating4.setToggleGroup(ratingGroup);
+        rating4.setUserData(4);
+        rating5.setToggleGroup(ratingGroup);
+        rating5.setUserData(5);
+        rating5.setSelected(true);
     }
 
     private int getRating(){
-
+        return (int)ratingGroup.selectedToggleProperty().get().getUserData();
     }
 
     public void submit(){
 
+        if(reviewTextArea.getText().length() < 80){
+            ModalUtil.showWarning("Reviews must be at least 80 characters");
+        }else{
+            Reviews table = new Reviews();
+            Review r = new Review();
+            if(firstNameShowBox.isSelected()){
+                r.setOwner(Session.getInstance().getUser().getUsername());
+            }else{
+                r.setOwner("Anonymous");
+            }
+            r.setContents(reviewTextArea.getText());
+            r.setRating(getRating());
+            r.setTitle(reviewTitleField.getText());
+            r.setID(item.getID());
+
+            if(table.insert(r)){
+                ModalUtil.showMessage("Review submitted!");
+                firstNameShowBox.getScene().getWindow().hide();
+            }else{
+                ModalUtil.showWarning("There was a problem with submission.");
+            }
+
+        }
 
     }
 

@@ -162,7 +162,7 @@ public class ItemViewController implements Initializable {
 
 
 
-    public void  viewReviews(){
+    public void viewReviews(){
         ModalUtil.setupAndShow(Resource.REVIEWS, "Reviews");
     }
 

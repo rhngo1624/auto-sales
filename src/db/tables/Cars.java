@@ -90,8 +90,8 @@ public class Cars extends SQLTable<Car> {
     public boolean insert(Car model){
 
         String query = "INSERT into Cars (Make, Model, Year, FuelEconomy, Transmission, " +
-                "TotalSeating, DoorAmount, EngineType, Rating, ReviewID, Price, ImageLocation) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "TotalSeating, DoorAmount, EngineType, Rating, Price, ImageLocation) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 
         try(

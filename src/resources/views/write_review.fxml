@@ -130,7 +130,7 @@
                         </CheckBox>
                      </children>
                   </HBox>
-                  <Button fx:id="submitButton" alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="115.0" text="Submit Review">
+                  <Button fx:id="submitButton" onAction="#submit" alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="115.0" text="Submit Review">
                      <VBox.margin>
                         <Insets bottom="10.0" left="8.0" top="16.0" />
                      </VBox.margin>
