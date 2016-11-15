@@ -19,6 +19,9 @@ public class User implements SQLModel {
     private String state;
     private String zipcode;
     private String phone;
+    private int birthDay;
+    private int birthMonth;
+    private int birthYear;
     private boolean isAdmin = false;
     private ArrayList<Transaction> transactions;
     private ArrayList<StoreItem> cart;
@@ -134,5 +137,28 @@ public class User implements SQLModel {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-    
+
+    public int getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(int birthDay) {
+        this.birthDay = birthDay;
+    }
+
+    public int getBirthMonth() {
+        return birthMonth;
+    }
+
+    public void setBirthMonth(int birthMonth) {
+        this.birthMonth = birthMonth;
+    }
+
+    public int getBirthYear() {
+        return birthYear;
+    }
+
+    public void setBirthYear(int birthYear) {
+        this.birthYear = birthYear;
+    }
 }

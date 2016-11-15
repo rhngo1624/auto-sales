@@ -125,8 +125,8 @@ public class Users extends SQLTable<User> {
     public boolean insert(User model){
 
         String query = "INSERT into Users (Username, Password, Admin, FirstName, LastName, " +
-                "Address, City, State, Zipcode, Phone) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "Address, City, State, Zipcode, Phone, BirthDay, BirthMonth, BirthYear) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 
         try(
@@ -152,13 +152,13 @@ public class Users extends SQLTable<User> {
     public boolean update(User model){
 
         String query = "UPDATE Users SET Username = ?, Password = ?, Admin = ?, FirstName = ?, " +
-                "LastName = ?, Address = ?, City = ?, State = ?, Zipcode = ?, Phone = ? " +
-                "WHERE ID = ?";
+                "LastName = ?, Address = ?, City = ?, State = ?, Zipcode = ?, Phone = ?, " +
+                "BirthDay = ?, BirthMonth = ?, BirthYear = ? WHERE ID = ?";
 
         try(PreparedStatement stmt = CONN.prepareStatement(query)){
 
             setProperties(stmt, model);
-            stmt.setInt(11, model.getID());
+            stmt.setInt(14, model.getID());
 
             int affectedRows = stmt.executeUpdate();
 
@@ -204,6 +204,9 @@ public class Users extends SQLTable<User> {
             stmt.setString(8, model.getState());
             stmt.setString(9, model.getZipcode());
             stmt.setString(10, model.getPhone());
+            stmt.setInt(11, model.getBirthDay());
+            stmt.setInt(12, model.getBirthMonth());
+            stmt.setInt(13, model.getBirthYear());
         }catch(SQLException e){
             System.err.println(e.getMessage());
         }
@@ -225,6 +228,9 @@ public class Users extends SQLTable<User> {
             user.setState(rs.getString("State"));
             user.setZipcode(rs.getString("Zipcode"));
             user.setPhone(rs.getString("Phone"));
+            user.setBirthDay(rs.getInt("BirthDay"));
+            user.setBirthMonth(rs.getInt("BirthMonth"));
+            user.setBirthYear(rs.getInt("BirthYear"));
 
             return user;
         }catch(SQLException e){
