@@ -26,6 +26,7 @@ public class FinancialApplication implements SQLModel {
     private String ref1Phone;
     private String ref2Phone;
     private String driversLicenseNo;
+    private String ssn;
 
     public int getID() {
         return ID;
@@ -193,5 +194,13 @@ public class FinancialApplication implements SQLModel {
 
     public void setDriversLicenseNo(String driversLicenseNo) {
         this.driversLicenseNo = driversLicenseNo;
+    }
+
+    public String getSSN(){
+        return ssn;
+    }
+
+    public void setSSN(String ssn){
+        this.ssn = ssn;
     }
 }

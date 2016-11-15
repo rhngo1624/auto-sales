@@ -55,8 +55,8 @@ public class Finances extends SQLTable<FinancialApplication> {
                 "MonthlyHomePayment, LandLordName, PreviousAddress, CurrentEmployerName, " +
                 "CurrentEmployerAddress, GrossMonthlySalary, WorkPhone, JobTitle, JobLength, " +
                 "OtherMonthlyGrossIncome, OtherIncomeSource, Reference1, Reference2, Ref1Phone, " +
-                "Ref2Phone, DriversLicenseNo) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "Ref2Phone, DriversLicenseNo, SSN) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 
         try(
@@ -108,6 +108,7 @@ public class Finances extends SQLTable<FinancialApplication> {
             financeApp.setRef1Phone(rs.getString("Ref1Phone"));
             financeApp.setRef2Phone(rs.getString("Ref2Phone"));
             financeApp.setDriversLicenseNo(rs.getString("DriversLicenseNo"));
+            financeApp.setSSN(rs.getString("SSN"));
 
             return financeApp;
 
@@ -142,7 +143,8 @@ public class Finances extends SQLTable<FinancialApplication> {
             stmt.setString(17, model.getRef2());
             stmt.setString(18, model.getRef1Phone());
             stmt.setString(19, model.getRef2Phone());
-            stmt.setString(20, model.getDriversLicenseNo();
+            stmt.setString(20, model.getDriversLicenseNo());
+            stmt.setString(21, model.getSSN());
 
         }catch(SQLException e){
             System.err.println(e.getErrorCode());
