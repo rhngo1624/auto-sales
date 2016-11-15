@@ -17,913 +17,501 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane hbarPolicy="ALWAYS" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="740.0" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <content>
-      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="700.0">
-         <top>
-            <VBox BorderPane.alignment="CENTER">
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="781.0" style="-fx-background-color: #1b222d;" stylesheets="@../css/checkout.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.FinancialController">
+   <children>
+      <HBox>
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Applicant Information">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="8.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </HBox>
+      <HBox>
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name:" wrappingWidth="66.810546875">
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </Text>
+            <TextField fx:id="fullnameField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="130.0" styleClass="form_field">
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+         <VBox.margin>
+            <Insets top="8.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox>
+         <children>
+            <HBox>
                <children>
-                  <HBox>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Financial Application">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </Text>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Application #">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </Text>
-                        <Label>
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </Label>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </HBox>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="DOB:">
+                     <HBox.margin>
+                        <Insets left="8.0" right="5.0" />
+                     </HBox.margin>
+                  </Text>
+                  <ComboBox fx:id="monthBox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="77.0" styleClass="form_field" />
+                  <ComboBox fx:id="dayBox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="77.0" styleClass="form_field" />
+                  <ComboBox fx:id="yearBox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="77.0" styleClass="form_field" />
                </children>
-            </VBox>
-         </top>
-         <center>
-            <VBox BorderPane.alignment="CENTER">
+            </HBox>
+            <HBox>
                <children>
-                  <HBox>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Applicant Information">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </Text>
-                     </children>
-                     <VBox.margin>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="SSN:">
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField fx:id="ssnField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="125.0" styleClass="form_field">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="# of dependents:">
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField fx:id="dependentNumField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="191.0" styleClass="form_field">
+                     <HBox.margin>
                         <Insets />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Full Name">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField prefHeight="27.0" prefWidth="115.0">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="DOB">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField prefHeight="27.0" prefWidth="170.0">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SSN">
-                                 <HBox.margin>
-                                    <Insets left="12.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="# of dependents">
-                                 <HBox.margin>
-                                    <Insets left="12.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField prefHeight="27.0" prefWidth="174.0">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Street Address">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField prefHeight="27.0" prefWidth="139.0">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="City">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField>
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="State">
-                           <HBox.margin>
-                              <Insets left="12.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField>
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ZIP Code">
-                           <HBox.margin>
-                              <Insets left="12.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField prefHeight="27.0" prefWidth="113.0">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Home Phone" />
-                              <TextField prefHeight="27.0" prefWidth="111.0">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cell Phone">
-                                 <HBox.margin>
-                                    <Insets left="12.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField prefHeight="27.0" prefWidth="135.0">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Residential Status">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField prefHeight="27.0" prefWidth="80.0">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly Rent/Mortgage PMT">
-                                 <HBox.margin>
-                                    <Insets left="12.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Landlord or Mortgage Holder's Name">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField prefHeight="27.0" prefWidth="329.0">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Previous Address">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField prefHeight="27.0" prefWidth="450.0">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current Employer's Name">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField prefHeight="27.0" prefWidth="403.0">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current Employer's Address">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </Text>
-                        <TextField prefHeight="27.0" prefWidth="391.0">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gross Monthly Salary">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Work Phone">
-                                 <HBox.margin>
-                                    <Insets left="12.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField prefHeight="27.0" prefWidth="173.0">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Occupation/Job Title">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="How long?">
-                                 <HBox.margin>
-                                    <Insets left="12.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField prefHeight="27.0" prefWidth="186.0">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Previous Employer">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <TextField prefHeight="27.0" prefWidth="184.0">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </TextField>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="How long?">
-                                 <HBox.margin>
-                                    <Insets left="12.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField prefHeight="27.0" prefWidth="186.0">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <VBox prefHeight="50.0">
-                     <children>
-                        <Label text="OTHER INCOME NOTE: Alimony, child support, or separate maintenance incomes do not have to be revealed unless the applicant wishes to have such sources considered as a basis for repayment of the requested credited amount." wrapText="true">
-                           <VBox.margin>
-                              <Insets left="8.0" />
-                           </VBox.margin></Label>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </VBox>
-                  <HBox>
-                     <children>
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gross Monthly Other Income">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Other Income Source">
-                                 <HBox.margin>
-                                    <Insets left="12.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reference 1">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone">
-                                 <HBox.margin>
-                                    <Insets left="12.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reference 2">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phone">
-                                 <HBox.margin>
-                                    <Insets left="12.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <TextField>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </TextField>
-                           </children>
-                        </HBox>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <Label text="Applicant Signature Required">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </Label>
-                        <TextField>
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </TextField>
-                        <Region prefWidth="100.0" />
-                        <Label text="Date">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </Label>
-                        <TextField>
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <Label text="Applicant Driver's License No.">
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </Label>
-                        <TextField>
-                           <HBox.margin>
-                              <Insets left="8.0" />
-                           </HBox.margin>
-                        </TextField>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="8.0" />
-                     </VBox.margin>
-                  </HBox>
-                  <VBox>
-                     <children>
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="FOR DEALER USE ONLY">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <HBox>
-                           <children>
-                              <RadioButton mnemonicParsing="false" text="New">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </RadioButton>
-                              <RadioButton layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Used">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </RadioButton>
-                              <RadioButton layoutX="55.0" layoutY="10.0" mnemonicParsing="false" text="Demo">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </RadioButton>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Year">
-                                 <HBox.margin>
-                                    <Insets left="20.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <Label>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <Region prefWidth="100.0" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Make">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Text>
-                              <Label>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <Region prefWidth="100.0" />
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Book Value">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Text>
-                              <Label>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Label>
-                           </children>
-                           <VBox.margin>
-                              <Insets top="8.0" />
-                           </VBox.margin>
-                        </HBox>
-                        <Region prefHeight="40.0" />
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Model">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <Label>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <Region prefWidth="100.0" />
-                              <Text layoutX="10.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Body Style">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Text>
-                              <Label>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <Region prefWidth="100.0" />
-                              <Text layoutX="33.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mileage">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Text>
-                              <Label>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Region prefHeight="40.0" />
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Trade-in Year">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <Label>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <Region prefWidth="100.0" />
-                              <Text layoutX="10.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Make">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Text>
-                              <Label>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <Region prefWidth="100.0" />
-                              <Text layoutX="33.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Model">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Text>
-                              <Label>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <Region prefWidth="100.0" />
-                              <Text layoutX="56.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lienholder">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Text>
-                              <Label>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Region prefHeight="40.0" />
-                        <HBox>
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Term">
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Text>
-                              <Label>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <Region prefWidth="100.0" />
-                              <Text layoutX="10.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rate">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Text>
-                              <Label>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <Region prefWidth="100.0" />
-                              <Text layoutX="33.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Amount">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Text>
-                              <Label>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Label>
-                              <Region prefWidth="100.0" />
-                              <Text layoutX="56.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dealer(Underwriter)">
-                                 <HBox.margin>
-                                    <Insets />
-                                 </HBox.margin>
-                              </Text>
-                              <Label>
-                                 <HBox.margin>
-                                    <Insets left="8.0" />
-                                 </HBox.margin>
-                              </Label>
-                           </children>
-                        </HBox>
-                        <Region prefHeight="40.0" />
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <HBox>
-                                 <children>
-                                    <Label text="Cash Selling Price">
-                                       <HBox.margin>
-                                          <Insets left="8.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label>
-                                       <HBox.margin>
-                                          <Insets left="8.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox>
-                                 <children>
-                                    <Label text="Net Trade">
-                                       <HBox.margin>
-                                          <Insets left="8.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label>
-                                       <HBox.margin>
-                                          <Insets left="8.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="20.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox>
-                                 <children>
-                                    <Label text="Cash Down">
-                                       <HBox.margin>
-                                          <Insets left="8.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label>
-                                       <HBox.margin>
-                                          <Insets left="8.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="20.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox>
-                                 <children>
-                                    <Label text="Unpaid Balance">
-                                       <HBox.margin>
-                                          <Insets left="8.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label>
-                                       <HBox.margin>
-                                          <Insets left="8.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                                 <VBox.margin>
-                                    <Insets top="20.0" />
-                                 </VBox.margin>
-                              </HBox>
-                              <HBox>
-                                 <VBox.margin>
-                                    <Insets top="20.0" />
-                                 </VBox.margin>
-                                 <children>
-                                    <Label text="Plus Insurance &amp; Fees">
-                                       <HBox.margin>
-                                          <Insets left="8.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label>
-                                       <HBox.margin>
-                                          <Insets left="8.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                              <HBox>
-                                 <VBox.margin>
-                                    <Insets top="20.0" />
-                                 </VBox.margin>
-                                 <children>
-                                    <Label text="Total Amount Financed">
-                                       <HBox.margin>
-                                          <Insets left="8.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label>
-                                       <HBox.margin>
-                                          <Insets left="8.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </children>
-                        </VBox>
-                     </children>
-                     <VBox.margin>
-                        <Insets top="20.0" />
-                     </VBox.margin>
-                  </VBox>
-                  <HBox>
-                     <VBox.margin>
-                        <Insets bottom="10.0" />
-                     </VBox.margin>
-                     <children>
-                        <Button mnemonicParsing="false" text="Print">
-                           <HBox.margin>
-                              <Insets left="8.0" top="20.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" text="Clear">
-                           <HBox.margin>
-                              <Insets left="8.0" top="20.0" />
-                           </HBox.margin>
-                        </Button>
-                        <Button mnemonicParsing="false" text="Submit">
-                           <HBox.margin>
-                              <Insets left="8.0" top="20.0" />
-                           </HBox.margin>
-                        </Button>
-                     </children>
-                  </HBox>
+                     </HBox.margin>
+                  </TextField>
                </children>
-               <BorderPane.margin>
-                  <Insets top="12.0" />
-               </BorderPane.margin>
-            </VBox>
-         </center>
-      </BorderPane>
-   </content>
-</ScrollPane>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets top="8.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox>
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Street Address:">
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </Text>
+            <TextField fx:id="addressField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="168.0" styleClass="form_field">
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </TextField>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="City:">
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </Text>
+            <TextField fx:id="cityField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="105.0" styleClass="form_field">
+               <HBox.margin>
+                  <Insets left="8.0" right="5.0" />
+               </HBox.margin>
+            </TextField>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="State:">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </Text>
+            <TextField fx:id="stateField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="100.0" styleClass="form_field">
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </TextField>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="ZIP Code:">
+               <HBox.margin>
+                  <Insets left="12.0" />
+               </HBox.margin>
+            </Text>
+            <TextField fx:id="zipcodeField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="106.0" styleClass="form_field">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </TextField>
+         </children>
+         <VBox.margin>
+            <Insets top="8.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox>
+         <children>
+            <HBox>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Home Phone:" />
+                  <TextField fx:id="homephoneField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="111.0" styleClass="form_field">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </HBox>
+            <HBox>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Cell Phone:">
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField fx:id="cellphoneField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="130.0" styleClass="form_field">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets top="8.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox>
+         <children>
+            <HBox>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Residential Status:">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField fx:id="residentialStatusField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="80.0" styleClass="form_field">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Text fx:id="housingPaymentField" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Monthly Rent/Mortgage PMT:">
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField fx:id="monthlyHousePaymentField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="170.0" styleClass="form_field">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets top="8.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox>
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Landlord or Mortgage Holder's Name:">
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </Text>
+            <TextField fx:id="propertyHolderField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="335.0" styleClass="form_field">
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+         <VBox.margin>
+            <Insets top="8.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox>
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Previous Address:">
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </Text>
+            <TextField fx:id="prevAddressField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="456.0" styleClass="form_field">
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+         <VBox.margin>
+            <Insets top="8.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox>
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Employer's Name:">
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </Text>
+            <TextField fx:id="currentEmployerNameField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="407.0" styleClass="form_field">
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+         <VBox.margin>
+            <Insets top="8.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox>
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Employer's Address:">
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </Text>
+            <TextField fx:id="currentEmployerAddressField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="391.0" styleClass="form_field">
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+         <VBox.margin>
+            <Insets top="8.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox>
+         <children>
+            <HBox>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Gross Monthly Salary:">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField fx:id="grossMonthlySalaryField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="199.0" styleClass="form_field">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Work Phone:">
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField fx:id="workPhoneField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="133.0" styleClass="form_field">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets top="8.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox>
+         <children>
+            <HBox>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Occupation/Job Title:">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField fx:id="jobTitleField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="166.0" styleClass="form_field">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="How long?">
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField fx:id="jobLengthField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="181.0" styleClass="form_field">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets top="8.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox>
+         <children>
+            <HBox />
+         </children>
+         <VBox.margin>
+            <Insets top="8.0" />
+         </VBox.margin>
+      </HBox>
+      <VBox prefHeight="50.0">
+         <children>
+            <Label text="OTHER INCOME NOTE: Alimony, child support, or separate maintenance incomes do not have to be revealed unless the applicant wishes to have such sources considered as a basis for repayment of the requested credited amount." textFill="RED" wrapText="true">
+               <VBox.margin>
+                  <Insets left="8.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+         <VBox.margin>
+            <Insets top="8.0" />
+         </VBox.margin>
+      </VBox>
+      <HBox>
+         <children>
+            <HBox>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Gross Monthly Other Income:">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField fx:id="otherGrossMonthlyIncomeField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="100.0" styleClass="form_field">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Other Income Source:">
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField fx:id="otherIncomeField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="134.0" styleClass="form_field">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets top="8.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox>
+         <children>
+            <HBox>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Reference 1:">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField fx:id="ref1Field" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="100.0" styleClass="form_field">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:">
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField fx:id="ref1PhoneField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="100.0" styleClass="form_field">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets top="8.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox>
+         <children>
+            <HBox>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Reference 2:">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField fx:id="ref2Field" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="100.0" styleClass="form_field">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone:">
+                     <HBox.margin>
+                        <Insets left="12.0" />
+                     </HBox.margin>
+                  </Text>
+                  <TextField fx:id="ref2PhoneField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="100.0" styleClass="form_field">
+                     <HBox.margin>
+                        <Insets left="8.0" />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+            </HBox>
+         </children>
+         <VBox.margin>
+            <Insets top="8.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox>
+         <children>
+            <Label text="Applicant Driver's License No." textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </Label>
+            <TextField fx:id="driversNoField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="156.0" styleClass="form_field">
+               <HBox.margin>
+                  <Insets left="8.0" />
+               </HBox.margin>
+            </TextField>
+         </children>
+         <VBox.margin>
+            <Insets top="8.0" />
+         </VBox.margin>
+      </HBox>
+      <HBox>
+         <children>
+            <Button fx:id="printButton" mnemonicParsing="false" styleClass="toolbar_button" text="Print" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="8.0" top="20.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="clearButton" mnemonicParsing="false" styleClass="toolbar_button" text="Clear" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="8.0" top="20.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="submitButton" mnemonicParsing="false" styleClass="toolbar_button" text="Submit" textFill="WHITE">
+               <HBox.margin>
+                  <Insets left="8.0" top="20.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
+      </HBox>
+   </children>
+</VBox>

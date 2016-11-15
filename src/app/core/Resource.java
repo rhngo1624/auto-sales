@@ -16,4 +16,5 @@ public interface Resource {
     URL ADMIN = System.class.getResource(RESOURCE_PATH + "admin_panel.fxml");
     URL REVIEWS = System.class.getResource(RESOURCE_PATH + "reviews.fxml");
     URL WRITE_REVIEW = System.class.getResource(RESOURCE_PATH + "write_review.fxml");
+    URL FINANCE = System.class.getResource(RESOURCE_PATH + "financial_application.fxml");
 }

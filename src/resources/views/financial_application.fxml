@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="781.0" style="-fx-background-color: #1b222d;" stylesheets="@../css/checkout.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="573.0" prefWidth="781.0" style="-fx-background-color: #1b222d;" stylesheets="@../css/checkout.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.FinancialController">
    <children>
       <HBox>
          <children>
@@ -199,7 +199,7 @@
                         <Insets left="12.0" />
                      </HBox.margin>
                   </Text>
-                  <TextField minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="170.0" styleClass="form_field">
+                  <TextField fx:id="monthlyHousePaymentField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="19.0" prefWidth="170.0" styleClass="form_field">
                      <HBox.margin>
                         <Insets left="8.0" />
                      </HBox.margin>

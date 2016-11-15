@@ -103,6 +103,12 @@ public class CheckoutController implements Initializable {
     private void prepareDocumentButton(Car car){
         Button financeAppButton = new Button(car.getName() + " Financial Application");
         financeAppButton.getStyleClass().add("finance_button");
+        financeAppButton.setOnAction((e) -> {
+
+            ModalUtil.setupAndShow(Resource.FINANCE, "Financial Application");
+
+        });
+
         financeButtons.add(financeAppButton);
 
     }
