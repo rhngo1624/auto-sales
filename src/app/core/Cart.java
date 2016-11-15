@@ -15,7 +15,8 @@ public class Cart {
 
     private ArrayList<StoreItem> items;
     private ArrayList<Car> requirements;
-    private HashMap<Car, FinancialApplication> completed;
+    private HashMap<FinancialApplication, Car> completed;
+    private Car appInProgress;
 
     public Cart(){
         items = new ArrayList<>();
@@ -50,6 +51,17 @@ public class Cart {
 
         if(item.getClass().getSimpleName().equals("Car")){
             requirements.remove((Car)item);
+
+            Iterator it = completed.entrySet().iterator();
+            while(it.hasNext()){
+
+                Map.Entry pair = (Map.Entry) it.next();
+
+                if(pair.getValue().equals(item)){
+                    it.remove();
+                }
+
+            }
         }
     }
 
@@ -61,13 +73,24 @@ public class Cart {
         requirements.add(car);
     }
 
-    public void removeRequirement(Car car, FinancialApplication application){
+    private void removeRequirement(Car car){
         requirements.remove(car);
-        completed.put(car, application);
     }
 
-    public HashMap<Car, FinancialApplication> getCompletedApps(){
+    public HashMap<FinancialApplication, Car> getCompletedApps(){
         return completed;
+    }
+
+    public void setAppInProgress(Car car){
+        if(appInProgress == null){
+            appInProgress = car;
+        }
+    }
+
+    public void addCompletedApp(FinancialApplication application){
+        completed.put(application, appInProgress);
+        removeRequirement(appInProgress);
+        appInProgress = null;
     }
 
 }
