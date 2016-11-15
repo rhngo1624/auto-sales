@@ -1,10 +1,15 @@
 package app.controllers;
 
 import java.net.URL;
+import java.sql.Time;
+import java.util.Date;
 import java.util.ResourceBundle;
 
+import app.core.SQLModel;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 
 /**
  *  Controller Class for Test Drive Page
@@ -29,7 +34,7 @@ public class TestDriveController implements Initializable {
      */
     @FXML
     public void initialize(URL location, ResourceBundle rb){
-        selectedDate = dates.getSelectedItem().getValue();
+        //  selectedDate = dates.getSelectedItem().getValue();
         /* I read some documentation on DatePicker.  I think it returns a chosen date as a LocalDate object.  So:
          * {
          * Label label;
@@ -40,11 +45,12 @@ public class TestDriveController implements Initializable {
          * selectedDate might have to change to LocalDate instead of Date.
          */
         
-        setupTimeBox();
-        setupCarBox();
+       // setupTimeBox();
+        //setupCarBox();
+
     }
     
-    public void setupTimeBox() {
+    /*public void setupTimeBox() {
         Dates date = new Dates();
         ObservableList<Time> timeList = table.getTimes(selectedDate);
         times.setItems(timeList);
@@ -61,7 +67,7 @@ public class TestDriveController implements Initializable {
          * for (Car car : carList) {
          *     carNames.add(car.getName());
          * }
-         */
+         *
     }
     
     public void submitClicked() {
@@ -76,5 +82,6 @@ public class TestDriveController implements Initializable {
             ModelUtility.showWarning(); // 
         }
     }
+    */
 
 }
