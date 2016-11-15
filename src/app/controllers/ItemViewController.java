@@ -77,7 +77,7 @@ public class ItemViewController implements Initializable {
 
             itemView.setOnMouseClicked((e) -> {
 
-                Session.getInstance().getUser().addCartItem(item);
+                Session.getInstance().getUser().getCart().addItem(item);
                 ModalUtil.showMessage(item.getName() + " was added!");
 
             });

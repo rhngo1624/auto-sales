@@ -30,7 +30,6 @@ import javafx.scene.layout.VBox;
 public class CheckoutController implements Initializable {
 
     private User user;
-    private boolean needFinancialApplication = false;
 
     @FXML
     private VBox mainPane;
@@ -80,10 +79,12 @@ public class CheckoutController implements Initializable {
 
     private void checkForRequirements(){
 
-        for(StoreItem item : user.dumpCart()){
-            if(item.getClass().getSimpleName().equals("Car")){
-                prepareDocumentButton((Car)item);
-            }
+        if(user.getCart().getRequirements().isEmpty()){
+            return;
+        }
+
+        for(Car car : user.getCart().getRequirements()){
+            prepareDocumentButton(car);
         }
 
         displayButtons();

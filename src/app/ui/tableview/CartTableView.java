@@ -24,7 +24,7 @@ public class CartTableView extends TableView<StoreItem> {
     private CheckoutController control;
     public CartTableView(CheckoutController control){
         setupColumns();
-        setItems(Session.getInstance().getUser().dumpCart());
+        setItems(Session.getInstance().getUser().getCart().dumpObservable());
         this.control = control;
     }
 
@@ -65,9 +65,15 @@ public class CartTableView extends TableView<StoreItem> {
 
                                     btn.setOnAction((ActionEvent event) ->{
 
-                                        StoreItem StoreItem = getTableView().getItems().get(getIndex());
-                                        Session.getInstance().getUser().delCartItem(StoreItem);
-                                        setItems(Session.getInstance().getUser().dumpCart());
+                                        StoreItem StoreItem = getTableView().getItems()
+                                                .get(getIndex());
+
+                                        Session.getInstance().getUser().getCart()
+                                                .removeItem(StoreItem);
+
+                                        setItems(Session.getInstance().getUser()
+                                                .getCart().dumpObservable());
+
                                         control.refreshRequirements();
 
                                     });

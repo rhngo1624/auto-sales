@@ -93,6 +93,7 @@ public class FinancialController implements Initializable {
         stateField.setText(user.getState());
         zipcodeField.setText(user.getZipcode());
         homephoneField.setText(user.getPhone());
+        loadOptions();
     }
 
     public void print(){
@@ -105,6 +106,21 @@ public class FinancialController implements Initializable {
 
     public void submit(){
 
+    }
+
+    private void loadOptions(){
+        for(int i = 1; i <= 12; i++){
+            monthBox.getItems().add(i);
+            dayBox.getItems().add(i);
+        }
+
+        for(int i = 13; i <= 31; i++){
+            dayBox.getItems().add(i);
+        }
+
+        for(int i = 1980; i <= 2016; i++){
+            yearBox.getItems().add(i);
+        }
     }
 
 }

@@ -2,6 +2,7 @@ package db.models;
 
 import java.util.ArrayList;
 
+import app.core.Cart;
 import app.core.SQLModel;
 import app.core.StoreItem;
 import javafx.collections.FXCollections;
@@ -24,30 +25,16 @@ public class User implements SQLModel {
     private int birthYear;
     private boolean isAdmin = false;
     private ArrayList<Transaction> transactions;
-    private ArrayList<StoreItem> cart;
+    private Cart cart;
 
     public User(String username){
-        cart = new ArrayList<>();
+        cart = new Cart();
         setUsername(username);
 
     }
 
-    public void addCartItem(StoreItem item){
-
-        cart.add(item);
-
-    }
-
-    public void delCartItem(StoreItem item){
-
-        cart.remove(item);
-
-    }
-
-    public ObservableList<StoreItem> dumpCart(){
-        ObservableList<StoreItem> items = FXCollections.observableArrayList();
-        items.addAll(cart);
-        return items;
+    public Cart getCart(){
+        return cart;
     }
 
     public void setUsername(String username){

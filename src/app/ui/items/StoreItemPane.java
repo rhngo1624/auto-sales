@@ -79,7 +79,7 @@ public class StoreItemPane extends VBox {
                 if(session.isActive()){
 
                     User user = session.getUser();
-                    user.addCartItem(item);
+                    user.getCart().addItem(item);
                     ModalUtil.showMessage(item.getName() + " was added to " + user.getUsername() + "'s cart!");
 
                 }
