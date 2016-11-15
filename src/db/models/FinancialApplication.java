@@ -1,7 +1,9 @@
 package db.models;
 
 
-public class FinancialApplication {
+import app.core.SQLModel;
+
+public class FinancialApplication implements SQLModel {
 
     private int ID;
     private int userID;
@@ -23,6 +25,7 @@ public class FinancialApplication {
     private String ref2;
     private String ref1Phone;
     private String ref2Phone;
+    private String driversLicenseNo;
 
     public int getID() {
         return ID;
@@ -182,5 +185,13 @@ public class FinancialApplication {
 
     public void setWorkPhone(String workPhone) {
         this.workPhone = workPhone;
+    }
+
+    public String getDriversLicenseNo() {
+        return driversLicenseNo;
+    }
+
+    public void setDriversLicenseNo(String driversLicenseNo) {
+        this.driversLicenseNo = driversLicenseNo;
     }
 }
