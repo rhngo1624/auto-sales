@@ -1,3 +1,46 @@
+.finance_button{
+
+    -fx-background-color: #41484A;
+    -fx-text-fill: white;
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+
+
+}
+
+.finance_button:hover{
+
+    -fx-background-color: grey;
+    -fx-text-fill: red;
+
+}
+
+.finance_button:pressed{
+    -fx-background-color: black;
+}
+
+.toolbar_button{
+
+    -fx-background-color: #41484A;
+
+}
+
+.toolbar_button:hover {
+
+    -fx-background-color: grey;
+
+}
+
+.toolbar_button:pressed {
+    -fx-background-color: black;
+}
+
+.pressed_button {
+
+    -fx-background-color: steelblue;
+
+}
+
 .title_label{
 
 	-fx-background-color: #2b2e33;
@@ -49,6 +92,10 @@
 
 .table-view:focused{
     -fx-background-color: transparent;
+}
+
+.table-view .filler{
+    -fx-background-color: linear-gradient(#131313 0%, #424141 100%);
 }
 
 .table-view .column-header-background{

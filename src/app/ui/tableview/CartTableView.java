@@ -1,8 +1,15 @@
 package app.ui.tableview;
 
+import com.sun.tools.javac.comp.Check;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+
 import app.controllers.CheckoutController;
 import app.core.StoreItem;
 import app.utils.Session;
+import db.models.Car;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -14,10 +21,11 @@ import javafx.util.Callback;
 
 
 public class CartTableView extends TableView<StoreItem> {
-
-    public CartTableView(){
+    private CheckoutController control;
+    public CartTableView(CheckoutController control){
         setupColumns();
         setItems(Session.getInstance().getUser().dumpCart());
+        this.control = control;
     }
 
     private void setupColumns(){
@@ -60,7 +68,7 @@ public class CartTableView extends TableView<StoreItem> {
                                         StoreItem StoreItem = getTableView().getItems().get(getIndex());
                                         Session.getInstance().getUser().delCartItem(StoreItem);
                                         setItems(Session.getInstance().getUser().dumpCart());
-
+                                        control.refreshRequirements();
 
                                     });
 
@@ -78,10 +86,10 @@ public class CartTableView extends TableView<StoreItem> {
         Type.setCellValueFactory(new PropertyValueFactory<>("type"));
         Price.setCellValueFactory(new PropertyValueFactory<>("dollarAmount"));
 
-        Remove.prefWidthProperty().bind(this.widthProperty().divide(4));
-        Name.prefWidthProperty().bind(this.widthProperty().divide(4));
-        Type.prefWidthProperty().bind(this.widthProperty().divide(4));
-        Price.prefWidthProperty().bind(this.widthProperty().divide(4));
+        Remove.prefWidthProperty().bind(this.widthProperty().divide(8));
+        Name.prefWidthProperty().bind(this.widthProperty().divide(2));
+        Type.prefWidthProperty().bind(this.widthProperty().divide(6));
+        Price.prefWidthProperty().bind(this.widthProperty().divide(5));
 
         getColumns().add(0, Remove);
         getColumns().add(1, Name);
@@ -89,4 +97,5 @@ public class CartTableView extends TableView<StoreItem> {
         getColumns().add(3, Price);
 
     }
+
 }

@@ -1,8 +1,12 @@
 package app.controllers;
 
+import db.tables.Cars;
+import javafx.geometry.Insets;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 import java.util.Set;
 
@@ -17,6 +21,7 @@ import db.models.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
 /**
@@ -31,6 +36,7 @@ public class CheckoutController implements Initializable {
     private VBox mainPane;
     @FXML
     private VBox itemPane;
+    private ArrayList<Button> financeButtons;
 
     /**
      *  Called after FXML file is loaded.
@@ -39,11 +45,13 @@ public class CheckoutController implements Initializable {
     public void initialize(URL location, ResourceBundle rb){
 
         user = Session.getInstance().getUser();
+        financeButtons = new ArrayList<>();
 
         if(user != null){
             System.out.println(user.getUsername());
-            CartTableView ctv = new CartTableView();
+            CartTableView ctv = new CartTableView(this);
             itemPane.getChildren().add(ctv);
+            checkForRequirements();
         }else{
             ModalUtil.showMessage("Not logged in.");
 
@@ -63,22 +71,41 @@ public class CheckoutController implements Initializable {
 
     }
 
-    public void checkForRequirements(){
-        Set<Car> cars = new HashSet<>();
-        for(StoreItem item : user.dumpCart()){
-            if(item.getClass().getSimpleName().equals("Car")){
-                cars.add((Car)item);
-            }
-        }
 
-        if(!cars.isEmpty()){
-
-        }
-
-    }
 
     public void checkout(){
 
+
     }
+
+    private void checkForRequirements(){
+
+        for(StoreItem item : user.dumpCart()){
+            if(item.getClass().getSimpleName().equals("Car")){
+                prepareDocumentButton((Car)item);
+            }
+        }
+
+        displayButtons();
+
+    }
+
+    public void refreshRequirements(){
+        mainPane.getChildren().removeAll(financeButtons);
+        financeButtons.clear();
+        checkForRequirements();
+    }
+
+    private void displayButtons(){
+        mainPane.getChildren().addAll(financeButtons);
+    }
+
+    private void prepareDocumentButton(Car car){
+        Button financeAppButton = new Button(car.getName() + " Financial Application");
+        financeAppButton.getStyleClass().add("finance_button");
+        financeButtons.add(financeAppButton);
+
+    }
+
 
 }

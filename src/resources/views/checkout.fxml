@@ -8,7 +8,6 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <VBox fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="600.0" styleClass="main_pane" stylesheets="@../css/checkout.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.CheckoutController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0">
@@ -42,18 +41,22 @@
       </Label>
       <VBox prefHeight="98.0" prefWidth="600.0">
          <children>
-            <HBox prefHeight="4.0" prefWidth="600.0">
+            <HBox prefHeight="26.0" prefWidth="600.0">
                <children>
                   <Label text="First Name:" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="5.0" right="20.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField minHeight="15.0" prefHeight="20.0" prefWidth="189.0" styleClass="form_field">
+                  <TextField fx:id="fnField" minHeight="15.0" prefHeight="20.0" prefWidth="189.0" styleClass="form_field">
                      <HBox.margin>
-                        <Insets />
+                        <Insets right="245.0" />
                      </HBox.margin>
                   </TextField>
+                  <Button fx:id="autofill" minHeight="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="66.0" styleClass="toolbar_button" text="AutoFill" textFill="#80ffa1" translateZ="20.0">
+                     <font>
+                        <Font size="12.0" />
+                     </font></Button>
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" />
@@ -66,7 +69,7 @@
                         <Insets left="5.0" right="21.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField minHeight="15.0" prefHeight="20.0" prefWidth="189.0" styleClass="form_field" />
+                  <TextField fx:id="lnField" minHeight="15.0" prefHeight="20.0" prefWidth="189.0" styleClass="form_field" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" />
@@ -79,7 +82,7 @@
                         <Insets left="5.0" right="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField minHeight="15.0" prefHeight="20.0" prefWidth="190.0" styleClass="form_field" />
+                  <TextField fx:id="cardNumField" minHeight="15.0" prefHeight="20.0" prefWidth="190.0" styleClass="form_field" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" />
@@ -92,7 +95,7 @@
                         <Insets left="5.0" right="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField minHeight="15.0" prefHeight="20.0" prefWidth="116.0" styleClass="form_field" />
+                  <TextField fx:id="CVField" minHeight="15.0" prefHeight="20.0" prefWidth="116.0" styleClass="form_field" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" />
@@ -105,12 +108,12 @@
                         <Insets left="5.0" right="20.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox prefHeight="20.0" prefWidth="59.0" styleClass="form_field">
+                  <ComboBox fx:id="expMonth" prefHeight="20.0" prefWidth="59.0" styleClass="form_field">
                      <HBox.margin>
                         <Insets right="2.0" />
                      </HBox.margin>
                   </ComboBox>
-                  <ComboBox prefHeight="20.0" prefWidth="103.0" styleClass="form_field" />
+                  <ComboBox fx:id="expYear" prefHeight="20.0" prefWidth="103.0" styleClass="form_field" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" />
@@ -135,7 +138,7 @@
                         <Insets left="5.0" right="52.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField minHeight="15.0" prefHeight="20.0" prefWidth="192.0" styleClass="form_field">
+                  <TextField fx:id="addressField" minHeight="15.0" prefHeight="20.0" prefWidth="192.0" styleClass="form_field">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -152,7 +155,7 @@
                         <Insets left="5.0" right="78.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField minHeight="15.0" prefHeight="20.0" prefWidth="192.0" styleClass="form_field" />
+                  <TextField fx:id="cityField" minHeight="15.0" prefHeight="20.0" prefWidth="192.0" styleClass="form_field" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" />
@@ -165,7 +168,7 @@
                         <Insets left="5.0" right="5.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField minHeight="15.0" prefHeight="20.0" prefWidth="190.0" styleClass="form_field" />
+                  <TextField fx:id="zipField" minHeight="15.0" prefHeight="20.0" prefWidth="190.0" styleClass="form_field" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" />
@@ -178,7 +181,7 @@
                         <Insets left="5.0" right="55.0" />
                      </HBox.margin>
                   </Label>
-                  <ComboBox prefHeight="20.0" prefWidth="190.0" styleClass="form_field" />
+                  <ComboBox fx:id="countryBox" prefHeight="20.0" prefWidth="190.0" styleClass="form_field" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" />
@@ -191,7 +194,7 @@
                         <Insets left="5.0" right="12.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField prefHeight="20.0" prefWidth="190.0" styleClass="form_field" />
+                  <TextField fx:id="phoneField" prefHeight="20.0" prefWidth="190.0" styleClass="form_field" />
                </children>
                <VBox.margin>
                   <Insets bottom="5.0" />
