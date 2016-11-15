@@ -2,21 +2,21 @@ package app.controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
 
-import app.ui.items.CartItem;
+import app.core.StoreItem;
+import app.ui.tableview.CartTableView;
 import app.utils.ModalUtil;
 import app.core.Resource;
 import app.utils.Session;
 import app.utils.StageUtil;
-import app.core.StoreItem;
+import db.models.Car;
 import db.models.User;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ListView;
 import javafx.scene.layout.VBox;
 
 /**
@@ -29,9 +29,9 @@ public class CheckoutController implements Initializable {
 
     @FXML
     private VBox mainPane;
-
     @FXML
-    private ListView<CartItem> itemView;
+    private VBox itemPane;
+
     /**
      *  Called after FXML file is loaded.
      */
@@ -42,7 +42,8 @@ public class CheckoutController implements Initializable {
 
         if(user != null){
             System.out.println(user.getUsername());
-            loadItems();
+            CartTableView ctv = new CartTableView();
+            itemPane.getChildren().add(ctv);
         }else{
             ModalUtil.showMessage("Not logged in.");
 
@@ -62,16 +63,21 @@ public class CheckoutController implements Initializable {
 
     }
 
-    public void loadItems(){
-
-        ObservableList<StoreItem> items = user.dumpCart();
-        ObservableList<CartItem> cartItems = FXCollections.observableArrayList();
-
-        for(StoreItem item : items){
-            cartItems.add(new CartItem(item, this));
+    public void checkForRequirements(){
+        Set<Car> cars = new HashSet<>();
+        for(StoreItem item : user.dumpCart()){
+            if(item.getClass().getSimpleName().equals("Car")){
+                cars.add((Car)item);
+            }
         }
 
-        itemView.setItems(cartItems);
+        if(!cars.isEmpty()){
+
+        }
+
+    }
+
+    public void checkout(){
 
     }
 

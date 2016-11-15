@@ -17,7 +17,16 @@ public abstract class StoreItem implements SQLModel {
     private int rating;
     private String name;
     private double price;
+    private final String dollarAmount = getDollarAmount();
+    private String type;
     private String imageLocation;
+
+    public StoreItem(){
+        type = this.getClass().getSimpleName();
+    }
+    public String getType(){
+        return type;
+    }
 
     public int getID(){
         return ID;
@@ -59,22 +68,6 @@ public abstract class StoreItem implements SQLModel {
 
         NumberFormat formatter = NumberFormat.getCurrencyInstance();
         return formatter.format(price);
-
-    }
-
-    public SQLTable getTable(){
-
-        String type = this.getClass().getName();
-
-        switch(type){
-
-            case "Car":
-                return new Cars();
-            case "Accessory":
-                return new Accessories();
-            default:
-                return null;
-        }
 
     }
 
