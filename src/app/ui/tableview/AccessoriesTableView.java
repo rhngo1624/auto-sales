@@ -30,7 +30,7 @@ public class AccessoriesTableView extends TableView<Accessory> {
         Name.setCellValueFactory(new PropertyValueFactory<>("name"));
 
 
-        ID.prefWidthProperty().bind(this.widthProperty().divide(2));
+        ID.prefWidthProperty().bind(this.widthProperty().divide(4));
         Name.prefWidthProperty().bind(this.widthProperty().divide(2));
 
         getColumns().add(0, ID);

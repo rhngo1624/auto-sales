@@ -124,8 +124,9 @@ public class Users extends SQLTable<User> {
      */
     public boolean insert(User model){
 
-        String query = "INSERT into Users (Username, Password, Admin) " +
-                "VALUES (?, ?, ?)";
+        String query = "INSERT into Users (Username, Password, Admin, FirstName, LastName, " +
+                "Address, City, State, Zipcode, Phone) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 
         try(
@@ -150,11 +151,14 @@ public class Users extends SQLTable<User> {
     }
     public boolean update(User model){
 
-        String query = "UPDATE Users SET Username = ?, Password = ?, Admin = ? WHERE ID = ?";
+        String query = "UPDATE Users SET Username = ?, Password = ?, Admin = ?, FirstName = ?, " +
+                "LastName = ?, Address = ?, City = ?, State = ?, Zipcode = ?, Phone = ? " +
+                "WHERE ID = ?";
 
         try(PreparedStatement stmt = CONN.prepareStatement(query)){
 
             setProperties(stmt, model);
+            stmt.setInt(11, model.getID());
 
             int affectedRows = stmt.executeUpdate();
 
@@ -193,6 +197,13 @@ public class Users extends SQLTable<User> {
             stmt.setString(1, model.getUsername());
             stmt.setString(2, model.getPassword());
             stmt.setBoolean(3, model.isAdmin());
+            stmt.setString(4, model.getFirstname());
+            stmt.setString(5, model.getLastname());
+            stmt.setString(6, model.getAddress());
+            stmt.setString(7, model.getCity());
+            stmt.setString(8, model.getState());
+            stmt.setString(9, model.getZipcode());
+            stmt.setString(10, model.getPhone());
         }catch(SQLException e){
             System.err.println(e.getMessage());
         }
@@ -207,6 +218,14 @@ public class Users extends SQLTable<User> {
 
             user.setID(rs.getInt("ID"));
             user.setAdminPriveleges(isAdmin);
+            user.setFirstname(rs.getString("Firstname"));
+            user.setLastname(rs.getString("Lastname"));
+            user.setAddress(rs.getString("Address"));
+            user.setCity(rs.getString("City"));
+            user.setState(rs.getString("State"));
+            user.setZipcode(rs.getString("Zipcode"));
+            user.setPhone(rs.getString("Phone"));
+
             return user;
         }catch(SQLException e){
             System.err.println(e.getMessage());

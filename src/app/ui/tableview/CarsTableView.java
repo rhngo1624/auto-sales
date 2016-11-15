@@ -33,7 +33,7 @@ public class CarsTableView extends TableView<Car> {
         Model.setCellValueFactory(new PropertyValueFactory<>("model"));
         Year.setCellValueFactory(new PropertyValueFactory<>("year"));
 
-        ID.prefWidthProperty().bind(this.widthProperty().divide(4));
+        ID.prefWidthProperty().bind(this.widthProperty().divide(6));
         Make.prefWidthProperty().bind(this.widthProperty().divide(4));
         Model.prefWidthProperty().bind(this.widthProperty().divide(4));
         Year.prefWidthProperty().bind(this.widthProperty().divide(4));

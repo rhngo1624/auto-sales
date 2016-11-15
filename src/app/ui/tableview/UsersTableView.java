@@ -25,20 +25,29 @@ public class UsersTableView extends TableView<User> {
 
     private void setupColumns(){
 
-        TableColumn<User, Integer> ID = new TableColumn<>("ID");
         TableColumn<User, String> username = new TableColumn<>("USERNAME");
-        TableColumn<User, Boolean> admin = new TableColumn<>("ADMIN PRIVILEGES");
-        ID.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        TableColumn<User, String> address = new TableColumn<>("ADDRESS");
+        TableColumn<User, String> city = new TableColumn<>("CITY");
+        TableColumn<User, String> state = new TableColumn<>("STATE");
+        TableColumn<User, String> phone = new TableColumn<>("PHONE");
+
         username.setCellValueFactory(new PropertyValueFactory<>("username"));
-        admin.setCellValueFactory(new PropertyValueFactory<>("isAdmin"));
+        address.setCellValueFactory(new PropertyValueFactory<>("address"));
+        city.setCellValueFactory(new PropertyValueFactory<>("city"));
+        state.setCellValueFactory(new PropertyValueFactory<>("state"));
+        phone.setCellValueFactory(new PropertyValueFactory<>("phone"));
 
-        ID.prefWidthProperty().bind(this.widthProperty().divide(3));
-        username.prefWidthProperty().bind(this.widthProperty().divide(3));
-        admin.prefWidthProperty().bind(this.widthProperty().divide(3));
+        username.prefWidthProperty().bind(this.widthProperty().divide(5));
+        address.prefWidthProperty().bind(this.widthProperty().divide(4));
+        city.prefWidthProperty().bind(this.widthProperty().divide(6));
+        state.prefWidthProperty().bind(this.widthProperty().divide(8));
+        phone.prefWidthProperty().bind(this.widthProperty().divide(5));
 
-        getColumns().add(0, ID);
-        getColumns().add(1, username);
-        getColumns().add(2, admin);
+        getColumns().add(0, username);
+        getColumns().add(1, address);
+        getColumns().add(2, city);
+        getColumns().add(3, state);
+        getColumns().add(4, phone);
     }
 
 
