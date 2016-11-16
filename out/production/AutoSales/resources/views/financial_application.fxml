@@ -499,17 +499,12 @@
       </HBox>
       <HBox>
          <children>
-            <Button fx:id="printButton" mnemonicParsing="false" styleClass="toolbar_button" text="Print" textFill="WHITE">
+            <Button fx:id="clearButton" mnemonicParsing="false" styleClass="toolbar_button" text="Clear" textFill="WHITE" onAction="#clear">
                <HBox.margin>
                   <Insets left="8.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="clearButton" mnemonicParsing="false" styleClass="toolbar_button" text="Clear" textFill="WHITE">
-               <HBox.margin>
-                  <Insets left="8.0" top="20.0" />
-               </HBox.margin>
-            </Button>
-            <Button fx:id="submitButton" mnemonicParsing="false" styleClass="toolbar_button" text="Submit" textFill="WHITE">
+            <Button fx:id="submitButton" mnemonicParsing="false" styleClass="toolbar_button" text="Submit" textFill="WHITE" onAction="#submit">
                <HBox.margin>
                   <Insets left="8.0" top="20.0" />
                </HBox.margin>

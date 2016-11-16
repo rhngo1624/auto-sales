@@ -30,6 +30,7 @@ import javafx.scene.layout.VBox;
 public class CheckoutController implements Initializable {
 
     private User user;
+    private static CheckoutController instance;
 
     @FXML
     private VBox mainPane;
@@ -37,12 +38,15 @@ public class CheckoutController implements Initializable {
     private VBox itemPane;
     private ArrayList<Button> financeButtons;
 
+    public static CheckoutController getInstance(){
+        return CheckoutController.instance;
+    }
     /**
      *  Called after FXML file is loaded.
      */
     @FXML
     public void initialize(URL location, ResourceBundle rb){
-
+        instance = this;
         user = Session.getInstance().getUser();
         financeButtons = new ArrayList<>();
 
@@ -102,11 +106,13 @@ public class CheckoutController implements Initializable {
     }
 
     private void prepareDocumentButton(Car car){
+
         Button financeAppButton = new Button(car.getName() + " Financial Application");
         financeAppButton.getStyleClass().add("finance_button");
         financeAppButton.setOnAction((e) -> {
 
             ModalUtil.setupAndShow(Resource.FINANCE, "Financial Application");
+            Session.getInstance().getUser().getCart().setAppInProgress(car);
 
         });
 

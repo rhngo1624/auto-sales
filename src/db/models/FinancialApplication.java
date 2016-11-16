@@ -27,6 +27,7 @@ public class FinancialApplication implements SQLModel {
     private String ref2Phone;
     private String driversLicenseNo;
     private String ssn;
+    private boolean completed = false;
 
     public int getID() {
         return ID;
@@ -202,5 +203,13 @@ public class FinancialApplication implements SQLModel {
 
     public void setSSN(String ssn){
         this.ssn = ssn;
+    }
+
+    public boolean isCompleted(){
+        return completed;
+    }
+
+    public void setCompleted(boolean complete){
+        completed = complete;
     }
 }

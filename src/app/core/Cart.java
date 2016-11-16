@@ -87,6 +87,14 @@ public class Cart {
         }
     }
 
+    public Car getAppInProgress(){
+        if(appInProgress != null){
+            return appInProgress;
+        }
+
+        return null;
+    }
+
     public void addCompletedApp(FinancialApplication application){
         completed.put(application, appInProgress);
         removeRequirement(appInProgress);

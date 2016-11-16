@@ -18,18 +18,16 @@ public class Finances extends SQLTable<FinancialApplication> {
     public FinancialApplication get(int id){
         return null;
     }
-    public ArrayList<FinancialApplication> getModels(int id) {
+    public ArrayList<FinancialApplication> getModels() {
 
         ArrayList<FinancialApplication> FinancialApplications = new ArrayList<>();
-        String query = "SELECT * FROM Finances WHERE ID = ?";
+        String query = "SELECT * FROM Finances";
         ResultSet rs;
 
         try(
                 PreparedStatement stmt = CONN.prepareStatement(query,
                         ResultSet.TYPE_FORWARD_ONLY,
                         ResultSet.CONCUR_READ_ONLY)){
-
-            stmt.setInt(1, id);
 
             rs = stmt.executeQuery();
 
@@ -55,8 +53,8 @@ public class Finances extends SQLTable<FinancialApplication> {
                 "MonthlyHomePayment, LandLordName, PreviousAddress, CurrentEmployerName, " +
                 "CurrentEmployerAddress, GrossMonthlySalary, WorkPhone, JobTitle, JobLength, " +
                 "OtherMonthlyGrossIncome, OtherIncomeSource, Reference1, Reference2, Ref1Phone, " +
-                "Ref2Phone, DriversLicenseNo, SSN) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                "Ref2Phone, DriversLicenseNo, SSN, Completed) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)";
 
 
         try(
@@ -79,7 +77,26 @@ public class Finances extends SQLTable<FinancialApplication> {
         }
     }
     public boolean update(FinancialApplication model){
-        return true;
+
+        String query = "UPDATE Finances SET UserID = ?, CarID = ?, NumberOfDependents = ?, " +
+                "ResidentialStatus = ?, MonthlyHomePayment = ?, LandLordName = ?, " +
+                "PreviousAddress = ?, CurrentEmployerName = ?, " +
+                "CurrentEmployerAddress = ?, GrossMonthlySalary = ?, WorkPhone = ?, JobTitle = ?, " +
+                "JobLength = ?, OtherMonthlyGrossIncome = ?, OtherIncomeSource = ?, Reference1 = ?," +
+                " Reference2 = ?, Ref1Phone = ?, Ref2Phone = ?, DriversLicenseNo = ?, " +
+                "SSN = ?, Completed = ? WHERE ID = ?";
+
+        try(PreparedStatement stmt = CONN.prepareStatement(query)){
+            setProperties(stmt, model);
+            stmt.setInt(23, model.getID());
+            int affectedRows = stmt.executeUpdate();
+            return affectedRows == 1;
+
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+            return false;
+        }
+
     }
 
     private FinancialApplication makeFinancialApplication(ResultSet rs){
@@ -109,6 +126,7 @@ public class Finances extends SQLTable<FinancialApplication> {
             financeApp.setRef2Phone(rs.getString("Ref2Phone"));
             financeApp.setDriversLicenseNo(rs.getString("DriversLicenseNo"));
             financeApp.setSSN(rs.getString("SSN"));
+            financeApp.setCompleted(rs.getBoolean("Completed"));
 
             return financeApp;
 
@@ -145,6 +163,7 @@ public class Finances extends SQLTable<FinancialApplication> {
             stmt.setString(19, model.getRef2Phone());
             stmt.setString(20, model.getDriversLicenseNo());
             stmt.setString(21, model.getSSN());
+            stmt.setBoolean(22, model.isCompleted());
 
         }catch(SQLException e){
             System.err.println(e.getErrorCode());
