@@ -21,6 +21,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import static java.lang.Character.isDigit;
@@ -158,7 +159,7 @@ public class FinancialController implements Initializable {
             FinancialApplication app = createApplication();
             Session.getInstance().getUser().getCart().addCompletedApp(app);
             CheckoutController.getInstance().refreshRequirements();
-
+            new Finances().insert(app);
             prevAddressField.getScene().getWindow().hide();
 
         }
@@ -248,8 +249,10 @@ public class FinancialController implements Initializable {
 
         public void handle(KeyEvent e){
 
-           if(!e.getCode().isDigitKey()){
-               String text =
+           if(!e.getCode().isDigitKey() && !(e.getCode() == KeyCode.BACK_SPACE) &&
+                   !(e.getCode().isArrowKey())){
+               ModalUtil.showWarning("Numbers only");
+               ((TextField)e.getSource()).setText("");
            }
         }
 

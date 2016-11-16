@@ -21,8 +21,14 @@ import db.models.User;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  *  Controller Class for Check Out Page
@@ -36,6 +42,29 @@ public class CheckoutController implements Initializable {
     private VBox mainPane;
     @FXML
     private VBox itemPane;
+    @FXML
+    private TextField fnField;
+    @FXML
+    private TextField lnField;
+    @FXML
+    private TextField cardNumField;
+    @FXML
+    private TextField CVField;
+    @FXML
+    private ComboBox<Integer> expMonth;
+    @FXML
+    private ComboBox<Integer> expYear;
+    @FXML
+    private TextField addressField;
+    @FXML
+    private TextField cityField;
+    @FXML
+    private TextField zipField;
+    @FXML
+    private ComboBox<String> countryBox;
+    @FXML
+    private TextField phoneField;
+
     private ArrayList<Button> financeButtons;
 
     public static CheckoutController getInstance(){
@@ -78,13 +107,47 @@ public class CheckoutController implements Initializable {
 
     public void checkout(){
 
+        if(validate()){
 
+            // make transaction
+            // add to transaction database
+
+
+        }else{
+            ModalUtil.showWarning("Please fill out all fields.");
+        }
+
+    }
+
+    private boolean validate(){
+        boolean personalInfoEmpty = fnField.getText().isEmpty() || lnField.getText().isEmpty()
+                || addressField.getText().isEmpty() || cityField.getText().isEmpty() ||
+                zipField.getText().isEmpty() || countryBox.getSelectionModel().isEmpty() ||
+                phoneField.getText().isEmpty();
+        boolean financeInfoEmpty = cardNumField.getText().isEmpty() || CVField.getText().isEmpty() ||
+                expMonth.getSelectionModel().isEmpty() || expYear.getSelectionModel().isEmpty();
+
+        return !(personalInfoEmpty || financeInfoEmpty);
     }
 
     private void checkForRequirements(){
 
+        mainPane.setPrefHeight(715);
+
         if(user.getCart().getRequirements().isEmpty()){
-            return;
+            mainPane.getScene().getWindow().hide();
+            HBox box = new HBox();
+            box.setAlignment(Pos.TOP_CENTER);
+            Button checkout = new Button("Check Out");
+            HBox.setMargin(checkout, new Insets(20,0,0,0));
+            checkout.getStyleClass().add("toolbar_button");
+            checkout.setOnAction((e) -> {
+                checkout();
+            });
+            box.getChildren().add(checkout);
+            mainPane.getChildren().add(box);
+            mainPane.setPrefHeight(650);
+            ((Stage)mainPane.getScene().getWindow()).show();
         }
 
         for(Car car : user.getCart().getRequirements()){
@@ -118,6 +181,15 @@ public class CheckoutController implements Initializable {
 
         financeButtons.add(financeAppButton);
 
+    }
+
+    public void autofill(){
+        fnField.setText(user.getFirstname());
+        lnField.setText(user.getLastname());
+        addressField.setText(user.getAddress());
+        cityField.setText(user.getCity());
+        zipField.setText(user.getZipcode());
+        phoneField.setText(user.getPhone());
     }
 
 
