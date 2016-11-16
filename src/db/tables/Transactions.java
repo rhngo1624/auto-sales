@@ -23,11 +23,6 @@ import javafx.collections.ObservableList;
 
 public class Transactions extends SQLTable<Transaction> {
 
-	/*variables
-	String saleDate;
-	boolean isGift;
-	*/
-	// A transaction also has information from vehicles, buyers, and sellers. 
 
 	/**
 	 * Returns Transactions objects in database as ObservableList.
@@ -42,7 +37,7 @@ public class Transactions extends SQLTable<Transaction> {
 
 		// Try with resources: closes resources after using them.
 		try (Statement stmt = CONN.createStatement();
-			 ResultSet rs = stmt.executeQuery(query);) {
+			 ResultSet rs = stmt.executeQuery(query)) {
 
 			while (rs.next()) {
 				data.add(makeTransaction(rs));
@@ -64,9 +59,9 @@ public class Transactions extends SQLTable<Transaction> {
 	 */
 	public Transaction get(int id){
 
-		String query = "SELECT * FROM Transactions";
+		String query = "SELECT * FROM Transactions WHERE ID = ?";
 
-		ResultSet rs = null;
+		ResultSet rs;
 
 		/**
 		 * Try with resources: closes resources after using them.
@@ -78,7 +73,7 @@ public class Transactions extends SQLTable<Transaction> {
 				ResultSet.TYPE_SCROLL_INSENSITIVE,
 				ResultSet.CONCUR_READ_ONLY)) {
 			// Set int for query
-
+            stmt.setInt(1, id);
 			rs = stmt.executeQuery();
 
 			if (rs.next()) {
@@ -103,7 +98,7 @@ public class Transactions extends SQLTable<Transaction> {
 	 */
 	public boolean insert(Transaction model){
 
-		String query = "INSERT into Transactions () VALUES ()";
+		String query = "INSERT into Transactions (UserID, StoreItems) VALUES (?, ?)";
 
 		// Try with resources: closes resources after using them.
 		try (PreparedStatement stmt = CONN.prepareStatement(query,
@@ -129,12 +124,12 @@ public class Transactions extends SQLTable<Transaction> {
 	 *
 	 */
     	public boolean update(Transaction model){
-		String query = "UPDATE Transactions SET ID = ?";
+		String query = "UPDATE Transactions SET UserID = ?, StoreItems = ? WHERE ID = ?";
 
 		try ( PreparedStatement stmt = CONN.prepareStatement(query)) {
 			// Sets values for query.
 			setProperties(stmt, model);
-			stmt.setInt(5, model.getID());
+			stmt.setInt(3, model.getID());
 			int affectedRows = stmt.executeUpdate();
 			// Returns true if anything was changed, false otherwise.
 			return affectedRows == 1;
@@ -146,12 +141,32 @@ public class Transactions extends SQLTable<Transaction> {
 	}
 
 	private void setProperties(PreparedStatement stmt, Transaction model){
-		// TODO: finish method
+		try{
+            stmt.setInt(1, model.getUser().getID());
+            stmt.setString(2, model.getSerializedItems());
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+        }
+
 	}
 
 	private Transaction makeTransaction(ResultSet rs){
-		// TODO: finish method
-		return null;
+
+		Transaction transaction = new Transaction();
+
+        try{
+
+            transaction.setID(rs.getInt("ID"));
+            transaction.setUser(new Users().get(rs.getInt("UserID")));
+            transaction.setSerializedItems(rs.getString("StoreItems"));
+
+            return transaction;
+
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
+            return null;
+        }
+
 	}
 
 

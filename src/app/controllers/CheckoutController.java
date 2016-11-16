@@ -1,5 +1,6 @@
 package app.controllers;
 
+import db.models.Transaction;
 import db.tables.Cars;
 import javafx.geometry.Insets;
 import java.io.IOException;
@@ -109,8 +110,7 @@ public class CheckoutController implements Initializable {
 
         if(validate()){
 
-            // make transaction
-            // add to transaction database
+            Transaction transaction = new Transaction();
 
 
         }else{
