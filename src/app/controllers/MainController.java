@@ -1,9 +1,11 @@
 package app.controllers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.net.URL;
 
+import app.core.StoreItem;
 import app.ui.display.AccessoryDisplay;
 import app.ui.display.CarDisplay;
 import app.ui.display.SearchDisplay;
@@ -11,6 +13,8 @@ import app.utils.ModalUtil;
 import app.core.Resource;
 import app.utils.Session;
 import app.utils.StageUtil;
+import db.models.Transaction;
+import db.tables.Transactions;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;

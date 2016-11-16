@@ -35,6 +35,7 @@ public class Transaction implements SQLModel {
             }
 
             serializedStr.append(item.getID());
+            serializedStr.append("-");
         }
 
         serializedItems = serializedStr.toString();
@@ -59,23 +60,59 @@ public class Transaction implements SQLModel {
     public ArrayList<StoreItem> getItemList(){
 
         ArrayList<StoreItem> items = new ArrayList<>();
+        int itemCount = 0;
 
-        for(int index = 0; index < serializedItems.length(); index++){
+        //count number of dashes = num of items
+        for(int i = 0; i < serializedItems.length(); i++){
+            if(serializedItems.charAt(i) == '-'){
+                itemCount++;
+            }
+        }
 
-            int type = serializedItems.charAt(index);
-            int itemID = serializedItems.charAt(index+1);
+        System.out.println("ItemCount = " + itemCount);
+
+        int index = 0;
+
+        //get type and id from serialized string
+        while(items.size() != itemCount){
+            System.out.println("ITEMS SIZE => " + items.size());
+            StringBuilder sb = new StringBuilder();
+
+            while(!(serializedItems.charAt(index) == '-')){
+                System.out.println("While not '-' appending..." + serializedItems.charAt(index));
+                sb.append(serializedItems.charAt(index));
+                index++;
+
+            }
+
+            int type = Character.getNumericValue(sb.toString().charAt(0));
+            System.out.println("Type = " + type);
+            String num = "";
+
+            for(int i = 1; i < sb.length(); i++){
+                num += sb.toString().charAt(i);
+                System.out.println("Num = " + num);
+            }
+
+            int id = Integer.parseInt(num);
 
             switch(type){
+
                 case 0:
-                    StoreItem acc = new Accessories().get(itemID);
+                    StoreItem acc = new Accessories().get(id);
                     items.add(acc);
                     break;
                 case 1:
-                    StoreItem car = new Cars().get(itemID);
+                    StoreItem car = new Cars().get(id);
                     items.add(car);
                     break;
+
             }
+
+            index++;
+
         }
+
 
         return items;
     }

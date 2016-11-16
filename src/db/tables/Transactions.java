@@ -70,7 +70,7 @@ public class Transactions extends SQLTable<Transaction> {
 		 * being used.
 		 */
 		try (PreparedStatement stmt = CONN.prepareStatement(query,
-				ResultSet.TYPE_SCROLL_INSENSITIVE,
+				ResultSet.TYPE_FORWARD_ONLY,
 				ResultSet.CONCUR_READ_ONLY)) {
 			// Set int for query
             stmt.setInt(1, id);

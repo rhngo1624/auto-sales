@@ -250,7 +250,7 @@ public class FinancialController implements Initializable {
         public void handle(KeyEvent e){
 
            if(!e.getCode().isDigitKey() && !(e.getCode() == KeyCode.BACK_SPACE) &&
-                   !(e.getCode().isArrowKey())){
+                   !(e.getCode().isArrowKey()) && !(e.getCode() == KeyCode.TAB)){
                ModalUtil.showWarning("Numbers only");
                ((TextField)e.getSource()).setText("");
            }

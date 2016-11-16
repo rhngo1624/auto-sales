@@ -2,6 +2,7 @@ package app.controllers;
 
 import db.models.Transaction;
 import db.tables.Cars;
+import db.tables.Transactions;
 import javafx.geometry.Insets;
 import java.io.IOException;
 import java.net.URL;
@@ -10,6 +11,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.ResourceBundle;
 import java.util.Set;
+import java.util.Locale;
 
 import app.core.StoreItem;
 import app.ui.tableview.CartTableView;
@@ -79,6 +81,7 @@ public class CheckoutController implements Initializable {
         instance = this;
         user = Session.getInstance().getUser();
         financeButtons = new ArrayList<>();
+        fillOutComboBoxes();
 
         if(user != null){
             System.out.println(user.getUsername());
@@ -111,6 +114,13 @@ public class CheckoutController implements Initializable {
         if(validate()){
 
             Transaction transaction = new Transaction();
+            transaction.setSerializedItems(user.getCart().dump());
+            transaction.setUser(user);
+
+            new Transactions().insert(transaction);
+
+            ModalUtil.showMessage("Items will be shipped within a week!\n Thank you for your service.");
+            itemPane.getScene().getWindow().hide();
 
 
         }else{
@@ -132,10 +142,7 @@ public class CheckoutController implements Initializable {
 
     private void checkForRequirements(){
 
-        mainPane.setPrefHeight(715);
-
         if(user.getCart().getRequirements().isEmpty()){
-            mainPane.getScene().getWindow().hide();
             HBox box = new HBox();
             box.setAlignment(Pos.TOP_CENTER);
             Button checkout = new Button("Check Out");
@@ -147,7 +154,6 @@ public class CheckoutController implements Initializable {
             box.getChildren().add(checkout);
             mainPane.getChildren().add(box);
             mainPane.setPrefHeight(650);
-            ((Stage)mainPane.getScene().getWindow()).show();
         }
 
         for(Car car : user.getCart().getRequirements()){
@@ -159,6 +165,7 @@ public class CheckoutController implements Initializable {
     }
 
     public void refreshRequirements(){
+        mainPane.setPrefHeight(715);
         mainPane.getChildren().removeAll(financeButtons);
         financeButtons.clear();
         checkForRequirements();
@@ -190,6 +197,25 @@ public class CheckoutController implements Initializable {
         cityField.setText(user.getCity());
         zipField.setText(user.getZipcode());
         phoneField.setText(user.getPhone());
+    }
+
+    public void fillOutComboBoxes(){
+        for(int i = 2012; i <= 2100; i++){
+            expYear.getItems().add(i);
+        }
+
+        for(int i = 1; i <= 12; i++){
+            expMonth.getItems().add(i);
+        }
+
+        String[] locales = Locale.getISOCountries();
+
+        for(String countryCode : locales){
+            Locale obj = new Locale("", countryCode);
+            countryBox.getItems().add(obj.getDisplayCountry());
+
+        }
+
     }
 
 
