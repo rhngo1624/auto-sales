@@ -59,7 +59,7 @@
       </VBox>
    </right>
    <left>
-      <VBox alignment="TOP_CENTER" prefHeight="368.0" prefWidth="74.0" spacing="10.0" style="-fx-background-color: #49595A;" BorderPane.alignment="TOP_CENTER">
+      <VBox fx:id="buttonVBox" alignment="TOP_CENTER" prefHeight="368.0" prefWidth="74.0" spacing="10.0" style="-fx-background-color: #49595A;" BorderPane.alignment="TOP_CENTER">
          <children>
             <Label alignment="CENTER" prefHeight="17.0" prefWidth="109.0" text="Toolbar" textFill="WHITE">
                <font>
@@ -101,6 +101,15 @@
                   <ImageView fitHeight="30.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../imgs/icons/edit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="viewButton" mnemonicParsing="false" prefHeight="6.0" prefWidth="43.0" styleClass="toolbar_button" onAction="#view">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imgs/icons/research.png" />
                      </image>
                   </ImageView>
                </graphic>

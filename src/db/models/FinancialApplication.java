@@ -2,6 +2,7 @@ package db.models;
 
 
 import app.core.SQLModel;
+import db.tables.Cars;
 
 public class FinancialApplication implements SQLModel {
 
@@ -28,6 +29,9 @@ public class FinancialApplication implements SQLModel {
     private String driversLicenseNo;
     private String ssn;
     private boolean completed = false;
+
+    private String userName;
+    private String carName;
 
     public int getID() {
         return ID;
@@ -212,4 +216,32 @@ public class FinancialApplication implements SQLModel {
     public void setCompleted(boolean complete){
         completed = complete;
     }
+
+    public void setCarName(String carName){
+
+        this.carName = carName;
+
+    }
+
+    public void setUserName(String userName){
+
+        this.userName = userName;
+
+    }
+
+    public String getCarName(){
+        if(!carName.isEmpty()){
+            return carName;
+        }
+        return "";
+    }
+
+    public String getUserName(){
+        if(!userName.isEmpty()){
+            return userName;
+        }
+
+        return "";
+    }
+
 }

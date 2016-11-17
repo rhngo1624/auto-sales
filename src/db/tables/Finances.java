@@ -107,6 +107,7 @@ public class Finances extends SQLTable<FinancialApplication> {
 
             financeApp.setID(rs.getInt("ID"));
             financeApp.setUserID(rs.getInt("UserID"));
+            financeApp.setCarID(rs.getInt("CarID"));
             financeApp.setNumberOfDependents(rs.getInt("NumberOfDependents"));
             financeApp.setResidentialStatus(rs.getString("ResidentialStatus"));
             financeApp.setMonthlyHomePayment(rs.getDouble("MonthlyHomePayment"));
