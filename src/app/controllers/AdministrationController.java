@@ -113,12 +113,29 @@ public class AdministrationController implements Initializable {
     }
 
     public void view(){
+        if(table == null){
+            return;
+        }
         if(table.getClass().getSimpleName().equals("FinancialApplicationView")){
             FinancialApplication app = (FinancialApplication)table.getSelectionModel().getSelectedItem();
             if(app != null){
                 ((FinancialApplicationView)table).showApp(app, table);
             }
         }
+    }
+
+    public void add(){
+
+    }
+
+    public void delete(){
+
+
+    }
+
+    public void edit(){
+
+
     }
 
 }
