@@ -106,9 +106,11 @@ public class AdministrationController implements Initializable {
 
     private void showViewButton(boolean showView){
         buttonVBox.getChildren().clear();
-        buttonVBox.getChildren().addAll(addButton, deleteButton, editButton);
+        buttonVBox.getChildren().addAll(addButton, deleteButton);
         if(showView){
             buttonVBox.getChildren().add(viewButton);
+        }else{
+            buttonVBox.getChildren().add(editButton);
         }
     }
 

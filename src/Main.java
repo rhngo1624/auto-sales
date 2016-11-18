@@ -1,6 +1,15 @@
+import com.sun.javafx.application.LauncherImpl;
+
 import app.core.Resource;
 import app.utils.StageUtil;
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.application.Preloader;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Task;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,6 +20,13 @@ public class Main extends Application {
     private Stage window;
     private final String TITLE = "AutoSales";
 
+    @Override
+    public void init() throws Exception {
+        for(int i = 0; i < 50000; i++){
+            int progress = (100*i)/50000;
+            LauncherImpl.notifyPreloader(this, new Preloader.ProgressNotification(progress));
+        }
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -35,7 +51,8 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+        LauncherImpl.launchApplication(Main.class, AutoSalesPreloader.class, args);
     }
+
 
 }
