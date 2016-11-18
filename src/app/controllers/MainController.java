@@ -4,6 +4,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.net.URL;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 import app.core.StoreItem;
 import app.ui.display.AccessoryDisplay;
@@ -15,9 +20,11 @@ import app.utils.Session;
 import app.utils.StageUtil;
 import db.models.Transaction;
 import db.tables.Transactions;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
@@ -60,10 +67,13 @@ public class MainController implements Initializable {
     @FXML
     private ToolBar toolbar;
 
+    private SearchDisplay searchDisplay;
+
     @FXML
     public void initialize(URL location, ResourceBundle rb){
 
         displayCars();
+
         toolbar.getItems().remove(2);
 
         searchField.textProperty().addListener((ob, ov, nv) -> {
@@ -136,27 +146,53 @@ public class MainController implements Initializable {
 
     private void displayAccessories(){
 
+        ExecutorService executor = Executors.newFixedThreadPool(1);
+
         mainBorderPane.getChildren().clear();
 
-        AccessoryDisplay display = new AccessoryDisplay();
-        display.createElements();
-        mainBorderPane.getChildren().add(display.getDisplay());
+        Callable<Group> carDisplay = () -> {
+            AccessoryDisplay display = new AccessoryDisplay();
+            display.createElements();
+            return display.getDisplay();
+        };
 
-        isCarDisplay = false;
+        Future<Group> results = executor.submit(carDisplay);
+
+        try{
+            mainBorderPane.getChildren().add(results.get());
+            isCarDisplay = false;
+        }catch(ExecutionException ee){
+            System.out.println("Execution exception");
+        }catch(InterruptedException ie){
+            System.out.println("Interrupted exception");
+        }
 
     }
 
     private void displayCars(){
 
+        ExecutorService executor = Executors.newFixedThreadPool(1);
+
         mainBorderPane.getChildren().clear();
 
-        CarDisplay display = new CarDisplay();
-        display.createElements();
-        mainBorderPane.getChildren().add(display.getDisplay());
+        Callable<Group> carDisplay = () -> {
+            CarDisplay display = new CarDisplay();
+            display.createElements();
+            return display.getDisplay();
+        };
 
-        isCarDisplay = true;
+        Future<Group> results = executor.submit(carDisplay);
 
+        try{
+            mainBorderPane.getChildren().add(results.get());
+            isCarDisplay = true;
+        }catch(ExecutionException ee){
+            System.out.println("Execution exception");
+        }catch(InterruptedException ie){
+            System.out.println("Interrupted exception");
+        }
     }
+
 
     public void switchDisplay(){
 
@@ -180,24 +216,42 @@ public class MainController implements Initializable {
 
     private void search(){
 
-        if(!searchField.getText().isEmpty()){
+            ExecutorService executor = Executors.newFixedThreadPool(3);
 
-            mainBorderPane.getChildren().clear();
+            if(!searchField.getText().isEmpty()){
 
-            SearchDisplay display = new SearchDisplay();
-            display.setSearch(searchField.getText());
-            display.createElements();
-            mainBorderPane.getChildren().add(display.getDisplay());
+                mainBorderPane.getChildren().clear();
 
-        }else{
+                Callable<Group> searchTask = () -> {
+                        SearchDisplay display = new SearchDisplay();
+                        display.setSearch(searchField.getText());
+                        display.createElements();
+                        return display.getDisplay();
 
-            if(isCarDisplay){
-                displayCars();
+                };
+
+                Future<Group> results = executor.submit(searchTask);
+
+                try{
+                    mainBorderPane.getChildren().add(results.get());
+                }catch(ExecutionException ee){
+                    System.out.println("Execution exception");
+                }catch(InterruptedException ie){
+                    System.out.println("Interrupted exception");
+                }
+
             }else{
-                displayAccessories();
-            }
 
-        }
+                if(isCarDisplay){
+
+                    displayCars();
+
+                }else{
+
+                    displayAccessories();
+                }
+
+            }
 
     }
 
