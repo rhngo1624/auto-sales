@@ -14,12 +14,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class UsersTableView extends TableView<User> {
+public class UsersTableView extends DataAcquisitionTableView<User> {
 
     public UsersTableView(){
 
         setupColumns();
-        setItems(new Users().getAllRows());
+        setData(new Users().getAllRows());
 
     }
 

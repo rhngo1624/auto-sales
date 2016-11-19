@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXDialog;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -101,7 +102,6 @@ public class ModalUtil {
         button.setStyle("-fx-text-fill: white; -fx-background-color: #3c4656;");
         button.setAlignment(Pos.CENTER);
         button.setMinWidth(80);
-
         button.setOnAction((e) -> {
 
             Timeline timeline = new Timeline();

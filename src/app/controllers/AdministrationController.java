@@ -7,6 +7,7 @@ import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import app.core.SQLModel;
 import app.ui.tableview.AccessoriesTableView;
 import app.ui.tableview.CarsTableView;
 import app.ui.tableview.FinancialApplicationView;
@@ -21,6 +22,10 @@ import db.models.User;
 import db.tables.Cars;
 import db.tables.Finances;
 import db.tables.Users;
+import javafx.beans.InvalidationListener;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -28,6 +33,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
@@ -131,7 +137,8 @@ public class AdministrationController implements Initializable {
     private void setupSearch(){
         search = new JFXTextField();
         search.setPromptText("Search...");
-        search.setOnAction((e) -> search());
+        //search.textProperty().addListener(new SearchListener());
+
         VBox.setMargin(search, new Insets(5,0,7,0));
         center.getChildren().add(search);
     }
@@ -149,8 +156,9 @@ public class AdministrationController implements Initializable {
     }
 
     public void search(){
-        String str = "searching..." + search.getText();
-        System.out.println(str);
+        if(table.getColumns().isEmpty()){
+
+        }
     }
 
     public void add(){
@@ -158,7 +166,6 @@ public class AdministrationController implements Initializable {
     }
 
     public void delete(){
-
 
     }
 
@@ -170,5 +177,7 @@ public class AdministrationController implements Initializable {
     public void returnToMain(){
         ((Stage)buttonToolbar.getScene().getWindow()).close();
     }
+
+
 
 }

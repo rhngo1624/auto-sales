@@ -20,11 +20,11 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 
 
-public class CartTableView extends TableView<StoreItem> {
+public class CartTableView extends DataAcquisitionTableView<StoreItem> {
     private CheckoutController control;
     public CartTableView(CheckoutController control){
         setupColumns();
-        setItems(Session.getInstance().getUser().getCart().dumpObservable());
+        setData(Session.getInstance().getUser().getCart().dumpObservable());
         this.control = control;
     }
 

@@ -25,7 +25,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class FinancialApplicationView extends TableView<FinancialApplication> {
+public class FinancialApplicationView extends DataAcquisitionTableView<FinancialApplication> {
 
     public FinancialApplicationView(){
 
@@ -147,7 +147,7 @@ public class FinancialApplicationView extends TableView<FinancialApplication> {
             }
         }
 
-        setItems(apps);
+        setData(apps);
 
     }
 
