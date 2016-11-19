@@ -1,7 +1,7 @@
 <h1>AutoSales Software Project for Software Engineering Fundamentals</h1>
 
 <p>Main UI</p>
-<img src="pictures/commit_44_progress.png"/>
+<img src="pictures/adminpanel.png"/>
 
 <p>Logged In Admin</p
 <img src=“pictures/loggedin.png”/>
