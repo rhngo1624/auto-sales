@@ -1,5 +1,7 @@
 package app.ui.tableview;
 
+import com.jfoenix.controls.JFXTreeTableView;
+
 import java.util.Iterator;
 
 import db.models.FinancialApplication;

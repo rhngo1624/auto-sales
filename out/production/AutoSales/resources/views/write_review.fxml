@@ -19,7 +19,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import com.jfoenix.controls.JFXButton?>
 
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXCheckBox?>
 <VBox xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.WriteReviewController">
    <children>
       <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="378.0" prefWidth="642.0">
@@ -59,14 +64,14 @@
                               <Insets left="8.0" />
                            </HBox.margin>
                         </Label>
-                        <TextField fx:id="reviewTitleField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="167.0">
+                        <JFXTextField fx:id="reviewTitleField" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="167.0">
                            <HBox.margin>
                               <Insets left="8.0" />
                            </HBox.margin>
                            <font>
                               <Font size="11.0" />
                            </font>
-                        </TextField>
+                        </JFXTextField>
                      </children>
                      <VBox.margin>
                         <Insets bottom="12.0" top="8.0" />
@@ -79,38 +84,38 @@
                               <Insets left="8.0" right="10.0" />
                            </HBox.margin>
                         </Label>
-                        <RadioButton fx:id="rating1" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="8.0" prefWidth="55.0" text="1">
+                        <JFXRadioButton fx:id="rating1" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="8.0" prefWidth="55.0" text="1">
                            <HBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </HBox.margin>
-                        </RadioButton>
-                        <RadioButton fx:id="rating2" contentDisplay="TOP" graphicTextGap="2.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="8.0" prefWidth="55.0" text="2">
+                        </JFXRadioButton>
+                        <JFXRadioButton fx:id="rating2" contentDisplay="TOP" graphicTextGap="2.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="8.0" prefWidth="55.0" text="2">
                            <HBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </HBox.margin>
-                        </RadioButton>
-                        <RadioButton fx:id="rating3" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="8.0" prefWidth="55.0" text="3">
+                        </JFXRadioButton>
+                        <JFXRadioButton fx:id="rating3" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="8.0" prefWidth="55.0" text="3">
                            <HBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </HBox.margin>
-                        </RadioButton>
-                        <RadioButton fx:id="rating4" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="8.0" prefWidth="55.0" text="4">
+                        </JFXRadioButton>
+                        <JFXRadioButton fx:id="rating4" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="8.0" prefWidth="55.0" text="4">
                            <HBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </HBox.margin>
-                        </RadioButton>
-                        <RadioButton fx:id="rating5" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="8.0" prefWidth="55.0" text="5">
+                        </JFXRadioButton>
+                        <JFXRadioButton fx:id="rating5" contentDisplay="TOP" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="8.0" prefWidth="55.0" text="5">
                            <HBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </HBox.margin>
-                        </RadioButton>
+                        </JFXRadioButton>
                      </children>
                   </HBox>
-                  <TextArea fx:id="reviewTextArea" prefHeight="200.0" prefWidth="200.0">
+                  <JFXTextArea fx:id="reviewTextArea" prefHeight="200.0" prefWidth="200.0">
                      <VBox.margin>
                         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
                      </VBox.margin>
-                  </TextArea>
+                  </JFXTextArea>
                   <HBox>
                      <VBox.margin>
                         <Insets top="4.0" />
@@ -123,18 +128,18 @@
                   </HBox>
                   <HBox>
                      <children>
-                        <CheckBox fx:id="firstNameShowBox" mnemonicParsing="false" text="Display your first name on the review">
+                        <JFXCheckBox fx:id="firstNameShowBox" mnemonicParsing="false" text="Display your first name on the review">
                            <HBox.margin>
                               <Insets left="8.0" top="12.0" />
                            </HBox.margin>
-                        </CheckBox>
+                        </JFXCheckBox>
                      </children>
                   </HBox>
-                  <Button fx:id="submitButton" onAction="#submit" alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="115.0" text="Submit Review">
+                  <JFXButton fx:id="submitButton" onAction="#submit" alignment="CENTER" mnemonicParsing="false" prefHeight="27.0" prefWidth="115.0" text="Submit Review">
                      <VBox.margin>
                         <Insets bottom="10.0" left="8.0" top="16.0" />
                      </VBox.margin>
-                  </Button>
+                  </JFXButton>
                </children>
                <BorderPane.margin>
                   <Insets top="8.0" />

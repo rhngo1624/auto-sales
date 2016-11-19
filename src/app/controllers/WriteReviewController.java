@@ -1,5 +1,10 @@
 package app.controllers;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
+
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -19,7 +24,7 @@ import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
+import com.jfoenix.controls.JFXRadioButton;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
@@ -34,23 +39,23 @@ public class WriteReviewController implements Initializable {
     @FXML
     private Label date;
     @FXML
-    private TextField reviewTitleField;
+    private JFXTextField reviewTitleField;
     @FXML
-    private TextArea reviewTextArea;
+    private JFXTextArea reviewTextArea;
     @FXML
-    private CheckBox firstNameShowBox;
+    private JFXCheckBox firstNameShowBox;
     @FXML
-    private RadioButton rating1;
+    private JFXRadioButton rating1;
     @FXML
-    private RadioButton rating2;
+    private JFXRadioButton rating2;
     @FXML
-    private RadioButton rating3;
+    private JFXRadioButton rating3;
     @FXML
-    private RadioButton rating4;
+    private JFXRadioButton rating4;
     @FXML
-    private RadioButton rating5;
+    private JFXRadioButton rating5;
     @FXML
-    private Button submitButton;
+    private JFXButton submitButton;
     private ToggleGroup ratingGroup;
     private StoreItem item;
     private Date timestamp;
@@ -59,7 +64,7 @@ public class WriteReviewController implements Initializable {
     public void initialize(URL location, ResourceBundle rb){
         itemName.setText(item.getName());
         date.setText(getFormattedDate());
-        setupRadioButtons();
+        setupJFXRadioButtons();
 
     }
 
@@ -77,7 +82,7 @@ public class WriteReviewController implements Initializable {
         return df.format(timestamp);
     }
 
-    private void setupRadioButtons(){
+    private void setupJFXRadioButtons(){
         rating1.setToggleGroup(ratingGroup);
         rating1.setUserData(1);
         rating2.setToggleGroup(ratingGroup);

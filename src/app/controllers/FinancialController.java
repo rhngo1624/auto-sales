@@ -162,6 +162,10 @@ public class FinancialController implements Initializable {
             new Finances().insert(app);
             prevAddressField.getScene().getWindow().hide();
 
+        }else{
+
+            ModalUtil.showWarning("Not all fields are filled.");
+
         }
 
     }

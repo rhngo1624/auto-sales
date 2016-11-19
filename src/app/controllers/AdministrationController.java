@@ -1,15 +1,20 @@
 package app.controllers;
 
 
+import com.apple.laf.AquaButtonBorder;
+import com.jfoenix.controls.JFXTextField;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import app.ui.tableview.AccessoriesTableView;
 import app.ui.tableview.CarsTableView;
 import app.ui.tableview.FinancialApplicationView;
+import app.ui.tableview.TransactionsView;
 import app.ui.tableview.UsersTableView;
 import app.utils.ModalUtil;
 import app.utils.Session;
+import app.utils.StageUtil;
 import db.models.Car;
 import db.models.FinancialApplication;
 import db.models.User;
@@ -24,15 +29,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class AdministrationController implements Initializable {
 
     @FXML
-    private VBox buttonVBox;
+    private ToolBar buttonToolbar;
     @FXML
     private BorderPane borderPane;
     @FXML
@@ -57,6 +64,8 @@ public class AdministrationController implements Initializable {
     private Button viewButton;
     @FXML
     private TableView table;
+    private VBox center;
+    private JFXTextField search;
 
     @FXML
     public void initialize(URL location, ResourceBundle rb){
@@ -64,6 +73,8 @@ public class AdministrationController implements Initializable {
         if(!Session.getInstance().isActive()){
             System.exit(-1);
         }
+
+        center = new VBox();
 
         setAdminName();
 
@@ -75,43 +86,54 @@ public class AdministrationController implements Initializable {
     }
 
     public void showUsers(){
+        center.getChildren().clear();
         table = new UsersTableView();
-        showViewButton(false);
-        borderPane.setCenter(table);
+        setupSearch();
+        center.getChildren().add(table);
+        borderPane.setCenter(center);
 
     }
 
     public void showCars(){
+        center.getChildren().clear();
         table = new CarsTableView();
-        showViewButton(false);
-        borderPane.setCenter(table);
+        setupSearch();
+        center.getChildren().add(table);
+        borderPane.setCenter(center);
     }
 
     public void showAccessories(){
+        center.getChildren().clear();
+        setupSearch();
         table = new AccessoriesTableView();
-        showViewButton(false);
-        borderPane.setCenter(table);
+        center.getChildren().add(table);
+        borderPane.setCenter(center);
     }
 
     public void showFinancialApps(){
+        center.getChildren().clear();
+        setupSearch();
         table = new FinancialApplicationView();
-        showViewButton(true);
-        borderPane.setCenter(table);
+        center.getChildren().add(table);
+        borderPane.setCenter(center);
 
     }
 
     public void showTransactions(){
+        center.getChildren().clear();
+        setupSearch();
+        TransactionsView view = new TransactionsView();
+        center.getChildren().add(view);
+        borderPane.setCenter(center);
 
     }
 
-    private void showViewButton(boolean showView){
-        buttonVBox.getChildren().clear();
-        buttonVBox.getChildren().addAll(addButton, deleteButton);
-        if(showView){
-            buttonVBox.getChildren().add(viewButton);
-        }else{
-            buttonVBox.getChildren().add(editButton);
-        }
+    private void setupSearch(){
+        search = new JFXTextField();
+        search.setPromptText("Search...");
+        search.setOnAction((e) -> search());
+        VBox.setMargin(search, new Insets(5,0,7,0));
+        center.getChildren().add(search);
     }
 
     public void view(){
@@ -126,6 +148,11 @@ public class AdministrationController implements Initializable {
         }
     }
 
+    public void search(){
+        String str = "searching..." + search.getText();
+        System.out.println(str);
+    }
+
     public void add(){
 
     }
@@ -138,6 +165,10 @@ public class AdministrationController implements Initializable {
     public void edit(){
 
 
+    }
+
+    public void returnToMain(){
+        ((Stage)buttonToolbar.getScene().getWindow()).close();
     }
 
 }

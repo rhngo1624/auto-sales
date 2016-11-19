@@ -1,5 +1,6 @@
 package db.models;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ public class Transaction implements SQLModel {
     private int ID;
     private User user;
     private String serializedItems;
+    private Date date;
 
     public void setID(int id){
         ID = id;
@@ -69,29 +71,25 @@ public class Transaction implements SQLModel {
             }
         }
 
-        System.out.println("ItemCount = " + itemCount);
-
         int index = 0;
 
         //get type and id from serialized string
         while(items.size() != itemCount){
-            System.out.println("ITEMS SIZE => " + items.size());
+
             StringBuilder sb = new StringBuilder();
 
             while(!(serializedItems.charAt(index) == '-')){
-                System.out.println("While not '-' appending..." + serializedItems.charAt(index));
+
                 sb.append(serializedItems.charAt(index));
                 index++;
 
             }
 
             int type = Character.getNumericValue(sb.toString().charAt(0));
-            System.out.println("Type = " + type);
             String num = "";
 
             for(int i = 1; i < sb.length(); i++){
                 num += sb.toString().charAt(i);
-                System.out.println("Num = " + num);
             }
 
             int id = Integer.parseInt(num);
@@ -115,6 +113,14 @@ public class Transaction implements SQLModel {
 
 
         return items;
+    }
+
+    public Date getDate(){
+        return date;
+    }
+
+    public void setDate(Date date){
+        this.date = date;
     }
 
 }

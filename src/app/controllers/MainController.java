@@ -165,6 +165,8 @@ public class MainController implements Initializable {
             System.out.println("Execution exception");
         }catch(InterruptedException ie){
             System.out.println("Interrupted exception");
+        }finally{
+            executor.shutdown();
         }
 
     }
@@ -190,6 +192,8 @@ public class MainController implements Initializable {
             System.out.println("Execution exception");
         }catch(InterruptedException ie){
             System.out.println("Interrupted exception");
+        }finally {
+            executor.shutdown();
         }
     }
 
@@ -216,7 +220,7 @@ public class MainController implements Initializable {
 
     private void search(){
 
-            ExecutorService executor = Executors.newFixedThreadPool(3);
+            ExecutorService executor = Executors.newFixedThreadPool(1);
 
             if(!searchField.getText().isEmpty()){
 
@@ -238,6 +242,8 @@ public class MainController implements Initializable {
                     System.out.println("Execution exception");
                 }catch(InterruptedException ie){
                     System.out.println("Interrupted exception");
+                }finally {
+                    executor.shutdown();
                 }
 
             }else{

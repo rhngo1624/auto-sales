@@ -89,7 +89,7 @@ public class CheckoutController implements Initializable {
             itemPane.getChildren().add(ctv);
             checkForRequirements();
         }else{
-            ModalUtil.showMessage("Not logged in.");
+            ModalUtil.showWarning("Not logged in.");
 
             try{
 

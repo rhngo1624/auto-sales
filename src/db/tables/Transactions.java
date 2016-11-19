@@ -98,7 +98,7 @@ public class Transactions extends SQLTable<Transaction> {
 	 */
 	public boolean insert(Transaction model){
 
-		String query = "INSERT into Transactions (UserID, StoreItems) VALUES (?, ?)";
+		String query = "INSERT into Transactions (UserID, StoreItems, Date) VALUES (?, ?, ?)";
 
 		// Try with resources: closes resources after using them.
 		try (PreparedStatement stmt = CONN.prepareStatement(query,
@@ -124,12 +124,12 @@ public class Transactions extends SQLTable<Transaction> {
 	 *
 	 */
     	public boolean update(Transaction model){
-		String query = "UPDATE Transactions SET UserID = ?, StoreItems = ? WHERE ID = ?";
+		String query = "UPDATE Transactions SET UserID = ?, StoreItems = ?, Date = ?  WHERE ID = ?";
 
 		try ( PreparedStatement stmt = CONN.prepareStatement(query)) {
 			// Sets values for query.
 			setProperties(stmt, model);
-			stmt.setInt(3, model.getID());
+			stmt.setInt(4, model.getID());
 			int affectedRows = stmt.executeUpdate();
 			// Returns true if anything was changed, false otherwise.
 			return affectedRows == 1;
@@ -144,6 +144,7 @@ public class Transactions extends SQLTable<Transaction> {
 		try{
             stmt.setInt(1, model.getUser().getID());
             stmt.setString(2, model.getSerializedItems());
+			stmt.setDate(3, model.getDate());
         }catch(SQLException e){
             System.err.println(e.getMessage());
         }
@@ -159,6 +160,7 @@ public class Transactions extends SQLTable<Transaction> {
             transaction.setID(rs.getInt("ID"));
             transaction.setUser(new Users().get(rs.getInt("UserID")));
             transaction.setSerializedItems(rs.getString("StoreItems"));
+			transaction.setDate(rs.getDate("Date"));
 
             return transaction;
 
