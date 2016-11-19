@@ -114,7 +114,7 @@ public class MainController implements Initializable {
 
     public void administration(){
 
-        ModalUtil.setupAndShow(Resource.ADMIN, "Administration");
+        ModalUtil.setupAndShow(Resource.ADMIN, "Administration", true);
 
     }
 
@@ -123,7 +123,7 @@ public class MainController implements Initializable {
      */
     public void login(){
 
-        ModalUtil.setupAndShow(Resource.LOGIN, LOGIN_TITLE);
+        ModalUtil.setupAndShow(Resource.LOGIN, LOGIN_TITLE, false);
 
     }
 
@@ -132,7 +132,7 @@ public class MainController implements Initializable {
      */
     public void register(){
 
-       ModalUtil.setupAndShow(Resource.REGISTER, REGISTER_TITLE);
+       ModalUtil.setupAndShow(Resource.REGISTER, REGISTER_TITLE, false);
 
     }
 
@@ -141,7 +141,7 @@ public class MainController implements Initializable {
      */
     public void checkout(){
 
-        ModalUtil.setupAndShow(Resource.CHECKOUT, CHECKOUT_TITLE);
+        ModalUtil.setupAndShow(Resource.CHECKOUT, CHECKOUT_TITLE, false);
     }
 
     private void displayAccessories(){

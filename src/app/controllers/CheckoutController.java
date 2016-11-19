@@ -181,7 +181,7 @@ public class CheckoutController implements Initializable {
         financeAppButton.getStyleClass().add("finance_button");
         financeAppButton.setOnAction((e) -> {
 
-            ModalUtil.setupAndShow(Resource.FINANCE, "Financial Application");
+            ModalUtil.setupAndShow(Resource.FINANCE, "Financial Application", false);
             Session.getInstance().getUser().getCart().setAppInProgress(car);
 
         });

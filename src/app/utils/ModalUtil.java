@@ -39,7 +39,7 @@ import javafx.util.Duration;
 public class ModalUtil {
 
 
-    public static void setupAndShow(URL uiPath, String title){
+    public static void setupAndShow(URL uiPath, String title, boolean undecorated){
 
         Stage stage;
         Region layout;
@@ -57,6 +57,9 @@ public class ModalUtil {
         }
 
         stage = new Stage();
+        if(undecorated){
+            stage.initStyle(StageStyle.TRANSPARENT);
+        }
         Scene scene = new Scene(layout);
         stage.setScene(scene);
         stage.setTitle(title);
@@ -109,6 +112,7 @@ public class ModalUtil {
             timeline.getKeyFrames().add(key);
             timeline.setOnFinished((ae) -> stage.close());
             timeline.play();
+
 
         });
 

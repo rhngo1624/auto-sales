@@ -5,6 +5,9 @@ import app.core.Resource;
 import app.utils.Session;
 import app.core.StoreItem;
 import db.models.User;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -16,11 +19,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 public class StoreItemPane extends VBox {
 
     private final StoreItem item;
     private final StoreItemPane paneRef;
+
 
     public StoreItemPane(StoreItem item){
 
@@ -40,13 +45,13 @@ public class StoreItemPane extends VBox {
         Label price = new Label(item.getDollarAmount());
         price.setStyle("-fx-text-fill: white");
 
-        ImageView image = new ImageView(new Image(item.getImageLocation()));
-        image.setFitHeight(150);
-        image.setFitWidth(230);
+        ImageView imageView = new ImageView(new Image(item.getImageLocation()));
+        imageView.setFitHeight(150);
+        imageView.setFitWidth(230);
 
         Label imageLabel = new Label();
         imageLabel.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
-        imageLabel.setGraphic(image);
+        imageLabel.setGraphic(imageView);
         imageLabel.setOnMouseClicked(new StoreItemPane.ViewClickListener());
 
         imageLabel.setTooltip(new Tooltip("Right-Click to Store in Cart"));
@@ -71,12 +76,9 @@ public class StoreItemPane extends VBox {
 
         public void handle(MouseEvent event){
 
-            System.out.println(event.getEventType());
-            System.out.println("Active Session = " + session.isActive());
+            if (event.getButton() == MouseButton.SECONDARY) {
 
-            if(event.getButton() == MouseButton.SECONDARY){
-
-                if(session.isActive()){
+                if (session.isActive()) {
 
                     User user = session.getUser();
                     user.getCart().addItem(item);
@@ -84,10 +86,10 @@ public class StoreItemPane extends VBox {
 
                 }
 
-            }else{
+            } else {
 
                 SelectedItemPane.set(paneRef);
-                ModalUtil.setupAndShow(Resource.ITEMVIEW, item.getName());
+                ModalUtil.setupAndShow(Resource.ITEMVIEW, item.getName(), false);
 
             }
 

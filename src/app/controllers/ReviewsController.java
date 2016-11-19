@@ -1,6 +1,8 @@
 package app.controllers;
 
 
+import com.jfoenix.controls.JFXTextArea;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -71,7 +73,7 @@ public class ReviewsController implements Initializable {
         owner.setPadding(new Insets(5,5,5,5));
         rating.setPadding(new Insets(5,5,5,5));
 
-        TextArea content = new TextArea(review.getContents());
+        JFXTextArea content = new JFXTextArea(review.getContents());
         content.setWrapText(true);
         content.setEditable(false);
         content.setMinSize(120,120);
