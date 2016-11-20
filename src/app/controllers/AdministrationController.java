@@ -134,8 +134,9 @@ public class AdministrationController implements Initializable {
     public void showTransactions(){
         center.getChildren().clear();
         setupSearch();
-        TransactionsView view = new TransactionsView();
-        center.getChildren().add(view);
+        table = new TransactionsView();
+        data = table.getItems();
+        center.getChildren().add(table);
         borderPane.setCenter(center);
 
     }
@@ -143,11 +144,8 @@ public class AdministrationController implements Initializable {
     private void setupSearch(){
         search = new JFXTextField();
         search.setPromptText("Search...");
-        search.textProperty().addListener(new InvalidationListener() {
-            @Override
-            public void invalidated(Observable observable) {
-                search();
-            }
+        search.textProperty().addListener((e) -> {
+            search();
         });
 
         VBox.setMargin(search, new Insets(5,0,7,0));

@@ -9,43 +9,63 @@ import java.util.ArrayList;
 import app.core.StoreItem;
 import db.models.Transaction;
 import db.tables.Transactions;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 
-public class TransactionsView extends VBox {
+public class TransactionsView extends TableView<Transaction> {
 
     public TransactionsView(){
-        formTransactionView();
+        setupColumns();
+        setItems(new Transactions().getAllRows());
     }
 
-    public void formTransactionView(){
-        for(Transaction transaction : new Transactions().getAllRows()){
+    private void setupColumns(){
 
-            JFXButton transactionButton = new JFXButton("Date: " + transaction.getDate()
-                    + " User: " + transaction.getUser().getUsername());
-            transactionButton.setStyle("-fx-background-color: #b5bdc8");
+        TableColumn<Transaction, Integer> ID = new TableColumn<>("ID");
+        TableColumn<Transaction, String> Username = new TableColumn<>("User");
+        TableColumn<Transaction, String> Items = new TableColumn<>("Items");
 
-            VBox.setMargin(transactionButton, new Insets(0,0,0,80));
+        ID.setCellValueFactory(new PropertyValueFactory<>("ID"));
+        Username.setCellValueFactory((cellDataFeatures) -> {
+            if(cellDataFeatures.getValue() != null){
+                return new SimpleStringProperty(cellDataFeatures.getValue().getUser().getUsername());
+            }else{
+                return new SimpleStringProperty("<no name>");
+            }
+        });
 
-            transactionButton.setOnAction((e) -> {
-                printTransaction(transaction);
-            });
+        Items.setCellValueFactory((cellDataFeatures) -> {
+            if(cellDataFeatures.getValue() != null){
+                return new SimpleStringProperty(getItemString(cellDataFeatures.getValue()));
+            }else{
+                return new SimpleStringProperty("<no items>");
+            }
+        });
 
-            getChildren().add(transactionButton);
+        ID.prefWidthProperty().bind(this.widthProperty().divide(5));
+        Username.prefWidthProperty().bind(this.widthProperty().divide(4));
+        Items.prefWidthProperty().bind(this.widthProperty().divide(3));
+
+        getColumns().add(0, ID);
+        getColumns().add(1, Username);
+        getColumns().add(2, Items);
+
+    }
+
+    private String getItemString(Transaction t){
+        StringBuilder sb = new StringBuilder();
+        for(StoreItem item : t.getItemList()){
+            sb.append(item.getName() + "\n");
         }
+
+        return sb.toString();
     }
 
-    private void printTransaction(Transaction transaction){
-        ArrayList<StoreItem> items = transaction.getItemList();
-        Date date = transaction.getDate();
-        String username = transaction.getUser().getUsername();
-        System.out.println(date);
-        System.out.println("User: " + username);
-        for(StoreItem item : items){
-            System.out.println("Item: " + item.getName());
-        }
-    }
 
 }
