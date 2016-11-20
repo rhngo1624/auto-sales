@@ -1,6 +1,8 @@
 package app.ui.tableview;
 
 
+import com.jfoenix.controls.JFXTextField;
+
 import java.sql.SQLException;
 
 import app.core.SQLModel;
@@ -12,12 +14,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class AccessoriesTableView extends DataAcquisitionTableView<Accessory> {
+public class AccessoriesTableView extends TableView<Accessory> {
 
     public AccessoriesTableView(){
 
         setupColumns();
-        setData(new Accessories().getAllRows());
+        setItems(new Accessories().getAllRows());
 
     }
 
@@ -29,12 +31,12 @@ public class AccessoriesTableView extends DataAcquisitionTableView<Accessory> {
         ID.setCellValueFactory(new PropertyValueFactory<>("ID"));
         Name.setCellValueFactory(new PropertyValueFactory<>("name"));
 
-
         ID.prefWidthProperty().bind(this.widthProperty().divide(4));
         Name.prefWidthProperty().bind(this.widthProperty().divide(2));
 
         getColumns().add(0, ID);
         getColumns().add(1, Name);
+
     }
 
 }

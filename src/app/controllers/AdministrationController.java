@@ -16,6 +16,7 @@ import app.ui.tableview.UsersTableView;
 import app.utils.ModalUtil;
 import app.utils.Session;
 import app.utils.StageUtil;
+import db.models.Accessory;
 import db.models.Car;
 import db.models.FinancialApplication;
 import db.models.User;
@@ -70,6 +71,7 @@ public class AdministrationController implements Initializable {
     private Button viewButton;
     @FXML
     private TableView table;
+    private ObservableList data;
     private VBox center;
     private JFXTextField search;
 
@@ -94,6 +96,7 @@ public class AdministrationController implements Initializable {
     public void showUsers(){
         center.getChildren().clear();
         table = new UsersTableView();
+        data = table.getItems();
         setupSearch();
         center.getChildren().add(table);
         borderPane.setCenter(center);
@@ -103,6 +106,7 @@ public class AdministrationController implements Initializable {
     public void showCars(){
         center.getChildren().clear();
         table = new CarsTableView();
+        data = table.getItems();
         setupSearch();
         center.getChildren().add(table);
         borderPane.setCenter(center);
@@ -112,6 +116,7 @@ public class AdministrationController implements Initializable {
         center.getChildren().clear();
         setupSearch();
         table = new AccessoriesTableView();
+        data = table.getItems();
         center.getChildren().add(table);
         borderPane.setCenter(center);
     }
@@ -120,6 +125,7 @@ public class AdministrationController implements Initializable {
         center.getChildren().clear();
         setupSearch();
         table = new FinancialApplicationView();
+        data = table.getItems();
         center.getChildren().add(table);
         borderPane.setCenter(center);
 
@@ -137,7 +143,12 @@ public class AdministrationController implements Initializable {
     private void setupSearch(){
         search = new JFXTextField();
         search.setPromptText("Search...");
-        //search.textProperty().addListener(new SearchListener());
+        search.textProperty().addListener(new InvalidationListener() {
+            @Override
+            public void invalidated(Observable observable) {
+                search();
+            }
+        });
 
         VBox.setMargin(search, new Insets(5,0,7,0));
         center.getChildren().add(search);
@@ -156,9 +167,31 @@ public class AdministrationController implements Initializable {
     }
 
     public void search(){
-        if(table.getColumns().isEmpty()){
+
+        String filter = search.getText();
+        ObservableList filtered = FXCollections.observableArrayList();
+        ObservableList<TableColumn> list = table.getColumns();
+
+        if(filter.isEmpty()){
+
+            table.setItems(data);
+            return;
 
         }
+
+        for(int i = 0; i < table.getItems().size(); i++) {
+            for(int j = 0; j < table.getColumns().size(); j++){
+                TableColumn col = list.get(j);
+                String val = col.getCellData(table.getItems().get(i)).toString();
+                val = val.toLowerCase();
+
+                if(val.contains(search.textProperty().get().toLowerCase())){
+                    filtered.add(table.getItems().get(i));
+                    break;
+                }
+            }
+        }
+        table.setItems(filtered);
     }
 
     public void add(){

@@ -25,7 +25,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class FinancialApplicationView extends DataAcquisitionTableView<FinancialApplication> {
+public class FinancialApplicationView extends TableView<FinancialApplication> {
 
     public FinancialApplicationView(){
 
@@ -130,30 +130,25 @@ public class FinancialApplicationView extends DataAcquisitionTableView<Financial
 
     }
 
-    private void getIncompleteApps(){
+    private void getIncompleteApps() {
         ObservableList<FinancialApplication> apps = FXCollections.observableArrayList();
         apps.setAll(new Finances().getModels());
 
         Iterator it = apps.iterator();
-        while(it.hasNext()){
+        while (it.hasNext()) {
 
-            FinancialApplication app = (FinancialApplication)it.next();
+            FinancialApplication app = (FinancialApplication) it.next();
 
             app.setCarName(new Cars().get(app.getCarID()).getName());
             app.setUserName(new Users().get(app.getUserID()).getUsername());
 
-            if(app.isCompleted()){
+            if (app.isCompleted()) {
                 it.remove();
             }
         }
 
-        setData(apps);
+        setItems(apps);
 
     }
-
-
-
-
-
 
 }

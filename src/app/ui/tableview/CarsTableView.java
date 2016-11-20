@@ -12,12 +12,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class CarsTableView extends DataAcquisitionTableView<Car> {
+public class CarsTableView extends TableView<Car> {
 
     public CarsTableView(){
 
         setupColumns();
-        setData(new Cars().getAllRows());
+        setItems(new Cars().getAllRows());
 
     }
 
