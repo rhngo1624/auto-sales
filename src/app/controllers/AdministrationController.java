@@ -208,12 +208,7 @@ public class AdministrationController implements Initializable {
     public void edit(){
         if(!table.getSelectionModel().isEmpty()){
             selectedID = table.getSelectionModel().getSelectedIndex();
-
-            if(table.getClass().getSimpleName().equals("AccessoriesTableView")){
-                ModalUtil.setupAndShow(Resource.EDIT_ACCESSORY, "Edit", true);
-            }else if(table.getClass().getSimpleName().equals("CarsTableView")){
-                ModalUtil.setupAndShow(Resource.EDIT_CAR, "Edit", true);
-            }
+            ModalUtil.setupAndShow(Resource.EDIT_ACCESSORY, "Edit", true);
         }
 
     }
