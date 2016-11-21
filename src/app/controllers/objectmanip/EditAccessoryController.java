@@ -19,9 +19,6 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
-/**
- * Created by RayDeveloper on 11/20/16.
- */
 public class EditAccessoryController implements Initializable {
 
     @FXML
