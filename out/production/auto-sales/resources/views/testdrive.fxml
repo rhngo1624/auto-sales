@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Test Drive" textAlignment="CENTER" wrappingWidth="187.92431640625">
+               <HBox.margin>
+                  <Insets bottom="20.0" left="8.0" />
+               </HBox.margin>
+            </Text>
+         </children>
+         <BorderPane.margin>
+            <Insets top="8.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <center>
+      <VBox prefHeight="162.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <DatePicker>
+               <VBox.margin>
+                  <Insets left="8.0" right="8.0" top="8.0" />
+               </VBox.margin>
+            </DatePicker>
+            <ComboBox prefHeight="27.0" prefWidth="183.0" promptText="Available Times">
+               <VBox.margin>
+                  <Insets left="8.0" top="8.0" />
+               </VBox.margin>
+            </ComboBox>
+            <ComboBox prefHeight="27.0" prefWidth="183.0" promptText="Cars">
+               <VBox.margin>
+                  <Insets left="8.0" top="8.0" />
+               </VBox.margin>
+            </ComboBox>
+            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="183.0" text="Submit">
+               <VBox.margin>
+                  <Insets left="8.0" top="16.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>

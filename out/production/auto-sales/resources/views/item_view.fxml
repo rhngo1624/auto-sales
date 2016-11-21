@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #202A2E;" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.ItemViewController">
+   <children>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="301.0">
+         <children>
+            <BorderPane prefHeight="88.0" prefWidth="264.0">
+               <center>
+                  <ImageView fx:id="logoView" fitHeight="116.0" fitWidth="301.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                     <image>
+                        <Image fx:id="logoImage" url="@../imgs/logos/dodge_logo.png" />
+                     </image>
+                     <BorderPane.margin>
+                        <Insets bottom="10.0" />
+                     </BorderPane.margin>
+                  </ImageView>
+               </center>
+            </BorderPane>
+            <BorderPane prefHeight="200.0" prefWidth="200.0">
+               <center>
+                  <ImageView fx:id="itemView" fitHeight="225.0" fitWidth="303.0" opacity="0.65" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+                     <image>
+                        <Image fx:id="itemImage" url="@../imgs/cars/dodge_charger_2017.jpg" />
+                     </image>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+               </center>
+            </BorderPane>
+            <Label fx:id="nameLabel" alignment="TOP_CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="17.0" prefWidth="282.0" text="Car Name" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+         <HBox.margin>
+            <Insets left="30.0" top="30.0" />
+         </HBox.margin>
+      </VBox>
+      <VBox fx:id="propertiesPane" prefHeight="400.0" prefWidth="300.0">
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+         <children>
+            <HBox prefHeight="18.0" prefWidth="269.0" spacing="10.0">
+               <children>
+                  <Label fx:id="fuelEconomyLabel" text="Fuel Economy:" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="fuelEconomy" text="FE" textFill="#92ffa3" />
+               </children>
+               <VBox.margin>
+                  <Insets top="120.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="18.0" prefWidth="269.0" spacing="10.0">
+               <children>
+                  <Label fx:id="transmissionLabel" text="Transmission:" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="transmission" text=" FE" textFill="#92ffa3" />
+               </children>
+            </HBox>
+            <HBox prefHeight="18.0" prefWidth="269.0" spacing="10.0">
+               <children>
+                  <Label fx:id="totalSeatingLabel" text="Total Seating:" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="totalSeating" text=" FE" textFill="#92ffa3" />
+               </children>
+            </HBox>
+            <HBox prefHeight="18.0" prefWidth="269.0" spacing="10.0">
+               <children>
+                  <Label fx:id="doorAmountLabel" text="Door Amount:" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="doorAmount" text=" FE" textFill="#92ffa3" />
+               </children>
+            </HBox>
+            <HBox prefHeight="18.0" prefWidth="269.0" spacing="10.0">
+               <children>
+                  <Label fx:id="engineLabel" text="Engine:" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="engine" prefHeight="17.0" prefWidth="103.0" text="            FE" textFill="#92ffa3" />
+               </children>
+            </HBox>
+            <HBox prefHeight="18.0" prefWidth="269.0" spacing="10.0">
+               <children>
+                  <Label text="Rating:" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="rating" prefHeight="17.0" prefWidth="102.0" text="             FE" textFill="#92ffa3" />
+               </children>
+            </HBox>
+            <Button mnemonicParsing="false" onAction="#viewReviews" styleClass="toolbar_button" text="View Reviews" textFill="#d8ffde">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" top="29.0" />
+               </VBox.margin>
+            </Button>
+            <Button mnemonicParsing="false" onAction="#writeReview" prefHeight="27.0" prefWidth="102.0" styleClass="toolbar_button" text="Write Review" textFill="#d8ffde">
+               <VBox.margin>
+                  <Insets left="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
+</HBox>

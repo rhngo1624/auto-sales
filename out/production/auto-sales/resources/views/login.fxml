@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane id="pane" prefHeight="270.0" prefWidth="274.0" styleClass="pane" stylesheets="@../css/login.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.LoginController">
+   <children>
+      <ImageView id="logo" fx:id="mainLogo" blendMode="LIGHTEN" fitHeight="78.0" fitWidth="229.0" layoutX="23.0" layoutY="7.0" opacity="0.74" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imgs/logos/auto_sales_logo.png" />
+         </image>
+      </ImageView>
+      <Button id="login_button" fx:id="loginButton" onAction="#validate" layoutX="94.0" layoutY="209.0" mnemonicParsing="false" opacity="0.56" prefHeight="27.0" prefWidth="90.0" styleClass="login_button" stylesheets="@../css/login.css" text="Login" textFill="WHITE">
+         <font>
+            <Font name="Helvetica" size="14.0" />
+         </font>
+      </Button>
+      <TextField id="username_field" fx:id="usernameField" layoutX="33.0" layoutY="112.0" prefHeight="26.0" prefWidth="204.0" promptText="Username" stylesheets="@../css/login.css">
+         <font>
+            <Font name="Helvetica" size="13.0" />
+         </font>
+      </TextField>
+      <PasswordField id="password_field" fx:id="passwordField" layoutX="33.0" layoutY="162.0" prefHeight="26.0" prefWidth="205.0" promptText="Password" stylesheets="@../css/login.css">
+         <font>
+            <Font name="Helvetica" size="13.0" />
+         </font>
+      </PasswordField>
+   </children>
+</Pane>

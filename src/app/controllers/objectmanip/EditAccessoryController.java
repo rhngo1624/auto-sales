@@ -55,18 +55,22 @@ public class EditAccessoryController implements Initializable {
         nameField.setText(a.getName());
         descriptionField.setText(a.getDescription());
         priceField.setText(String.valueOf(a.getPrice()));
-        imageView.setImage(new Image(a.getImageLocation()));
+        imgPath = a.getImageLocation();
+        imageView.setImage(new Image(imgPath));
 
     }
 
     public void update(){
+
         String name = nameField.getText();
         Double price = Double.parseDouble(priceField.getText());
+        String description = descriptionField.getText();
 
         if(!name.isEmpty() && price > 0){
-            // problem with updating is here....
+
             Accessory a = new Accessory(name, price, imgPath);
             a.setID(AdministrationController.getSelected());
+            if(!description.isEmpty()) a.setDescription(description);
             new Accessories().update(a);
             ModalUtil.showMessage(a.getName() + " was updated!");
             ((Stage)descriptionField.getScene().getWindow()).close();

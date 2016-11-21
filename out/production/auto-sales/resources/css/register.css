@@ -1,0 +1,34 @@
+.form_field{
+
+	-fx-min-width: 20;
+	-fx-min-height: 20;
+	-fx-font-size: 11;
+
+}
+
+.main_pane{
+
+	-fx-background-color: #1b222d;
+
+}
+
+.register_button{
+
+	-fx-background-color: linear-gradient(#b5bdc8 0%,#828c95 36%,#28343b 100%);
+	-fx-text-fill: #d2d4d8;
+
+}
+
+.register_button:hover{
+
+	-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+	-fx-background-insets: 0 0 -1 0, 0, 1, 2;
+	-fx-background-radius: 5px;
+	-fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em; /* 4 8 4 8 */
+	-fx-text-fill: -fx-text-base-color;
+	-fx-alignment: CENTER;
+	-fx-content-display: LEFT;
+	-fx-border-radius: 5px;
+
+}
+

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="453.0" prefWidth="707.0" style="-fx-background-color: #1b222d;" stylesheets="@../css/admin.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.AdministrationController">
+   <top>
+      <VBox>
+         <children>
+            <ToolBar fx:id="buttonToolbar" prefHeight="56.0" prefWidth="596.0" style="-fx-background-color: #303233;">
+               <items>
+                  <JFXButton fx:id="viewButton" onAction="#view" prefHeight="41.0" prefWidth="37.0" ripplerFill="#3cc8ff">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="37.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imgs/icons/research.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="editButton" onAction="#edit" prefHeight="41.0" prefWidth="37.0" ripplerFill="#eef51b">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="37.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imgs/icons/edit.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="addButton" onAction="#add" prefHeight="41.0" prefWidth="37.0" ripplerFill="#16bc92">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="37.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imgs/icons/add.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <JFXButton fx:id="deleteButton" onAction="#delete" prefHeight="41.0" prefWidth="7.0" ripplerFill="#ff3232">
+                     <graphic>
+                        <ImageView fitHeight="31.0" fitWidth="37.0" opacity="0.75" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../imgs/icons/minus.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </JFXButton>
+                  <Region prefHeight="33.0" prefWidth="188.0" />
+                  <ImageView fitHeight="37.0" fitWidth="112.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imgs/logos/auto_sales_logo.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="91.0" text="Admin Panel" textAlignment="RIGHT" textFill="WHITE">
+                     <font>
+                        <Font name="Futura Medium" size="14.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" />
+                     </padding>
+                  </Label>
+               </items>
+            </ToolBar>
+         </children>
+      </VBox>
+   </top>
+   <bottom>
+      <HBox prefHeight="31.0" prefWidth="600.0" style="-fx-background-color: #2A2D2E;" BorderPane.alignment="CENTER">
+         <children>
+            <Label prefHeight="21.0" prefWidth="105.0" text="Administrator: " textFill="WHITE">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" top="5.0" />
+               </HBox.margin>
+               <font>
+                  <Font name="Futura Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="adminNameLabel" prefHeight="29.0" prefWidth="140.0" text="adminName" textFill="#84ffc4">
+               <HBox.margin>
+                  <Insets top="2.0" />
+               </HBox.margin></Label>
+         </children>
+      </HBox>
+   </bottom>
+   <right>
+      <VBox alignment="TOP_CENTER" prefHeight="315.0" prefWidth="176.0" spacing="20.0" style="-fx-background-color: #222324;" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton fx:id="usersButton" buttonType="RAISED" onAction="#showUsers" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #1F2C3F;" text="Users" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="carsButton" buttonType="RAISED" onAction="#showCars" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #1F2C3F;" text="Cars" textFill="WHITE" />
+            <JFXButton fx:id="accessoriesButton" buttonType="RAISED" onAction="#showAccessories" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #1F2C3F;" text="Accessories" textFill="WHITE" />
+            <JFXButton fx:id="financialAppButton" buttonType="RAISED" onAction="#showFinancialApps" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #1F2C3F;" text="Financial Applications" textFill="WHITE" />
+            <JFXButton fx:id="transactionsButton" buttonType="RAISED" onAction="#showTransactions" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #1F2C3F;" text="Transactions" textFill="WHITE" />
+            <JFXButton fx:id="returnButton" buttonType="RAISED" onAction="#returnToMain" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #383838;" text="Return" textFill="WHITE" />
+         </children>
+      </VBox>
+   </right>
+</BorderPane>

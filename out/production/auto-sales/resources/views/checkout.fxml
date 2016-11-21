@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="715.0" prefWidth="600.0" styleClass="main_pane" stylesheets="@../css/checkout.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.CheckoutController">
+   <children>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="607.0">
+               <children>
+                  <ImageView fitHeight="96.0" fitWidth="361.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../imgs/logos/auto_sales_logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+      <HBox prefHeight="15.0" prefWidth="600.0">
+         <children>
+            <Label alignment="TOP_CENTER" opacity="0.76" prefHeight="17.0" prefWidth="635.0" styleClass="table_label" text="Cart Items " />
+         </children>
+      </HBox>
+      <VBox fx:id="itemPane" prefHeight="156.0" prefWidth="600.0">
+
+      </VBox>
+      <Label alignment="TOP_CENTER" opacity="0.79" prefHeight="16.0" prefWidth="631.0" styleClass="title_label" text="Payment Information" textAlignment="CENTER" textFill="WHITE">
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+         <font>
+            <Font name="Helvetica Bold" size="13.0" />
+         </font>
+      </Label>
+      <VBox prefHeight="98.0" prefWidth="600.0">
+         <children>
+            <HBox prefHeight="26.0" prefWidth="600.0">
+               <children>
+                  <Label text="First Name:" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="5.0" right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="fnField" minHeight="15.0" prefHeight="20.0" prefWidth="189.0" styleClass="form_field">
+                     <HBox.margin>
+                        <Insets right="245.0" />
+                     </HBox.margin>
+                  </TextField>
+                  <Button fx:id="autofill" minHeight="-Infinity" mnemonicParsing="false" prefHeight="20.0" prefWidth="66.0" styleClass="toolbar_button" text="AutoFill" textFill="#80ffa1" translateZ="20.0" onAction="#autofill">
+                     <font>
+                        <Font size="12.0" />
+                     </font></Button>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="1.0" prefWidth="600.0">
+               <children>
+                  <Label text="Last Name:" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="5.0" right="21.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="lnField" minHeight="15.0" prefHeight="20.0" prefWidth="189.0" styleClass="form_field" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="0.0" prefWidth="600.0">
+               <children>
+                  <Label text="Card Number:" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="cardNumField" minHeight="15.0" prefHeight="20.0" prefWidth="190.0" styleClass="form_field" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="10.0" prefWidth="600.0">
+               <children>
+                  <Label text="Card Verification Number:" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="CVField" minHeight="15.0" prefHeight="20.0" prefWidth="116.0" styleClass="form_field" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="4.0" prefWidth="600.0">
+               <children>
+                  <Label text="Expiration Date:" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="5.0" right="20.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ComboBox fx:id="expMonth" prefHeight="20.0" prefWidth="59.0" styleClass="form_field">
+                     <HBox.margin>
+                        <Insets right="2.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="expYear" prefHeight="20.0" prefWidth="103.0" styleClass="form_field" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <Label alignment="TOP_CENTER" opacity="0.79" prefHeight="16.0" prefWidth="631.0" styleClass="title_label" text="Billing Information" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Helvetica Bold" size="13.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="5.0" />
+         </VBox.margin>
+      </Label>
+      <VBox prefHeight="98.0" prefWidth="600.0">
+         <children>
+            <HBox prefHeight="4.0" prefWidth="600.0">
+               <children>
+                  <Label text="Address:" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="5.0" right="52.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="addressField" minHeight="15.0" prefHeight="20.0" prefWidth="192.0" styleClass="form_field">
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </TextField>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="1.0" prefWidth="600.0">
+               <children>
+                  <Label text="City:" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="5.0" right="78.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="cityField" minHeight="15.0" prefHeight="20.0" prefWidth="192.0" styleClass="form_field" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="0.0" prefWidth="600.0">
+               <children>
+                  <Label text="Zip/Postal Code:" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="zipField" minHeight="15.0" prefHeight="20.0" prefWidth="190.0" styleClass="form_field" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="10.0" prefWidth="600.0">
+               <children>
+                  <Label text="Country:" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="5.0" right="55.0" />
+                     </HBox.margin>
+                  </Label>
+                  <ComboBox fx:id="countryBox" prefHeight="20.0" prefWidth="190.0" styleClass="form_field" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </HBox>
+            <HBox prefHeight="4.0" prefWidth="600.0">
+               <children>
+                  <Label text="Phone Number:" textFill="WHITE">
+                     <HBox.margin>
+                        <Insets left="5.0" right="12.0" />
+                     </HBox.margin>
+                  </Label>
+                  <TextField fx:id="phoneField" prefHeight="20.0" prefWidth="190.0" styleClass="form_field" />
+               </children>
+               <VBox.margin>
+                  <Insets bottom="5.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+      </VBox>
+      <Label alignment="TOP_CENTER" opacity="0.79" prefHeight="16.0" prefWidth="631.0" styleClass="title_label" text="Requirements" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="Helvetica Bold" size="13.0" />
+         </font>
+      </Label>
+   </children>
+</VBox>

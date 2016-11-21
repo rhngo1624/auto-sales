@@ -1,0 +1,24 @@
+.menu .label { -fx-text-fill: white; }
+
+.toolbar_button{
+
+	-fx-background-color: #41484A;
+
+}
+
+.toolbar_button:hover {
+
+	-fx-background-color: grey;
+
+}
+
+.pressed_button {
+
+	-fx-background-color: steelblue;
+
+}
+
+#shoppingcart{
+
+	-fx-background-color: #3c4656
+}
