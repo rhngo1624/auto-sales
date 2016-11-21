@@ -3,10 +3,12 @@ package app.controllers;
 
 import com.apple.laf.AquaButtonBorder;
 import com.jfoenix.controls.JFXTextField;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import app.core.Resource;
 import app.core.SQLModel;
 import app.ui.tableview.AccessoriesTableView;
 import app.ui.tableview.CarsTableView;
@@ -74,6 +76,7 @@ public class AdministrationController implements Initializable {
     private ObservableList data;
     private VBox center;
     private JFXTextField search;
+    private static int selectedID;
 
     @FXML
     public void initialize(URL location, ResourceBundle rb){
@@ -193,7 +196,9 @@ public class AdministrationController implements Initializable {
     }
 
     public void add(){
-
+        if(table.getClass().getSimpleName().equals("AccessoriesTableView")){
+            ModalUtil.setupAndShow(Resource.ADD_ACCESSORY, "Add", true);
+        }
     }
 
     public void delete(){
@@ -201,7 +206,10 @@ public class AdministrationController implements Initializable {
     }
 
     public void edit(){
-
+        if(!table.getSelectionModel().isEmpty()){
+            selectedID = table.getSelectionModel().getSelectedIndex();
+            ModalUtil.setupAndShow(Resource.EDIT_ACCESSORY, "Edit", true);
+        }
 
     }
 
@@ -209,6 +217,8 @@ public class AdministrationController implements Initializable {
         ((Stage)buttonToolbar.getScene().getWindow()).close();
     }
 
-
+    public static int getSelected(){
+        return selectedID;
+    }
 
 }

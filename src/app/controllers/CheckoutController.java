@@ -67,7 +67,7 @@ public class CheckoutController implements Initializable {
     private ComboBox<String> countryBox;
     @FXML
     private TextField phoneField;
-
+    private Button checkout;
     private ArrayList<Button> financeButtons;
 
     public static CheckoutController getInstance(){
@@ -84,7 +84,6 @@ public class CheckoutController implements Initializable {
         fillOutComboBoxes();
 
         if(user != null){
-            System.out.println(user.getUsername());
             CartTableView ctv = new CartTableView(this);
             itemPane.getChildren().add(ctv);
             checkForRequirements();
@@ -145,7 +144,7 @@ public class CheckoutController implements Initializable {
         if(user.getCart().getRequirements().isEmpty()){
             HBox box = new HBox();
             box.setAlignment(Pos.TOP_CENTER);
-            Button checkout = new Button("Check Out");
+            checkout = new Button("Check Out");
             HBox.setMargin(checkout, new Insets(20,0,0,0));
             checkout.getStyleClass().add("toolbar_button");
             checkout.setOnAction((e) -> {
@@ -166,6 +165,7 @@ public class CheckoutController implements Initializable {
 
     public void refreshRequirements(){
         mainPane.setPrefHeight(715);
+        mainPane.getChildren().remove(checkout);
         mainPane.getChildren().removeAll(financeButtons);
         financeButtons.clear();
         checkForRequirements();

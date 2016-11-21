@@ -95,12 +95,11 @@ public class Accessories extends SQLTable<Accessory> {
                 "VALUES (?, ?, ?, ?, ?)";
 
         try(
-                PreparedStatement stmt = CONN.prepareStatement(query)
+                PreparedStatement stmt = CONN.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)
 
         ){
 
             setProperties(stmt, model);
-
             int affectedRows = stmt.executeUpdate();
 
             return affectedRows == 1;
@@ -112,8 +111,8 @@ public class Accessories extends SQLTable<Accessory> {
 
         }
 
-
     }
+
     public boolean update(Accessory model){
 
         String query = "UPDATE Accessories SET Name = ?, Price = ?, ImageLocation = ?, " +

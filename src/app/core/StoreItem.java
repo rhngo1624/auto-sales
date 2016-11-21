@@ -14,7 +14,7 @@ import db.tables.Reviews;
 public abstract class StoreItem implements SQLModel {
 
     private int ID;
-    private int rating;
+    private int rating = 0;
     private String name;
     private double price;
     private final String dollarAmount = getDollarAmount();

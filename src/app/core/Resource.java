@@ -18,4 +18,6 @@ public interface Resource {
     URL WRITE_REVIEW = System.class.getResource(RESOURCE_PATH + "write_review.fxml");
     URL FINANCE = System.class.getResource(RESOURCE_PATH + "financial_application.fxml");
     URL DIALOG = System.class.getResource(RESOURCE_PATH + "dialog.fxml");
+    URL ADD_ACCESSORY = System.class.getResource(RESOURCE_PATH + "add_accessory.fxml");
+    URL EDIT_ACCESSORY = System.class.getResource(RESOURCE_PATH + "edit_accessory.fxml");
 }
