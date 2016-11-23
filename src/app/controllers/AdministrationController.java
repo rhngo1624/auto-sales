@@ -196,8 +196,12 @@ public class AdministrationController implements Initializable {
     }
 
     public void add(){
-        if(table.getClass().getSimpleName().equals("AccessoriesTableView")){
+        String className = table.getClass().getSimpleName();
+
+        if(className.equals("AccessoriesTableView")){
             ModalUtil.setupAndShow(Resource.ADD_ACCESSORY, "Add", true);
+        }else if(className.equals("CarsTableView")){
+            ModalUtil.setupAndShow(Resource.ADD_CAR, "Add", true);
         }
     }
 
@@ -208,7 +212,11 @@ public class AdministrationController implements Initializable {
     public void edit(){
         if(!table.getSelectionModel().isEmpty()){
             selectedID = table.getSelectionModel().getSelectedIndex();
-            ModalUtil.setupAndShow(Resource.EDIT_ACCESSORY, "Edit", true);
+            if(table.getClass().getSimpleName().equals("AccessoriesTableView")){
+                ModalUtil.setupAndShow(Resource.EDIT_ACCESSORY, "Edit", true);
+            }else if(table.getClass().getSimpleName().equals("CarsTableView")){
+                ModalUtil.setupAndShow(Resource.EDIT_CAR, "Edit", true);
+            }
         }
 
     }

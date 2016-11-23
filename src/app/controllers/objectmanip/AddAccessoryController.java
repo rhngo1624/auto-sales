@@ -72,7 +72,7 @@ public class AddAccessoryController implements Initializable {
 
             ModalUtil.showMessage(a.getName() + " was inserted!");
 
-            ((Stage)descriptionField.getScene().getWindow()).close();
+            close();
 
         }else{
             ModalUtil.showWarning("Not all fields are filled.");

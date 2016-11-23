@@ -20,4 +20,6 @@ public interface Resource {
     URL DIALOG = System.class.getResource(RESOURCE_PATH + "dialog.fxml");
     URL ADD_ACCESSORY = System.class.getResource(RESOURCE_PATH + "add_accessory.fxml");
     URL EDIT_ACCESSORY = System.class.getResource(RESOURCE_PATH + "edit_accessory.fxml");
+    URL ADD_CAR = System.class.getResource(RESOURCE_PATH + "add_car.fxml");
+    URL EDIT_CAR = System.class.getResource(RESOURCE_PATH + "edit_car.fxml");
 }

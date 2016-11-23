@@ -70,7 +70,7 @@ public class EditAccessoryController implements Initializable {
             if(!description.isEmpty()) a.setDescription(description);
             new Accessories().update(a);
             ModalUtil.showMessage(a.getName() + " was updated!");
-            ((Stage)descriptionField.getScene().getWindow()).close();
+            close();
         }
 
     }

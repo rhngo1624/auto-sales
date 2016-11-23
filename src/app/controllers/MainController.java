@@ -144,55 +144,27 @@ public class MainController implements Initializable {
 
     private void displayAccessories(){
 
-        ExecutorService executor = Executors.newFixedThreadPool(1);
 
         mainBorderPane.getChildren().clear();
 
-        Callable<Group> carDisplay = () -> {
-            AccessoryDisplay display = new AccessoryDisplay();
-            display.createElements();
-            return display.getDisplay();
-        };
+        AccessoryDisplay display = new AccessoryDisplay();
+        display.createElements();
 
-        Future<Group> results = executor.submit(carDisplay);
-
-        try{
-            mainBorderPane.getChildren().add(results.get());
-            isCarDisplay = false;
-        }catch(ExecutionException ee){
-            System.out.println("Execution exception");
-        }catch(InterruptedException ie){
-            System.out.println("Interrupted exception");
-        }finally{
-            executor.shutdown();
-        }
+        mainBorderPane.getChildren().add(display.getDisplay());
+        isCarDisplay = false;
 
     }
 
     private void displayCars(){
 
-        ExecutorService executor = Executors.newFixedThreadPool(1);
-
         mainBorderPane.getChildren().clear();
 
-        Callable<Group> carDisplay = () -> {
-            CarDisplay display = new CarDisplay();
-            display.createElements();
-            return display.getDisplay();
-        };
+        CarDisplay display = new CarDisplay();
+        display.createElements();
 
-        Future<Group> results = executor.submit(carDisplay);
+        mainBorderPane.getChildren().add(display.getDisplay());
+        isCarDisplay = true;
 
-        try{
-            mainBorderPane.getChildren().add(results.get());
-            isCarDisplay = true;
-        }catch(ExecutionException ee){
-            System.out.println("Execution exception");
-        }catch(InterruptedException ie){
-            System.out.println("Interrupted exception");
-        }finally {
-            executor.shutdown();
-        }
     }
 
 
