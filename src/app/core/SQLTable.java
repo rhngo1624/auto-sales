@@ -20,7 +20,7 @@ public abstract class SQLTable <T> {
     public abstract T get(int id);
     public abstract boolean insert(T model);
     public abstract boolean update(T model);
-    boolean delete(int id){
+    public boolean delete(int id){
 
         String className = this.getClass().getSimpleName();
 

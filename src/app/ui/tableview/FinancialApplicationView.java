@@ -1,5 +1,6 @@
 package app.ui.tableview;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTreeTableView;
 
 import java.util.Iterator;
@@ -105,7 +106,7 @@ public class FinancialApplicationView extends TableView<FinancialApplication> {
         Label ssn = new Label("SSN: " + app.getSSN());
         ssn.setStyle("-fx-text-fill: white");
 
-        Button completed = new Button("Accept");
+        JFXButton completed = new JFXButton("Accept");
         completed.setAlignment(Pos.CENTER);
         completed.setOnAction((e) -> {
             app.setCompleted(true);

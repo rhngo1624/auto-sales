@@ -1,10 +1,17 @@
 package app.controllers;
 
 import java.net.URL;
+import java.sql.Time;
+import java.util.Date;
 import java.util.ResourceBundle;
 
+import app.core.SQLModel;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.TextArea;
 
 /**
  *  Controller Class for Maintenance Page.
@@ -32,10 +39,11 @@ public class MaintenanceController implements Initializable {
      */
     @FXML
     public void initialize(URL location, ResourceBundle rb){
-        selectedDate = dates.getSelectedItem.getValue();
-        setupTimeBox();
-        setupCarBox();
+        //selectedDate = dates.getChronology().dateNow();
+        //setupTimeBox();
+        //setupCarBox();
     }
+    /*
     
     public void setupTimeBox() {
         Dates date = new Dates();
@@ -45,7 +53,7 @@ public class MaintenanceController implements Initializable {
     
     public void setupCarBox() {
         Cars car = new Cars();
-        ObservableList<SQLModel> carList = table.getCars(selectedCar);
+        ObservableList<SQLModel> carList = car.getCars(selectedCar);
         cars.setItem(carList);
     }
     
@@ -55,6 +63,6 @@ public class MaintenanceController implements Initializable {
         Time time = times.getSelectedItem().getItem();
         Car car = cars.getSelectedItem().getItem();
         String maintenanceNotes = String.format("%s", notes.getText());
-    }
+    }*/
     
 }

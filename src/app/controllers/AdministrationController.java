@@ -19,11 +19,16 @@ import app.utils.ModalUtil;
 import app.utils.Session;
 import app.utils.StageUtil;
 import db.models.Accessory;
+import db.models.Appointment;
 import db.models.Car;
 import db.models.FinancialApplication;
+import db.models.Transaction;
 import db.models.User;
+import db.tables.Accessories;
+import db.tables.Appointments;
 import db.tables.Cars;
 import db.tables.Finances;
+import db.tables.Transactions;
 import db.tables.Users;
 import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
@@ -206,6 +211,32 @@ public class AdministrationController implements Initializable {
     }
 
     public void delete(){
+        String className = table.getClass().getSimpleName();
+        switch(className){
+
+                case "AccessoriesTableView":
+                    ModalUtil.showDeleteItemPrompt(new Accessories(), table);
+                    break;
+                case "CarsTableView":
+                    ModalUtil.showDeleteItemPrompt(new Cars(), table);
+                    break;
+                case "AppointmentTableView":
+                    ModalUtil.showDeleteItemPrompt(new Appointments(), table);
+                    break;
+                case "FinancialApplicationView":
+                    ModalUtil.showDeleteItemPrompt(new Finances(), table);
+                    break;
+                case "TransactionsView":
+                    ModalUtil.showDeleteItemPrompt(new Transactions(), table);
+                    break;
+                case "UsersTableView":
+                    ModalUtil.showDeleteItemPrompt(new Users(), table);
+                    break;
+                default:
+                    ModalUtil.showWarning("Issue acquiring item...");
+                    break;
+
+            }
 
     }
 
