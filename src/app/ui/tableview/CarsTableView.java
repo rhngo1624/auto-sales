@@ -44,4 +44,9 @@ public class CarsTableView extends TableView<Car> {
         getColumns().add(3, Year);
     }
 
+    @Override
+    public void refresh(){
+        setItems(new Cars().getAllRows());
+    }
+
 }

@@ -50,5 +50,10 @@ public class UsersTableView extends TableView<User> {
         getColumns().add(4, phone);
     }
 
+    @Override
+    public void refresh(){
+        setItems(new Users().getAllRows());
+    }
+
 
 }

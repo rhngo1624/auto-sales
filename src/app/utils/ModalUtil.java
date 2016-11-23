@@ -149,7 +149,7 @@ public class ModalUtil {
             if(itemTable.delete(item.getID())){
                 ModalUtil.showMessage("Item deleted!");
                 stage.close();
-                ref.setItems(ref.getItems());
+                ref.refresh();
             }else{
                 ModalUtil.showWarning("Issue deleting item.");
             }

@@ -152,4 +152,9 @@ public class FinancialApplicationView extends TableView<FinancialApplication> {
 
     }
 
+    @Override
+    public void refresh(){
+        setItems(new Finances().getAllRows());
+    }
+
 }

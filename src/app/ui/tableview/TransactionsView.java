@@ -67,5 +67,10 @@ public class TransactionsView extends TableView<Transaction> {
         return sb.toString();
     }
 
+    @Override
+    public void refresh(){
+        setItems(new Transactions().getAllRows());
+    }
+
 
 }

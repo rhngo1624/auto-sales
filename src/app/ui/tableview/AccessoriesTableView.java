@@ -39,4 +39,9 @@ public class AccessoriesTableView extends TableView<Accessory> {
 
     }
 
+    @Override
+    public void refresh(){
+        setItems(new Accessories().getAllRows());
+    }
+
 }

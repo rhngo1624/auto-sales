@@ -102,6 +102,8 @@ public class AdministrationController implements Initializable {
     }
 
     public void showUsers(){
+        activateAllButtons();
+        viewButton.setDisable(true);
         center.getChildren().clear();
         table = new UsersTableView();
         data = table.getItems();
@@ -112,6 +114,8 @@ public class AdministrationController implements Initializable {
     }
 
     public void showCars(){
+        activateAllButtons();
+        viewButton.setDisable(true);
         center.getChildren().clear();
         table = new CarsTableView();
         data = table.getItems();
@@ -121,6 +125,8 @@ public class AdministrationController implements Initializable {
     }
 
     public void showAccessories(){
+        activateAllButtons();
+        viewButton.setDisable(true);
         center.getChildren().clear();
         setupSearch();
         table = new AccessoriesTableView();
@@ -130,6 +136,9 @@ public class AdministrationController implements Initializable {
     }
 
     public void showFinancialApps(){
+        activateAllButtons();
+        addButton.setDisable(true);
+        editButton.setDisable(true);
         center.getChildren().clear();
         setupSearch();
         table = new FinancialApplicationView();
@@ -140,6 +149,8 @@ public class AdministrationController implements Initializable {
     }
 
     public void showTransactions(){
+        activateAllButtons();
+        viewButton.setDisable(true);
         center.getChildren().clear();
         setupSearch();
         table = new TransactionsView();
@@ -151,6 +162,7 @@ public class AdministrationController implements Initializable {
 
     private void setupSearch(){
         search = new JFXTextField();
+        search.setStyle("-fx-text-fill: white;");
         search.setPromptText("Search...");
         search.textProperty().addListener((e) -> {
             search();
@@ -208,6 +220,8 @@ public class AdministrationController implements Initializable {
         }else if(className.equals("CarsTableView")){
             ModalUtil.setupAndShow(Resource.ADD_CAR, "Add", true);
         }
+
+        table.refresh();
     }
 
     public void delete(){
@@ -250,6 +264,13 @@ public class AdministrationController implements Initializable {
             }
         }
 
+    }
+
+    public void activateAllButtons(){
+        addButton.setDisable(false);
+        editButton.setDisable(false);
+        deleteButton.setDisable(false);
+        viewButton.setDisable(false);
     }
 
     public void returnToMain(){
