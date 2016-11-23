@@ -144,7 +144,7 @@ public class Transactions extends SQLTable<Transaction> {
 		try{
             stmt.setInt(1, model.getUser().getID());
             stmt.setString(2, model.getSerializedItems());
-			stmt.setDate(3, model.getDate());
+			stmt.setString(3, model.getDate());
         }catch(SQLException e){
             System.err.println(e.getMessage());
         }
@@ -160,7 +160,7 @@ public class Transactions extends SQLTable<Transaction> {
             transaction.setID(rs.getInt("ID"));
             transaction.setUser(new Users().get(rs.getInt("UserID")));
             transaction.setSerializedItems(rs.getString("StoreItems"));
-			transaction.setDate(rs.getDate("Date"));
+			transaction.setDate(rs.getString("Date"));
 
             return transaction;
 

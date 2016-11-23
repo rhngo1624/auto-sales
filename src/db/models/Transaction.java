@@ -15,7 +15,7 @@ public class Transaction implements SQLModel {
     private int ID;
     private User user;
     private String serializedItems;
-    private Date date;
+    private String date;
 
     public void setID(int id){
         ID = id;
@@ -115,11 +115,11 @@ public class Transaction implements SQLModel {
         return items;
     }
 
-    public Date getDate(){
+    public String getDate(){
         return date;
     }
 
-    public void setDate(Date date){
+    public void setDate(String date){
         this.date = date;
     }
 

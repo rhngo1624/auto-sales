@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.ResourceBundle;
@@ -114,6 +115,7 @@ public class CheckoutController implements Initializable {
 
             Transaction transaction = new Transaction();
             transaction.setSerializedItems(user.getCart().dump());
+            transaction.setDate(new Date().toString());
             transaction.setUser(user);
 
             new Transactions().insert(transaction);
