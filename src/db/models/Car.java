@@ -98,4 +98,9 @@ public class Car extends StoreItem implements SQLModel {
         this.reviews = reviews;
     }
 
+    @Override
+    public String toString(){
+        return getName();
+    }
+
 }

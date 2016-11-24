@@ -9,7 +9,7 @@ import app.core.SQLModel;
  */
 public class Appointment implements SQLModel {
 
-    public final String[] times = {
+    public static final String[] times = {
             "9:30AM", "10:00AM", "10:30AM", "11:00AM",
             "11:30AM", "12:00PM", "12:30PM", "1:00PM",
             "1:30PM", "2:00PM", "2:30PM", "3:00PM",

@@ -6,7 +6,9 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 import app.core.SQLModel;
+import db.models.Appointment;
 import db.models.Car;
+import db.tables.Cars;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -42,11 +44,15 @@ public class MaintenanceController implements Initializable {
     }
 
     public void setupTimeBox() {
-
+        for(String time : Appointment.times){
+            availableTimesBox.getItems().add(time);
+        }
     }
     
     public void setupCarBox() {
-
+        for(Car car : new Cars().getAllRows()){
+            carsBox.getItems().add(car);
+        }
     }
     
     public void submitClicked() {
