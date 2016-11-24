@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 import app.core.SQLModel;
+import db.models.Car;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,47 +24,33 @@ import javafx.scene.control.TextArea;
 public class MaintenanceController implements Initializable {
 
     @FXML
-    private DatePicker dates;
+    private DatePicker datePicker;
     @FXML
-    private ComboBox<Time> times;
+    private ComboBox<String> availableTimesBox;
     @FXML
-    private ComboBox<SQLModel> cars;
+    private ComboBox<Car> carsBox;
     @FXML
-    private Date selectedDate;
-    @FXML
-    private SQLModel selectedCar;
-    @FXML
-    private TextArea notes;
-    
+    private TextArea notesArea;
+
     /**
      *  Called after FXML file is loaded.
      */
     @FXML
     public void initialize(URL location, ResourceBundle rb){
-        //selectedDate = dates.getChronology().dateNow();
-        //setupTimeBox();
-        //setupCarBox();
+        setupTimeBox();
+        setupCarBox();
     }
-    /*
-    
+
     public void setupTimeBox() {
-        Dates date = new Dates();
-        ObservableList<Time> timeList = table.getTimes(selectedDate);
-        times.setItems(timeList);
+
     }
     
     public void setupCarBox() {
-        Cars car = new Cars();
-        ObservableList<SQLModel> carList = car.getCars(selectedCar);
-        cars.setItem(carList);
+
     }
     
     public void submitClicked() {
-        ObservableList<SQLModel> = FXCollections.observableArrayList();
-        Date date = DatePicker.getSelectedItem().getValue();
-        Time time = times.getSelectedItem().getItem();
-        Car car = cars.getSelectedItem().getItem();
-        String maintenanceNotes = String.format("%s", notes.getText());
-    }*/
-    
+
+    }
+
 }

@@ -25,7 +25,7 @@ public class Appointments extends SQLTable<Appointment> {
     
     try (
         Statement stmt = CONN.createStatement();
-        ResultSet rs = stmt.executeQuery(query);
+        ResultSet rs = stmt.executeQuery(query)
     ) {
       
       while (rs.next()) {
@@ -78,8 +78,8 @@ public class Appointments extends SQLTable<Appointment> {
   
   public boolean insert(Appointment model) {
     
-    String query = "INSERT into Appointments (AppointmentID, " +
-        "AppointmentType, Date, Time, CarID, UserID) " +
+    String query = "INSERT into Appointments (" +
+        "Type, Date, Time, CarID, UserID, Notes) " +
         "VALUES (?, ?, ?, ?, ?, ?)";
 
     
@@ -106,8 +106,8 @@ public class Appointments extends SQLTable<Appointment> {
   public boolean update(Appointment model){
     
     String query = "UPDATE Appointments SET " +
-        "AppointmentID = ?, AppointmentType = ?, Date = ?, Time = ?, " + 
-        "CarID = ?, UserID = ? WHERE ID = ?";
+        "Type = ?, Date = ?, Time = ?, " +
+        "CarID = ?, UserID = ?, Notes = ? WHERE ID = ?";
     
     try (PreparedStatement stmt = CONN.prepareStatement(query)) {
         
@@ -130,12 +130,12 @@ public class Appointments extends SQLTable<Appointment> {
   private void setProperties(PreparedStatement stmt, Appointment model){
 
       try{
-          stmt.setInt(1, model.getAppointmentID());
-          stmt.setInt(2, model.getAppointmentType());
-          // stmt.set//(3, model.getDate());
-          // stmt.set//(4, model.getTime());
-          stmt.setInt(5, model.getCarID());
-          stmt.setInt(6, model.getUserID());
+          stmt.setInt(1, model.getAppointmentType());
+          stmt.setString(2, model.getDate());
+          stmt.setString(3, model.getTime());
+          stmt.setInt(4, model.getCarID());
+          stmt.setInt(5, model.getUserID());
+          stmt.setString(6, model.getNotes());
       }catch(SQLException e){
           System.err.println(e.getMessage());
       }
@@ -144,18 +144,20 @@ public class Appointments extends SQLTable<Appointment> {
 
   private Appointment makeAppointment(ResultSet rs){
       try{
-          int appointmentID = rs.getInt("AppointmentID");
-          int appointmentType = rs.getInt("AppointmentType");
-          // // date = rs.get//("Date");
-          // // time = rs.get//("Time");
+          int appointmentID = rs.getInt("ID");
+          int appointmentType = rs.getInt("Type");
+          String date = rs.getString("Date");
+          String time = rs.getString("Time");
+          String notes = rs.getString("Notes");
           int carID = rs.getInt("CarID");
           int userID = rs.getInt("UserID");
 
-          Appointment appointment = new Appointment(appointmentID, appointmentType,
+          Appointment appointment = new Appointment(appointmentType,
                   carID, userID);
-
-          appointment.setID(rs.getInt("ID"));
-          // ((Appointment)appointment).setNotes(rs.getString("Notes")); (?)
+          appointment.setID(appointmentID);
+          appointment.setDate(date);
+          appointment.setTime(time);
+          appointment.setNotes(notes);
           return appointment;
       }catch(SQLException e){
           System.err.println(e.getMessage());
