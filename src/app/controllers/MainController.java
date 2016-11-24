@@ -110,6 +110,15 @@ public class MainController implements Initializable {
 
     }
 
+    public void maintenance(){
+        ModalUtil.setupAndShow(Resource.MAINTENANCE, MAINTENANCE_TITLE, false);
+    }
+
+    public void testdrive(){
+        ModalUtil.setupAndShow(Resource.TEST_DRIVE, TESTDRIVE_TITLE, false);
+    }
+
+
     public void administration(){
 
         ModalUtil.setupAndShow(Resource.ADMIN, "Administration", true);

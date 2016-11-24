@@ -61,7 +61,7 @@
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button fx:id="testdriveButton" mnemonicParsing="false" styleClass="toolbar_button">
+                                <Button fx:id="testdriveButton" mnemonicParsing="false" styleClass="toolbar_button" onAction="#testdrive">
                                     <graphic>
                                         <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
@@ -70,7 +70,7 @@
                                         </ImageView>
                                     </graphic>
                                 </Button>
-                                <Button fx:id="maintenanceButton" mnemonicParsing="false" styleClass="toolbar_button">
+                                <Button fx:id="maintenanceButton" mnemonicParsing="false" styleClass="toolbar_button" onAction="#maintenance">
                                     <graphic>
                                         <ImageView fitHeight="35.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
