@@ -17,8 +17,8 @@ public class Appointment implements SQLModel {
     };
 
     private int ID;
-    final public int MAINTENANCE_T = 0;
-    final public int TESTDRIVE_T = 1;
+    public static final int MAINTENANCE_T = 0;
+    public static final int TESTDRIVE_T = 1;
     private int appointmentType;
     private String date;
     private String time;

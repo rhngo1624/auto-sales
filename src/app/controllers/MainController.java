@@ -111,11 +111,21 @@ public class MainController implements Initializable {
     }
 
     public void maintenance(){
-        ModalUtil.setupAndShow(Resource.MAINTENANCE, MAINTENANCE_TITLE, false);
+        if(session.isActive()){
+            ModalUtil.setupAndShow(Resource.MAINTENANCE, MAINTENANCE_TITLE, false);
+        }else{
+            ModalUtil.showWarning("Must be logged in.");
+        }
+
     }
 
     public void testdrive(){
-        ModalUtil.setupAndShow(Resource.TEST_DRIVE, TESTDRIVE_TITLE, false);
+        if(session.isActive()){
+            ModalUtil.setupAndShow(Resource.TEST_DRIVE, TESTDRIVE_TITLE, false);
+        }else{
+            ModalUtil.showWarning("Must be logged in");
+        }
+
     }
 
 

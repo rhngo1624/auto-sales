@@ -2,10 +2,16 @@ package app.controllers;
 
 import java.net.URL;
 import java.sql.Time;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import app.core.SQLModel;
+import app.utils.ModalUtil;
+import app.utils.Session;
 import db.models.Appointment;
 import db.models.Car;
 import db.tables.Appointments;
@@ -17,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
 
 /**
  *  Controller Class for Maintenance Page.
@@ -40,33 +47,38 @@ public class MaintenanceController implements Initializable {
      */
     @FXML
     public void initialize(URL location, ResourceBundle rb){
-        setupTimeBox();
         setupCarBox();
+        datePicker.setValue(LocalDate.now());
+        datePicker.setOnAction((e) -> {
+            setupTimeBox();
+        });
+
+        setupTimeBox();
+
     }
 
     public void setupTimeBox() {
 
-        ObservableList<String> appointments = FXCollections.observableArrayList();
+        availableTimesBox.getItems().clear();
 
-        for(Appointment appt : new Appointments().getAllRows()){
-            appointments.add(appt.getTime());
-        }
+        ArrayList<Appointment> appointments = new Appointments().getAllMaintenanceAppointments();
 
         for(String time : Appointment.times){
+            availableTimesBox.getItems().add(time);
+        }
 
-            if(!appointments.isEmpty()){
+        for(Appointment appt : appointments){
 
-                for(String taken : appointments){
-                    if(!time.equals(taken)){
-                        availableTimesBox.getItems().add(time);
-                    }
-                }
+            String date = appt.getDate();
 
-            }else{
-                availableTimesBox.getItems().add(time);
+            if(date.equals(datePicker.getValue().toString())){
+
+                availableTimesBox.getItems().remove(appt.getTime());
+
             }
 
         }
+
     }
     
     public void setupCarBox() {
@@ -76,9 +88,23 @@ public class MaintenanceController implements Initializable {
     }
     
     public void submitClicked() {
-        System.out.println("Time: " + availableTimesBox.getSelectionModel().getSelectedItem());
-        System.out.println("Car: " + carsBox.getSelectionModel().getSelectedItem());
-        System.out.println("Date: "  + datePicker.getValue());
+        boolean fieldsEmpty = availableTimesBox.getSelectionModel().isEmpty() ||
+                carsBox.getSelectionModel().isEmpty();
+
+        if(!fieldsEmpty){
+            Appointment a = new Appointment(Appointment.MAINTENANCE_T,
+                    carsBox.getSelectionModel().getSelectedItem().getID(),
+                    Session.getInstance().getUser().getID() );
+
+            a.setDate(datePicker.getValue().toString());
+            a.setTime(availableTimesBox.getSelectionModel().getSelectedItem());
+
+            new Appointments().insert(a);
+            ModalUtil.showMessage("Appointment submitted!");
+            ((Stage)carsBox.getScene().getWindow()).close();
+        }
+
+
     }
 
 }
