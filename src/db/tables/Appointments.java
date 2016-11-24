@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import app.core.SQLTable;
 import db.models.Appointment;
@@ -17,6 +18,44 @@ import javafx.collections.ObservableList;
  *
  */
 public class Appointments extends SQLTable<Appointment> {
+
+  public ArrayList<Appointment> getAllMaintenanceAppointments(){
+      String query = "SELECT * FROM Appointments WHERE Type = 0";
+      ArrayList<Appointment> maintenanceAppointments = new ArrayList<>();
+
+      try(
+              Statement stmt = CONN.createStatement();
+              ResultSet rs = stmt.executeQuery(query)
+      ) {
+          while(rs.next()){
+              maintenanceAppointments.add(makeAppointment(rs));
+          }
+      }catch(SQLException e){
+          System.err.println(e.getMessage());
+      }
+
+      return maintenanceAppointments;
+  }
+
+  public ArrayList<Appointment> getAllTestDriveAppointments(){
+      String query = "SELECT * FROM Appointments WHERE Type = 1";
+      ArrayList<Appointment> testDriveAppointments = new ArrayList<>();
+
+      try(
+              Statement stmt = CONN.createStatement();
+              ResultSet rs = stmt.executeQuery(query);
+      ){
+          while(rs.next()){
+              testDriveAppointments.add(makeAppointment(rs));
+          }
+
+
+      }catch(SQLException e){
+          System.err.println(e.getMessage());
+      }
+
+      return testDriveAppointments;
+  }
 
   public ObservableList<Appointment> getAllRows() {
     

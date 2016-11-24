@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import app.core.SQLModel;
 import db.models.Appointment;
 import db.models.Car;
+import db.tables.Appointments;
 import db.tables.Cars;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -44,8 +45,27 @@ public class MaintenanceController implements Initializable {
     }
 
     public void setupTimeBox() {
+
+        ObservableList<String> appointments = FXCollections.observableArrayList();
+
+        for(Appointment appt : new Appointments().getAllRows()){
+            appointments.add(appt.getTime());
+        }
+
         for(String time : Appointment.times){
-            availableTimesBox.getItems().add(time);
+
+            if(!appointments.isEmpty()){
+
+                for(String taken : appointments){
+                    if(!time.equals(taken)){
+                        availableTimesBox.getItems().add(time);
+                    }
+                }
+
+            }else{
+                availableTimesBox.getItems().add(time);
+            }
+
         }
     }
     
@@ -56,7 +76,9 @@ public class MaintenanceController implements Initializable {
     }
     
     public void submitClicked() {
-
+        System.out.println("Time: " + availableTimesBox.getSelectionModel().getSelectedItem());
+        System.out.println("Car: " + carsBox.getSelectionModel().getSelectedItem());
+        System.out.println("Date: "  + datePicker.getValue());
     }
 
 }

@@ -47,7 +47,7 @@
                   <Insets left="8.0" top="8.0" />
                </VBox.margin>
             </ComboBox>
-            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="149.0" text="Submit">
+            <Button mnemonicParsing="false" prefHeight="27.0" prefWidth="149.0" text="Submit" onAction="#submitClicked">
                <VBox.margin>
                   <Insets left="8.0" top="16.0" />
                </VBox.margin>
