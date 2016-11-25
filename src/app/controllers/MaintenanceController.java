@@ -31,80 +31,22 @@ import javafx.stage.Stage;
  *  Edited by RN 10 / 15 / 16.
  *
  */
-public class MaintenanceController implements Initializable {
+public class MaintenanceController extends TestDriveController implements Initializable {
 
-    @FXML
-    private DatePicker datePicker;
-    @FXML
-    private ComboBox<String> availableTimesBox;
-    @FXML
-    private ComboBox<Car> carsBox;
     @FXML
     private TextArea notesArea;
 
-    /**
-     *  Called after FXML file is loaded.
-     */
-    @FXML
-    public void initialize(URL location, ResourceBundle rb){
-        setupCarBox();
-        datePicker.setValue(LocalDate.now());
-        datePicker.setOnAction((e) -> {
-            setupTimeBox();
-        });
-
-        setupTimeBox();
-
+    @Override
+    protected boolean validate(){
+        return super.validate() && !notesArea.getText().isEmpty();
     }
 
-    public void setupTimeBox() {
-
-        availableTimesBox.getItems().clear();
-
-        ArrayList<Appointment> appointments = new Appointments().getAllMaintenanceAppointments();
-
-        for(String time : Appointment.times){
-            availableTimesBox.getItems().add(time);
-        }
-
-        for(Appointment appt : appointments){
-
-            String date = appt.getDate();
-
-            if(date.equals(datePicker.getValue().toString())){
-
-                availableTimesBox.getItems().remove(appt.getTime());
-
-            }
-
-        }
-
-    }
-    
-    public void setupCarBox() {
-        for(Car car : new Cars().getAllRows()){
-            carsBox.getItems().add(car);
-        }
-    }
-    
-    public void submitClicked() {
-        boolean fieldsEmpty = availableTimesBox.getSelectionModel().isEmpty() ||
-                carsBox.getSelectionModel().isEmpty();
-
-        if(!fieldsEmpty){
-            Appointment a = new Appointment(Appointment.MAINTENANCE_T,
-                    carsBox.getSelectionModel().getSelectedItem().getID(),
-                    Session.getInstance().getUser().getID() );
-
-            a.setDate(datePicker.getValue().toString());
-            a.setTime(availableTimesBox.getSelectionModel().getSelectedItem());
-
-            new Appointments().insert(a);
-            ModalUtil.showMessage("Appointment submitted!");
-            ((Stage)carsBox.getScene().getWindow()).close();
-        }
-
-
+    @Override
+    protected void submitAndClose(Appointment a){
+        a.setNotes(notesArea.getText());
+        new Appointments().insert(a);
+        ModalUtil.showMessage("Appointment submitted");
+        ((Stage)notesArea.getScene().getWindow()).close();
     }
 
 }
