@@ -32,6 +32,17 @@ public class Cart {
         return null;
     }
 
+    public ArrayList<Car> getCars(){
+        ArrayList<Car> cars = new ArrayList<>();
+        for(StoreItem item : items){
+            if(item.getClass().getSimpleName().equals("Car")){
+                cars.add((Car)item);
+            }
+        }
+
+        return cars;
+    }
+
     public ObservableList<StoreItem> dumpObservable(){
         ObservableList<StoreItem> itemObservableList = FXCollections.observableArrayList();
         itemObservableList.addAll(items);

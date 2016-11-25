@@ -25,6 +25,7 @@ public class StoreItemPane extends VBox {
 
     private final StoreItem item;
     private final StoreItemPane paneRef;
+    private Label imageLabel;
 
 
     public StoreItemPane(StoreItem item){
@@ -49,7 +50,7 @@ public class StoreItemPane extends VBox {
         imageView.setFitHeight(150);
         imageView.setFitWidth(230);
 
-        Label imageLabel = new Label();
+        imageLabel = new Label();
         imageLabel.setContentDisplay(ContentDisplay.GRAPHIC_ONLY);
         imageLabel.setGraphic(imageView);
         imageLabel.setOnMouseClicked(new StoreItemPane.ViewClickListener());
@@ -68,6 +69,10 @@ public class StoreItemPane extends VBox {
         }else{
             return null;
         }
+    }
+
+    public Label getClickableImageRef(){
+        return imageLabel;
     }
 
     private class ViewClickListener implements EventHandler<MouseEvent> {

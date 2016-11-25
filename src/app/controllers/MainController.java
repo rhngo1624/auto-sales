@@ -18,6 +18,7 @@ import app.utils.ModalUtil;
 import app.core.Resource;
 import app.utils.Session;
 import app.utils.StageUtil;
+import db.models.Car;
 import db.models.Transaction;
 import db.tables.Transactions;
 import javafx.concurrent.Task;
@@ -159,6 +160,18 @@ public class MainController implements Initializable {
     public void checkout(){
 
         ModalUtil.setupAndShow(Resource.CHECKOUT, CHECKOUT_TITLE, false);
+    }
+
+    public void customize(){
+        if(session.isActive()){
+            if(session.getUser().getCart().getCars().isEmpty()){
+                ModalUtil.showMessage("No cars in cart.");
+            }else{
+                ModalUtil.setupAndShow(Resource.CUSTOMIZE1, CUSTOMIZE_TITLE, false);
+            }
+        }else{
+            ModalUtil.showWarning("Not logged in.");
+        }
     }
 
     private void displayAccessories(){

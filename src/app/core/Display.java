@@ -1,6 +1,8 @@
 package app.core;
 
 
+import java.util.ArrayList;
+
 import javafx.scene.Group;
 import javafx.scene.layout.TilePane;
 
@@ -27,6 +29,14 @@ public abstract class Display {
     public void setColumns(int newCols){
         cols = newCols;
         tilePane.setPrefColumns(cols);
+    }
+
+    public void setPrefTileHeight(double height){
+        tilePane.setPrefTileHeight(height);
+    }
+
+    public void setPrefTileWidth(double width){
+        tilePane.setPrefTileWidth(width);
     }
 
     protected abstract void createElements();

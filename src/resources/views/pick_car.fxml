@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="600.0" style="-fx-background-color: #1c313d;" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.CustomizeController">
+   <top>
+      <ToolBar fx:id="toolbar" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="519.0" style="-fx-background-color: #1b222d;" BorderPane.alignment="CENTER">
+         <items>
+            <Label alignment="BOTTOM_LEFT" prefHeight="19.0" prefWidth="500.0" text="Pick a Car" textFill="#e1dede">
+               <font>
+                  <Font name="Futura Bold" size="14.0" />
+               </font>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </Label>
+            <JFXButton fx:id="returnButton" alignment="CENTER" contentDisplay="RIGHT" minHeight="-Infinity" minWidth="-Infinity" onAction="#close" prefHeight="20.0" prefWidth="70.0" ripplerFill="#ff5151" style="-fx-background-color: #870026;" text="Return" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Futura Bold" size="10.0" />
+               </font>
+            </JFXButton>
+         </items>
+      </ToolBar>
+   </top>
+   <center>
+      <FlowPane fx:id="flowPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
