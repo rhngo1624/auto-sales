@@ -94,13 +94,14 @@
          <children>
             <JFXButton fx:id="usersButton" buttonType="RAISED" onAction="#showUsers" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #1F2C3F;" text="Users" textFill="WHITE">
                <VBox.margin>
-                  <Insets top="50.0" />
+                  <Insets top="30.0" />
                </VBox.margin>
             </JFXButton>
             <JFXButton fx:id="carsButton" buttonType="RAISED" onAction="#showCars" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #1F2C3F;" text="Cars" textFill="WHITE" />
             <JFXButton fx:id="accessoriesButton" buttonType="RAISED" onAction="#showAccessories" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #1F2C3F;" text="Accessories" textFill="WHITE" />
             <JFXButton fx:id="financialAppButton" buttonType="RAISED" onAction="#showFinancialApps" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #1F2C3F;" text="Financial Applications" textFill="WHITE" />
             <JFXButton fx:id="transactionsButton" buttonType="RAISED" onAction="#showTransactions" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #1F2C3F;" text="Transactions" textFill="WHITE" />
+            <JFXButton fx:id="appointmentsButton" buttonType="RAISED" onAction="#showAppointments" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #1F2C3F;" text="Appointments" textFill="WHITE" />
             <JFXButton fx:id="returnButton" buttonType="RAISED" onAction="#returnToMain" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: #383838;" text="Return" textFill="WHITE" />
          </children>
       </VBox>

@@ -11,6 +11,7 @@ import java.util.ResourceBundle;
 import app.core.Resource;
 import app.core.SQLModel;
 import app.ui.tableview.AccessoriesTableView;
+import app.ui.tableview.AppointmentsTableView;
 import app.ui.tableview.CarsTableView;
 import app.ui.tableview.FinancialApplicationView;
 import app.ui.tableview.TransactionsView;
@@ -130,6 +131,16 @@ public class AdministrationController implements Initializable {
         center.getChildren().clear();
         setupSearch();
         table = new AccessoriesTableView();
+        data = table.getItems();
+        center.getChildren().add(table);
+        borderPane.setCenter(center);
+    }
+
+    public void showAppointments(){
+        activateAllButtons();
+        center.getChildren().clear();
+        setupSearch();
+        table = new AppointmentsTableView();
         data = table.getItems();
         center.getChildren().add(table);
         borderPane.setCenter(center);
