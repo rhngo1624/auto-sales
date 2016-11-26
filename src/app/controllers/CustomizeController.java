@@ -66,11 +66,14 @@ public class CustomizeController implements Initializable {
                 ModalUtil.showMessage(carToCustomize.getName() + " was chosen!");
                 Timeline timeline = new Timeline();
 
-                KeyFrame key = new KeyFrame(Duration.millis(150),
-                        new KeyValue(flowPane.getScene().getRoot().opacityProperty(), 0),
-                        new KeyValue(flowPane.getScene().getRoot().opacityProperty(), 1));
+                KeyValue appear = new KeyValue(flowPane.getScene()
+                        .getRoot().opacityProperty(), 1);
 
-                timeline.getKeyFrames().add(key);
+                KeyValue disappear = new KeyValue(flowPane.getScene().getRoot().opacityProperty(), 0);
+
+                KeyFrame fade = new KeyFrame(Duration.millis(150), disappear, appear);
+
+                timeline.getKeyFrames().addAll(fade);
                 timeline.setOnFinished((ae) -> initNextScreen());
                 timeline.play();
 
