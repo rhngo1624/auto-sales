@@ -7,6 +7,7 @@ import app.core.StoreItem;
 public class Accessory extends StoreItem implements SQLModel {
 
     private String description;
+    private int isAddOn;
 
     public Accessory(String name, double price, String imageLocation){
         setName(name);
@@ -22,4 +23,11 @@ public class Accessory extends StoreItem implements SQLModel {
         return description;
     }
 
+    public int isAddOn(){
+        return isAddOn;
+    }
+
+    public void setIsAddOn(int type){
+        isAddOn = type;
+    }
 }

@@ -24,4 +24,8 @@ public class AccessoryDisplay extends Display {
         }
 
     }
+
+    public void createElementsAddOnsOnly(){
+
+    }
 }

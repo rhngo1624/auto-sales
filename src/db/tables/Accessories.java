@@ -13,6 +13,52 @@ import javafx.collections.ObservableList;
 
 public class Accessories extends SQLTable<Accessory> {
 
+    public ObservableList<Accessory> getAllAddOns(){
+        String query = "SELECT * FROM Accessories WHERE AddOn = 1";
+        ObservableList<Accessory> data = FXCollections.observableArrayList();
+
+        try(
+                Statement stmt = CONN.createStatement();
+                ResultSet rs = stmt.executeQuery(query)
+        ){
+
+            while(rs.next()) {
+
+                data.add(makeAccessory(rs));
+
+            }
+
+        }catch(SQLException e){
+
+            System.err.println(e.getMessage());
+        }
+
+        return data;
+    }
+
+    public ObservableList<Accessory> getAllAccessories(){
+        String query = "SELECT * FROM Accessories WHERE AddOn = 0";
+        ObservableList<Accessory> data = FXCollections.observableArrayList();
+
+        try(
+                Statement stmt = CONN.createStatement();
+                ResultSet rs = stmt.executeQuery(query)
+        ){
+
+            while(rs.next()) {
+
+                data.add(makeAccessory(rs));
+
+            }
+
+        }catch(SQLException e){
+
+            System.err.println(e.getMessage());
+        }
+
+        return data;
+    }
+
     /**
      * Returns Accessory Objects
      * @return ObservableList<SQLModel>
@@ -116,12 +162,12 @@ public class Accessories extends SQLTable<Accessory> {
     public boolean update(Accessory model){
 
         String query = "UPDATE Accessories SET Name = ?, Price = ?, ImageLocation = ?, " +
-                "Description = ?, Rating = ? WHERE ID = ?";
+                "Description = ?, Rating = ?, AddOn = ? WHERE ID = ?";
 
         try(PreparedStatement stmt = CONN.prepareStatement(query)){
 
             setProperties(stmt, model);
-            stmt.setInt(6, model.getID());
+            stmt.setInt(7, model.getID());
 
             int affectedRows = stmt.executeUpdate();
 
@@ -142,6 +188,7 @@ public class Accessories extends SQLTable<Accessory> {
             stmt.setString(3, model.getImageLocation());
             stmt.setString(4, model.getDescription());
             stmt.setInt(5, model.getRating());
+            stmt.setInt(6, model.isAddOn());
         }catch(SQLException e){
             System.err.println(e.getMessage());
         }
@@ -160,6 +207,7 @@ public class Accessories extends SQLTable<Accessory> {
             accessory.setID(rs.getInt("ID"));
             accessory.setDescription(rs.getString("Description"));
             accessory.setRating(rs.getInt("Rating"));
+            accessory.setIsAddOn(rs.getInt("AddOn"));
             return accessory;
         }catch(SQLException e){
             System.err.println(e.getMessage());
