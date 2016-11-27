@@ -29,6 +29,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -41,7 +42,7 @@ public class CheckoutController implements Initializable {
 
     private User user;
     private static CheckoutController instance;
-
+    private Label total;
     @FXML
     private VBox mainPane;
     @FXML
@@ -87,6 +88,7 @@ public class CheckoutController implements Initializable {
         if(user != null){
             CartTableView ctv = new CartTableView(this);
             itemPane.getChildren().add(ctv);
+            showTotal();
             checkForRequirements();
         }else{
             ModalUtil.showWarning("Not logged in.");
@@ -217,6 +219,34 @@ public class CheckoutController implements Initializable {
             countryBox.getItems().add(obj.getDisplayCountry());
 
         }
+
+    }
+
+    private void showTotal(){
+        total = new Label();
+        total.setStyle("-fx-text-fill: white;");
+        double totalPrice = 0;
+        for(StoreItem item : user.getCart().dump()){
+            totalPrice += item.getPrice();
+        }
+        total.setText("Total: $" + String.valueOf(totalPrice));
+        itemPane.getChildren().add(total);
+    }
+
+    public void updateTotal(){
+        //TODO: fix null pointer exception
+        double totalPrice = 0;
+
+        if(user.getCart().dump().isEmpty() || user.getCart().dump() == null){
+            total.setText("Total: $0.00");
+            return;
+        }
+
+        for(StoreItem item : user.getCart().dump()){
+            totalPrice += item.getPrice();
+        }
+
+        total.setText("Total: $" + String.valueOf(totalPrice));
 
     }
 

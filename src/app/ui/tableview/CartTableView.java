@@ -77,6 +77,7 @@ public class CartTableView extends TableView<StoreItem> {
                                                 .getCart().dumpObservable());
 
                                         control.refreshRequirements();
+                                        control.updateTotal();
 
                                     });
 
