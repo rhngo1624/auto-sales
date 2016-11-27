@@ -13,8 +13,61 @@ import javafx.collections.ObservableList;
 
 public class Accessories extends SQLTable<Accessory> {
 
-    public ObservableList<Accessory> getAllAddOns(){
-        String query = "SELECT * FROM Accessories WHERE AddOn = 1";
+    private final String ACCESSORY = "0";
+    private final String EXT_COLOR = "1";
+    private final String INT_COLOR = "2";
+    private final String TIRES = "3";
+
+    public ObservableList<Accessory> getAllExteriorColors(){
+        String query = "SELECT * FROM Accessories WHERE AddOn = " + EXT_COLOR;
+        ObservableList<Accessory> data = FXCollections.observableArrayList();
+
+        try(
+                Statement stmt = CONN.createStatement();
+                ResultSet rs = stmt.executeQuery(query)
+        ){
+
+            while(rs.next()) {
+
+                data.add(makeAccessory(rs));
+
+            }
+
+        }catch(SQLException e){
+
+            System.err.println(e.getMessage());
+        }
+
+        return data;
+    }
+
+    public ObservableList<Accessory> getAllTires(){
+
+        String query = "SELECT * FROM Accessories WHERE AddOn = " + TIRES;
+        ObservableList<Accessory> data = FXCollections.observableArrayList();
+
+        try(
+                Statement stmt = CONN.createStatement();
+                ResultSet rs = stmt.executeQuery(query)
+        ){
+
+            while(rs.next()) {
+
+                data.add(makeAccessory(rs));
+
+            }
+
+        }catch(SQLException e){
+
+            System.err.println(e.getMessage());
+        }
+
+        return data;
+
+    }
+
+    public ObservableList<Accessory> getAllInteriorColors(){
+        String query = "SELECT * FROM Accessories WHERE AddOn = " + INT_COLOR;
         ObservableList<Accessory> data = FXCollections.observableArrayList();
 
         try(
@@ -37,7 +90,7 @@ public class Accessories extends SQLTable<Accessory> {
     }
 
     public ObservableList<Accessory> getAllAccessories(){
-        String query = "SELECT * FROM Accessories WHERE AddOn = 0";
+        String query = "SELECT * FROM Accessories WHERE AddOn = " + ACCESSORY;
         ObservableList<Accessory> data = FXCollections.observableArrayList();
 
         try(
@@ -137,8 +190,8 @@ public class Accessories extends SQLTable<Accessory> {
      */
     public boolean insert(Accessory model) {
 
-        String query = "INSERT into Accessories (Name, Price, ImageLocation, Description, Rating) " +
-                "VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT into Accessories (Name, Price, ImageLocation, Description, Rating, AddOn) " +
+                "VALUES (?, ?, ?, ?, ?, ?)";
 
         try(
                 PreparedStatement stmt = CONN.prepareStatement(query, Statement.RETURN_GENERATED_KEYS)

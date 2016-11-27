@@ -8,6 +8,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import app.core.StoreItem;
+import app.ui.display.AccessoryDisplay;
 import app.ui.display.CarDisplay;
 import app.ui.items.StoreItemPane;
 import app.utils.ModalUtil;
@@ -18,7 +20,9 @@ import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
+import javafx.geometry.Insets;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -89,8 +93,20 @@ public class CustomizeController implements Initializable {
         toolbar.getItems().clear();
 
         tiresButton = new JFXButton();
+        FlowPane.setMargin(tiresButton, new Insets(0,0,10,0));
+        tiresButton.setOnAction((e) -> {
+            showTires();
+        });
         exteriorColorButton = new JFXButton();
+        exteriorColorButton.setOnAction((e) -> {
+            showExteriorColors();
+        });
+        FlowPane.setMargin(exteriorColorButton, new Insets(0,0,10,0));
         interiorColorButton = new JFXButton();
+        interiorColorButton.setOnAction((e) -> {
+            showInteriorStyles();
+        });
+        FlowPane.setMargin(interiorColorButton, new Insets(0,0,10,0));
 
         ImageView view = new ImageView(new Image("resources/imgs/icons/tire.png"));
         styleButton(tiresButton, view);
@@ -102,7 +118,7 @@ public class CustomizeController implements Initializable {
         toolbar.getItems().addAll(exteriorColorButton, interiorColorButton,
                 tiresButton, returnButton);
 
-
+        showExteriorColors();
 
     }
 
@@ -110,6 +126,30 @@ public class CustomizeController implements Initializable {
         image.setFitWidth(40);
         image.setFitHeight(35);
         button.setGraphic(image);
+    }
+
+    private void showExteriorColors(){
+        flowPane.getChildren().clear();
+        AccessoryDisplay display = new AccessoryDisplay();
+        display.createElements(1);
+        display.setColumns(2);
+        flowPane.getChildren().add(display.getDisplay());
+    }
+
+    private void showInteriorStyles(){
+        flowPane.getChildren().clear();
+        AccessoryDisplay display = new AccessoryDisplay();
+        display.createElements(2);
+        display.setColumns(2);
+        flowPane.getChildren().add(display.getDisplay());
+    }
+
+    private void showTires(){
+        flowPane.getChildren().clear();
+        AccessoryDisplay display = new AccessoryDisplay();
+        display.createElements(3);
+        display.setColumns(2);
+        flowPane.getChildren().add(display.getDisplay());
     }
 
 

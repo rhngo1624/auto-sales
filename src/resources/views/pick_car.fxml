@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.*?>
 <?import javafx.geometry.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.text.*?>
@@ -7,11 +8,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="454.0" prefWidth="600.0" style="-fx-background-color: #1c313d;" stylesheets="@../css/main.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.CustomizeController">
+<BorderPane fx:id="mainBorderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="475.0" prefWidth="600.0" style="-fx-background-color: #1c313d;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.CustomizeController">
    <top>
-      <ToolBar fx:id="toolbar" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="519.0" style="-fx-background-color: #1b222d;" BorderPane.alignment="CENTER">
+      <ToolBar fx:id="toolbar" nodeOrientation="LEFT_TO_RIGHT" prefHeight="55.0" prefWidth="600.0" style="-fx-background-color: #1b222d;" BorderPane.alignment="TOP_CENTER">
          <items>
-            <Label alignment="BOTTOM_LEFT" prefHeight="19.0" prefWidth="500.0" text="Pick a Car" textFill="#e1dede">
+            <Label alignment="BOTTOM_LEFT" prefHeight="29.0" prefWidth="500.0" text="Pick a Car" textFill="#e1dede">
                <font>
                   <Font name="Futura Bold" size="14.0" />
                </font>
@@ -28,6 +29,18 @@
       </ToolBar>
    </top>
    <center>
-      <FlowPane fx:id="flowPane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ScrollPane prefHeight="418.0" prefWidth="600.0" style="-fx-background-color: #1c313d;">
+               <content>
+                  <FlowPane fx:id="flowPane" prefHeight="417.0" prefWidth="597.0" style="-fx-background-color: #1c313d;" />
+               </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
    </center>
+   <stylesheets>
+      <URL value="@../css/main.css" />
+      <URL value="@../css/checkout.css" />
+   </stylesheets>
 </BorderPane>
